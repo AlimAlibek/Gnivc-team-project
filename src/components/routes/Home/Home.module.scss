@@ -1,0 +1,13 @@
+.title {
+  margin-bottom: 24px;
+}
+
+.charts {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+
+  & > * {
+    flex: 1;
+  }
+}
