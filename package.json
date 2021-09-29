@@ -42,6 +42,7 @@
     ]
   },
   "devDependencies": {
-    "@ff/ui-kit": "^0.10.0"
+    "@ff/ui-kit": "^0.10.0",
+    "sass": "^1.42.1"
   }
 }
