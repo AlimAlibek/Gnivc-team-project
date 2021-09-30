@@ -1,13 +1,11 @@
-import { observer } from 'mobx-react';
-import React from 'react';
-import { Sidebar, SystemName } from '@ff/ui-kit';
+import { observer } from "mobx-react";
+import React from "react";
+import { Sidebar, SystemName } from "@ff/ui-kit";
 
-import PieChart from '../../charts/PieChart';
-import BarChart from '../../charts/BarChart';
-import Container from '../../layouts/Container';
-import Main from '../../layouts/Main';
-import classes from './Home.module.scss';
-import logo from './assets/gnivc-logo.png';
+import Container from "../../layouts/Container";
+import Main from "../../layouts/Main";
+import logo from "./assets/gnivc-logo.png";
+import TableComp from "../../Documents/TableC";
 
 const Home: React.FC = observer(() => (
   <Main>
@@ -16,10 +14,7 @@ const Home: React.FC = observer(() => (
     </Sidebar>
 
     <Container>
-      <div className={classes.charts}>
-        <BarChart />
-        <PieChart />
-      </div>
+      <TableComp />
     </Container>
   </Main>
 ));
