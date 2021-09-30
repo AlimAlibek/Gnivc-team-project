@@ -6,7 +6,7 @@ import { Status } from "../../../models/enums/Status";
 import { IDocument } from "../../../models/interfaces/IDocument";
 import { IVersion } from "../../../models/interfaces/IVersion";
 import classes from "./TableC.module.scss";
-
+//some comment. Feel free to delete
 const columns = [
   {
     title: "Название",
