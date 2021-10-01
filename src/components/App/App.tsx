@@ -1,19 +1,20 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import "@ff/ui-kit/lib/styles/fns.theme.css";
 
+import "../../styles/fonts.scss";
 import Home from "../routes/Home";
 import classes from "./App.module.scss";
-import "../../styles/fonts.scss";
-import Doc from "../Documents/Doc";
+import Doc from "../Documents/Document/Document";
 
 const NotFound = React.lazy(() => import("../routes/NotFound"));
 
 const App: React.FC = () => (
   <div className={classes.component}>
     <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/documents/:title" component={Doc} />
+      <Route exact path="/" component={() => <Redirect to="/documents" />} />
+      <Route exact path="/documents" component={Home} />
+      <Route exact path="/documents/:id" component={Doc} />
       <Route path="*" component={NotFound} />
     </Switch>
   </div>

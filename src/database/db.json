@@ -20,7 +20,7 @@
       "versions": [
         {
           "version": "1",
-          "status": "На согласовании",
+          "status": "Approving",
           "responsiblePerson": "Владимир Горбунов",
           "type": "Для согласования",
           "createdAt": "02.07.2021",
@@ -64,7 +64,7 @@
         },
         {
           "version": "2",
-          "status": "Черновик",
+          "status": "Scatch",
           "responsiblePerson": "Владимир Горбунов",
           "type": "Для согласования",
           "createdAt": "02.07.2021",
@@ -114,7 +114,57 @@
       "versions": [
         {
           "version": "1",
-          "status": "Согласовано",
+          "status": "Approved",
+          "responsiblePerson": "Борис Хмельников",
+          "type": "Для согласования",
+          "createdAt": "01.04.2021",
+          "approvedStartAt": "20.09.2021",
+          "approvedEndAt": "21.09.2021",
+          "approvingPerson": "Коршунов В.М.",
+          "files": [
+            {
+              "name": "nvs-scheme.vsd",
+              "fileType": "Схема",
+              "packageVersion": "1",
+              "uploadedAt": "20.03.2020"
+            },
+            {
+              "name": "document_2.docx",
+              "fileType": "Проектная документация",
+              "packageVersion": "1",
+              "uploadedAt": "20.03.2020"
+            }
+          ],
+          "comments": [
+            {
+              "data": "Создал пакет документов.",
+              "person": "Владимир Горбунов",
+              "createdAt": "19.09.2021",
+              "time": "20:43"
+            },
+            {
+              "data": "Отправил на согласование.",
+              "person": "Владимир Горбунов",
+              "createdAt": "20.09.2021",
+              "time": "09:30"
+            },
+            {
+              "data": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
+              "person": "Коршунов В.М.",
+              "createdAt": "20.09.2021",
+              "time": "09:30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Схема размещения серверов",
+      "versions": [
+        {
+          "version": "1",
+          "status": "Refactoring",
           "responsiblePerson": "Борис Хмельников",
           "type": "Для согласования",
           "createdAt": "01.04.2021",
