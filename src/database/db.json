@@ -20,7 +20,7 @@
       "versions": [
         {
           "version": "1",
-          "status": "Approving",
+          "status": "approving",
           "responsiblePerson": "Владимир Горбунов",
           "type": "Для согласования",
           "createdAt": "02.07.2021",
@@ -64,7 +64,7 @@
         },
         {
           "version": "2",
-          "status": "Scatch",
+          "status": "scatch",
           "responsiblePerson": "Владимир Горбунов",
           "type": "Для согласования",
           "createdAt": "02.07.2021",
@@ -114,7 +114,7 @@
       "versions": [
         {
           "version": "1",
-          "status": "Approved",
+          "status": "approved",
           "responsiblePerson": "Борис Хмельников",
           "type": "Для согласования",
           "createdAt": "01.04.2021",
@@ -164,7 +164,7 @@
       "versions": [
         {
           "version": "1",
-          "status": "Refactoring",
+          "status": "refactoring",
           "responsiblePerson": "Борис Хмельников",
           "type": "Для согласования",
           "createdAt": "01.04.2021",

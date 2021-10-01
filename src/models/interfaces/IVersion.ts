@@ -1,6 +1,6 @@
-import { Status } from "../enums/Status";
-import { IComment } from "./IComment";
-import { IFile } from "./IFile";
+import Status from '../enums/Status';
+import { IComment } from './IComment';
+import { IFile } from './IFile';
 
 export interface IVersion {
   version: string;
@@ -11,6 +11,6 @@ export interface IVersion {
   approvedStartAt: string;
   approvedEndAt: string;
   approvingPerson: string;
-  files: Array<IFile>;
-  comments: Array<IComment>;
+  files: IFile[];
+  comments: IComment[];
 }

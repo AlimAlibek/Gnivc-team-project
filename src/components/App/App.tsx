@@ -1,13 +1,13 @@
-import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
-import "@ff/ui-kit/lib/styles/fns.theme.css";
+import React from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import '@ff/ui-kit/lib/styles/fns.theme.css';
 
-import "../../styles/fonts.scss";
-import Home from "../routes/Home";
-import classes from "./App.module.scss";
-import Doc from "../Documents/Document/Document";
+import '../../styles/fonts.scss';
+import Home from '../routes/Home';
+import classes from './App.module.scss';
+import Doc from '../Documents/Document/Document';
 
-const NotFound = React.lazy(() => import("../routes/NotFound"));
+const NotFound = React.lazy(() => import('../routes/NotFound'));
 
 const App: React.FC = () => (
   <div className={classes.component}>

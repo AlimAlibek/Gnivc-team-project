@@ -1,6 +1,7 @@
-export enum Status {
-  Scatch = "Scatch",
-  Approving = "Approving",
-  Refactoring = "Refactoring",
-  Approved = "Approved",
+enum Status {
+  SCATCH = 'scatch',
+  APPROVING = 'approving',
+  REFACTORING = 'refactoring',
+  APPROVED = 'approved',
 }
+export default Status;

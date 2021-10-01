@@ -1,5 +1,7 @@
-export enum Access {
-  Reader = "Reader",
-  Redactor = "Redactor",
-  Approver = "Approver",
+enum Access {
+  VIEWER = 'viewer',
+  EDITOR = 'editor',
+  APPROVER = 'approver',
 }
+
+export default Access;

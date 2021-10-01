@@ -1,29 +1,31 @@
-import axios from "axios";
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable } from 'mobx';
 
-import { IDocument } from "../models/interfaces/IDocument";
-import TableService from "../services/DocumentsService";
+import { IDocument } from '../models/interfaces/IDocument';
+import TableService from '../services/DocumentsService';
 
 class DocumentsStore {
   document: IDocument | null = null;
+
   documents: Array<IDocument> = [];
-  isLoading: boolean = false;
-  error: any = "";
+
+  isLoading = false;
+
+  error: any = '';
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  setDocuments(arr: Array<IDocument>) {
-    this.documents = arr;
+  setDocuments(documents: Array<IDocument>) {
+    this.documents = documents;
   }
 
-  setDocument(obj: IDocument) {
-    this.document = obj;
+  setDocument(document: IDocument) {
+    this.document = document;
   }
 
-  setIsLoading(bool: boolean) {
-    this.isLoading = bool;
+  setIsLoading(boolean: boolean) {
+    this.isLoading = boolean;
   }
 
   setError(error: any) {
