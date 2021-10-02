@@ -1,7 +1,8 @@
-import { IVersion } from './IVersion';
+import IVersion from './IVersion';
 
-export interface IDocument {
+interface IDocument {
   id: string;
   title: string;
   versions: IVersion[];
 }
+export default IDocument;

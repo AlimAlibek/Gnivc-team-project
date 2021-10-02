@@ -1,11 +1,11 @@
-import { observer } from 'mobx-react';
 import React from 'react';
+import { observer } from 'mobx-react';
 import { Sidebar, SystemName } from '@ff/ui-kit';
 
 import Container from '../../layouts/Container';
 import Main from '../../layouts/Main';
 import logo from './assets/gnivc-logo.png';
-import TableComponent from '../../Documents/TableComponent';
+import Documents from '../Documents/Documents';
 
 const Home: React.FC = observer(() => (
   <Main>
@@ -14,7 +14,7 @@ const Home: React.FC = observer(() => (
     </Sidebar>
 
     <Container>
-      <TableComponent />
+      <Documents />
     </Container>
   </Main>
 ));
