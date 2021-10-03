@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Typography } from '@ff/ui-kit';
 
-import IVersion from '../../../models/interfaces/IVersion';
+import Version from '../../../models/interfaces/Version';
 import documentsStore from '../../../stores/documentsStore/documentsStore';
-import TColorAndStatus from '../../../models/types/TColorAndStatus';
+import ColorAndStatus from '../../../models/types/ColorAndStatus';
 
 const columns = [
   {
@@ -21,10 +21,11 @@ const columns = [
     title: 'Статус',
     key: '2',
     dataKey: 'versions',
-    render: (versions: IVersion[]): JSX.Element => {
-      const statusOfTheLastVersion = documentsStore.findLastVersion(versions).status;
-      const [color, status]: TColorAndStatus = documentsStore.findStatus(
-        statusOfTheLastVersion,
+    render: (versions: Version[]): JSX.Element => {
+      const statusOfTheLastVersion =
+        documentsStore.findLastVersion(versions).status;
+      const [color, status]: ColorAndStatus = documentsStore.findStatus(
+        statusOfTheLastVersion
       );
       return <Typography color={color}>{status}</Typography>;
     },
@@ -33,7 +34,7 @@ const columns = [
     title: 'Ответственный',
     key: '3',
     dataKey: 'versions',
-    render: (versions: IVersion[]): JSX.Element => (
+    render: (versions: Version[]): JSX.Element => (
       <p>{documentsStore.findLastVersion(versions).responsiblePerson}</p>
     ),
   },
@@ -41,7 +42,7 @@ const columns = [
     title: 'Версия',
     key: '4',
     dataKey: 'versions',
-    render: (versions: IVersion[]): JSX.Element => (
+    render: (versions: Version[]): JSX.Element => (
       <p>{documentsStore.findLastVersion(versions).version}</p>
     ),
   },
@@ -49,7 +50,7 @@ const columns = [
     title: 'Добавлен',
     key: '5',
     dataKey: 'versions',
-    render: (versions: IVersion[]): JSX.Element => (
+    render: (versions: Version[]): JSX.Element => (
       <p>{documentsStore.findLastVersion(versions).createdAt}</p>
     ),
   },
@@ -57,7 +58,7 @@ const columns = [
     title: 'Начало согласования',
     key: '6',
     dataKey: 'versions',
-    render: (versions: IVersion[]): JSX.Element => (
+    render: (versions: Version[]): JSX.Element => (
       <p>{documentsStore.findLastVersion(versions).approvedStartAt}</p>
     ),
   },
@@ -65,7 +66,7 @@ const columns = [
     title: 'Завершение согласования',
     key: '7',
     dataKey: 'versions',
-    render: (versions: IVersion[]): JSX.Element => (
+    render: (versions: Version[]): JSX.Element => (
       <p>{documentsStore.findLastVersion(versions).approvedEndAt}</p>
     ),
   },

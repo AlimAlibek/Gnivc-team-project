@@ -1,9 +1,9 @@
 import axios, { AxiosResponse } from 'axios';
 
 import Status from '../../models/enums/Status';
-import IDocument from '../../models/interfaces/IDocument';
-import IVersion from '../../models/interfaces/IVersion';
-import TColorAndStatus from '../../models/types/TColorAndStatus';
+import Document from '../../models/interfaces/Document';
+import Version from '../../models/interfaces/Version';
+import ColorAndStatus from '../../models/types/ColorAndStatus';
 import getTranslatedStatus from '../../utils/getTranslatedStatus';
 
 const API_URL = 'http://localhost:8000/';
@@ -11,15 +11,15 @@ const API_URL = 'http://localhost:8000/';
 const httpClient = axios.create({ baseURL: API_URL });
 
 const service = {
-  findTitle(id: string, documents: IDocument[]): string | undefined {
+  findTitle(id: string, documents: Document[]): string | undefined {
     return documents.find((document) => id === document.id)?.title;
   },
 
-  findLastVersion(versions: IVersion[]): IVersion {
+  findLastVersion(versions: Version[]): Version {
     return versions[versions.length - 1];
   },
 
-  findStatus(status: Status): TColorAndStatus {
+  findStatus(status: Status): ColorAndStatus {
     const translatedStatus = getTranslatedStatus(status);
     let color = '';
     switch (status) {
@@ -42,12 +42,12 @@ const service = {
     return [color, translatedStatus];
   },
 
-  fetchDocuments(): Promise<AxiosResponse<IDocument[]>> {
-    return httpClient.get<IDocument[]>('/documents');
+  fetchDocuments(): Promise<AxiosResponse<Document[]>> {
+    return httpClient.get<Document[]>('/documents');
   },
 
-  fetchDocument(id: string): Promise<AxiosResponse<IDocument>> {
-    return httpClient.get<IDocument>(`/documents/${id}`);
+  fetchDocument(id: string): Promise<AxiosResponse<Document>> {
+    return httpClient.get<Document>(`/documents/${id}`);
   },
 };
 

@@ -1,15 +1,15 @@
 import { makeAutoObservable } from 'mobx';
 
 import Status from '../../models/enums/Status';
-import IDocument from '../../models/interfaces/IDocument';
-import IVersion from '../../models/interfaces/IVersion';
-import TColorAndStatus from '../../models/types/TColorAndStatus';
+import Document from '../../models/interfaces/Document';
+import Version from '../../models/interfaces/Version';
+import ColorAndStatus from '../../models/types/ColorAndStatus';
 import service from './documentsStore.service';
 
 class DocumentsStore {
-  document: IDocument | null = null;
+  document: Document | null = null;
 
-  documents: IDocument[] = [];
+  documents: Document[] = [];
 
   isLoading = false;
 
@@ -19,11 +19,11 @@ class DocumentsStore {
     makeAutoObservable(this);
   }
 
-  setDocuments(documents: IDocument[]) {
+  setDocuments(documents: Document[]) {
     this.documents = documents;
   }
 
-  setDocument(document: IDocument) {
+  setDocument(document: Document) {
     this.document = document;
   }
 
@@ -35,15 +35,15 @@ class DocumentsStore {
     this.error = error;
   }
 
-  findTitle(id: string, documents: IDocument[]): string | undefined {
+  findTitle(id: string, documents: Document[]): string | undefined {
     return service.findTitle(id, documents);
   }
 
-  findLastVersion(versions: IVersion[]): IVersion {
+  findLastVersion(versions: Version[]): Version {
     return service.findLastVersion(versions);
   }
 
-  findStatus(status: Status): TColorAndStatus {
+  findStatus(status: Status): ColorAndStatus {
     return service.findStatus(status);
   }
 

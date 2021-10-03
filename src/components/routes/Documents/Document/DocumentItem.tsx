@@ -17,11 +17,11 @@ import AddFile from './AddFile';
 import Container from '../../../layouts/Container';
 
 import documentsStore from '../../../../stores/documentsStore';
-import IDocument from '../../../../models/interfaces/IDocument';
+import Document from '../../../../models/interfaces/Document';
 
-const Document: React.FC = observer(() => {
+const DocumentItem: React.FC = observer(() => {
   const { id }: { id: string } = useParams();
-  
+
   useEffect(() => {
     documentsStore.fetchDocument(id);
   }, [id]);
@@ -46,7 +46,7 @@ const Document: React.FC = observer(() => {
             <div className="block__row">
               <Status />
             </div>
-            
+
             <div className="block__row block__row_underline block__row_mrb">
               <Deside />
             </div>
@@ -74,14 +74,16 @@ const Document: React.FC = observer(() => {
               <div className="sub-title">Файлы</div>
             </div>
             <div className="block__row">
-              <FilesTable files={[
-                {
-                  name: "nvs-scheme.vsd",
-                  fileType: "Схема",
-                  packageVersion: "1",
-                  uploadedAt: "20.03.2020"
-                }
-              ]} />
+              <FilesTable
+                files={[
+                  {
+                    name: 'nvs-scheme.vsd',
+                    fileType: 'Схема',
+                    packageVersion: '1',
+                    uploadedAt: '20.03.2020',
+                  },
+                ]}
+              />
             </div>
 
             <div className="block__row">
@@ -102,4 +104,4 @@ const Document: React.FC = observer(() => {
   );
 });
 
-export default Document;
+export default DocumentItem;

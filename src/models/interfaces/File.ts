@@ -1,8 +1,8 @@
-interface IFile {
+interface File {
   name: string;
   fileType: string;
   packageVersion: string;
   uploadedAt: string;
 }
 
-export default IFile;
+export default File;

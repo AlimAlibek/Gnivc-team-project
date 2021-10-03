@@ -1,8 +1,8 @@
 import Status from '../enums/Status';
-import IComment from './IComment';
-import IFile from './IFile';
+import Comment from './Comment';
+import File from './File';
 
-interface IVersion {
+interface Version {
   version: string;
   status: Status;
   responsiblePerson: string;
@@ -11,7 +11,7 @@ interface IVersion {
   approvedStartAt: string;
   approvedEndAt: string;
   approvingPerson: string;
-  files: IFile[];
-  comments: IComment[];
+  files: File[];
+  comments: Comment[];
 }
-export default IVersion;
+export default Version;

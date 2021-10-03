@@ -8,7 +8,7 @@ import classes from './App.module.scss';
 import logo from './assets/gnivc-logo.png';
 import Main from '../layouts/Main';
 import Documents from '../routes/Documents/Documents';
-import Document from '../routes/Documents/Document';
+import DocumentItem from '../routes/Documents/Document';
 
 const NotFound = React.lazy(() => import('../routes/NotFound'));
 
@@ -21,7 +21,7 @@ const App: React.FC = () => (
       <Switch>
         <Route exact path="/" component={() => <Redirect to="/documents" />} />
         <Route exact path="/documents" component={Documents} />
-        <Route exact path="/documents/:id" component={Document} />
+        <Route exact path="/documents/:id" component={DocumentItem} />
         <Route path="*" component={NotFound} />
       </Switch>
     </Main>
