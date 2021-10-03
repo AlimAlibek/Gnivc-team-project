@@ -20,7 +20,6 @@ const Documents: React.FC = observer(() => {
   if (documentsStore.error) {
     return <Typography.Title>{documentsStore.error}</Typography.Title>;
   }
-
   return (
     <Container>
       <div className={classes.component}>
@@ -31,7 +30,7 @@ const Documents: React.FC = observer(() => {
             <span>Создать пакет документов</span>
           </Button>
         </div>
-        <hr />
+        <hr /> 
         <Table columns={columns} rows={documentsStore.documents} />
       </div>
     </Container>

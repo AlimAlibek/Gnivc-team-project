@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { observer } from 'mobx-react';
 import { useParams } from 'react-router';
 import { Typography } from '@ff/ui-kit';
@@ -15,10 +15,13 @@ import ResponsibleRole from './ResponsibleRole';
 import FilesTable from './FilesTable';
 import AddFile from './AddFile';
 import Container from '../../../layouts/Container';
+
 import documentsStore from '../../../../stores/documentsStore';
+import IDocument from '../../../../models/interfaces/IDocument';
 
 const Document: React.FC = observer(() => {
   const { id }: { id: string } = useParams();
+  
   useEffect(() => {
     documentsStore.fetchDocument(id);
   }, [id]);
@@ -43,7 +46,7 @@ const Document: React.FC = observer(() => {
             <div className="block__row">
               <Status />
             </div>
-
+            
             <div className="block__row block__row_underline block__row_mrb">
               <Deside />
             </div>
@@ -71,7 +74,14 @@ const Document: React.FC = observer(() => {
               <div className="sub-title">Файлы</div>
             </div>
             <div className="block__row">
-              <FilesTable files={[]} />
+              <FilesTable files={[
+                {
+                  name: "nvs-scheme.vsd",
+                  fileType: "Схема",
+                  packageVersion: "1",
+                  uploadedAt: "20.03.2020"
+                }
+              ]} />
             </div>
 
             <div className="block__row">
