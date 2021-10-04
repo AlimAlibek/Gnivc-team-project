@@ -24,10 +24,10 @@ const Login: React.FC = observer(() => {
   });
 
   const seletedName = userStore.selectedUser ? (
-    <Typography>
-      Выбранный юзер {userStore.selectedUser.name} {userStore.selectedUser.role}
-    </Typography>
-  ) : <Typography>Выберете пользоватля</Typography>;
+    
+      `Выбранный юзер ${userStore.selectedUser.name} ${userStore.selectedUser.role}`
+    
+  ) : 'Выберете пользоватeля'
 
   return (
     <div>
@@ -38,7 +38,7 @@ const Login: React.FC = observer(() => {
         style={{ width: '400px' }}
         onChange={(e) => userStore.selectUser(e)}
       />
-      {seletedName}
+     <Typography> {seletedName}</Typography>
     </div>
   );
 });
