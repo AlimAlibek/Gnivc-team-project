@@ -3,7 +3,8 @@ import { observer } from 'mobx-react';
 import { useParams } from 'react-router';
 import { Typography } from '@ff/ui-kit';
 
-import './Document.scss';
+import classes from "./Document.module.scss";
+
 import Version from './Version';
 import SaveCancel from './SaveCancel';
 import Status from './Status';
@@ -35,45 +36,45 @@ const DocumentItem: React.FC = observer(() => {
 
   return (
     <Container>
-      <div className="document">
-        <div className="block document__main-block">
-          <div className="block__container">
-            <div className="block__row block__row_edge block__row_head">
+      <div className={classes.document}>
+        <div className={`${classes.block} ${classes.document__main}`}>
+          <div className={classes.block__container}>
+            <div  className={`${classes.block__row} ${classes.block__row_edge} ${classes.block__row_head}`}>
               <Version />
               <SaveCancel />
             </div>
 
-            <div className="block__row">
+            <div className={classes.block__row}>
               <Status />
             </div>
 
-            <div className="block__row block__row_underline block__row_mrb">
+            <div className={`${classes.block__row} ${classes.block__row_underline} ${classes.block__row_mrb}`}>
               <Deside />
             </div>
 
-            <div className="block__row">
-              <div className="sub-title">Аттрибуты пакета</div>
+            <div className={classes.block__row}>
+              <div className={classes.subtitle}>Аттрибуты пакета</div>
             </div>
 
-            <div className="block__row">
+            <div className={classes.block__row}>
               <NameInput />
             </div>
 
-            <div className="block__row block__row_edge">
+            <div className={`${classes.block__row} ${classes.block__row_edge}`}>
               <TypeInput />
             </div>
 
-            <div className="block__row">
+            <div className={classes.block__row}>
               <Responsible />
             </div>
-            <div className="block__row block__row_edge block__row_mrb">
+            <div className={`${classes.block__row} ${classes.block__row_edge} ${classes.block__row_mrb}`}>
               <ResponsibleRole />
             </div>
 
-            <div className="block__row">
-              <div className="sub-title">Файлы</div>
+            <div className={classes.block__row}>
+              <div className={classes.subtitle}>Файлы</div>
             </div>
-            <div className="block__row">
+            <div className={classes.block__row}>
               <FilesTable
                 files={[
                   {
@@ -86,16 +87,16 @@ const DocumentItem: React.FC = observer(() => {
               />
             </div>
 
-            <div className="block__row">
+            <div className={classes.block__row}>
               <AddFile />
             </div>
           </div>
         </div>
 
-        <div className="block document__side-block">
-          <div className="block__container">
-            <div className="block__row block__row_head">
-              <div className="sub-title">Коменнтарии</div>
+        <div className={`${classes.block} ${classes.document__side}`}>
+          <div className={classes.block__container}>
+            <div className={`${classes.block__row} ${classes.block__row_head}`}>
+              <div className={classes.subtitle}> Коменнтарии </div>
             </div>
           </div>
         </div>

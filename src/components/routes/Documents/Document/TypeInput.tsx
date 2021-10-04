@@ -1,5 +1,6 @@
 import React from 'react';
 import { Select, TextField } from '@ff/ui-kit';
+import classes from "./Document.module.scss";
 
 const TypeInput: React.FC = () => (
   <>
@@ -22,7 +23,7 @@ const TypeInput: React.FC = () => (
       name="floating-label"
       label="Код версии"
       labelStyle="floating"
-      className="field-width_30"
+      className={classes.field_width_30}
     />
   </>
 );
