@@ -1,6 +1,7 @@
 import { Button } from '@ff/ui-kit';
 import React from 'react';
-import classes from "./Document.module.scss";
+
+import classes from '../../Documents/Document/Document.module.scss';
 
 const AddFile: React.FC = () => (
   <div className={classes.buttons_row}>

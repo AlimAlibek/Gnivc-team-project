@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Typography } from '@ff/ui-kit';
 
-import Version from '../../../models/interfaces/Version';
-import documentsStore from '../../../stores/documentsStore/documentsStore';
-import ColorAndStatus from '../../../models/types/ColorAndStatus';
+import Version from '../../models/interfaces/Version';
+import documentsStore from '../../stores/documentsStore/documentsStore';
+import ColorAndStatus from '../../models/types/ColorAndStatus';
 
 const columns = [
   {
@@ -22,10 +22,9 @@ const columns = [
     key: '2',
     dataKey: 'versions',
     render: (versions: Version[]): JSX.Element => {
-      const statusOfTheLastVersion =
-        documentsStore.findLastVersion(versions).status;
+      const statusOfTheLastVersion = documentsStore.findLastVersion(versions).status;
       const [color, status]: ColorAndStatus = documentsStore.findStatus(
-        statusOfTheLastVersion
+        statusOfTheLastVersion,
       );
       return <Typography color={color}>{status}</Typography>;
     },

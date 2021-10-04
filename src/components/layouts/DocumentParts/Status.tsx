@@ -1,5 +1,6 @@
 import React from 'react';
-import classes from './Document.module.scss';
+
+import classes from '../../Documents/Document/Document.module.scss';
 
 const Status: React.FC = () => (
   <>

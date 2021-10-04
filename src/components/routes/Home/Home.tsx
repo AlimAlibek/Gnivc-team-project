@@ -5,7 +5,7 @@ import { Sidebar, SystemName } from '@ff/ui-kit';
 import Container from '../../layouts/Container';
 import Main from '../../layouts/Main';
 import logo from './assets/gnivc-logo.png';
-import Documents from '../Documents/Documents';
+import Documents from '../../Documents/Documents';
 
 const Home: React.FC = observer(() => (
   <Main>

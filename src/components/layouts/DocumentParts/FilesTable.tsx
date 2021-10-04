@@ -1,14 +1,14 @@
 import React from 'react';
 import { Table } from '@ff/ui-kit';
 
-import File from '../../../../models/interfaces/File';
+import File from '../../../models/interfaces/File';
 
 const createData = (
   id: number,
   name: string,
   fileType: string,
   packageVersion: string,
-  uploadedAt: string
+  uploadedAt: string,
 ) => ({
   id,
   name,
@@ -29,7 +29,7 @@ interface Column {
   dataKey: string;
 }
 const columns = Object.entries(Translates).map(
-  (pair, index): Column => ({ title: pair[1], key: index, dataKey: pair[0] })
+  (pair, index): Column => ({ title: pair[1], key: index, dataKey: pair[0] }),
 );
 
 type TableProps = {
@@ -45,15 +45,13 @@ const FilesTable: React.FC<TableProps> = ({ files }) => {
       />
     );
   }
-  const TableData = files.map((file, index) =>
-    createData(
-      index,
-      file.name,
-      file.fileType,
-      file.packageVersion,
-      file.uploadedAt
-    )
-  );
+  const TableData = files.map((file, index) => createData(
+    index,
+    file.name,
+    file.fileType,
+    file.packageVersion,
+    file.uploadedAt,
+  ));
   return <Table columns={columns} rows={TableData} />;
 };
 export default FilesTable;
