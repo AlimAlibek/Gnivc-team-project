@@ -1,13 +1,13 @@
 import { makeAutoObservable } from 'mobx';
 import { AxiosResponse } from 'axios';
 
-import IPerson from '../../models/interfaces/Person';
+import Person from '../../models/interfaces/Person';
 import httpClient from '../_api';
 
 class UserStore {
-  selectedUser: IPerson | null = null;
+  selectedUser: Person | null = null;
 
-  users: IPerson[] = [];
+  users: Person[] = [];
 
   isLoading = false;
 
@@ -25,7 +25,7 @@ class UserStore {
     this.isLoading = boolean;
   }
 
-  setUsers(users: IPerson[] = []) {
+  setUsers(users: Person[] = []) {
     this.users = [...users];
   }
 
@@ -46,8 +46,8 @@ class UserStore {
       .finally(() => this.setIsLoading(false));
   }
 
-  fetchData(): Promise<AxiosResponse<IPerson[]>> {
-    return httpClient.get<IPerson[]>('/responsiblePersons');
+  fetchData(): Promise<AxiosResponse<Person[]>> {
+    return httpClient.get<Person[]>('/responsiblePersons');
   }
 }
 export default new UserStore();
