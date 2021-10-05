@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Deside from '../../../layouts/DocumentParts/Decide';
-import ApproveReturn from '../../../layouts/DocumentParts/ApproveReturn';
+import Deside from '../../DocumentParts/Decide';
+import ApproveReturn from '../../';
 
-const buttonChoose = (isDisbled: boolean, role: string): JSX.Element => {
+const buttonChoose = (isDisbled: boolean, role: string): JSX.Element|null => {
   let res = <></>;
   if (!isDisbled) {
     switch (role) {

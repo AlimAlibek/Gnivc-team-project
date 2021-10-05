@@ -14,10 +14,10 @@ class UserStore {
   error = '';
 
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this, {}, { autoBind: true });
   }
 
-  setError(error: string) {
+  setError=(error: string)=> {
     this.error = error;
   }
 
@@ -25,7 +25,7 @@ class UserStore {
     this.isLoading = boolean;
   }
 
-  setUsers(users: Person[] = []) {
+  setUsers=(users: Person[] = [])=> {
     this.users = [...users];
   }
 

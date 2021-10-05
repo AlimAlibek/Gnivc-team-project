@@ -6,15 +6,17 @@ import userStore from '../../stores/userStore';
 import UserSelect from '../../models/interfaces/UserSelect';
 
 const Login: React.FC = observer(() => {
+
+  const {users,fetchUsers}=userStore
   useEffect(() => {
-    userStore.fetchUsers();
+    fetchUsers();
   }, []);
 
   if (userStore.isLoading) {
     return <Typography.Title>Loading...</Typography.Title>;
   }
   const options: any = [];
-  userStore.users.map((data) => {
+  users.map((data) => {
     const item: UserSelect = {
       value: data.userName,
       label: data.name,

@@ -16,7 +16,7 @@ class DocumentsStore {
   error = '';
 
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this, {}, { autoBind: true });
   }
 
   setDocuments(documents: Document[]) {

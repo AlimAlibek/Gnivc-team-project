@@ -4,14 +4,14 @@ import { useParams } from 'react-router';
 import { Typography } from '@ff/ui-kit';
 
 import classes from './Document.module.scss';
-import Version from '../../layouts/DocumentParts/Version';
-import Status from '../../layouts/DocumentParts/Status';
-import NameInput from '../../layouts/DocumentParts/NameInput';
-import TypeInput from '../../layouts/DocumentParts/TypeInput';
-import Responsible from '../../layouts/DocumentParts/Responsible';
-import ResponsibleRole from '../../layouts/DocumentParts/ResponsibleRole';
-import FilesTable from '../../layouts/DocumentParts/FilesTable';
-import AddFile from '../../layouts/DocumentParts/AddFile';
+import Version from '../DocumentParts/Version';
+import Status from '../DocumentParts/Status';
+import NameInput from '../DocumentParts/NameInput';
+import TypeInput from '../DocumentParts/TypeInput';
+import Responsible from '../DocumentParts/Responsible';
+import ResponsibleRole from '../DocumentParts/ResponsibleRole';
+import FilesTable from '../DocumentParts/FilesTable';
+import AddFile from '../DocumentParts/AddFile';
 import Container from '../../layouts/Container';
 import isDisabled from '../../../utils/isDisabled';
 import documentsStore from '../../../stores/documentsStore';
@@ -21,23 +21,25 @@ import allowSave from './LayoutChanger/allowSave';
 import buttonChoose from './LayoutChanger/ButtonChoose';
 
 const DocumentItem: React.FC <Document> = observer(() => {
-  const { id }: { id: string } = useParams();
+  const { id } = useParams<{ id: string }>();
+  const {document, error, isLoading, fetchDocument } = documentsStore
+  const {selectedUser}=userStore
 
   useEffect(() => {
-    documentsStore.fetchDocument(id);
+    fetchDocument(id);
   }, [id]);
-  const role: string = userStore.selectedUser?.role ? userStore.selectedUser?.role : 'reader';
+  const role: string = selectedUser?.role ? selectedUser?.role : 'reader';
   // Не знаю насколько стоит это менять, если честно.
-  const allVersion = documentsStore.document?.versions;
+  const allVersion = document?.versions;
   // Так как версия может быть андефайнд, пока так. На следующем этапе идет проверка, так что не знаю надо менять или нет
   const lastVersionStatus = allVersion ? allVersion[allVersion.length - 1].status : '';
-  const editStatus = isDisabled(role, lastVersionStatus);
+  const blocked = isDisabled(role, lastVersionStatus);
 
-  if (documentsStore.isLoading) {
+  if (isLoading) {
     return <Typography.Title>Loading...</Typography.Title>;
   }
-  if (documentsStore.error) {
-    return <Typography.Title>{documentsStore.error}</Typography.Title>;
+  if (error) {
+    return <Typography.Title>{error}</Typography.Title>;
   }
 
   return (
@@ -47,7 +49,7 @@ const DocumentItem: React.FC <Document> = observer(() => {
           <div className={classes.block__container}>
             <div className={`${classes.block__row} ${classes.block__row_edge} ${classes.block__row_head}`}>
               <Version />
-              {allowSave(editStatus, role)}
+              {allowSave(blocked, role)}
             </div>
 
             <div className={classes.block__row}>
@@ -55,7 +57,7 @@ const DocumentItem: React.FC <Document> = observer(() => {
             </div>
 
             <div className={`${classes.block__row} ${classes.block__row_underline} ${classes.block__row_mrb}`}>
-              {buttonChoose(editStatus, role)}
+              {buttonChoose(blocked, role)}
             </div>
 
             <div className={classes.block__row}>
@@ -63,15 +65,15 @@ const DocumentItem: React.FC <Document> = observer(() => {
             </div>
 
             <div className={classes.block__row}>
-              <NameInput isDisbled={editStatus} />
+              <NameInput isDisbled={blocked} />
             </div>
 
             <div className={`${classes.block__row} ${classes.block__row_edge}`}>
-              <TypeInput isDisbled={editStatus} />
+              <TypeInput isDisbled={blocked} />
             </div>
 
             <div className={classes.block__row}>
-              <Responsible isDisbled={editStatus} />
+              <Responsible isDisbled={blocked} />
             </div>
             <div className={`${classes.block__row} ${classes.block__row_edge} ${classes.block__row_mrb}`}>
               <ResponsibleRole />
