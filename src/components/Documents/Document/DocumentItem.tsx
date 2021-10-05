@@ -22,8 +22,10 @@ import buttonChoose from './LayoutChanger/ButtonChoose';
 
 const DocumentItem: React.FC <Document> = observer(() => {
   const { id } = useParams<{ id: string }>();
-  const {document, error, isLoading, fetchDocument } = documentsStore
-  const {selectedUser}=userStore
+  const {
+    document, error, isLoading, fetchDocument,
+  } = documentsStore;
+  const { selectedUser } = userStore;
 
   useEffect(() => {
     fetchDocument(id);

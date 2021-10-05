@@ -1,6 +1,5 @@
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, toJS } from 'mobx';
 import { AxiosResponse } from 'axios';
-import { toJS } from 'mobx';
 
 import Person from '../../models/interfaces/Person';
 import httpClient from '../_api';
@@ -18,9 +17,9 @@ class UserStore {
     makeAutoObservable(this, {}, { autoBind: true });
   }
 
-  setError=(error: string)=> {
+  setError = (error: string) => {
     this.error = error;
-  }
+  };
 
   setIsLoading(boolean: boolean) {
     this.isLoading = boolean;
@@ -34,8 +33,8 @@ class UserStore {
     // По стандарту ивент он чейнж передает так, не смотря на то, что по факту передается просто строка.
     console.log();
     const obj = this.users.find((users) => users.userName === userName);
-    console.log(userName,toJS(obj) )
-    
+    console.log(userName, toJS(obj));
+
     if (obj) this.selectedUser = obj;
   }
 

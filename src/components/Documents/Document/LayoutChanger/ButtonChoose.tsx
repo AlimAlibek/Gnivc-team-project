@@ -3,7 +3,7 @@ import React from 'react';
 import Deside from '../../DocumentParts/Decide';
 import ApproveReturn from '../../DocumentParts/ApproveReturn';
 
-const buttonChoose = (isDisbled: boolean, role: string): JSX.Element|null => {
+const buttonChoose = (isDisbled: boolean, role: string): JSX.Element | null => {
   let res = <></>;
   if (!isDisbled) {
     switch (role) {

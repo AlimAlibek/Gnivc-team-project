@@ -3,7 +3,6 @@ import React from 'react';
 
 import classes from '../Document/DocumentItem.module.scss';
 
-
 const AddFile: React.FC = () => (
   <div className={classes.buttons_row}>
     <Button variant="outline" type="primary">

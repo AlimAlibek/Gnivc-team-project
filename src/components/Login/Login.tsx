@@ -2,15 +2,15 @@ import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import Select from '@ff/ui-kit/lib/Select';
 import { Typography } from '@ff/ui-kit';
+
 import userStore from '../../stores/userStore';
 import UserSelect from '../../models/interfaces/UserSelect';
 
 const Login: React.FC = observer(() => {
-
-  const {users,fetchUsers}=userStore
+  const { users, fetchUsers } = userStore;
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [users]);
 
   if (userStore.isLoading) {
     return <Typography.Title>Loading...</Typography.Title>;
@@ -25,10 +25,10 @@ const Login: React.FC = observer(() => {
     options.push(item);
   });
 
-  const seletedName = userStore.selectedUser ? ( 
-      `Выбранный юзер ${userStore.selectedUser.name} ${userStore.selectedUser.role}`
-    
-  ) : 'Выберете пользоватeля'
+  const seletedName = userStore.selectedUser ? (
+    `Выбранный юзер ${userStore.selectedUser.name} ${userStore.selectedUser.role}`
+
+  ) : 'Выберете пользоватeля';
 
   return (
     <div>
@@ -39,7 +39,7 @@ const Login: React.FC = observer(() => {
         style={{ width: '400px' }}
         onChange={(e) => userStore.selectUser(e)}
       />
-     <Typography> {seletedName}</Typography>
+      <Typography> {seletedName}</Typography>
     </div>
   );
 });
