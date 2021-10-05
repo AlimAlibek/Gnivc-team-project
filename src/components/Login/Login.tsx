@@ -25,8 +25,7 @@ const Login: React.FC = observer(() => {
     options.push(item);
   });
 
-  const seletedName = userStore.selectedUser ? (
-    
+  const seletedName = userStore.selectedUser ? ( 
       `Выбранный юзер ${userStore.selectedUser.name} ${userStore.selectedUser.role}`
     
   ) : 'Выберете пользоватeля'

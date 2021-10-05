@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 import { useParams } from 'react-router';
 import { Typography } from '@ff/ui-kit';
 
-import classes from './Document.module.scss';
+import classes from './DocumentItem.module.scss';
 import Version from '../DocumentParts/Version';
 import Status from '../DocumentParts/Status';
 import NameInput from '../DocumentParts/NameInput';

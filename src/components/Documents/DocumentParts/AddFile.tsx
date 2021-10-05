@@ -1,7 +1,7 @@
 import { Button } from '@ff/ui-kit';
 import React from 'react';
 
-import classes from '../Document/Document.module.scss';
+import classes from '../Document/DocumentItem.module.scss';
 
 
 const AddFile: React.FC = () => (

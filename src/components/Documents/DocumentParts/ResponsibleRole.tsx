@@ -1,7 +1,7 @@
 import { TextField } from '@ff/ui-kit';
 import React from 'react';
 
-import classes from '../../Documents/Document/Document.module.scss';
+import classes from '../../Documents/Document/DocumentItem.module.scss';
 
 const ResponsibleRole: React.FC = () => (
   <>

@@ -10,14 +10,15 @@ import Container from '../layouts/Container';
 import documentsStore from '../../stores/documentsStore';
 import '../../styles/icons/tabler-icons-ext.css';
 
- const { error, isLoading, fetchDocuments } = documentsStore
- const {selectedUser}=userStore
+
+
 
 const Documents: React.FC = observer(() => {
   useEffect(() => {
     fetchDocuments();
   }, []);
-
+ const {documents, error, isLoading, fetchDocuments } = documentsStore
+ const {selectedUser}=userStore
  
 
   if (isLoading) {
@@ -27,8 +28,8 @@ const Documents: React.FC = observer(() => {
     return <Typography.Title>{error}</Typography.Title>;
   }
     const isDeveloper = selectedUser ? (selectedUser.role === 'editor') : false;
-      const showButton = isDeveloper ? (
-  <Button className={classes.button} variant="outline" type="primary">
+    //При деструктуризации, не работает получение роли. Почему понять не могу. 
+      const showButton = isDeveloper ? ( <Button className={classes.button} variant="outline" type="primary">
             <Icon name="0010-circle-plus" />
             <span>Создать пакет документов</span>
           </Button>
@@ -41,7 +42,7 @@ const Documents: React.FC = observer(() => {
          {showButton}
         </div>
         <hr />
-        <Table columns={columns} rows={documentsStore.documents} />
+        <Table columns={columns} rows={documents} />
       </div>
     </Container>
   );

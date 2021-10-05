@@ -1,5 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 import { AxiosResponse } from 'axios';
+import { toJS } from 'mobx';
 
 import Person from '../../models/interfaces/Person';
 import httpClient from '../_api';
@@ -25,14 +26,16 @@ class UserStore {
     this.isLoading = boolean;
   }
 
-  setUsers=(users: Person[] = [])=> {
+  setUsers(users: Person[] = []) {
     this.users = [...users];
   }
 
   selectUser(userName: string | string[]) {
     // По стандарту ивент он чейнж передает так, не смотря на то, что по факту передается просто строка.
-    console.log(userName);
+    console.log();
     const obj = this.users.find((users) => users.userName === userName);
+    console.log(userName,toJS(obj) )
+    
     if (obj) this.selectedUser = obj;
   }
 
