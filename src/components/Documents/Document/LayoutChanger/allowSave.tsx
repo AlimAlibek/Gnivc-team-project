@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SaveCancel from '../../DocumentParts/SaveCancel';
+import SaveCancel from '../../SaveCancel';
 
 const allowSave = (isDisbled: boolean, role: string): JSX.Element | null => {
   if (!isDisbled && role === 'editor') {

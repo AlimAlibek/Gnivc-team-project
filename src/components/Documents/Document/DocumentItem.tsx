@@ -4,14 +4,14 @@ import { useParams } from 'react-router';
 import { Typography } from '@ff/ui-kit';
 
 import classes from './DocumentItem.module.scss';
-import Version from '../DocumentParts/Version';
-import Status from '../DocumentParts/Status';
-import NameInput from '../DocumentParts/NameInput';
-import TypeInput from '../DocumentParts/TypeInput';
-import Responsible from '../DocumentParts/Responsible';
-import ResponsibleRole from '../DocumentParts/ResponsibleRole';
-import FilesTable from '../DocumentParts/FilesTable';
-import AddFile from '../DocumentParts/AddFile';
+import Version from '../Version';
+import Status from '../Status';
+import NameInput from '../NameInput';
+import TypeInput from '../TypeInput';
+import Responsible from '../Responsible';
+import ResponsibleRole from '../ResponsibleRole';
+import FilesTable from '../FilesTable';
+import AddFile from '../AddFile';
 import Container from '../../layouts/Container';
 import isDisabled from '../../../utils/isDisabled';
 import documentsStore from '../../../stores/documentsStore';
@@ -20,11 +20,9 @@ import userStore from '../../../stores/userStore';
 import allowSave from './LayoutChanger/allowSave';
 import buttonChoose from './LayoutChanger/ButtonChoose';
 
-const DocumentItem: React.FC <Document> = observer(() => {
+const DocumentItem: React.FC<Document> = observer(() => {
   const { id } = useParams<{ id: string }>();
-  const {
-    document, error, isLoading, fetchDocument,
-  } = documentsStore;
+  const { document, error, isLoading, fetchDocument } = documentsStore;
   const { selectedUser } = userStore;
 
   useEffect(() => {
@@ -34,7 +32,9 @@ const DocumentItem: React.FC <Document> = observer(() => {
   // Не знаю насколько стоит это менять, если честно.
   const allVersion = document?.versions;
   // Так как версия может быть андефайнд, пока так. На следующем этапе идет проверка, так что не знаю надо менять или нет
-  const lastVersionStatus = allVersion ? allVersion[allVersion.length - 1].status : '';
+  const lastVersionStatus = allVersion
+    ? allVersion[allVersion.length - 1].status
+    : '';
   const blocked = isDisabled(role, lastVersionStatus);
 
   if (isLoading) {
@@ -49,7 +49,9 @@ const DocumentItem: React.FC <Document> = observer(() => {
       <div className={classes.document}>
         <div className={`${classes.block} ${classes.document__main}`}>
           <div className={classes.block__container}>
-            <div className={`${classes.block__row} ${classes.block__row_edge} ${classes.block__row_head}`}>
+            <div
+              className={`${classes.block__row} ${classes.block__row_edge} ${classes.block__row_head}`}
+            >
               <Version />
               {allowSave(blocked, role)}
             </div>
@@ -58,7 +60,9 @@ const DocumentItem: React.FC <Document> = observer(() => {
               <Status />
             </div>
 
-            <div className={`${classes.block__row} ${classes.block__row_underline} ${classes.block__row_mrb}`}>
+            <div
+              className={`${classes.block__row} ${classes.block__row_underline} ${classes.block__row_mrb}`}
+            >
               {buttonChoose(blocked, role)}
             </div>
 
@@ -77,7 +81,9 @@ const DocumentItem: React.FC <Document> = observer(() => {
             <div className={classes.block__row}>
               <Responsible isDisbled={blocked} />
             </div>
-            <div className={`${classes.block__row} ${classes.block__row_edge} ${classes.block__row_mrb}`}>
+            <div
+              className={`${classes.block__row} ${classes.block__row_edge} ${classes.block__row_mrb}`}
+            >
               <ResponsibleRole />
             </div>
 
