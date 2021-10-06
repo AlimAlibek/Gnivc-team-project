@@ -3,7 +3,7 @@ import React from 'react';
 
 import classes from '../Document/DocumentItem.module.scss';
 
-const Deside: React.FC = () => (
+const Decide: React.FC = () => (
   <div className={classes.buttons_row}>
     <Button variant="fill" type="primary">
       Отправить на согласование
@@ -13,4 +13,4 @@ const Deside: React.FC = () => (
     </Button>
   </div>
 );
-export default Deside;
+export default Decide;
