@@ -7,13 +7,12 @@ import userStore from '../../stores/userStore';
 import UserSelect from '../../models/interfaces/UserSelect';
 
 const Login: React.FC = observer(() => {
-  const dependendcyVar=1
-  //Пару раз сервер входил в странный цикл получая юзеров, так что использую эту переменную как зависимость
+  const dependendcyVar = 1;
+  // Пару раз сервер входил в странный цикл получая юзеров, так что использую эту переменную как зависимость
   const { users, fetchUsers } = userStore;
   useEffect(() => {
     fetchUsers();
   }, [dependendcyVar]);
-  
 
   if (userStore.isLoading) {
     return <Typography.Title>Loading...</Typography.Title>;
@@ -27,7 +26,7 @@ const Login: React.FC = observer(() => {
     };
     options.push(item);
   });
-  const {selectedUser}=userStore
+  const { selectedUser } = userStore;
 
   const seletedName = selectedUser ? (
     `Выбранный юзер ${selectedUser.name} ${selectedUser.role}`

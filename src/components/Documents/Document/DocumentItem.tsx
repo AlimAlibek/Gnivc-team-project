@@ -4,14 +4,14 @@ import { useParams } from 'react-router';
 import { Typography } from '@ff/ui-kit';
 
 import classes from './DocumentItem.module.scss';
-import Version from './DocumentParts/Version';
-import Status from './DocumentParts/Status';
-import NameInput from './DocumentParts/NameInput';
-import TypeInput from './DocumentParts/TypeInput';
-import Responsible from './DocumentParts/Responsible';
-import ResponsibleRole from './DocumentParts/ResponsibleRole';
-import FilesTable from './DocumentParts/FilesTable';
-import AddFile from './DocumentParts/AddFile';
+import Version from './Version';
+import Status from './Status';
+import NameInput from './DocumentFields/NameInput';
+import TypeInput from './DocumentFields/TypeInput';
+import Responsible from './DocumentFields/Responsible';
+import ResponsibleRole from './DocumentFields/ResponsibleRole';
+import FilesTable from './DocumentFields/FilesTable';
+import AddFile from './Buttons/AddFile';
 import Container from '../../layouts/Container';
 import isDisabled from '../../../utils/isDisabled';
 import documentsStore from '../../../stores/documentsStore';
@@ -22,7 +22,9 @@ import buttonChoose from './LayoutChanger/ButtonChoose';
 
 const DocumentItem: React.FC<Document> = observer(() => {
   const { id } = useParams<{ id: string }>();
-  const { document, error, isLoading, fetchDocument } = documentsStore;
+  const {
+    document, error, isLoading, fetchDocument,
+  } = documentsStore;
   const { selectedUser } = userStore;
 
   useEffect(() => {
