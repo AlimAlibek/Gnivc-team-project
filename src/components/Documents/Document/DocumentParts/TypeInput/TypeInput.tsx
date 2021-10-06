@@ -1,8 +1,8 @@
 import React from 'react';
 import { Select, TextField } from '@ff/ui-kit';
 
-import classes from '../Document/DocumentItem.module.scss';
-import TextFields from '../../../models/interfaces/TextFields';
+import classes from '../../DocumentItem.module.scss';
+import TextFields from '../../../../../models/interfaces/TextFields';
 
 const TypeInput: React.FC<TextFields> = ({ isDisbled }) => (
   <>

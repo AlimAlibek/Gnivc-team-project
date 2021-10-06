@@ -1,7 +1,7 @@
 import React from 'react';
 import { Select } from '@ff/ui-kit';
 
-import TextFields from '../../../models/interfaces/TextFields';
+import TextFields from '../../../../../models/interfaces/TextFields';
 
 const Responsible: React.FC<TextFields> = ({ isDisbled }) => (
   <Select

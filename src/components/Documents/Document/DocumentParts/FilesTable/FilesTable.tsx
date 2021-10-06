@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from '@ff/ui-kit';
 
-import File from '../../../models/interfaces/File';
+import File from '../../../../../models/interfaces/File';
 
 const createData = (
   id: number,

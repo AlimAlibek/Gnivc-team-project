@@ -30,7 +30,6 @@ class UserStore {
   }
 
   selectUser(userName: string | string[]) {
-    // По стандарту ивент он чейнж передает так, не смотря на то, что по факту передается просто строка.
     console.log();
     const obj = this.users.find((users) => users.userName === userName);
     console.log(userName, toJS(obj));

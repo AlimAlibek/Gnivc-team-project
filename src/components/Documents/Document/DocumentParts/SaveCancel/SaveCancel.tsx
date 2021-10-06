@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@ff/ui-kit';
 
-import classes from '../Document/DocumentItem.module.scss';
+import classes from '../../DocumentItem.module.scss';
 
 const SaveCancel: React.FC = () => (
   <div className={classes.buttons_row}>

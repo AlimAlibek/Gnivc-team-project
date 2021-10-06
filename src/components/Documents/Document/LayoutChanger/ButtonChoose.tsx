@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Decide from '../../Decide';
-import ApproveReturn from '../../ApproveReturn';
+import Decide from '../DocumentParts/Decide';
+import ApproveReturn from '../DocumentParts/ApproveReturn';
 
 const buttonChoose = (isDisbled: boolean, role: string): JSX.Element | null => {
   let res = <></>;

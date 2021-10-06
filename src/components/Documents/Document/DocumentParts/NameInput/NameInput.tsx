@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextField } from '@ff/ui-kit';
 
-import TextFields from '../../../models/interfaces/TextFields';
+import TextFields from '../../../../../models/interfaces/TextFields';
 
 const NameInput: React.FC<TextFields> = ({ isDisbled }) => (
   <TextField

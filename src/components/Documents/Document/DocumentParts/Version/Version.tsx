@@ -1,6 +1,6 @@
 import React from 'react';
 
-import classes from '../Document/DocumentItem.module.scss';
+import classes from '../../DocumentItem.module.scss';
 
 const Version: React.FC = () => (
 

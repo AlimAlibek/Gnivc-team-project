@@ -1,4 +1,4 @@
-
+@import "~@ff/ui-kit/lib/styles/scss/fns/colors";
 $minor-font-color: #797D86;
 $line: rgb(126, 126, 126);
 
@@ -117,15 +117,15 @@ $line: rgb(126, 126, 126);
     }
 
     &_draft {
-       background: #E4E5E7; 
+       background: $base-color-100;
     }
     &_agreed {
-        color: #339944;
-        background: #D9F2DD;
+        color: $success-dark-color;
+        background: $success-light-color;
     }
     &_process {
-        color: #D49700;
-        background: #FFF3CC;
+        color: $warning-main-color;
+        background: $warning-light-color;
     }
     
 }
