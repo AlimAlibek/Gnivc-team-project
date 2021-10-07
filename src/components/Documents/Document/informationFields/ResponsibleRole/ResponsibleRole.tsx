@@ -1,4 +1,4 @@
-import { TextField } from '@ff/ui-kit';
+import TextField from "@ff/ui-kit/lib/TextField";
 import React from 'react';
 
 import classes from '../../DocumentItem.module.scss';

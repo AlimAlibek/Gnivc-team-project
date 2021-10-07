@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField } from '@ff/ui-kit';
+import TextField from "@ff/ui-kit/lib/TextField";
 
 import TextFields from '../../../../../models/interfaces/TextFields';
 

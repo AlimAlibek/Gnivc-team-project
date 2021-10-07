@@ -1,23 +1,26 @@
-import React, { useEffect } from 'react';
-import {
-  Button, Icon, Table, Typography,
-} from '@ff/ui-kit';
-import { observer } from 'mobx-react';
+import React, { useEffect } from "react";
+import { observer } from "mobx-react";
+import Button from "@ff/ui-kit/lib/Button";
+import Icon from "@ff/ui-kit/lib/Icon";
+import Table from "@ff/ui-kit/lib/Table";
+import  Typography from "@ff/ui-kit/lib/Typography";
+import userStore from "../../stores/userStore";
 
-import userStore from '../../stores/userStore';
-import columns from './columns';
-import classes from './Documents.module.scss';
-import Container from '../layouts/Container';
-import documentsStore from '../../stores/documentsStore';
-import '../../styles/icons/tabler-icons-ext.css';
+import classes from "./Documents.module.scss";
+import Container from "../layouts/Container";
+import getColumns from "../../utils/getColumns";
+import getRows from "../../utils/getRows";
+import documentsStore from "../../stores/documentsStore";
+import "../../styles/icons/tabler-icons-ext.css";
 
 const Documents: React.FC = observer(() => {
-  const {
-    documents, error, isLoading, fetchDocuments,
-  } = documentsStore;
+  const { documents, error, isLoading, fetchDocuments } = documentsStore;
   useEffect(() => {
     fetchDocuments();
   }, []);
+
+  const rows = getRows(documents);
+  const columns = getColumns();
 
   const { selectedUser } = userStore;
 
@@ -27,8 +30,7 @@ const Documents: React.FC = observer(() => {
   if (error) {
     return <Typography.Title>{error}</Typography.Title>;
   }
-  const isDeveloper = selectedUser ? (selectedUser.role === 'editor') : false;
-  // При деструктуризации, не работает получение роли. Почему понять не могу.
+  const isDeveloper = selectedUser ? selectedUser.role === "editor" : false;
   const showButton = isDeveloper ? (
     <Button className={classes.button} variant="outline" type="primary">
       <Icon name="0010-circle-plus" />
@@ -43,7 +45,7 @@ const Documents: React.FC = observer(() => {
           {showButton}
         </div>
         <hr />
-        <Table columns={columns} rows={documents} />
+        <Table columns={columns} rows={rows} />
       </div>
     </Container>
   );

@@ -1,9 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 
-import Status from '../../models/enums/Status';
 import Document from '../../models/interfaces/Document';
-import Version from '../../models/interfaces/Version';
-import ColorAndStatus from '../../models/types/ColorAndStatus';
 import service from './documentsStore.service';
 
 class DocumentsStore {
@@ -39,13 +36,6 @@ class DocumentsStore {
     return service.findTitle(id, documents);
   }
 
-  findLastVersion(versions: Version[]): Version {
-    return service.findLastVersion(versions);
-  }
-
-  findStatus(status: Status): ColorAndStatus {
-    return service.findStatus(status);
-  }
 
   fetchDocuments() {
     this.setIsLoading(true);

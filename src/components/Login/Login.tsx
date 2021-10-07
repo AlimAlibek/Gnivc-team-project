@@ -1,21 +1,20 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import Select, {Option} from '@ff/ui-kit/lib/Select';
-import { Typography } from '@ff/ui-kit';
+import  Typography from "@ff/ui-kit/lib/Typography";
 
 
 import userStore from '../../stores/userStore';
-import UserSelect from '../../models/interfaces/UserSelect';
 
 const Login: React.FC = observer(() => {
-  const dependendcyVar = 1;
-  // Пару раз сервер входил в странный цикл получая юзеров, так что использую эту переменную как зависимость
-  const { users, fetchUsers,  selectedUser  } = userStore;
+ 
+  // Пару раз сервер входил в странный цикл вечно получая список юзеров, если что ставьте любую константу в юз эффект оно починится.
+  const { users, fetchUsers,  selectedUser, isLoading, selectUser } = userStore;
   useEffect(() => {
     fetchUsers();
-  }, [dependendcyVar]);
+  }, []);
 
-  if (userStore.isLoading) {
+  if (isLoading) {
     return <Typography.Title>Loading...</Typography.Title>;
   }
   const options: Option[] = users.map((data) => ({
@@ -37,7 +36,7 @@ const Login: React.FC = observer(() => {
         placeholder="Выберите значение из списка"
         options={options}
         style={{ width: '400px' }}
-        onChange={(e) => userStore.selectUser(e)}
+        onChange={(e) => selectUser(e)}
       />
       <Typography> {seletedName}</Typography>
     </div>

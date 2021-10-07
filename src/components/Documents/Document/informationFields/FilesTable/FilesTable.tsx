@@ -1,7 +1,7 @@
 import React from 'react';
-import { Table } from '@ff/ui-kit';
+import Table from "@ff/ui-kit/lib/Table";
 
-import File from '../../../../../models/interfaces/File';
+import DocumentFile from '../../../../../models/interfaces/File';
 
 const createData = (
   id: number,
@@ -33,7 +33,7 @@ const columns = Object.entries(Translates).map(
 );
 
 type TableProps = {
-  files: File[];
+  files: DocumentFile[];
 };
 const FilesTable: React.FC<TableProps> = ({ files }) => {
   if (!files || files.length === 0) {

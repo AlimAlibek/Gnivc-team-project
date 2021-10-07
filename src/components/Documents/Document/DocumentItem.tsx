@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { useParams } from 'react-router';
-import { Typography } from '@ff/ui-kit';
+import  Typography from "@ff/ui-kit/lib/Typography";
 
 import classes from './DocumentItem.module.scss';
 import Version from './Version';
 import Status from './Status';
-import NameInput from './DocumentFields/NameInput';
-import TypeInput from './DocumentFields/TypeInput';
-import Responsible from './DocumentFields/Responsible';
-import ResponsibleRole from './DocumentFields/ResponsibleRole';
-import FilesTable from './DocumentFields/FilesTable';
-import AddFile from './buttonGroups/AddFile';
+import NameInput from './informationFields/NameInput';
+import TypeInput from './informationFields/TypeInput';
+import Responsible from './informationFields/Responsible';
+import ResponsibleRole from './informationFields/ResponsibleRole';
+import FilesTable from './informationFields/FilesTable';
+import AddFile from './actionButtons/AddFile';
 import Container from '../../layouts/Container';
 import isDisabled from '../../../utils/isDisabled';
 import documentsStore from '../../../stores/documentsStore';
@@ -31,9 +31,9 @@ const DocumentItem: React.FC<Document> = observer(() => {
     fetchDocument(id);
   }, [id]);
   const role: string = selectedUser?.role ? selectedUser?.role : 'reader';
-  // Не знаю насколько стоит это менять, если честно.
+  
   const allVersion = document?.versions;
-  // Так как версия может быть андефайнд, пока так. На следующем этапе идет проверка, так что не знаю надо менять или нет
+
   const lastVersionStatus = allVersion
     ? allVersion[allVersion.length - 1].status
     : '';
