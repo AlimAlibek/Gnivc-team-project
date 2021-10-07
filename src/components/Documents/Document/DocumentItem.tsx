@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { useParams } from 'react-router';
-import  Typography from "@ff/ui-kit/lib/Typography";
+import Typography from '@ff/ui-kit/lib/Typography';
 
 import classes from './DocumentItem.module.scss';
 import Version from './Version';
@@ -31,7 +31,7 @@ const DocumentItem: React.FC<Document> = observer(() => {
     fetchDocument(id);
   }, [id]);
   const role: string = selectedUser?.role ? selectedUser?.role : 'reader';
-  
+
   const allVersion = document?.versions;
 
   const lastVersionStatus = allVersion

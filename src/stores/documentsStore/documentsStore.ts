@@ -36,7 +36,6 @@ class DocumentsStore {
     return service.findTitle(id, documents);
   }
 
-
   fetchDocuments() {
     this.setIsLoading(true);
     service

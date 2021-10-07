@@ -1,5 +1,5 @@
 import React from 'react';
-import Table from "@ff/ui-kit/lib/Table";
+import Table from '@ff/ui-kit/lib/Table';
 
 import DocumentFile from '../../../../../models/interfaces/File';
 

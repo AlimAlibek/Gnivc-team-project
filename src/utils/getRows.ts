@@ -18,26 +18,25 @@ type RowForTable = {
   approvedEndAt: string;
 };
 
-const getRows = (documents: Document[]): RowForTable[] =>
-  documents.map(({ id, title, versions }) => {
-    const {
-      status,
-      responsiblePerson,
-      version,
-      createdAt,
-      approvedStartAt,
-      approvedEndAt,
-    } = versions[versions.length - 1];
-    const [color, translatedStatus] = getColorAndStatus(status);
-    return {
-      id,
-      name: { id, title },
-      colorAndStatus: { color, translatedStatus },
-      responsiblePerson,
-      version,
-      createdAt,
-      approvedStartAt,
-      approvedEndAt,
-    };
-  });
+const getRows = (documents: Document[]): RowForTable[] => documents.map(({ id, title, versions }) => {
+  const {
+    status,
+    responsiblePerson,
+    version,
+    createdAt,
+    approvedStartAt,
+    approvedEndAt,
+  } = versions[versions.length - 1];
+  const [color, translatedStatus] = getColorAndStatus(status);
+  return {
+    id,
+    name: { id, title },
+    colorAndStatus: { color, translatedStatus },
+    responsiblePerson,
+    version,
+    createdAt,
+    approvedStartAt,
+    approvedEndAt,
+  };
+});
 export default getRows;

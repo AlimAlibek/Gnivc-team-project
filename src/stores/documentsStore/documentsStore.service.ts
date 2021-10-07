@@ -1,9 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 
-
 import Document from '../../models/interfaces/Document';
 import Version from '../../models/interfaces/Version';
-
 
 const API_URL = 'http://localhost:8000/';
 
@@ -17,7 +15,6 @@ const service = {
   findLastVersion(versions: Version[]): Version {
     return versions[versions.length - 1];
   },
-
 
   fetchDocuments(): Promise<AxiosResponse<Document[]>> {
     return httpClient.get<Document[]>('/documents');

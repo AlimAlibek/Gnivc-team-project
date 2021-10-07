@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
-import Select, {Option} from '@ff/ui-kit/lib/Select';
-import  Typography from "@ff/ui-kit/lib/Typography";
-
+import Select, { Option } from '@ff/ui-kit/lib/Select';
+import Typography from '@ff/ui-kit/lib/Typography';
 
 import userStore from '../../stores/userStore';
 
 const Login: React.FC = observer(() => {
- 
   // Пару раз сервер входил в странный цикл вечно получая список юзеров, если что ставьте любую константу в юз эффект оно починится.
-  const { users, fetchUsers,  selectedUser, isLoading, selectUser } = userStore;
+  const {
+    users, fetchUsers, selectedUser, isLoading, selectUser,
+  } = userStore;
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -18,11 +18,10 @@ const Login: React.FC = observer(() => {
     return <Typography.Title>Loading...</Typography.Title>;
   }
   const options: Option[] = users.map((data) => ({
-      value: data.userName,
-      label: data.name,
-      key: data.id,   
+    value: data.userName,
+    label: data.name,
+    key: data.id,
   }));
-  
 
   const seletedName = selectedUser ? (
     `Выбранный юзер ${selectedUser.name} ${selectedUser.role}`
