@@ -11,7 +11,7 @@ import TypeInput from './DocumentFields/TypeInput';
 import Responsible from './DocumentFields/Responsible';
 import ResponsibleRole from './DocumentFields/ResponsibleRole';
 import FilesTable from './DocumentFields/FilesTable';
-import AddFile from './Buttons/AddFile';
+import AddFile from './buttonGroups/AddFile';
 import Container from '../../layouts/Container';
 import isDisabled from '../../../utils/isDisabled';
 import documentsStore from '../../../stores/documentsStore';

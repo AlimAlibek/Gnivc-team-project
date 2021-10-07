@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
-import Select from '@ff/ui-kit/lib/Select';
+import Select, {Option} from '@ff/ui-kit/lib/Select';
 import { Typography } from '@ff/ui-kit';
+
 
 import userStore from '../../stores/userStore';
 import UserSelect from '../../models/interfaces/UserSelect';
@@ -9,7 +10,7 @@ import UserSelect from '../../models/interfaces/UserSelect';
 const Login: React.FC = observer(() => {
   const dependendcyVar = 1;
   // Пару раз сервер входил в странный цикл получая юзеров, так что использую эту переменную как зависимость
-  const { users, fetchUsers } = userStore;
+  const { users, fetchUsers,  selectedUser  } = userStore;
   useEffect(() => {
     fetchUsers();
   }, [dependendcyVar]);
@@ -17,16 +18,12 @@ const Login: React.FC = observer(() => {
   if (userStore.isLoading) {
     return <Typography.Title>Loading...</Typography.Title>;
   }
-  const options: any = [];
-  users.map((data) => {
-    const item: UserSelect = {
+  const options: Option[] = users.map((data) => ({
       value: data.userName,
       label: data.name,
-      id: data.id,
-    };
-    options.push(item);
-  });
-  const { selectedUser } = userStore;
+      key: data.id,   
+  }));
+  
 
   const seletedName = selectedUser ? (
     `Выбранный юзер ${selectedUser.name} ${selectedUser.role}`
