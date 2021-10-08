@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@ff/ui-kit": "^0.10.0",
-    "axios": "^0.21.0",
+    "axios": "^0.21.4",
     "lodash": "^4.17.20",
     "mobx": "^6.0.4",
     "mobx-react": "^7.0.5",
@@ -20,7 +20,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "ff-lint",
-    "generate": "ff-generate"
+    "generate": "ff-generate",
+    "server": "json-server --watch src/database/db.json --port 8000"
   },
   "eslintConfig": {},
   "browserslist": {
@@ -49,6 +50,7 @@
     "@types/react-router-dom": "^5.1.6",
     "@types/react-test-renderer": "^17.0.0",
     "husky": "^4.3.5",
+    "json-server": "^0.16.3",
     "lint-staged": "^10.5.3",
     "node-sass": "4.14.1",
     "react-test-renderer": "^17.0.1",
