@@ -4,7 +4,8 @@ import { useParams } from 'react-router';
 import Typography from '@ff/ui-kit/lib/Typography';
 
 import classes from './DocumentItem.module.scss';
-import Version from './Version';
+// import Version from './Version';
+import VersionList from './VersionList';
 import Status from './Status';
 import NameInput from './informationFields/NameInput';
 import TypeInput from './informationFields/TypeInput';
@@ -54,7 +55,8 @@ const DocumentItem: React.FC<Document> = observer(() => {
             <div
               className={`${classes.block__row} ${classes.block__row_edge} ${classes.block__row_head}`}
             >
-              <Version />
+              {/* <Version /> */}
+              <VersionList />
               {allowSave(blocked, role)}
             </div>
 
