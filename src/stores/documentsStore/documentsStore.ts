@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx';
+import documentVersionStore from '../documentVersionStore';
 
 import Document from '../../models/interfaces/Document';
 import service from './documentsStore.service';
@@ -22,6 +23,7 @@ class DocumentsStore {
 
   setDocument(document: Document) {
     this.document = document;
+     documentVersionStore.setLastVersion(document.versions)
   }
 
   setIsLoading(boolean: boolean) {

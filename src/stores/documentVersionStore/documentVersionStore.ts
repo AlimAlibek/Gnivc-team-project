@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx';
+import Status from '../../models/enums/Status';
 
 import Version from '../../models/interfaces/Version';
 import service from './documentVersionStore.service';
@@ -7,7 +8,7 @@ class DocumentVersionStore {
   version: Version | undefined = undefined;
 
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this, {}, { autoBind: true });
   }
 
   setVersion(number: string | number | undefined, versions: Version[] | undefined) {
@@ -18,6 +19,10 @@ class DocumentVersionStore {
     if (versions) {
       this.version = versions[versions.length - 1];
     }
+  }
+  setStatus(status:Status){
+    if(this.version){this.version.status=status}
+    
   }
 }
 

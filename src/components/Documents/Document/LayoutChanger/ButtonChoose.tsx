@@ -3,12 +3,14 @@ import React from 'react';
 import Decide from '../actionButtons/Decide';
 import ApproveReturn from '../actionButtons/ApproveReturn';
 
-const buttonChoose = (isDisbled: boolean, role: string): JSX.Element | null => {
+const buttonChoose = (isDisbled: boolean, role: string, versionStatus:string): JSX.Element | null => {
   let res = <></>;
   if (!isDisbled) {
     switch (role) {
       case 'editor':
-        res = <Decide />;
+        const again=versionStatus==='refactoring'
+        res = <Decide again={again}/>;
+         
         break;
       case 'reviewer':
         res = <ApproveReturn />;

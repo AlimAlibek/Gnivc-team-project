@@ -16,29 +16,36 @@ import AddFile from './actionButtons/AddFile';
 import Container from '../../layouts/Container';
 import isDisabled from '../../../utils/isDisabled';
 import documentsStore from '../../../stores/documentsStore';
-import Document from '../../../models/interfaces/Document';
+import documentVersionStore from '../../../stores/documentVersionStore';
 import userStore from '../../../stores/userStore';
+import Document from '../../../models/interfaces/Document';
+
 import allowSave from './LayoutChanger/allowSave';
 import buttonChoose from './LayoutChanger/ButtonChoose';
+import Login from '../../Login';
+
 
 const DocumentItem: React.FC<Document> = observer(() => {
   const { id } = useParams<{ id: string }>();
   const {
-    document, error, isLoading, fetchDocument,
+   error, isLoading, fetchDocument,
   } = documentsStore;
   const { selectedUser } = userStore;
+  const {version}=documentVersionStore
+
 
   useEffect(() => {
-    fetchDocument(id);
-  }, [id]);
+    fetchDocument(id);   
+  }, []);
   const role: string = selectedUser?.role ? selectedUser?.role : 'reader';
 
-  const allVersion = document?.versions;
-
-  const lastVersionStatus = allVersion
-    ? allVersion[allVersion.length - 1].status
+  const versionStatus = version?.status
+    ? version?.status
     : '';
-  const blocked = isDisabled(role, lastVersionStatus);
+
+
+
+  const blocked = isDisabled(role, versionStatus);
 
   if (isLoading) {
     return <Typography.Title>Loading...</Typography.Title>;
@@ -48,7 +55,9 @@ const DocumentItem: React.FC<Document> = observer(() => {
   }
 
   return (
+    
     <Container>
+      <Login/>
       <div className={classes.document}>
         <div className={`${classes.block} ${classes.document__main}`}>
           <div className={classes.block__container}>
@@ -67,7 +76,7 @@ const DocumentItem: React.FC<Document> = observer(() => {
             <div
               className={`${classes.block__row} ${classes.block__row_underline} ${classes.block__row_mrb}`}
             >
-              {buttonChoose(blocked, role)}
+              {buttonChoose(blocked, role, versionStatus)}
             </div>
 
             <div className={classes.block__row}>
