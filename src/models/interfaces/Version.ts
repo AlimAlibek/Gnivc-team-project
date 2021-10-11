@@ -1,6 +1,6 @@
 import Status from '../enums/Status';
 import Comment from './Comment';
-import File from './File';
+import DocumentFile from './DocumentFile';
 
 interface Version {
   version: string;
@@ -11,7 +11,7 @@ interface Version {
   approvedStartAt: string;
   approvedEndAt: string;
   approvingPerson: string;
-  files: File[];
+  files: DocumentFile[];
   comments: Comment[];
 }
 export default Version;

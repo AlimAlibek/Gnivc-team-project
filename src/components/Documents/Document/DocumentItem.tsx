@@ -15,8 +15,8 @@ import FilesTable from './informationFields/FilesTable';
 import AddFile from './actionButtons/AddFile';
 import Container from '../../layouts/Container';
 import isDisabled from '../../../utils/isDisabled';
-import documentsStore from '../../../stores/documentsStore';
 import Document from '../../../models/interfaces/Document';
+import documentsStore from '../../../stores/documentsStore';
 import userStore from '../../../stores/userStore';
 import allowSave from './LayoutChanger/allowSave';
 import buttonChoose from './LayoutChanger/ButtonChoose';
@@ -31,6 +31,7 @@ const DocumentItem: React.FC<Document> = observer(() => {
   useEffect(() => {
     fetchDocument(id);
   }, [id]);
+
   const role: string = selectedUser?.role ? selectedUser?.role : 'reader';
 
   const allVersion = document?.versions;
@@ -64,9 +65,7 @@ const DocumentItem: React.FC<Document> = observer(() => {
               <Status />
             </div>
 
-            <div
-              className={`${classes.block__row} ${classes.block__row_underline} ${classes.block__row_mrb}`}
-            >
+            <div className={`${classes.block__row} ${classes.block__row_underline} ${classes.block__row_mrb}`}>
               {buttonChoose(blocked, role)}
             </div>
 
@@ -95,16 +94,7 @@ const DocumentItem: React.FC<Document> = observer(() => {
               <div className={classes.subtitle}>Файлы</div>
             </div>
             <div className={classes.block__row}>
-              <FilesTable
-                files={[
-                  {
-                    name: 'nvs-scheme.vsd',
-                    fileType: 'Схема',
-                    packageVersion: '1',
-                    uploadedAt: '20.03.2020',
-                  },
-                ]}
-              />
+              <FilesTable />
             </div>
 
             <div className={classes.block__row}>

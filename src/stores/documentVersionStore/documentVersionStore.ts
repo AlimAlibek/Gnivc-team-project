@@ -4,13 +4,13 @@ import Version from '../../models/interfaces/Version';
 import service from './documentVersionStore.service';
 
 class DocumentVersionStore {
-  version: Version | undefined = undefined;
+  version: Version | null = null;
 
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this, {}, { autoBind: true });
   }
 
-  setVersion(number: string | number | undefined, versions: Version[] | undefined) {
+  setVersion(number: string, versions: Version[]) {
     this.version = service.setVersion(number, versions);
   }
 

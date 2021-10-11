@@ -3,16 +3,16 @@ import React from 'react';
 import classes from './VersionList.module.scss';
 import Version from '../../../../models/interfaces/Version';
 import documentVersionStore from '../../../../stores/documentVersionStore';
-
 import getColorAndStatus from '../../../../utils/getColorAndStatus';
 
 type Props = {
-  versions: Version[] | [],
+  versions: Version[],
   closeSelect: any;
 };
 const VersionSelect: React.FC<Props> = ({ versions, closeSelect }) => {
+  const { setVersion } = documentVersionStore;
   const handleItemClick = (version: Version) => {
-    documentVersionStore.setVersion(version.version, versions);
+    setVersion(version.version, versions);
     closeSelect();
   };
 
@@ -24,6 +24,7 @@ const VersionSelect: React.FC<Props> = ({ versions, closeSelect }) => {
           <div
             className={`${classes.select__item} ${classes.selectItem} `}
             onClick={() => handleItemClick(version)}
+            role="presentation"
             key={version.version}
           >
             <div className={classes.selectItem__section}>
@@ -45,9 +46,7 @@ const VersionSelect: React.FC<Props> = ({ versions, closeSelect }) => {
               >
                 {getColorAndStatus(version.status)[1]}
               </div>
-
             </div>
-
           </div>
         ))
       }

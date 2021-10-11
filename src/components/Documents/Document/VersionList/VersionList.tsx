@@ -7,8 +7,10 @@ import classes from './VersionList.module.scss';
 import VersionSelect from './VersionSelect';
 
 const VersionList: React.FC = observer(() => {
+  const { document } = documentsStore;
+  const { version, setLastVersion } = documentVersionStore;
   useEffect(() => {
-    documentVersionStore.setLastVersion(documentsStore.document?.versions);
+    setLastVersion(document?.versions);
   }, []);
 
   const [isSelectOpen, setIsSelectOpen] = useState(false);
@@ -26,7 +28,7 @@ const VersionList: React.FC = observer(() => {
 
       <div className={classes.version__title}>
         <i className="icon-0117-arrow-left" />
-        <span>Версия пакета №{documentVersionStore.version?.version} </span>
+        <span>Версия пакета №{version?.version} </span>
         {
           isSelectOpen
             ? (
@@ -35,12 +37,13 @@ const VersionList: React.FC = observer(() => {
                   onClick={closeSelect}
                   className="icon-0065-chevron-up"
                   style={{ cursor: 'pointer' }}
+                  role="presentation"
                 />
                 <VersionSelect
                   closeSelect={closeSelect}
-                  versions={documentsStore.document?.versions || []}
+                  versions={document?.versions || []}
                 />
-                <div className={classes.closeArea} onClick={closeSelect} />
+                <div className={classes.closeArea} onClick={closeSelect} role="presentation" />
               </>
             )
             : (
@@ -48,6 +51,7 @@ const VersionList: React.FC = observer(() => {
                 onClick={openSelect}
                 className="icon-0007-chevron-down"
                 style={{ cursor: 'pointer' }}
+                role="presentation"
               />
             )
 }

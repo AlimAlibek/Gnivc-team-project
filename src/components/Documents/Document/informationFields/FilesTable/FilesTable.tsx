@@ -1,7 +1,13 @@
 import React from 'react';
-import Table from '@ff/ui-kit/lib/Table';
+import { observer } from 'mobx-react-lite';
+import { Table, ColDef } from '@ff/ui-kit';
 
-import DocumentFile from '../../../../../models/interfaces/File';
+import documentVersionStore from '../../../../../stores/documentVersionStore';
+import DocumentFile from '../../../../../models/interfaces/DocumentFile';
+
+type TableProps = {
+  files: DocumentFile[];
+};
 
 const createData = (
   id: number,
@@ -17,41 +23,23 @@ const createData = (
   uploadedAt,
 });
 
-const Translates = {
-  name: 'Файл',
-  fileType: 'Тип',
-  packageVersion: 'Версия пакета',
-  uploadedAt: 'Загружен',
-};
-interface Column {
-  title: string;
-  key: number;
-  dataKey: string;
-}
-const columns = Object.entries(Translates).map(
-  (pair, index): Column => ({ title: pair[1], key: index, dataKey: pair[0] }),
-);
+const columns: ColDef[] = [
+  { title: 'Файл', key: '1', dataKey: 'name' },
+  { title: 'Тип', key: '2', dataKey: 'fileType' },
+  { title: 'Версия пакета', key: '3', dataKey: 'packageVersion' },
+  { title: 'Загружен', key: '4', dataKey: 'uploadedAt' },
+];
 
-type TableProps = {
-  files: DocumentFile[];
-};
-const FilesTable: React.FC<TableProps> = ({ files }) => {
-  if (!files || files.length === 0) {
-    return (
-      <Table
-        columns={columns}
-        rows={[]}
-        emptyTableMessage={<>Файлы не добавлены</>}
-      />
-    );
-  }
-  const TableData = files.map((file, index) => createData(
+const FilesTable: React.FC = observer(() => {
+  const { version } = documentVersionStore;
+
+  const tableData = version?.files.map((file, index) => createData(
     index,
     file.name,
     file.fileType,
     file.packageVersion,
     file.uploadedAt,
   ));
-  return <Table columns={columns} rows={TableData} />;
-};
+  return <Table columns={columns} rows={tableData || []} emptyTableMessage="Файлов нет" />;
+});
 export default FilesTable;
