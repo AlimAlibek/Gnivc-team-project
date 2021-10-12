@@ -19,10 +19,12 @@ import documentsStore from '../../../stores/documentsStore';
 import documentVersionStore from '../../../stores/documentVersionStore';
 import userStore from '../../../stores/userStore';
 import Document from '../../../models/interfaces/Document';
+import Access from '../../../models/enums/Access';
 
 import allowSave from './LayoutChanger/allowSave';
 import buttonChoose from './LayoutChanger/ButtonChoose';
 import Login from '../../Login';
+
 
 
 const DocumentItem: React.FC<Document> = observer(() => {
@@ -37,13 +39,10 @@ const DocumentItem: React.FC<Document> = observer(() => {
   useEffect(() => {
     fetchDocument(id);   
   }, []);
-  const role: string = selectedUser?.role ? selectedUser?.role : 'reader';
 
-  const versionStatus = version?.status
-    ? version?.status
-    : '';
+  const role = selectedUser?.role ?? Access.VIEWER;
 
-
+  const versionStatus = version?.status ?? '';
 
   const blocked = isDisabled(role, versionStatus);
 

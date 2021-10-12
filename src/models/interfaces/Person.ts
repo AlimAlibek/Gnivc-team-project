@@ -1,8 +1,9 @@
+import Access from '../enums/Access'
 interface Person {
   id: string;
   name: string;
   userName: string;
-  role: string;
+  role: Access;
   projectRole: string;
   department: string;
 }

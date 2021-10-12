@@ -7,9 +7,7 @@ import classes from './VersionList.module.scss';
 import VersionSelect from './VersionSelect';
 
 const VersionList: React.FC = observer(() => {
-  useEffect(() => {
-    documentVersionStore.setLastVersion(documentsStore.document?.versions);
-  }, []);
+
 
   const [isSelectOpen, setIsSelectOpen] = useState(false);
 
