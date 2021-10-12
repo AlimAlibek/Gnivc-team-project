@@ -9,6 +9,7 @@ import VersionSelect from './VersionSelect';
 const VersionList: React.FC = observer(() => {
   const { document } = documentsStore;
   const { version, setLastVersion } = documentVersionStore;
+
   useEffect(() => {
     setLastVersion(document?.versions);
   }, []);
