@@ -4,9 +4,10 @@ import { useParams } from 'react-router';
 import Typography from '@ff/ui-kit/lib/Typography';
 
 import classes from './DocumentItem.module.scss';
-// import Version from './Version';
+
 import VersionList from './VersionList';
 import Status from './Status';
+import Comments from './Comments';
 import NameInput from './informationFields/NameInput';
 import TypeInput from './informationFields/TypeInput';
 import Responsible from './informationFields/Responsible';
@@ -20,6 +21,7 @@ import documentVersionStore from '../../../stores/documentVersionStore';
 import userStore from '../../../stores/userStore';
 import Document from '../../../models/interfaces/Document';
 import Access from '../../../models/enums/Access';
+
 
 import allowSave from './LayoutChanger/allowSave';
 import buttonChoose from './LayoutChanger/ButtonChoose';
@@ -121,13 +123,9 @@ const DocumentItem: React.FC<Document> = observer(() => {
           </div>
         </div>
 
-        <div className={`${classes.block} ${classes.document__side}`}>
-          <div className={classes.block__container}>
-            <div className={`${classes.block__row} ${classes.block__row_head}`}>
-              <div className={classes.subtitle}> Коменнтарии </div>
-            </div>
-          </div>
-        </div>
+        
+               <Comments/> 
+        
       </div>
     </Container>
   );
