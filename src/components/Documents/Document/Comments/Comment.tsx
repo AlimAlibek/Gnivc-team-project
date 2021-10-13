@@ -1,18 +1,32 @@
+import React,{ useState } from "react";
 import TextField from "@ff/ui-kit/lib/TextField";
 import Button from "@ff/ui-kit/lib/Button";
+
 import documentVersionStore from "../../../../stores/documentVersionStore";
+
 import classes from "../DocumentItem.module.scss";
 import CommentType from  "../../../../models/interfaces/Comment"
-const Comments = () => {
- const {version}=documentVersionStore
+
+const Comments:React.FC = () => {
+   const {version, addComent}=documentVersionStore;
+ 
+const [comment,setComment]=useState('');
+
+const sendComent=()=>{
+  if(!comment) {null}
+addComent(comment)
+setComment('')
+}
 
 
- const renderComents=(props:CommentType)=>(
+
+
+ const renderComents=({createdAt,time,person,data}:CommentType)=>(
   <div className={classes.block__row}>
    <div>
-    {props.createdAt} {props.time} {props.person}
+    {createdAt} {time} {person}
     <div>
-     {props.data}
+     {data}
     </div>
    </div>
   </div>)
@@ -31,7 +45,9 @@ const Comments = () => {
       </div>
       <div className={classes.block__row}>
         <TextField
-          name="small1"
+        onChange={(e)=>setComment(e.target.value)}
+        value={comment}
+          name="large1"
           label=""
           labelStyle="left"
           placeholder="Текстовое поле"
@@ -39,7 +55,7 @@ const Comments = () => {
         />
       </div>
       <div className={classes.block__row}>
-        <Button type="primary">Кнопка</Button>
+        <Button onClick={sendComent} type="primary">Кнопка</Button>
       </div>
      {allComents}
     </div>

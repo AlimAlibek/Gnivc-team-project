@@ -3,6 +3,9 @@ import Status from '../../models/enums/Status';
 
 import Version from '../../models/interfaces/Version';
 import service from './documentVersionStore.service';
+import userStore from '../userStore';
+
+const {selectedUser}=userStore
 
 class DocumentVersionStore {
   version: Version | undefined = undefined;
@@ -24,6 +27,14 @@ class DocumentVersionStore {
     if(this.version){this.version.status=status}
     
   }
+  addComent(text:string){ 
+    this.version?.comments.push({
+      data: text,
+      person: userStore.selectedUser?.name??'Аноним',
+      createdAt: new Date().toLocaleString("ru").split(',')[0],
+      time: new Date().toLocaleString("ru").split(',')[1]
+    })
+  } 
 }
 
 export default new DocumentVersionStore();

@@ -11,9 +11,10 @@ interface SendButton {
 
 
 const Decide: React.FC<SendButton> = ({again}) => {
-  const {setStatus}=documentVersionStore
+  const {setStatus, addComent}=documentVersionStore
   const sendToApproval=()=>{
     setStatus(Status.APPROVING)
+    addComent('Отправил на согласование')
   }
   const sendButtonText=again? `Повторно отправить на согласование` :`Отправить на согласование`
   const deleteButton=again? null: <Button variant="outline" type="primary">
