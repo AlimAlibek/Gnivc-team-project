@@ -1,37 +1,35 @@
 import React, { useEffect } from 'react';
-import {
-  Button, Icon, Table, Typography,
-} from '@ff/ui-kit';
 import { observer } from 'mobx-react';
+import Typography from '@ff/ui-kit/lib/esm/components/Typography';
+import Button from '@ff/ui-kit/lib/esm/components/Button';
+import Icon from '@ff/ui-kit/lib/esm/components/Icon';
+import Table from '@ff/ui-kit/lib/esm/components/Table';
 
-import columns from './columns';
 import classes from './Documents.module.scss';
 import Container from '../../layouts/Container';
+import getColumns from '../../../utils/getColumns';
 import documentsStore from '../../../stores/documentsStore';
 
+const columns = getColumns();
 const Documents: React.FC = observer(() => {
-  useEffect(() => {
-    documentsStore.fetchDocuments();
-  }, []);
+  const { documents: rows, error, isLoading, fetchDocuments } = documentsStore;
 
-  if (documentsStore.isLoading) {
-    return <Typography.Title>Loading...</Typography.Title>;
-  }
-  if (documentsStore.error) {
-    return <Typography.Title>{documentsStore.error}</Typography.Title>;
-  }
+  //prettier-ignore
+  useEffect(() => {fetchDocuments()}, [fetchDocuments]);
+
   return (
     <Container>
       <div className={classes.component}>
         <div className={classes.top}>
           <div className={classes.title}>Пакеты документов</div>
           <Button className={classes.button} variant="outline" type="primary">
-            <Icon className={classes.icon} name="plus" />
             <span>Создать пакет документов</span>
           </Button>
         </div>
-        <hr /> 
-        <Table columns={columns} rows={documentsStore.documents} />
+        <hr />
+        {isLoading && <Typography.Title>Loading...</Typography.Title>}
+        {error && <Typography.Title>{error}</Typography.Title>}
+        <Table columns={columns} rows={rows} />
       </div>
     </Container>
   );

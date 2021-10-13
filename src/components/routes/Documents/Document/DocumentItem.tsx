@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { useParams } from 'react-router';
 import { Typography } from '@ff/ui-kit';
@@ -15,12 +15,10 @@ import ResponsibleRole from './ResponsibleRole';
 import FilesTable from './FilesTable';
 import AddFile from './AddFile';
 import Container from '../../../layouts/Container';
-
 import documentsStore from '../../../../stores/documentsStore';
-import Document from '../../../../models/interfaces/Document';
 
 const DocumentItem: React.FC = observer(() => {
-  const { id }: { id: string } = useParams();
+  const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
     documentsStore.fetchDocument(id);

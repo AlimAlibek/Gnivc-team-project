@@ -1,30 +1,28 @@
 import { makeAutoObservable } from 'mobx';
 
-import Status from '../../models/enums/Status';
 import Document from '../../models/interfaces/Document';
-import Version from '../../models/interfaces/Version';
-import ColorAndStatus from '../../models/types/ColorAndStatus';
+import FormattedDocument from '../../models/interfaces/FormattedDocument';
 import service from './documentsStore.service';
 
 class DocumentsStore {
   document: Document | null = null;
 
-  documents: Document[] = [];
+  documents: FormattedDocument[] = [];
 
   isLoading = false;
 
   error = '';
 
   constructor() {
-    makeAutoObservable(this);
-  }
-
-  setDocuments(documents: Document[]) {
-    this.documents = documents;
+    makeAutoObservable(this, {}, { autoBind: true });
   }
 
   setDocument(document: Document) {
     this.document = document;
+  }
+
+  setDocuments(documents: FormattedDocument[]) {
+    this.documents = documents;
   }
 
   setIsLoading(boolean: boolean) {
@@ -35,18 +33,6 @@ class DocumentsStore {
     this.error = error;
   }
 
-  findTitle(id: string, documents: Document[]): string | undefined {
-    return service.findTitle(id, documents);
-  }
-
-  findLastVersion(versions: Version[]): Version {
-    return service.findLastVersion(versions);
-  }
-
-  findStatus(status: Status): ColorAndStatus {
-    return service.findStatus(status);
-  }
-
   fetchDocuments() {
     this.setIsLoading(true);
     service
@@ -54,13 +40,10 @@ class DocumentsStore {
       .then((response) => this.setDocuments(response.data))
       .catch((error) => {
         if (error.response) {
-          console.log(error.response);
           this.setError('Bad Request. This Document does not exist');
         } else if (error.request) {
-          console.log(error.request);
           this.setError('Something went wrong. Try again later');
         } else {
-          console.log('Error', error.message);
           this.setError('Unexpected error. Try again later');
         }
       })
@@ -74,13 +57,10 @@ class DocumentsStore {
       .then((response) => this.setDocument(response.data))
       .catch((error) => {
         if (error.response) {
-          console.log(error.response);
           this.setError('Bad Request. This data does not exist');
         } else if (error.request) {
-          console.log(error.request);
           this.setError('Something went wrong. Try again later');
         } else {
-          console.log('Error', error.message);
           this.setError('Unexpected error. Try again later');
         }
       })
