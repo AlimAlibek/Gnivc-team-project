@@ -20,7 +20,7 @@ const VersionSelect: React.FC<Props> = ({ versions, closeSelect }) => {
     <div className={`${classes.version__select} ${classes.select}`}>
       {
         versions.length
-        && versions.map((version: Version) => (
+        && versions.reverse().map((version: Version) => (
           <div
             className={`${classes.select__item} ${classes.selectItem} `}
             onClick={() => handleItemClick(version)}
@@ -30,8 +30,8 @@ const VersionSelect: React.FC<Props> = ({ versions, closeSelect }) => {
             <div className={classes.selectItem__section}>
               <div className={classes.selectItem__title}>
                 версия пакета №{version.version}
-                <i className="icon-0122-pencil" />
                 <span className={classes.selectItem__minorFont}>
+                  <span><i className="sr-0016-edit" style={{ display: 'inline', margin: '0 4px' }} /></span>
                   {version.comments.length}
                 </span>
               </div>

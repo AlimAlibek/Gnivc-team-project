@@ -69,17 +69,6 @@ $line: rgb(126, 126, 126);
     font-size: 14px;
 }
 
-.version {
-    position: relative;
-
-    &__title {
-        line-height: 32px;
-        font-size: 24px;
-        font-weight: 700;
-    }
-}
-
-
 .subtitle {
     font-size: 20px;
     line-height: 24px;  
@@ -106,30 +95,6 @@ $line: rgb(126, 126, 126);
         margin-right: 6px;
     }
 }
-
-.status {
-    padding: 2px 8px;
-    border-radius: 4px;
-    display: flex; 
-    align-items: center;
-    &>i {
-        margin-right: 6px;
-    }
-
-    &_draft {
-       background: $base-color-100;
-    }
-    &_agreed {
-        color: $success-dark-color;
-        background: $success-light-color;
-    }
-    &_process {
-        color: $warning-main-color;
-        background: $warning-light-color;
-    }
-    
-}
-
 
 
 .field_width_30{

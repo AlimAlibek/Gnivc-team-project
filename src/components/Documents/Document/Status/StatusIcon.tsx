@@ -4,14 +4,14 @@ type IconProps = {
   status: string | undefined;
 };
 const StatusIcon: React.FC<IconProps> = ({ status }) => {
-  let el = <i className="icon-0018-forbid-2" />;
+  let el = <i className="sr-0018-forbid-2" />;
   switch (status) {
     case 'approving':
     case 'refactoring':
-      el = <i className="icon-0093-refresh-alert " />;
+      el = <i className="sr-0093-refresh-alert " />;
       break;
     case 'approved':
-      el = <i className="icon-0008-circle-check" />;
+      el = <i className="sr-0008-circle-check" />;
       break;
     default: break;
   }

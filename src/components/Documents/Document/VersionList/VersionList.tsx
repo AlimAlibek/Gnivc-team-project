@@ -28,7 +28,7 @@ const VersionList: React.FC = observer(() => {
     <div className={classes.version}>
 
       <div className={classes.version__title}>
-        <i className="icon-0117-arrow-left" />
+        <span> <i className="sr-0117-arrow-left" /> </span>
         <span>Версия пакета №{version?.version} </span>
         {
           isSelectOpen
@@ -36,7 +36,7 @@ const VersionList: React.FC = observer(() => {
               <>
                 <i
                   onClick={closeSelect}
-                  className="icon-0065-chevron-up"
+                  className="sr-0065-chevron-up"
                   style={{ cursor: 'pointer' }}
                   role="presentation"
                 />
@@ -50,7 +50,7 @@ const VersionList: React.FC = observer(() => {
             : (
               <i
                 onClick={openSelect}
-                className="icon-0007-chevron-down"
+                className="sr-0007-chevron-down"
                 style={{ cursor: 'pointer' }}
                 role="presentation"
               />
