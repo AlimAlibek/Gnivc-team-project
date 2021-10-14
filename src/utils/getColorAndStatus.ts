@@ -1,6 +1,5 @@
-import '@ff/ui-kit/lib/styles/fns.theme.css';
-import Status from '../models/enums/Status';
-import ColorAndStatus from '../models/types/ColorAndStatus';
+import Status from '../models/Status';
+import ColorAndStatus from '../models/ColorAndStatus';
 
 const getColorAndStatus = (status: Status): ColorAndStatus => {
   switch (status) {

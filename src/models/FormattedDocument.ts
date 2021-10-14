@@ -14,4 +14,5 @@ interface FormattedDocument {
   approvedStartAt: string;
   approvedEndAt: string;
 }
+
 export default FormattedDocument;

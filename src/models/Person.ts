@@ -4,4 +4,5 @@ interface Person {
   projectRole: string;
   department: string;
 }
+
 export default Person;

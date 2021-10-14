@@ -18,7 +18,7 @@ import Container from '../../../layouts/Container';
 import documentsStore from '../../../../stores/documentsStore';
 
 const DocumentItem: React.FC = observer(() => {
-  const { id } = useParams<{ id: string }>();
+  const { id }: { id: string } = useParams();
 
   useEffect(() => {
     documentsStore.fetchDocument(id);

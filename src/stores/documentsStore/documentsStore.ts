@@ -1,11 +1,11 @@
 import { makeAutoObservable } from 'mobx';
 
-import Document from '../../models/interfaces/Document';
-import FormattedDocument from '../../models/interfaces/FormattedDocument';
+import FormattedDocument from '../../models/FormattedDocument';
+import DocumentPackage from '../../models/DocumentPackage';
 import service from './documentsStore.service';
 
 class DocumentsStore {
-  document: Document | null = null;
+  document: DocumentPackage | null = null;
 
   documents: FormattedDocument[] = [];
 
@@ -17,7 +17,7 @@ class DocumentsStore {
     makeAutoObservable(this, {}, { autoBind: true });
   }
 
-  setDocument(document: Document) {
+  setDocument(document: DocumentPackage) {
     this.document = document;
   }
 
@@ -37,7 +37,7 @@ class DocumentsStore {
     this.setIsLoading(true);
     service
       .fetchDocuments()
-      .then((response) => this.setDocuments(response.data))
+      .then((data) => this.setDocuments(data))
       .catch((error) => {
         if (error.response) {
           this.setError('Bad Request. This Document does not exist');
@@ -54,7 +54,7 @@ class DocumentsStore {
     this.setIsLoading(true);
     service
       .fetchDocument(id)
-      .then((response) => this.setDocument(response.data))
+      .then((data) => this.setDocument(data))
       .catch((error) => {
         if (error.response) {
           this.setError('Bad Request. This data does not exist');

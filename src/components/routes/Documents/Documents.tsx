@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import Typography from '@ff/ui-kit/lib/esm/components/Typography';
 import Button from '@ff/ui-kit/lib/esm/components/Button';
-import Icon from '@ff/ui-kit/lib/esm/components/Icon';
 import Table from '@ff/ui-kit/lib/esm/components/Table';
 
 import classes from './Documents.module.scss';
@@ -12,10 +11,13 @@ import documentsStore from '../../../stores/documentsStore';
 
 const columns = getColumns();
 const Documents: React.FC = observer(() => {
-  const { documents: rows, error, isLoading, fetchDocuments } = documentsStore;
+  const {
+    documents: rows, error, isLoading, fetchDocuments,
+  } = documentsStore;
 
-  //prettier-ignore
-  useEffect(() => {fetchDocuments()}, [fetchDocuments]);
+  useEffect(() => {
+    fetchDocuments();
+  }, [fetchDocuments]);
 
   return (
     <Container>
@@ -23,12 +25,15 @@ const Documents: React.FC = observer(() => {
         <div className={classes.top}>
           <div className={classes.title}>Пакеты документов</div>
           <Button className={classes.button} variant="outline" type="primary">
-            <span>Создать пакет документов</span>
+            Создать пакет документов
           </Button>
         </div>
         <hr />
+
         {isLoading && <Typography.Title>Loading...</Typography.Title>}
+
         {error && <Typography.Title>{error}</Typography.Title>}
+
         <Table columns={columns} rows={rows} />
       </div>
     </Container>

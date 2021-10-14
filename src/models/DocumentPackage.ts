@@ -1,8 +1,9 @@
 import Version from './Version';
 
-interface Document {
+interface DocumentPackage {
   id: string;
   title: string;
   versions: Version[];
 }
-export default Document;
+
+export default DocumentPackage;
