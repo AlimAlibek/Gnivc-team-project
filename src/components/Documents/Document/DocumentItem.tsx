@@ -23,8 +23,8 @@ import Document from '../../../models/interfaces/Document';
 import Access from '../../../models/enums/Access';
 
 
-import allowSave from './LayoutChanger/allowSave';
-import buttonChoose from './LayoutChanger/ButtonChoose';
+import allowSave from './layoutChanger/allowSave';
+import buttonChoose from './layoutChanger/ButtonChoose';
 import Login from '../../Login';
 
 

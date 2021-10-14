@@ -32,9 +32,6 @@ setComment('')
   </div>)
 
   const allComents=version? version.comments.map(coment=>renderComents(coment)):"Коментариев нет"
-   
-
- 
  
   return (
     <div className={`${classes.block} ${classes.document__side}`}>

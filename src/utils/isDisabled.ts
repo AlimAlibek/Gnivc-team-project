@@ -3,7 +3,7 @@ const editor = ['scatch', 'refactoring'];
 const reviewer = ['approving'];
 
 const isDisabled = (selectedRole: Access, selecedStatus: string): boolean => {
-  // Тут поптом будут enum
+
   if (!selecedStatus) { return false; }
   let res = true;
   switch (selectedRole) {

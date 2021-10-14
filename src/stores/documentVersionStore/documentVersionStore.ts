@@ -5,7 +5,7 @@ import Version from '../../models/interfaces/Version';
 import service from './documentVersionStore.service';
 import userStore from '../userStore';
 
-const {selectedUser}=userStore
+
 
 class DocumentVersionStore {
   version: Version | undefined = undefined;
@@ -14,7 +14,7 @@ class DocumentVersionStore {
     makeAutoObservable(this, {}, { autoBind: true });
   }
 
-  setVersion(number: string | number | undefined, versions: Version[] | undefined) {
+  setVersion(number: any, versions: Version[] | undefined) {
     this.version = service.setVersion(number, versions);
   }
 
@@ -28,11 +28,15 @@ class DocumentVersionStore {
     
   }
   addComent(text:string){ 
+    const today=new Date().toLocaleString("ru").split(',')
+    //toLocalDateString
+    //toLocalTime
+    const {selectedUser}=userStore
     this.version?.comments.push({
       data: text,
-      person: userStore.selectedUser?.name??'Аноним',
-      createdAt: new Date().toLocaleString("ru").split(',')[0],
-      time: new Date().toLocaleString("ru").split(',')[1]
+      person: selectedUser?.name??'Аноним',
+      createdAt: today[0],
+      time: today[1]
     })
   } 
 }
