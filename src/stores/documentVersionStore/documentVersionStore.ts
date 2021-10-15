@@ -8,13 +8,13 @@ import userStore from '../userStore';
 
 
 class DocumentVersionStore {
-  version: Version | undefined = undefined;
+  version: Version | null = null;
 
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
   }
 
-  setVersion(number: any, versions: Version[] | undefined) {
+  setVersion(number: string, versions: Version[]) {
     this.version = service.setVersion(number, versions);
   }
 

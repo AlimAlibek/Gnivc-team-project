@@ -1,0 +1,35 @@
+.minorfont {
+    color: #797D86;
+    font-size: 14px;
+}
+.commonfont {
+    color: #000;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.status {
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: flex; 
+    align-items: center;
+
+    &>i {
+        margin-right: 6px;
+        font-size: 22px;
+    }
+
+    &_scatch {
+       background: #E4E5E7; 
+    }
+    &_approved {
+        color: #339944;
+        background: #D9F2DD;
+    }
+    &_approving, &_refactoring {
+        color: #D49700;
+        background: #FFF3CC;
+    }
+}
+
+

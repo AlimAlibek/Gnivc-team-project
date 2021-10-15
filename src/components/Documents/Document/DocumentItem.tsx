@@ -4,7 +4,6 @@ import { useParams } from 'react-router';
 import Typography from '@ff/ui-kit/lib/Typography';
 
 import classes from './DocumentItem.module.scss';
-
 import VersionList from './VersionList';
 import Status from './Status';
 import Comments from './Comments';
@@ -104,16 +103,7 @@ const DocumentItem: React.FC<Document> = observer(() => {
               <div className={classes.subtitle}>Файлы</div>
             </div>
             <div className={classes.block__row}>
-              <FilesTable
-                files={[
-                  {
-                    name: 'nvs-scheme.vsd',
-                    fileType: 'Схема',
-                    packageVersion: '1',
-                    uploadedAt: '20.03.2020',
-                  },
-                ]}
-              />
+              <FilesTable />
             </div>
 
             <div className={classes.block__row}>

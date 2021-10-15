@@ -103,13 +103,19 @@
             {
               "name": "nvs-scheme.vsd",
               "fileType": "Схема",
-              "packageVersion": "1",
+              "packageVersion": "2",
               "uploadedAt": "20.03.2020"
             },
             {
               "name": "document_2.docx",
               "fileType": "Проектная документация",
-              "packageVersion": "1",
+              "packageVersion": "2",
+              "uploadedAt": "20.03.2020"
+            },
+            {
+              "name": "document_2.docx",
+              "fileType": "Проектная документация",
+              "packageVersion": "2",
               "uploadedAt": "20.03.2020"
             }
           ],
