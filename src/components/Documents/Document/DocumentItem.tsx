@@ -26,9 +26,7 @@ import Login from '../../Login';
 
 const DocumentItem: React.FC<Document> = observer(() => {
   const { id } = useParams<{ id: string }>();
-  const {
-    error, isLoading, fetchDocument,
-  } = documentsStore;
+  const { error, isLoading, fetchDocument } = documentsStore;
   const { selectedUser } = userStore;
   const { version } = documentVersionStore;
 
@@ -42,15 +40,8 @@ const DocumentItem: React.FC<Document> = observer(() => {
 
   const blocked = isDisabled(role, versionStatus);
 
-  if (isLoading) {
-    return <Typography.Title>Loading...</Typography.Title>;
-  }
-  if (error) {
-    return <Typography.Title>{error}</Typography.Title>;
-  }
 
   return (
-
     <Container>
       <Login />
       <div className={classes.document}>
@@ -108,6 +99,9 @@ const DocumentItem: React.FC<Document> = observer(() => {
         </div>
         <Comments />
       </div>
+      {isLoading && <Typography.Title>Loading...</Typography.Title>}
+
+      {error && <Typography.Title>{error}</Typography.Title>}
     </Container>
   );
 });
