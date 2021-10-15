@@ -1,15 +1,43 @@
 {
-  "responsiblePersons": [
+"responsiblePersons": [
     {
-      "id": "1",
+      "id": "u1",
       "name": "Владимир Горбунов",
+      "userName": "userGorbunov",
       "projectRole": "Архитектор",
+      "role": "editor",
       "department": "IT-архитектуры"
     },
     {
-      "id": "2",
+      "id": "u2",
       "name": "Борис Хмельников",
+      "userName": "userHmelnikov",
       "projectRole": "Разработчик",
+      "role": "editor",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u3",
+      "name": "Коршунов Василий",
+      "userName": "userKorshunov",
+      "projectRole": "Старший разработчик",
+      "role": "reviewer",
+      "department": "IT-архитектуры"
+    },
+        {
+      "id": "u4",
+      "name": "Иван Кошкин",
+      "userName": "userKoshkin",
+      "projectRole": "Старший разработчик",
+      "role": "reviewer",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+      {
+      "id": "u5",
+      "name": "Петр Симонов",
+      "userName": "userSimonov",
+      "projectRole": "Стажер",
+      "role": "viewer",
       "department": "Сопровождения инфраструктуры IT"
     }
   ],
@@ -89,19 +117,19 @@
             {
               "data": "Создал пакет документов.",
               "person": "Владимир Горбунов",
-              "date": "19.09.2021",
+              "createdAt": "19.09.2021",
               "time": "20:43"
             },
             {
               "data": "Отправил на согласование.",
               "person": "Владимир Горбунов",
-              "date": "20.09.2021",
+              "createdAt": "20.09.2021",
               "time": "09:30"
             },
             {
               "data": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
               "person": "Коршунов В.М.",
-              "date": "20.09.2021",
+              "createdAt": "20.09.2021",
               "time": "09:30"
             }
           ]

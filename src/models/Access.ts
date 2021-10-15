@@ -1,7 +1,7 @@
 enum Access {
   VIEWER = 'viewer',
   EDITOR = 'editor',
-  APPROVER = 'approver',
+  REVIEWER = 'reviewer',
 }
 
 export default Access;

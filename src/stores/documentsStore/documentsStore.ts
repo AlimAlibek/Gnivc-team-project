@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx';
+import documentVersionStore from '../documentVersionStore';
 
 import FormattedDocument from '../../models/FormattedDocument';
 import DocumentPackage from '../../models/DocumentPackage';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from '@ff/ui-kit';
+import Table from '@ff/ui-kit/lib/Table';
 
 import File from '../../../../models/File';
 
@@ -33,7 +33,7 @@ const columns = Object.entries(Translates).map(
 );
 
 type TableProps = {
-  files: File[];
+  files: DocumentFile[];
 };
 const FilesTable: React.FC<TableProps> = ({ files }) => {
   if (!files || files.length === 0) {

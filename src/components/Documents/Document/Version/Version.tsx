@@ -1,10 +1,12 @@
 import React from 'react';
 
+import classes from '../DocumentItem.module.scss';
+
 const Version: React.FC = () => (
 
-  <div className="version">
+  <div className={classes.version}>
 
-    <div className="version__title block__row">
+    <div className={`${classes.version__title} ${classes.block__row}`}>
       <i className="icon-0117-arrow-left" />
       <span>Версия пакета №{1} </span>
       <i className="icon-0007-chevron-down" />
