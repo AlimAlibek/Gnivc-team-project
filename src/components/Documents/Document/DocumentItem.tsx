@@ -65,7 +65,6 @@ const DocumentItem: React.FC<Document> = observer(() => {
             <div
               className={`${classes.block__row} ${classes.block__row_edge} ${classes.block__row_head}`}
             >
-              {/* <Version /> */}
               <VersionList />
               {allowSave(blocked, role)}
             </div>
@@ -121,11 +120,8 @@ const DocumentItem: React.FC<Document> = observer(() => {
               <AddFile />
             </div>
           </div>
-        </div>
-
-        
+        </div>      
                <Comments/> 
-        
       </div>
     </Container>
   );
