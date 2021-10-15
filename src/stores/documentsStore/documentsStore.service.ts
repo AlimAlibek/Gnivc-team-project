@@ -1,27 +1,19 @@
-import axios, { AxiosResponse } from 'axios';
+import httpClient from '../api';
+import mapDocumentsIntoFormattedDocuments from '../../utils/mapDocumentsIntoFormattedDocuments';
+import FormattedDocument from '../../models/interfaces/FormattedDocument'
+import DocumentPackage from '../../models/interfaces/DocumentPackage';
 
-import Document from '../../models/interfaces/Document';
-import Version from '../../models/interfaces/Version';
 
-const API_URL = 'http://localhost:8000/';
-
-const httpClient = axios.create({ baseURL: API_URL });
 
 const service = {
-  findTitle(id: string, documents: Document[]): string | undefined {
-    return documents.find((document) => id === document.id)?.title;
+  async fetchDocuments(): Promise<FormattedDocument[]> {
+    const response = await httpClient.get<DocumentPackage[]>('/documents');
+    return mapDocumentsIntoFormattedDocuments(response.data);
   },
 
-  findLastVersion(versions: Version[]): Version {
-    return versions[versions.length - 1];
-  },
-
-  fetchDocuments(): Promise<AxiosResponse<Document[]>> {
-    return httpClient.get<Document[]>('/documents');
-  },
-
-  fetchDocument(id: string): Promise<AxiosResponse<Document>> {
-    return httpClient.get<Document>(`/documents/${id}`);
+  async fetchDocument(id: string): Promise<DocumentPackage> {
+    const response = await httpClient.get<DocumentPackage>(`/documents/${id}`);
+    return response.data;
   },
 };
 

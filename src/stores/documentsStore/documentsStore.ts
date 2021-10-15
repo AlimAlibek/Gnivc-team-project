@@ -1,13 +1,14 @@
 import { makeAutoObservable } from 'mobx';
 import documentVersionStore from '../documentVersionStore';
 
-import Document from '../../models/interfaces/Document';
+import FormattedDocument from '../../models/interfaces/FormattedDocument';
+import DocumentPackage from '../../models/interfaces/DocumentPackage';
 import service from './documentsStore.service';
 
 class DocumentsStore {
-  document: Document | null = null;
+  document: DocumentPackage | null = null;
 
-  documents: Document[] = [];
+  documents: FormattedDocument[] = [];
 
   isLoading = false;
 
@@ -17,13 +18,13 @@ class DocumentsStore {
     makeAutoObservable(this, {}, { autoBind: true });
   }
 
-  setDocuments(documents: Document[]) {
-    this.documents = documents;
+  setDocument(document: DocumentPackage) {
+    this.document = document;
+    documentVersionStore.setLastVersion(document.versions)
   }
 
-  setDocument(document: Document) {
-    this.document = document;
-     documentVersionStore.setLastVersion(document.versions)
+  setDocuments(documents: FormattedDocument[]) {
+    this.documents = documents;
   }
 
   setIsLoading(boolean: boolean) {
@@ -34,24 +35,17 @@ class DocumentsStore {
     this.error = error;
   }
 
-  findTitle(id: string, documents: Document[]): string | undefined {
-    return service.findTitle(id, documents);
-  }
-
   fetchDocuments() {
     this.setIsLoading(true);
     service
       .fetchDocuments()
-      .then((response) => this.setDocuments(response.data))
+      .then((data) => this.setDocuments(data))
       .catch((error) => {
         if (error.response) {
-          console.log(error.response);
           this.setError('Bad Request. This Document does not exist');
         } else if (error.request) {
-          console.log(error.request);
           this.setError('Something went wrong. Try again later');
         } else {
-          console.log('Error', error.message);
           this.setError('Unexpected error. Try again later');
         }
       })
@@ -62,16 +56,13 @@ class DocumentsStore {
     this.setIsLoading(true);
     service
       .fetchDocument(id)
-      .then((response) => this.setDocument(response.data))
+      .then((data) => this.setDocument(data))
       .catch((error) => {
         if (error.response) {
-          console.log(error.response);
           this.setError('Bad Request. This data does not exist');
         } else if (error.request) {
-          console.log(error.request);
           this.setError('Something went wrong. Try again later');
         } else {
-          console.log('Error', error.message);
           this.setError('Unexpected error. Try again later');
         }
       })
