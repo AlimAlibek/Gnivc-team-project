@@ -1,4 +1,6 @@
-import Status from './Status';
+import Status from '../enums/Status';
+import Comment from './Comment';
+import File from './File';
 
 interface Version {
   version: string;
@@ -12,5 +14,4 @@ interface Version {
   files: File[];
   comments: Comment[];
 }
-
 export default Version;

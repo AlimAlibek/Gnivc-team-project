@@ -1,6 +1,6 @@
 import getColorAndStatus from './getColorAndStatus';
-import DocumentPackage from '../models/DocumentPackage';
-import FormattedDocument from '../models/FormattedDocument';
+import DocumentPackage from '../models/interfaces/DocumentPackage';
+import FormattedDocument from '../models/interfaces/FormattedDocument';
 
 const mapDocumentsIntoFormattedDocuments = (
   documents: DocumentPackage[],

@@ -5,24 +5,24 @@ import Icon from '@ff/ui-kit/lib/Icon';
 import Table from '@ff/ui-kit/lib/Table';
 import Typography from '@ff/ui-kit/lib/Typography';
 
+import getColumns from '../../utils/getColumns'
 import userStore from '../../stores/userStore';
 import classes from './Documents.module.scss';
 import Container from '../layouts/Container';
-import getColumns from '../../utils/getColumns';
 import getRows from '../../utils/getRows';
 import documentsStore from '../../stores/documentsStore';
 import '../../styles/icons/tabler-icons-ext.css';
 
 const Documents: React.FC = observer(() => {
   const {
-    documents, error, isLoading, fetchDocuments,
+    documents:rows, error, isLoading, fetchDocuments,
   } = documentsStore;
+  const columns = getColumns();
   useEffect(() => {
     fetchDocuments();
   }, []);
 
-  const rows = getRows(documents);
-  const columns = getColumns();
+
 
   const { selectedUser } = userStore;
 

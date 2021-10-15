@@ -1,5 +1,5 @@
-import Status from '../models/Status';
-import ColorAndStatus from '../models/ColorAndStatus';
+import Status from '../models/enums/Status';
+import ColorAndStatus from '../models/types/ColorAndStatus';
 
 const getColorAndStatus = (status: Status): ColorAndStatus => {
   switch (status) {

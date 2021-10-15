@@ -1,7 +1,9 @@
 import httpClient from '../api';
 import mapDocumentsIntoFormattedDocuments from '../../utils/mapDocumentsIntoFormattedDocuments';
-import FormattedDocument from '../../models/FormattedDocument';
-import DocumentPackage from '../../models/DocumentPackage';
+import FormattedDocument from '../../models/interfaces/FormattedDocument'
+import DocumentPackage from '../../models/interfaces/DocumentPackage';
+
+
 
 const service = {
   async fetchDocuments(): Promise<FormattedDocument[]> {
