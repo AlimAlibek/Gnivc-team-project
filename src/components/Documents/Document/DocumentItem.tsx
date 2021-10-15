@@ -20,25 +20,20 @@ import documentVersionStore from '../../../stores/documentVersionStore';
 import userStore from '../../../stores/userStore';
 import Document from '../../../models/interfaces/Document';
 import Access from '../../../models/enums/Access';
-
-
 import allowSave from './layoutChanger/allowSave';
 import buttonChoose from './layoutChanger/ButtonChoose';
 import Login from '../../Login';
 
-
-
 const DocumentItem: React.FC<Document> = observer(() => {
   const { id } = useParams<{ id: string }>();
   const {
-   error, isLoading, fetchDocument,
+    error, isLoading, fetchDocument,
   } = documentsStore;
   const { selectedUser } = userStore;
-  const {version}=documentVersionStore
-
+  const { version } = documentVersionStore;
 
   useEffect(() => {
-    fetchDocument(id);   
+    fetchDocument(id);
   }, []);
 
   const role = selectedUser?.role ?? Access.VIEWER;
@@ -55,9 +50,9 @@ const DocumentItem: React.FC<Document> = observer(() => {
   }
 
   return (
-    
+
     <Container>
-      <Login/>
+      <Login />
       <div className={classes.document}>
         <div className={`${classes.block} ${classes.document__main}`}>
           <div className={classes.block__container}>
@@ -110,8 +105,8 @@ const DocumentItem: React.FC<Document> = observer(() => {
               <AddFile />
             </div>
           </div>
-        </div>      
-               <Comments/> 
+        </div>
+        <Comments />
       </div>
     </Container>
   );

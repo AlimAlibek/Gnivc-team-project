@@ -7,4 +7,4 @@ const service = {
 
 };
 
-export default  service;
+export default service;

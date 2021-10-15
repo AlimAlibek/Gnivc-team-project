@@ -3,11 +3,6 @@ import { observer } from 'mobx-react-lite';
 import { Table, ColDef } from '@ff/ui-kit';
 
 import documentVersionStore from '../../../../../stores/documentVersionStore';
-import DocumentFile from '../../../../../models/interfaces/DocumentFile';
-
-type TableProps = {
-  files: DocumentFile[];
-};
 
 const createData = (
   id: number,

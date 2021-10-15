@@ -1,9 +1,9 @@
-import Access from "../models/enums/Access";
+import Access from '../models/enums/Access';
+
 const editor = ['scatch', 'refactoring'];
 const reviewer = ['approving'];
 
 const isDisabled = (selectedRole: Access, selecedStatus: string): boolean => {
-
   if (!selecedStatus) { return false; }
   let res = true;
   switch (selectedRole) {

@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx';
-import documentVersionStore from '../documentVersionStore';
 
+import documentVersionStore from '../documentVersionStore';
 import FormattedDocument from '../../models/interfaces/FormattedDocument';
 import DocumentPackage from '../../models/interfaces/DocumentPackage';
 import service from './documentsStore.service';
@@ -20,7 +20,7 @@ class DocumentsStore {
 
   setDocument(document: DocumentPackage) {
     this.document = document;
-    documentVersionStore.setLastVersion(document.versions)
+    documentVersionStore.setLastVersion(document.versions);
   }
 
   setDocuments(documents: FormattedDocument[]) {

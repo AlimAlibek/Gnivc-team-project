@@ -1,4 +1,5 @@
-import Access from '../enums/Access'
+import Access from '../enums/Access';
+
 interface Person {
   id: string;
   name: string;

@@ -28,12 +28,12 @@ const Status: React.FC = observer(() => {
       <div className={classes.minorfont}>
         Начало согласования: <span className={classes.commonfont}>
           {version?.approvedStartAt}
-                             </span>
+        </span>
       </div>
       <div className={classes.minorfont}>
         Завершение: <span className={classes.commonfont}>
           {version?.approvedEndAt}
-                    </span>
+        </span>
       </div>
     </>
   );

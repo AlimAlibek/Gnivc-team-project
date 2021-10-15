@@ -5,33 +5,26 @@ import Icon from '@ff/ui-kit/lib/Icon';
 import Table from '@ff/ui-kit/lib/Table';
 import Typography from '@ff/ui-kit/lib/Typography';
 
-import getColumns from '../../utils/getColumns'
+import getColumns from '../../utils/getColumns';
 import userStore from '../../stores/userStore';
 import classes from './Documents.module.scss';
 import Container from '../layouts/Container';
-import getRows from '../../utils/getRows';
 import documentsStore from '../../stores/documentsStore';
 import '../../styles/icons/tabler-icons-ext.css';
 
+const columns = getColumns();
+
 const Documents: React.FC = observer(() => {
   const {
-    documents:rows, error, isLoading, fetchDocuments,
+    documents: rows, error, isLoading, fetchDocuments,
   } = documentsStore;
-  const columns = getColumns();
+
   useEffect(() => {
     fetchDocuments();
   }, []);
 
-
-
   const { selectedUser } = userStore;
 
-  if (isLoading) {
-    return <Typography.Title>Loading...</Typography.Title>;
-  }
-  if (error) {
-    return <Typography.Title>{error}</Typography.Title>;
-  }
   const isDeveloper = selectedUser ? selectedUser.role === 'editor' : false;
   const showButton = isDeveloper ? (
     <Button className={classes.button} variant="outline" type="primary">
@@ -47,6 +40,9 @@ const Documents: React.FC = observer(() => {
           {showButton}
         </div>
         <hr />
+        {isLoading && <Typography.Title>Loading...</Typography.Title>}
+
+        {error && <Typography.Title>{error}</Typography.Title>}
         <Table columns={columns} rows={rows} />
       </div>
     </Container>
