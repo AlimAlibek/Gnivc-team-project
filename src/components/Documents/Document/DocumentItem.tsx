@@ -23,7 +23,7 @@ import documentVersionStore from '../../../stores/documentVersionStore';
 import userStore from '../../../stores/userStore';
 
 // import allowSave from './LayoutChanger/allowSave';
-import buttonChoose from './LayoutChanger/ButtonChoose';
+import buttonChoose from './layoutChanger/ButtonChoose';
 
 const DocumentItem: React.FC<Document> = observer(() => {
   const { id } = useParams<{ id: string }>();
