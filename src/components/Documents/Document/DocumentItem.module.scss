@@ -6,11 +6,11 @@ $line: rgb(126, 126, 126);
     display: flex;
     justify-content: space-between;
 
-    &__main {
+    & .main {
         flex: 0 0 69%;
     }
 
-    &__side {
+    & .side {
         flex: 0 0 30%;
     }
 }
@@ -32,36 +32,40 @@ $line: rgb(126, 126, 126);
         background: $line;
     }
 
-    &__container {
-        width: 100%;   
-    }
-    &__row {
-        display: flex;
-        align-items: center;
-        padding: 15px 0;
+    & .container {
+        width: 100%;  
+        
+        & .row {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
 
-        &>* {
-            margin-right: 14px;
-        }
-        & :last-child {
-            margin-right: 0;
+            &>* {
+                margin-right: 14px;
+            }
+            & :last-child {
+                margin-right: 0;
+            }
         }
 
-        &_head {
+        & .head {
             height: 80px;
         }
 
-        &_edge {
+        & .edge {
             justify-content: space-between;
             width: 100%;
         }
-        &_underline {
+        & .underline {
             border-bottom: 1px solid $line;
         };
-        &_mrb {
+        & .mrb {
             margin-bottom: 20px;
         }
     }
+
+
+    
 }
 
 .minorfont {
@@ -76,7 +80,7 @@ $line: rgb(126, 126, 126);
 }
 
 
-.buttons_row {
+.buttonsRow {
     font-size: 14px;
 
     &>*{
@@ -86,7 +90,7 @@ $line: rgb(126, 126, 126);
         margin: 0;
     }
 }
-.button_with_icon {
+.buttonWithIcon {
     display: flex;
     align-items: center;
 

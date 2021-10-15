@@ -2,22 +2,27 @@ import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { useParams } from 'react-router';
 import Typography from '@ff/ui-kit/lib/Typography';
+import clsx from 'clsx';
 
 import classes from './DocumentItem.module.scss';
 import VersionList from './VersionList';
 import Status from './Status';
-import NameInput from './informationFields/NameInput';
-import TypeInput from './informationFields/TypeInput';
-import Responsible from './informationFields/Responsible';
-import ResponsibleRole from './informationFields/ResponsibleRole';
-import FilesTable from './informationFields/FilesTable';
+import DocumentForm from './DocumentForm/DocumentForm';
+import FilesTable from './FilesTable';
 import AddFile from './actionButtons/AddFile';
+import CreateNewVersion from './actionButtons/CrateNewVersion';
+import SaveCancel from './actionButtons/SaveCancel';
+import Decide from './actionButtons/Decide';
+import ApproveReturn from './actionButtons/ApproveReturn';
+import ResendForApproval from './actionButtons/ResendForApproval';
 import Container from '../../layouts/Container';
 import isDisabled from '../../../utils/isDisabled';
 import Document from '../../../models/interfaces/Document';
 import documentsStore from '../../../stores/documentsStore';
+import documentVersionStore from '../../../stores/documentVersionStore';
 import userStore from '../../../stores/userStore';
-import allowSave from './LayoutChanger/allowSave';
+
+// import allowSave from './LayoutChanger/allowSave';
 import buttonChoose from './LayoutChanger/ButtonChoose';
 
 const DocumentItem: React.FC<Document> = observer(() => {
@@ -26,6 +31,7 @@ const DocumentItem: React.FC<Document> = observer(() => {
     document, error, isLoading, fetchDocument,
   } = documentsStore;
   const { selectedUser } = userStore;
+  const { version } = documentVersionStore;
 
   useEffect(() => {
     fetchDocument(id);
@@ -47,63 +53,64 @@ const DocumentItem: React.FC<Document> = observer(() => {
     return <Typography.Title>{error}</Typography.Title>;
   }
 
+  const approvingButtons = buttonChoose(version?.status, role);
+
   return (
     <Container>
       <div className={classes.document}>
-        <div className={`${classes.block} ${classes.document__main}`}>
-          <div className={classes.block__container}>
-            <div
-              className={`${classes.block__row} ${classes.block__row_edge} ${classes.block__row_head}`}
-            >
+        <div className={clsx(classes.block, classes.main)}>
+          <div className={classes.container}>
+
+            <div className={clsx(classes.row, classes.edge, classes.head)}>
               <VersionList />
-              {allowSave(blocked, role)}
+              {(role === 'editor' && version?.status === 'scatch') && <SaveCancel /> }
+              {(role === 'editor' && !document?.versions.find((v) => v.status !== 'approved')) && <CreateNewVersion />}
             </div>
 
-            <div className={classes.block__row}>
+            <div className={classes.row}>
               <Status />
             </div>
 
-            <div className={`${classes.block__row} ${classes.block__row_underline} ${classes.block__row_mrb}`}>
-              {buttonChoose(blocked, role)}
-            </div>
+            {
+              approvingButtons
+              && (
+              <div className={clsx(classes.row, classes.underline, classes.mrb)}>
+                {
+                  approvingButtons === 'Deside' ? <Decide />
+                    : approvingButtons === 'ApproveReturn' ? <ApproveReturn />
+                      : approvingButtons === 'Refactoring' && <ResendForApproval />
+                }
+              </div>
+              )
+            }
 
-            <div className={classes.block__row}>
+            <div className={classes.row}>
               <div className={classes.subtitle}>Аттрибуты пакета</div>
             </div>
 
-            <div className={classes.block__row}>
-              <NameInput isDisbled={blocked} />
-            </div>
+            <DocumentForm />
 
-            <div className={`${classes.block__row} ${classes.block__row_edge}`}>
-              <TypeInput isDisbled={blocked} />
-            </div>
-
-            <div className={classes.block__row}>
-              <Responsible isDisbled={blocked} />
-            </div>
-            <div
-              className={`${classes.block__row} ${classes.block__row_edge} ${classes.block__row_mrb}`}
-            >
-              <ResponsibleRole />
-            </div>
-
-            <div className={classes.block__row}>
+            <div className={classes.row}>
               <div className={classes.subtitle}>Файлы</div>
             </div>
-            <div className={classes.block__row}>
+            <div className={classes.row}>
               <FilesTable />
             </div>
 
-            <div className={classes.block__row}>
-              <AddFile />
-            </div>
+            {
+              role === 'editor' && (
+              <div className={classes.row}>
+                <AddFile />
+              </div>
+              )
+}
+
           </div>
         </div>
 
-        <div className={`${classes.block} ${classes.document__side}`}>
-          <div className={classes.block__container}>
-            <div className={`${classes.block__row} ${classes.block__row_head}`}>
+        <div className={clsx(classes.block, classes.side)}>
+          <div className={classes.container}>
+            <div className={clsx(classes.row, classes.head)}>
               <div className={classes.subtitle}> Коменнтарии </div>
             </div>
           </div>

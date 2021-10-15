@@ -11,6 +11,7 @@ const ResponsibleRole: React.FC = () => (
       labelStyle="floating"
       disabled
       className={classes.field_width_50}
+      value="Архитектор"
     />
     <TextField
       name="floating-label"
@@ -18,6 +19,7 @@ const ResponsibleRole: React.FC = () => (
       labelStyle="floating"
       disabled
       className={classes.field_width_50}
+      value="IT-архитектуры"
     />
   </>
 );

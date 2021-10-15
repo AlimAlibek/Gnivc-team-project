@@ -1,10 +1,10 @@
-import { Button } from '@ff/ui-kit';
+import Button from '@ff/ui-kit/lib/Button';
 import React from 'react';
 
 import classes from '../../DocumentItem.module.scss';
 
 const Decide: React.FC = () => (
-  <div className={classes.buttons_row}>
+  <div className={classes.buttonsRow}>
     <Button variant="fill" type="primary">
       Отправить на согласование
     </Button>
