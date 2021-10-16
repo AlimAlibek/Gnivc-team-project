@@ -5,6 +5,8 @@ import DocumentFile from './DocumentFile';
 interface Version {
   version: string;
   status: Status;
+  contour: string;
+  priority: string;
   responsiblePerson: string;
   type: string;
   createdAt: string;
