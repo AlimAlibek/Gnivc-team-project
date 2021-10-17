@@ -20,8 +20,8 @@ import documentVersionStore from '../../../stores/documentVersionStore';
 import userStore from '../../../stores/userStore';
 import Document from '../../../models/interfaces/Document';
 import Access from '../../../models/enums/Access';
-import allowSave from './layoutChanger/allowSave';
-import buttonChoose from './layoutChanger/ButtonChoose';
+import allowSave from './LayoutChang/allowSave';
+import buttonChoose from './LayoutChang/ButtonChoose';
 import Login from '../../Login';
 
 const DocumentItem: React.FC<Document> = observer(() => {
