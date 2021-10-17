@@ -1,15 +1,14 @@
-import { Button } from '@ff/ui-kit';
+import Button from '@ff/ui-kit/lib/Button';
 import React from 'react';
 
 import documentVersionStore from '../../../../../stores/documentVersionStore';
 import Status from '../../../../../models/enums/Status';
 import classes from '../../DocumentItem.module.scss';
 
-interface SendButton {
-  again: boolean
-}
+const Decide: React.FC = () => {
+  const { getStatus } = documentVersionStore;
 
-const Decide: React.FC<SendButton> = ({ again }) => {
+  const again = (getStatus() === Status.REFACTORING);
   const { setStatus, addComent } = documentVersionStore;
   const sendToApproval = () => {
     setStatus(Status.APPROVING);

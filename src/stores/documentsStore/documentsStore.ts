@@ -52,6 +52,10 @@ class DocumentsStore {
       .finally(() => this.setIsLoading(false));
   }
 
+  hasUnfinishedVersions() {
+    return (!this.document?.versions.find((v) => v.status !== 'approved'));
+  }
+
   fetchDocument(id: string) {
     this.setIsLoading(true);
     service

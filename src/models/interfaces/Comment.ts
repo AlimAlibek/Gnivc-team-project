@@ -1,5 +1,5 @@
 interface Comment {
-  data: string;
+  text: string;
   person: string;
   createdAt: string;
   time: string;

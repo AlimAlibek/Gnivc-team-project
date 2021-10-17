@@ -1,0 +1,26 @@
+.block {
+  background: #fff;
+  border-radius: 7px;
+  padding: 0 30px;
+  position: relative;
+}
+
+.side {
+  flex: 0 0 30%;
+}
+
+.container {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  padding: 15px 0
+}
+
+.subtitle {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+}

@@ -1,48 +1,37 @@
 import React, { useState } from 'react';
 import TextField from '@ff/ui-kit/lib/TextField';
 import Button from '@ff/ui-kit/lib/Button';
+import clsx from 'clsx';
 
 import documentVersionStore from '../../../../stores/documentVersionStore';
-import classes from '../DocumentItem.module.scss';
+import classes from './Comment.module.scss';
+import RenderComment from './RenderComment';
 import CommentType from '../../../../models/interfaces/Comment';
 
 const Comments: React.FC = () => {
   const { version, addComent } = documentVersionStore;
 
-  const [comment, setComment] = useState('');
+  const [commentText, setComment] = useState('');
 
   const sendComent = () => {
-    if (!comment) { null; }
-    addComent(comment);
+    if (!commentText) { null; }
+    addComent(commentText);
     setComment('');
   };
 
-  const renderComents = ({
-    createdAt, time, person, data,
-  }: CommentType) => (
-    <div className={classes.block__row}>
-      <div>
-        {createdAt} {time} {person}
-        <div>
-          {data}
-        </div>
-      </div>
-    </div>
-  );
-
-  const allComents = version ? version.comments.map((coment) => renderComents(coment)) : 'Коментариев нет';
+  const allComments = version ? version.comments.map((comment) => <RenderComment comment={comment} />) : 'Коментариев нет';
 
   return (
-    <div className={`${classes.block} ${classes.document__side}`}>
-      <div className={classes.block__container}>
-        <div className={`${classes.block__row} ${classes.block__row_head}`}>
+    <div className={clsx(classes.block, classes.side)}>
+      <div className={classes.container}>
+        <div className={clsx(classes.row, classes.head)}>
           <div className={classes.subtitle}> Коменнтарии </div>
         </div>
       </div>
-      <div className={classes.block__row}>
+      <div className={classes.row}>
         <TextField
           onChange={(e) => setComment(e.target.value)}
-          value={comment}
+          value={commentText}
           name="large1"
           label=""
           labelStyle="left"
@@ -50,10 +39,10 @@ const Comments: React.FC = () => {
           size="large"
         />
       </div>
-      <div className={classes.block__row}>
+      <div className={classes.row}>
         <Button onClick={sendComent} type="primary">Кнопка</Button>
       </div>
-      {allComents}
+      {allComments}
     </div>
   );
 };

@@ -4,6 +4,7 @@ import Status from '../../models/enums/Status';
 import Version from '../../models/interfaces/Version';
 import service from './documentVersionStore.service';
 import userStore from '../userStore';
+import isDisabled from '../../utils/isDisabled';
 
 class DocumentVersionStore {
   version: Version | null = null;
@@ -16,6 +17,10 @@ class DocumentVersionStore {
     this.version = service.setVersion(number, versions);
   }
 
+  getStatus() {
+    return this.version?.status ?? Status.SCATCH;
+  }
+
   setLastVersion(versions: Version[] | undefined) {
     if (versions) {
       this.version = versions[versions.length - 1];
@@ -23,19 +28,26 @@ class DocumentVersionStore {
   }
 
   setStatus(status: Status) {
-    if (this.version) { this.version.status = status; }
+    if (this.version) {
+      this.version.status = status;
+    }
+  }
+
+  isBlocked(): boolean {
+    // Этот элемент нам потребуется в полях, куда мы все равно будем пробрасывать данные отсюда, поэтому лучше вызывать его тут все равно в эти поля стор надо подключать.
+    const { getRole } = userStore;
+    const res = isDisabled(getRole(), this.getStatus()) ?? true;
+
+    return res;
   }
 
   addComent(text: string) {
-    const today = new Date().toLocaleString('ru').split(',');
-    // toLocalDateString
-    // toLocalTime
-    const { selectedUser } = userStore;
+    const { getName } = userStore;
     this.version?.comments.push({
-      data: text,
-      person: selectedUser?.name ?? 'Аноним',
-      createdAt: today[0],
-      time: today[1],
+      text: text,
+      person: getName(),
+      createdAt: new Date().toLocaleDateString('ru'),
+      time: new Date().toLocaleTimeString('ru'),
     });
   }
 }

@@ -16,6 +16,7 @@ const Status: React.FC = observer(() => {
     version && setColorAndStatus(getColorAndStatus(version.status));
     version && setStatusClass(`status_${version.status}`);
   }, [version]);
+  // Не работает при изменении версий кнопками. Нужно зарефакторить.
 
   return (
     <>
@@ -28,12 +29,12 @@ const Status: React.FC = observer(() => {
       <div className={classes.minorfont}>
         Начало согласования: <span className={classes.commonfont}>
           {version?.approvedStartAt}
-        </span>
+                             </span>
       </div>
       <div className={classes.minorfont}>
         Завершение: <span className={classes.commonfont}>
           {version?.approvedEndAt}
-        </span>
+                    </span>
       </div>
     </>
   );

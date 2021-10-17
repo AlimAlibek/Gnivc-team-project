@@ -20,7 +20,7 @@ const VersionSelect: React.FC<Props> = ({ versions, closeSelect }) => {
     <div className={`${classes.version__select} ${classes.select}`}>
       {
         versions.length
-        && versions.reverse().map((version: Version) => (
+        && versions.map((version: Version) => (
           <div
             className={`${classes.select__item} ${classes.selectItem} `}
             onClick={() => handleItemClick(version)}

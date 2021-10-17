@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button } from '@ff/ui-kit';
+import Button from '@ff/ui-kit/lib/Button';
 
+import classes from '../../DocumentItem.module.scss';
 import documentVersionStore from '../../../../../stores/documentVersionStore';
 import Status from '../../../../../models/enums/Status';
 

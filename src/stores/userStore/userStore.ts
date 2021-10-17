@@ -1,6 +1,7 @@
 import { makeAutoObservable, toJS } from 'mobx';
 import { AxiosResponse } from 'axios';
 
+import Access from '../../models/enums/Access';
 import Person from '../../models/interfaces/Person';
 import httpClient from '../_api';
 
@@ -27,6 +28,14 @@ class UserStore {
 
   setUsers(users: Person[] = []) {
     this.users = [...users];
+  }
+
+  getRole() {
+    return this.selectedUser?.role ?? Access.VIEWER;
+  }
+
+  getName() {
+    return this.selectedUser?.name ?? 'Гость';
   }
 
   selectUser(userName: string | string[]) {

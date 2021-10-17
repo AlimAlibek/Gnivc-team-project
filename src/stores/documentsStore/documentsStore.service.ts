@@ -1,4 +1,4 @@
-import httpClient from '../api';
+import httpClient from '../_api';
 import mapDocumentsIntoFormattedDocuments from '../../utils/mapDocumentsIntoFormattedDocuments';
 import FormattedDocument from '../../models/interfaces/FormattedDocument';
 import DocumentPackage from '../../models/interfaces/DocumentPackage';
