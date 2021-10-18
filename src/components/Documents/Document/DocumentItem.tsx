@@ -21,13 +21,13 @@ import Access from '../../../models/enums/Access';
 import StatusEnum from '../../../models/enums/Status';
 import ActionButtons from './actionButtons/ActionButtons';
 import Comments from './Comments';
+import ApprovalStages from './ApprovalStages';
 import Login from '../../Login';
 
 const DocumentItem: React.FC<Document> = observer(() => {
   const { id } = useParams<{ id: string }>();
-  const {
-    error, isLoading, fetchDocument, document, hasUnfinishedVersions,
-  } = documentsStore;
+  const { error, isLoading, fetchDocument, document, hasUnfinishedVersions } =
+    documentsStore;
   const { getRole } = userStore;
   const { getStatus, isBlocked } = documentVersionStore;
 
@@ -41,7 +41,8 @@ const DocumentItem: React.FC<Document> = observer(() => {
 
   const allowSave = role === Access.EDITOR && status === StatusEnum.SCATCH;
   // const allowCreateVersions=(role === Access.EDITOR && hasUnfinishedVersions()); будет в деле когда наладим сейвы
-  const allowCreateVersions = role === Access.EDITOR && status === StatusEnum.APPROVED;
+  const allowCreateVersions =
+    role === Access.EDITOR && status === StatusEnum.APPROVED;
   const blocked = isBlocked();
 
   return (
@@ -77,15 +78,15 @@ const DocumentItem: React.FC<Document> = observer(() => {
               <FilesTable />
             </div>
 
-            {role === Access.EDITOR
-              && (
+            {role === Access.EDITOR && (
               <div className={classes.row}>
                 <AddFile />
               </div>
-              )}
+            )}
           </div>
         </div>
         <Comments />
+        <ApprovalStages />
       </div>
       {isLoading && <Typography.Title>Loading...</Typography.Title>}
 
