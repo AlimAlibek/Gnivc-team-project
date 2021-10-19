@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button } from '@ff/ui-kit';
+import Button from '@ff/ui-kit/lib/Button';
 
 import classes from '../../DocumentItem.module.scss';
 
 const SaveCancel: React.FC = () => (
-  <div className={classes.buttons_row}>
+  <div className={classes.buttonsRow}>
     <Button variant="fill" type="primary">
       Сохранить
     </Button>

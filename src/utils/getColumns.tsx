@@ -16,13 +16,8 @@ const getColumns = (): ColDef[] => [
     title: 'Статус',
     key: '2',
     dataKey: 'colorAndStatus',
-    render: ({
-      color,
-      translatedStatus,
-    }: {
-      color: string;
-      translatedStatus: string;
-    }): JSX.Element => (
+    // prettier-ignore
+    render: ({ color, translatedStatus }: { color: string; translatedStatus: string }): JSX.Element => (
       <Typography color={color}>{translatedStatus}</Typography>
     ),
   },

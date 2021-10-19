@@ -1,13 +1,12 @@
-import { makeAutoObservable, toJS } from 'mobx';
-import { AxiosResponse } from 'axios';
+import { makeAutoObservable } from 'mobx';
 
-import Person from '../../models/interfaces/Person';
-import httpClient from '../_api';
+import User from '../../models/User';
+import service from './userStore.service';
 
 class UserStore {
-  selectedUser: Person | null = null;
+  selectedUser: User | undefined = undefined;
 
-  users: Person[] = [];
+  users: User[] = [];
 
   isLoading = false;
 
@@ -15,40 +14,40 @@ class UserStore {
 
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
+    this.fetchUsers();
   }
 
-  setError = (error: string) => {
-    this.error = error;
-  };
+  setUser(userName: string | string[]) {
+    this.selectedUser = this.users.find((users) => users.userName === userName);
+  }
+
+  setUsers(users: User[] = []) {
+    this.users = users;
+  }
 
   setIsLoading(boolean: boolean) {
     this.isLoading = boolean;
   }
 
-  setUsers(users: Person[] = []) {
-    this.users = [...users];
+  setError(error: string) {
+    this.error = error;
   }
 
-  selectUser(userName: string | string[]) {
-    console.log();
-    const obj = this.users.find((users) => users.userName === userName);
-    console.log(userName, toJS(obj));
+  get role() {
+    return this.selectedUser?.role;
+  }
 
-    if (obj) this.selectedUser = obj;
+  get name() {
+    return this.selectedUser?.name ?? 'Гость';
   }
 
   fetchUsers() {
     this.setIsLoading(true);
-    this.fetchData()
-      .then((response) => this.setUsers(response.data))
-      .catch((error) => {
-        this.setError(error.messsage);
-      })
+    service
+      .fetchUsers()
+      .then((data) => this.setUsers(data))
+      .catch((error) => this.setError(error.messsage))
       .finally(() => this.setIsLoading(false));
-  }
-
-  fetchData(): Promise<AxiosResponse<Person[]>> {
-    return httpClient.get<Person[]>('/responsiblePersons');
   }
 }
 export default new UserStore();

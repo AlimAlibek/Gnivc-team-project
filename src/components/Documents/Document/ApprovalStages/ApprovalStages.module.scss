@@ -1,0 +1,108 @@
+%text-property {
+  font-size: 14px;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+%icon-property {
+  width: 24px;
+  margin-right: 16px;
+
+  &::before {
+    font-size: 24px;
+  }
+}
+
+%line-property {
+  position: absolute;
+  content: '';
+  width: 1px;
+  left: 11px;
+}
+
+.block {
+  font-family: Roboto, tabler-icons-ext;
+  background: #fff;
+  border-radius: 7px;
+  padding: 0 46px;
+  position: relative;
+}
+
+.side {
+  flex: 0 0 30%;
+}
+
+.container {
+  width: 100%;
+}
+
+.row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 12px 0
+}
+
+.subtitle {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+
+.grayText {
+  @extend %text-property;
+  line-height: 24px;
+  color: #94979E;
+}
+
+.blackText {
+  @extend %text-property;
+  line-height: 18px;
+  color: #18191B;
+}
+
+.orangeText {
+  @extend %text-property;
+  line-height: 18px;
+  color: #D49700;
+}
+
+.iconPlus {
+  @extend %icon-property;
+  margin-top: -13px;
+  color: #339944;
+}
+
+.iconCheck {
+  @extend %icon-property;
+  margin-top: -36px;
+  color: #339944;
+}
+
+.iconClock {
+  @extend %icon-property;
+  margin-top: -18px;
+  color: #D49700;
+}
+
+.linePlus {
+  @extend %line-property;
+  height: 34px;
+  top: 40px;
+  background: #D9F2DD;
+}
+
+.lineCheck {
+  @extend %line-property;
+  height: 52px;
+  top: 41px;
+  background: #D9F2DD;
+}
+
+.lineClock {
+  @extend %line-property;
+  height: 34px;
+  top: 37px;
+  background: #FFF3CC;
+}

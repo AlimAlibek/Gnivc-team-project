@@ -1,13 +1,13 @@
-import { Button } from '@ff/ui-kit';
+import Button from '@ff/ui-kit/lib/Button';
 import React from 'react';
 
 import classes from '../../DocumentItem.module.scss';
 
 const AddFile: React.FC = () => (
-  <div className={classes.buttons_row}>
+  <div className={classes.row}>
     <Button variant="outline" type="primary">
-      <div className={classes.button_with_icon}>
-        <i className="icon-0010-circle-plus" />
+      <div className={classes.buttonWithIcon}>
+        <i className="sr-0010-circle-plus" />
         <span>Добавить файл</span>
       </div>
     </Button>

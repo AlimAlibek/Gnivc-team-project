@@ -2,113 +2,70 @@ import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { useParams } from 'react-router';
 import Typography from '@ff/ui-kit/lib/Typography';
+import clsx from 'clsx';
 
 import classes from './DocumentItem.module.scss';
-import VersionList from './VersionList';
-import Status from './Status';
-import NameInput from './informationFields/NameInput';
-import TypeInput from './informationFields/TypeInput';
-import Responsible from './informationFields/Responsible';
-import ResponsibleRole from './informationFields/ResponsibleRole';
-import FilesTable from './informationFields/FilesTable';
-import AddFile from './actionButtons/AddFile';
 import Container from '../../layouts/Container';
-import isDisabled from '../../../utils/isDisabled';
-import Document from '../../../models/interfaces/Document';
-import documentsStore from '../../../stores/documentsStore';
+import Access from '../../../models/Access';
+import StatusEnum from '../../../models/Status';
+import DocumentPackage from '../../../models/DocumentPackage';
+import VersionList from './VersionList';
+import SaveCancel from './actionButtons/SaveCancel';
+import CreateNewVersion from './actionButtons/CrateNewVersion';
+import Status from './Status';
+import ActionButtons from './actionButtons/ActionButtons';
+import DocumentForm from './DocumentForm/DocumentForm';
+import FilesTable from './FilesTable';
+import AddFile from './actionButtons/AddFile';
+import Comments from './Comments';
 import userStore from '../../../stores/userStore';
-import allowSave from './LayoutChanger/allowSave';
-import buttonChoose from './LayoutChanger/ButtonChoose';
+import documentStore from '../../../stores/documentStore';
 
-const DocumentItem: React.FC<Document> = observer(() => {
+const DocumentItem: React.FC<DocumentPackage> = observer(() => {
   const { id } = useParams<{ id: string }>();
+  const { role } = userStore;
   const {
-    document, error, isLoading, fetchDocument,
-  } = documentsStore;
-  const { selectedUser } = userStore;
+    isLoading, error, status, version, fetchDocument, isBlocked,
+  } = documentStore;
 
   useEffect(() => {
     fetchDocument(id);
-  }, [id]);
+  }, [fetchDocument, id]);
 
-  const role: string = selectedUser?.role ? selectedUser?.role : 'reader';
-
-  const allVersion = document?.versions;
-
-  const lastVersionStatus = allVersion
-    ? allVersion[allVersion.length - 1].status
-    : '';
-  const blocked = isDisabled(role, lastVersionStatus);
-
-  if (isLoading) {
-    return <Typography.Title>Loading...</Typography.Title>;
-  }
-  if (error) {
-    return <Typography.Title>{error}</Typography.Title>;
-  }
-
+  // const allowCreateVersions=(role === Access.EDITOR && isTheLastVersionFinished); будет в деле когда наладим сейвы
   return (
     <Container>
-      <div className={classes.document}>
-        <div className={`${classes.block} ${classes.document__main}`}>
-          <div className={classes.block__container}>
-            <div
-              className={`${classes.block__row} ${classes.block__row_edge} ${classes.block__row_head}`}
-            >
+      <div className={classes.component}>
+        <div className={clsx(classes.block, classes.main)}>
+          <div className={classes.container}>
+            <div className={clsx(classes.row, classes.edge, classes.head)}>
               <VersionList />
-              {allowSave(blocked, role)}
+              {role === Access.EDITOR && status === StatusEnum.SCATCH && (
+                <SaveCancel />
+              )}
+
+              {role === Access.EDITOR && status === StatusEnum.APPROVED && (
+                <CreateNewVersion />
+              )}
             </div>
 
-            <div className={classes.block__row}>
-              <Status />
-            </div>
+            <Status />
 
-            <div className={`${classes.block__row} ${classes.block__row_underline} ${classes.block__row_mrb}`}>
-              {buttonChoose(blocked, role)}
-            </div>
+            {!isBlocked(role) && <ActionButtons />}
 
-            <div className={classes.block__row}>
-              <div className={classes.subtitle}>Аттрибуты пакета</div>
-            </div>
+            <DocumentForm />
 
-            <div className={classes.block__row}>
-              <NameInput isDisbled={blocked} />
-            </div>
+            <FilesTable />
 
-            <div className={`${classes.block__row} ${classes.block__row_edge}`}>
-              <TypeInput isDisbled={blocked} />
-            </div>
-
-            <div className={classes.block__row}>
-              <Responsible isDisbled={blocked} />
-            </div>
-            <div
-              className={`${classes.block__row} ${classes.block__row_edge} ${classes.block__row_mrb}`}
-            >
-              <ResponsibleRole />
-            </div>
-
-            <div className={classes.block__row}>
-              <div className={classes.subtitle}>Файлы</div>
-            </div>
-            <div className={classes.block__row}>
-              <FilesTable />
-            </div>
-
-            <div className={classes.block__row}>
-              <AddFile />
-            </div>
+            {role === Access.EDITOR && <AddFile />}
           </div>
         </div>
-
-        <div className={`${classes.block} ${classes.document__side}`}>
-          <div className={classes.block__container}>
-            <div className={`${classes.block__row} ${classes.block__row_head}`}>
-              <div className={classes.subtitle}> Коменнтарии </div>
-            </div>
-          </div>
-        </div>
+        <Comments comments={version?.comments} />
       </div>
+
+      {isLoading && <Typography.Title>Loading...</Typography.Title>}
+
+      {error && <Typography.Title>{error}</Typography.Title>}
     </Container>
   );
 });

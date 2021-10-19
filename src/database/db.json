@@ -1,5 +1,5 @@
 {
-"responsiblePersons": [
+  "responsiblePersons": [
     {
       "id": "u1",
       "name": "Владимир Горбунов",
@@ -24,7 +24,7 @@
       "role": "reviewer",
       "department": "IT-архитектуры"
     },
-        {
+    {
       "id": "u4",
       "name": "Иван Кошкин",
       "userName": "userKoshkin",
@@ -32,12 +32,12 @@
       "role": "reviewer",
       "department": "Сопровождения инфраструктуры IT"
     },
-      {
+    {
       "id": "u5",
       "name": "Петр Симонов",
       "userName": "userSimonov",
       "projectRole": "Стажер",
-      "role": "reader",
+      "role": "viewer",
       "department": "Сопровождения инфраструктуры IT"
     }
   ],
@@ -49,6 +49,8 @@
         {
           "version": "1",
           "status": "approving",
+          "contour": "developmentStand",
+          "priority": "high",
           "responsiblePerson": "Владимир Горбунов",
           "type": "Для согласования",
           "createdAt": "02.07.2021",
@@ -71,28 +73,51 @@
           ],
           "comments": [
             {
-              "data": "Создал пакет документов.",
+              "text": "Создал пакет документов.",
               "person": "Владимир Горбунов",
               "createdAt": "19.09.2021",
               "time": "20:43"
             },
             {
-              "data": "Отправил на согласование.",
+              "text": "Отправил на согласование.",
               "person": "Владимир Горбунов",
               "createdAt": "20.09.2021",
               "time": "09:30"
             },
             {
-              "data": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
+              "text": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
               "person": "Коршунов В.М.",
               "createdAt": "20.09.2021",
               "time": "09:30"
             }
-          ]
+          ],
+          "approvalStages": {
+            "isSent": "true",
+            "sentAt": "19.06.2021",
+            "sentTime": "09:43",
+            "isApprovedDpp": "true",
+            "approvedDppAt": "19.06.2021",
+            "approvedDppTime": "20:43",
+            "isApprovedUib": "true",
+            "approvedUibAt": "28.06.2021",
+            "approvedUibTime": "20:43",
+            "isApprovedFku": "true",
+            "approvedFkuAt": "06.08.2021",
+            "approvedFkuTime": "09:32",
+            "isApprovedUitFns": "true",
+            "approvedUitFnsAt": "10.08.2021",
+            "approvedUitFnsTime": "13:11",
+            "isApprovedUibFns": "true",
+            "approvedUibFnsAt": "11.08.2021",
+            "approvedUibFnsTime": "14:56",
+            "isApprovedAll": "true"
+          }
         },
         {
           "version": "2",
           "status": "scatch",
+          "contour": "developmentStand",
+          "priority": "high",
           "responsiblePerson": "Владимир Горбунов",
           "type": "Для согласования",
           "createdAt": "02.07.2021",
@@ -121,24 +146,45 @@
           ],
           "comments": [
             {
-              "data": "Создал пакет документов.",
+              "text": "Создал пакет документов.",
               "person": "Владимир Горбунов",
-              "date": "19.09.2021",
+              "createdAt": "19.09.2021",
               "time": "20:43"
             },
             {
-              "data": "Отправил на согласование.",
+              "text": "Отправил на согласование.",
               "person": "Владимир Горбунов",
-              "date": "20.09.2021",
+              "createdAt": "20.09.2021",
               "time": "09:30"
             },
             {
-              "data": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
+              "text": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
               "person": "Коршунов В.М.",
-              "date": "20.09.2021",
+              "createdAt": "20.09.2021",
               "time": "09:30"
             }
-          ]
+          ],
+          "approvalStages": {
+            "isSent": "true",
+            "sentAt": "19.06.2021",
+            "sentTime": "09:43",
+            "isApprovedDpp": "true",
+            "approvedDppAt": "19.06.2021",
+            "approvedDppTime": "20:43",
+            "isApprovedUib": "true",
+            "approvedUibAt": "28.06.2021",
+            "approvedUibTime": "20:43",
+            "isApprovedFku": "false",
+            "approvedFkuAt": "",
+            "approvedFkuTime": "",
+            "isApprovedUitFns": "false",
+            "approvedUitFnsAt": "",
+            "approvedUitFnsTime": "",
+            "isApprovedUibFns": "false",
+            "approvedUibFnsAt": "",
+            "approvedUibFnsTime": "",
+            "isApprovedAll": "false"
+          }
         }
       ]
     },
@@ -149,6 +195,8 @@
         {
           "version": "1",
           "status": "approved",
+          "contour": "developmentStand",
+          "priority": "high",
           "responsiblePerson": "Борис Хмельников",
           "type": "Для согласования",
           "createdAt": "01.04.2021",
@@ -171,19 +219,19 @@
           ],
           "comments": [
             {
-              "data": "Создал пакет документов.",
+              "text": "Создал пакет документов.",
               "person": "Владимир Горбунов",
               "createdAt": "19.09.2021",
               "time": "20:43"
             },
             {
-              "data": "Отправил на согласование.",
+              "text": "Отправил на согласование.",
               "person": "Владимир Горбунов",
               "createdAt": "20.09.2021",
               "time": "09:30"
             },
             {
-              "data": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
+              "text": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
               "person": "Коршунов В.М.",
               "createdAt": "20.09.2021",
               "time": "09:30"
@@ -199,6 +247,8 @@
         {
           "version": "1",
           "status": "refactoring",
+          "contour": "developmentStand",
+          "priority": "high",
           "responsiblePerson": "Борис Хмельников",
           "type": "Для согласования",
           "createdAt": "25.09.2021",
@@ -221,19 +271,19 @@
           ],
           "comments": [
             {
-              "data": "Создал пакет документов.",
+              "text": "Создал пакет документов.",
               "person": "Владимир Горбунов",
               "createdAt": "19.09.2021",
               "time": "20:43"
             },
             {
-              "data": "Отправил на согласование.",
+              "text": "Отправил на согласование.",
               "person": "Владимир Горбунов",
               "createdAt": "20.09.2021",
               "time": "09:30"
             },
             {
-              "data": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
+              "text": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
               "person": "Коршунов В.М.",
               "createdAt": "20.09.2021",
               "time": "09:30"
@@ -249,6 +299,8 @@
         {
           "version": "1",
           "status": "approving",
+          "contour": "developmentStand",
+          "priority": "high",
           "responsiblePerson": "Борис Хмельников",
           "type": "Для согласования",
           "createdAt": "04.05.2021",
@@ -271,19 +323,19 @@
           ],
           "comments": [
             {
-              "data": "Создал пакет документов.",
+              "text": "Создал пакет документов.",
               "person": "Владимир Горбунов",
               "createdAt": "19.09.2021",
               "time": "20:43"
             },
             {
-              "data": "Отправил на согласование.",
+              "text": "Отправил на согласование.",
               "person": "Владимир Горбунов",
               "createdAt": "20.09.2021",
               "time": "09:30"
             },
             {
-              "data": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
+              "text": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
               "person": "Коршунов В.М.",
               "createdAt": "20.09.2021",
               "time": "09:30"

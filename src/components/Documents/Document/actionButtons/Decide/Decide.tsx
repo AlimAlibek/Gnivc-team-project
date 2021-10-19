@@ -1,16 +1,31 @@
-import { Button } from '@ff/ui-kit';
+import Button from '@ff/ui-kit/lib/Button';
 import React from 'react';
 
 import classes from '../../DocumentItem.module.scss';
+import Status from '../../../../../models/Status';
+import documentStore from '../../../../../stores/documentStore';
+import userStore from '../../../../../stores/userStore';
 
-const Decide: React.FC = () => (
-  <div className={classes.buttons_row}>
-    <Button variant="fill" type="primary">
-      Отправить на согласование
-    </Button>
-    <Button variant="outline" type="primary">
-      Удалить
-    </Button>
-  </div>
-);
+const Decide: React.FC = () => {
+  const { status, setStatus, addComent } = documentStore;
+  const { name } = userStore;
+  const sendToApproval = () => {
+    setStatus(Status.APPROVING);
+    addComent(name, 'Отправил на согласование');
+  };
+  return (
+    <div className={classes.buttons_row}>
+      <Button variant="fill" type="primary" onClick={sendToApproval}>
+        {status === Status.REFACTORING
+          ? 'Повторно отправить на согласование'
+          : 'Отправить на согласование'}
+      </Button>
+      {status !== Status.REFACTORING && (
+        <Button variant="outline" type="primary">
+          Удалить
+        </Button>
+      )}
+    </div>
+  );
+};
 export default Decide;
