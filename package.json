@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ff/ui-kit": "^0.10.0",
+    "@ff/ui-kit": "^1.0.0",
     "axios": "^0.21.4",
     "clsx": "^1.1.1",
     "lodash": "^4.17.20",

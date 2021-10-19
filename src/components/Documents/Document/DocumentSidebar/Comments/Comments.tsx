@@ -1,37 +1,30 @@
 import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import TextAreaField from '@ff/ui-kit/lib/esm/components/TextAreaField';
 import Button from '@ff/ui-kit/lib/Button';
 import List from '@ff/ui-kit/lib/esm/components/List';
+import { v4 as uuidv4 } from 'uuid';
 
-import classes from './Comment.module.scss';
 import RenderComment from './RenderComment';
-import Comment from '../../../../models/Comment';
-import documentStore from '../../../../stores/documentStore';
-import userStore from '../../../../stores/userStore';
+import documentStore from '../../../../../stores/documentStore';
+import classes from './Comment.module.scss'
+import userStore from '../../../../../stores/userStore';
+import Comment from '../../../../../models/Comment';
 
-type CommentsProps = {
-  comments: Comment[] | undefined;
-};
-
-const Comments: React.FC<CommentsProps> = ({ comments }) => {
-  const { addComent } = documentStore;
-  const { name } = userStore;
-
-  const [comment, setComment] = useState('');
-
+const Comments: React.FC = () =>{
+ 
+   const {version, addComent } = documentStore;
+  const comments=version?.comments
+   const [comment, setComment] = useState('');
   const sendComent = () => {
     if (!comment) {
       return;
     }
-    addComent(name, comment);
+    addComent(comment);
     setComment('');
   };
-
-  return (
-    <div className={classes.component}>
-      <h3 className={classes.subtitle}> Комментарии </h3>
-      <TextAreaField
+return(
+ <>
+  <TextAreaField
         onChange={(e) => setComment(e.target.value)}
         value={comment}
         placeholder="Комментарий"
@@ -51,7 +44,8 @@ const Comments: React.FC<CommentsProps> = ({ comments }) => {
       ) : (
         <p>Комментариев нет</p>
       )}
-    </div>
-  );
-};
-export default Comments;
+
+ </>
+)
+}
+export default Comments

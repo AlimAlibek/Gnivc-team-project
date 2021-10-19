@@ -17,7 +17,7 @@ import ActionButtons from './actionButtons/ActionButtons';
 import DocumentForm from './DocumentForm/DocumentForm';
 import FilesTable from './FilesTable';
 import AddFile from './actionButtons/AddFile';
-import Comments from './Comments';
+import DocumentSidebar from './DocumentSidebar';
 import userStore from '../../../stores/userStore';
 import documentStore from '../../../stores/documentStore';
 
@@ -60,7 +60,7 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
             {role === Access.EDITOR && <AddFile />}
           </div>
         </div>
-        <Comments comments={version?.comments} />
+        <DocumentSidebar  />
       </div>
 
       {isLoading && <Typography.Title>Loading...</Typography.Title>}

@@ -1,27 +1,57 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Button from '@ff/ui-kit/lib/Button';
+import Modal from '@ff/ui-kit/lib/Modal';
+import TextAreaField from '@ff/ui-kit/lib/TextAreaField';
 
 import Status from '../../../../../models/Status';
 import documentStore from '../../../../../stores/documentStore';
 import userStore from '../../../../../stores/userStore';
 
+
 const ApproveReturn: React.FC = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
   const { setStatus, addComent } = documentStore;
-  const { name } = userStore;
+
+
   const approve = () => {
     setStatus(Status.APPROVED);
-    addComent(name, 'Принял документ');
+    addComent('Принял документ');
   };
   const deny = () => {
     setStatus(Status.REFACTORING);
-    addComent(name, 'Отправил на доработку');
+    addComent('Отправил на доработку');
   };
+  const closeModal = () => {
+  setIsOpen(false);
+};
+const openModal=()=>{
+  setIsOpen(true);
+}
+const modalContent=(
+    <>
+    <Button variant="outline" type="primary" onClick={closeModal}>
+    Отмена
+  </Button>
+    <Button  type="primary" >
+      Отправить
+    </Button>
+  </>
+
+)
+
+
   return (
     <div className="buttons-row">
+    <Modal
+    visible={isOpen}
+    title="Попробуем так"
+  >
+    {modalContent}
+  </Modal>
       <Button onClick={approve} variant="fill" type="primary">
         Согласовать
       </Button>
-      <Button variant="outline" type="primary" onClick={deny}>
+      <Button variant="outline" type="primary" onClick={openModal}>
         Вернуть на доработку
       </Button>
     </div>

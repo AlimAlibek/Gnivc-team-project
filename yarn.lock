@@ -1232,10 +1232,10 @@
     eslint-plugin-react-hooks "^4.2.0"
     eslint-plugin-testing-library "^4.1.2"
 
-"@ff/ui-kit@^0.10.0":
-  version "0.10.0"
-  resolved "https://npm.gnivc.ru/@ff%2fui-kit/-/ui-kit-0.10.0.tgz#05e66c64093c143999615b1518a4ef42af7fa03b"
-  integrity sha512-g/mz4803Rjpao1Fd3/GHU1ZA0AFMwp7Tn/zb0cuMJTIV5/5k1S1eVrDc0MnKO9rc7BDP9pU7ZgdWYTpF3KYl0g==
+"@ff/ui-kit@^1.0.0":
+  version "1.0.0"
+  resolved "https://npm.gnivc.ru/@ff%2fui-kit/-/ui-kit-1.0.0.tgz#b9c28530e88476901c73862df68cd27fa977b686"
+  integrity sha512-2NH4FYcML6d4VCeH64nLUa3zpfkxxSrANnQX50Ouo2VRRKa+kbW3+l5Z3/e2CMNzDVJoIzFr0+NAJvMg6ZEcfQ==
   dependencies:
     "@bem-react/classname" "^1.5.8"
     dayjs "^1.10.5"

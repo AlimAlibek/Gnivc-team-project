@@ -11,7 +11,7 @@ const Decide: React.FC = () => {
   const { name } = userStore;
   const sendToApproval = () => {
     setStatus(Status.APPROVING);
-    addComent(name, 'Отправил на согласование');
+    addComent('Отправил на согласование');
   };
   return (
     <div className={classes.buttons_row}>

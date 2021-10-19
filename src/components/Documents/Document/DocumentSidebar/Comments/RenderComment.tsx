@@ -3,7 +3,7 @@ import ListItem from '@ff/ui-kit/lib/esm/components/ListItem';
 import Typography from '@ff/ui-kit/lib/esm/components/Typography';
 
 import classes from './Comment.module.scss';
-import CommentType from '../../../../models/Comment';
+import CommentType from '../../../../../models/Comment';
 
 const RenderComment: React.FC<CommentType> = ({
   createdAt,

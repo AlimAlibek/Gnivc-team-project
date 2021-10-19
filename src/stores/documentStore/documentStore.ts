@@ -2,6 +2,7 @@ import { makeAutoObservable } from 'mobx';
 
 import service from './documentStore.service';
 import isDisabled from '../../utils/isDisabled';
+import userStore from '../userStore';
 import Version from '../../models/Version';
 import Status from '../../models/Status';
 import Access from '../../models/Access';
@@ -61,7 +62,9 @@ class DocumentStore {
     return isDisabled(role, this.status);
   }
 
-  addComent(name: string, text: string) {
+  addComent( text: string) {
+    const {name}=userStore
+    //Не удалять, все равно вернется назад.
     this.version?.comments.push({
       text,
       person: name,
