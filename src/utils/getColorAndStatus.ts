@@ -1,7 +1,7 @@
-import Status from '../models/enums/Status';
-import ColorAndStatus from '../models/types/ColorAndStatus';
+import Status from '../models/Status';
+import ColorAndStatus from '../models/ColorAndStatus';
 
-const getColorAndStatus = (status: Status): ColorAndStatus => {
+const getColorAndStatus = (status: Status | undefined): ColorAndStatus => {
   switch (status) {
     case Status.SCATCH:
       return ['#94979E', 'Черновик'];

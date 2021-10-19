@@ -1,0 +1,16 @@
+.component {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 10px;
+  padding: 0 23px;
+}
+
+.select {
+  color: #303236;
+}
+.hint {
+  color: #303236;
+  font-size: 16px;
+  line-height: 24px;
+}

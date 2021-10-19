@@ -1,5 +1,5 @@
-interface TextFields{
+interface TextFields {
   isDisbled?: boolean;
-  onChange: () => void;
+  onChange?: () => void;
 }
 export default TextFields;

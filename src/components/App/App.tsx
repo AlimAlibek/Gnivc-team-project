@@ -4,17 +4,19 @@ import Sidebar from '@ff/ui-kit/lib/Sidebar';
 import SystemName from '@ff/ui-kit/lib/SystemName';
 import '@ff/ui-kit/lib/styles/fns.theme.css';
 
-import logo from './assets/gnivc-logo.png';
+import classes from './App.module.scss';
+import '../../styles/fonts.scss';
+import Header from '../layouts/Header';
 import Main from '../layouts/Main';
 import Home from '../routes/Home';
 import DocumentItem from '../Documents/Document';
-import '../../styles/fonts.scss';
-import classes from './App.module.scss';
+import logo from './assets/gnivc-logo.png';
 
 const NotFound = React.lazy(() => import('../routes/NotFound'));
 
 const App: React.FC = () => (
   <div className={classes.component}>
+    <Header />
     <Main>
       <Sidebar>
         <SystemName logo={logo} />

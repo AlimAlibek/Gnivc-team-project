@@ -2,7 +2,7 @@
 $minor-font-color: #797D86;
 $line: rgb(126, 126, 126);
 
-.document {
+.component {
     display: flex;
     justify-content: space-between;
 
@@ -69,14 +69,14 @@ $line: rgb(126, 126, 126);
 }
 
 .minorfont {
-    color: $minor-font-color;
-    font-size: 14px;
+  color: $minor-font-color;
+  font-size: 14px;
 }
 
 .subtitle {
-    font-size: 20px;
-    line-height: 24px;  
-    font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;  
+  font-weight: 700;
 }
 
 

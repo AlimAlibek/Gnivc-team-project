@@ -1,19 +1,29 @@
-import Access from '../models/enums/Access';
+import Access from '../models/Access';
 
 const editor = ['scatch', 'refactoring'];
 const reviewer = ['approving'];
 
-const isDisabled = (selectedRole: Access = Access.VIEWER, selecedStatus: string): boolean => {
-  if (!selecedStatus) { return false; }
-  let res = true;
+const isDisabled = (
+  selectedRole: Access = Access.VIEWER,
+  selecedStatus: string,
+): boolean => {
+  if (!selecedStatus) {
+    return false;
+  }
   switch (selectedRole) {
     case Access.EDITOR:
-      if (editor.includes(selecedStatus)) { res = false; } break;
-      // Не рефакторить, будет меняться и затру изменения.
+      if (editor.includes(selecedStatus)) {
+        return false;
+      }
+      return true;
+    // Не рефакторить, будет меняться и затру изменения.
     case Access.REVIEWER:
-      if (reviewer.includes(selecedStatus)) { res = false; } break;
-    default: res = true;
+      if (reviewer.includes(selecedStatus)) {
+        return false;
+      }
+      return true;
+    default:
+      return true;
   }
-  return res;
 };
 export default isDisabled;

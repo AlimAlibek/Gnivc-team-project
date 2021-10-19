@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 
-import documentVersionStore from '../../../../stores/documentVersionStore';
 import classes from './ApprovalStages.module.scss';
-import CommentType from '../../../../models/interfaces/Comment';
+
 
 const ApprovalStages: React.FC = () => {
   /* const { version, addComent } = documentVersionStore;

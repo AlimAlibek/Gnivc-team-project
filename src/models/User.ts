@@ -1,6 +1,6 @@
-import Access from '../enums/Access';
+import Access from './Access';
 
-interface Person {
+interface User {
   id: string;
   name: string;
   userName: string;
@@ -8,4 +8,4 @@ interface Person {
   projectRole: string;
   department: string;
 }
-export default Person;
+export default User;
