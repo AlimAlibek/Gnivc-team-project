@@ -1,43 +1,30 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { observer } from 'mobx-react';
-import Select, { Option } from '@ff/ui-kit/lib/Select';
+import Select from '@ff/ui-kit/lib/Select';
 import Typography from '@ff/ui-kit/lib/Typography';
 
+import classes from './Login.module.scss';
+import mapUsersIntoOptions from '../../utils/mapUsersIntoOptions';
 import userStore from '../../stores/userStore';
 
 const Login: React.FC = observer(() => {
   // Пару раз сервер входил в странный цикл вечно получая список юзеров, если что ставьте любую константу в юз эффект оно починится.
-  const {
-    users, fetchUsers, selectedUser, isLoading, selectUser,
-  } = userStore;
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-
-  if (isLoading) {
-    return <Typography.Title>Loading...</Typography.Title>;
-  }
-  const options: Option[] = users.map((data) => ({
-    value: data.userName,
-    label: data.name,
-    key: data.id,
-  }));
-
-  const seletedName = selectedUser ? (
-    `Выбранный юзер ${selectedUser.name} ${selectedUser.role}`
-
-  ) : 'Выберете пользоватeля';
-
+  const { users, selectedUser, setUser } = userStore;
+  const options = mapUsersIntoOptions(users);
   return (
-    <div>
+    <div className={classes.component}>
       <Select
-        label="Выберете юзера"
-        placeholder="Выберите значение из списка"
+        className={classes.select}
+        placeholder="Выберите пользователя"
         options={options}
-        style={{ width: '400px' }}
-        onChange={(e) => selectUser(e)}
+        style={{ width: '300px' }}
+        onChange={(e) => setUser(e)}
+        showSearch
       />
-      <Typography> {seletedName}</Typography>
+      <Typography className={classes.hint}>
+        {selectedUser
+          && `Выбранный юзер - ${selectedUser.name} ${selectedUser.role}`}
+      </Typography>
     </div>
   );
 });

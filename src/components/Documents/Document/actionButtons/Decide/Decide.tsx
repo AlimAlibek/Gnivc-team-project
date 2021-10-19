@@ -1,31 +1,30 @@
 import Button from '@ff/ui-kit/lib/Button';
 import React from 'react';
 
-import documentVersionStore from '../../../../../stores/documentVersionStore';
-import Status from '../../../../../models/enums/Status';
 import classes from '../../DocumentItem.module.scss';
+import Status from '../../../../../models/Status';
+import documentStore from '../../../../../stores/documentStore';
+import userStore from '../../../../../stores/userStore';
 
 const Decide: React.FC = () => {
-  const { getStatus } = documentVersionStore;
-
-  const again = (getStatus() === Status.REFACTORING);
-  const { setStatus, addComent } = documentVersionStore;
+  const { status, setStatus, addComent } = documentStore;
+  const { name } = userStore;
   const sendToApproval = () => {
     setStatus(Status.APPROVING);
-    addComent('Отправил на согласование');
+    addComent(name, 'Отправил на согласование');
   };
-  const sendButtonText = again ? 'Повторно отправить на согласование' : 'Отправить на согласование';
-  const deleteButton = again ? null : (
-    <Button variant="outline" type="primary">
-      Удалить
-    </Button>
-  );
   return (
     <div className={classes.buttons_row}>
       <Button variant="fill" type="primary" onClick={sendToApproval}>
-        {sendButtonText}
+        {status === Status.REFACTORING
+          ? 'Повторно отправить на согласование'
+          : 'Отправить на согласование'}
       </Button>
-      {deleteButton}
+      {status !== Status.REFACTORING && (
+        <Button variant="outline" type="primary">
+          Удалить
+        </Button>
+      )}
     </div>
   );
 };

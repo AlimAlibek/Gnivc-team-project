@@ -5,88 +5,65 @@ import Typography from '@ff/ui-kit/lib/Typography';
 import clsx from 'clsx';
 
 import classes from './DocumentItem.module.scss';
+import Container from '../../layouts/Container';
+import Access from '../../../models/Access';
+import StatusEnum from '../../../models/Status';
+import DocumentPackage from '../../../models/DocumentPackage';
 import VersionList from './VersionList';
+import SaveCancel from './actionButtons/SaveCancel';
+import CreateNewVersion from './actionButtons/CrateNewVersion';
 import Status from './Status';
+import ActionButtons from './actionButtons/ActionButtons';
 import DocumentForm from './DocumentForm/DocumentForm';
 import FilesTable from './FilesTable';
 import AddFile from './actionButtons/AddFile';
-import CreateNewVersion from './actionButtons/CrateNewVersion';
-import SaveCancel from './actionButtons/SaveCancel';
-import Container from '../../layouts/Container';
-import documentsStore from '../../../stores/documentsStore';
-import documentVersionStore from '../../../stores/documentVersionStore';
-import userStore from '../../../stores/userStore';
-import Document from '../../../models/interfaces/Document';
-import Access from '../../../models/enums/Access';
-import StatusEnum from '../../../models/enums/Status';
-import ActionButtons from './actionButtons/ActionButtons';
 import Comments from './Comments';
-import Login from '../../Login';
+import userStore from '../../../stores/userStore';
+import documentStore from '../../../stores/documentStore';
 
-const DocumentItem: React.FC<Document> = observer(() => {
+const DocumentItem: React.FC<DocumentPackage> = observer(() => {
   const { id } = useParams<{ id: string }>();
+  const { role } = userStore;
   const {
-    error, isLoading, fetchDocument, document, hasUnfinishedVersions,
-  } = documentsStore;
-  const { getRole } = userStore;
-  const { getStatus, isBlocked } = documentVersionStore;
+    isLoading, error, status, version, fetchDocument, isBlocked,
+  } = documentStore;
 
   useEffect(() => {
     fetchDocument(id);
-  }, []);
+  }, [fetchDocument, id]);
 
-  const role = getRole();
-
-  const status = getStatus();
-
-  const allowSave = role === Access.EDITOR && status === StatusEnum.SCATCH;
-  // const allowCreateVersions=(role === Access.EDITOR && hasUnfinishedVersions()); будет в деле когда наладим сейвы
-  const allowCreateVersions = role === Access.EDITOR && status === StatusEnum.APPROVED;
-  const blocked = isBlocked();
+  // const allowCreateVersions=(role === Access.EDITOR && isTheLastVersionFinished); будет в деле когда наладим сейвы
 
   return (
     <Container>
-      <Login />
-      <div className={classes.document}>
+      <div className={classes.component}>
         <div className={clsx(classes.block, classes.main)}>
           <div className={classes.container}>
             <div className={clsx(classes.row, classes.edge, classes.head)}>
               <VersionList />
-              {/* Старые условия я вынес наверх, так вроде более читаемо. */}
-              {allowSave && <SaveCancel />}
+              {role === Access.EDITOR && status === StatusEnum.SCATCH && (
+                <SaveCancel />
+              )}
 
-              {allowCreateVersions && <CreateNewVersion />}
+              {role === Access.EDITOR && status === StatusEnum.APPROVED && (
+                <CreateNewVersion />
+              )}
             </div>
 
-            <div className={classes.row}>
-              <Status />
-            </div>
+            <Status />
 
-            {!blocked && <ActionButtons />}
-
-            <div className={classes.block__row}>
-              <div className={classes.subtitle}>Аттрибуты пакета</div>
-            </div>
+            {!isBlocked(role) && <ActionButtons />}
 
             <DocumentForm />
 
-            <div className={classes.row}>
-              <div className={classes.subtitle}>Файлы</div>
-            </div>
-            <div className={classes.row}>
-              <FilesTable />
-            </div>
+            <FilesTable />
 
-            {role === Access.EDITOR
-              && (
-              <div className={classes.row}>
-                <AddFile />
-              </div>
-              )}
+            {role === Access.EDITOR && <AddFile />}
           </div>
         </div>
-        <Comments />
+        <Comments comments={version?.comments} />
       </div>
+
       {isLoading && <Typography.Title>Loading...</Typography.Title>}
 
       {error && <Typography.Title>{error}</Typography.Title>}

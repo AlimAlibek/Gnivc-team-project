@@ -1,27 +1,11 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
-import { Table, ColDef } from '@ff/ui-kit';
+import Typography from '@ff/ui-kit/lib/esm/components/Typography';
+import Table, { ColDef } from '@ff/ui-kit/lib/esm/components/Table';
 
-import documentVersionStore from '../../../../stores/documentVersionStore';
-import DocumentFile from '../../../../models/interfaces/DocumentFile';
-
-type TableProps = {
-  files: DocumentFile[];
-};
-
-const createData = (
-  id: number,
-  name: string,
-  fileType: string,
-  packageVersion: string,
-  uploadedAt: string,
-) => ({
-  id,
-  name,
-  fileType,
-  packageVersion,
-  uploadedAt,
-});
+import classes from './FilesTable.module.scss';
+import mapFilesIntoFormattedFiles from '../../../../utils/mapFilesIntoFormattedFiles';
+import documentStore from '../../../../stores/documentStore';
 
 const columns: ColDef[] = [
   { title: 'Файл', key: '1', dataKey: 'name' },
@@ -31,15 +15,14 @@ const columns: ColDef[] = [
 ];
 
 const FilesTable: React.FC = observer(() => {
-  const { version } = documentVersionStore;
+  const { version } = documentStore;
+  const rows = mapFilesIntoFormattedFiles(version?.files);
 
-  const tableData = version?.files.map((file, index) => createData(
-    index,
-    file.name,
-    file.fileType,
-    file.packageVersion,
-    file.uploadedAt,
-  ));
-  return <Table columns={columns} rows={tableData || []} emptyTableMessage="Файлов нет" />;
+  return (
+    <div className={classes.component}>
+      <Typography className={classes.title}>Файлы</Typography>
+      <Table columns={columns} rows={rows} />
+    </div>
+  );
 });
 export default FilesTable;

@@ -1,6 +1,6 @@
-import Status from '../enums/Status';
 import Comment from './Comment';
 import DocumentFile from './DocumentFile';
+import Status from './Status';
 
 interface Version {
   version: string;
