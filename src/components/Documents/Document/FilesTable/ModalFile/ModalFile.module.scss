@@ -1,0 +1,35 @@
+.loadText {
+  color: #afb1b6;
+  font-size: 14px;
+  padding: 10px 0;
+}
+
+.date {
+  font-size: 16px;
+}
+
+.textField{
+  width: 400px;
+}
+.modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.row,
+.textRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.textRow {
+  margin-bottom: 1em;
+ 
+}
+
+.link {
+  color: #0057ff;
+  font-size: 16px;
+  cursor: pointer;
+}

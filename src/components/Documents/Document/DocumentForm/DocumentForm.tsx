@@ -5,15 +5,13 @@ import TextField from '@ff/ui-kit/lib/esm/components/TextField';
 
 import classes from './DocumentForm.module.scss';
 import documentStore from '../../../../stores/documentStore';
-import userStore from '../../../../stores/userStore';
 
 const DocumentForm: React.FC = () => {
   // isBlocked метод, который вызывает  isDisabled из стора. Сама функция пока в юнитах лежит НЕ МЕНЯЙТЕ ЕЕ не предупредив меня, я буду ее изменять.
   const { version, isBlocked } = documentStore;
-  const { role } = userStore;
 
   // Меняйте место вызова и способ вызова как угодно, но не саму isDisabled.  Мне кажется логично вызывать ее из стора непосредственно в самом компоненте.
-  const disabled = isBlocked(role);
+  const disabled = isBlocked();
 
   return (
     <div className={classes.component}>

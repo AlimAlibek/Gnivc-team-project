@@ -7,8 +7,6 @@ import { v4 as uuidv4 } from 'uuid';
 import RenderComment from './RenderComment';
 import documentStore from '../../../../../stores/documentStore';
 import classes from './Comment.module.scss';
-import userStore from '../../../../../stores/userStore';
-import Comment from '../../../../../models/Comment';
 
 const Comments: React.FC = () => {
   const { version, addComent } = documentStore;

@@ -25,7 +25,7 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
   const { id } = useParams<{ id: string }>();
   const { role } = userStore;
   const {
-    isLoading, error, status, version, fetchDocument, isBlocked,
+    isLoading, error, status, fetchDocument, isBlocked,
   } = documentStore;
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
 
             <Status />
 
-            {!isBlocked(role) && <ActionButtons />}
+            {!isBlocked && <ActionButtons />}
 
             <DocumentForm />
 

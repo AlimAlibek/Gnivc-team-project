@@ -5,7 +5,6 @@ import isDisabled from '../../utils/isDisabled';
 import userStore from '../userStore';
 import Version from '../../models/Version';
 import Status from '../../models/Status';
-import Access from '../../models/Access';
 import DocumentPackage from '../../models/DocumentPackage';
 
 class DocumentStore {
@@ -57,14 +56,15 @@ class DocumentStore {
     }
   }
 
-  isBlocked(role: Access | undefined): boolean {
+  isBlocked(): boolean {
     // Этот элемент нам потребуется в полях, куда мы все равно будем пробрасывать данные отсюда, поэтому лучше вызывать его тут все равно в эти поля стор надо подключать.
+    const { role } = userStore;
     return isDisabled(role, this.status);
   }
 
-  addComent( text: string) {
-    const {name}=userStore
-    //Не удалять, все равно вернется назад.
+  addComent(text: string) {
+    const { name } = userStore;
+    // Не удалять, все равно вернется назад.
     this.version?.comments.push({
       text,
       person: name,

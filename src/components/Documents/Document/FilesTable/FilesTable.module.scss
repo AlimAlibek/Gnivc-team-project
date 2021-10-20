@@ -2,11 +2,43 @@
   display: flex;
   flex-direction: column;
 }
-
+.textField{
+  width: 400px;
+  margin-bottom: 1em;
+}
 .title {
   color: #18191b;
   font-size: 20px;
   line-height: 24px;
   font-weight: 700;
   margin-bottom: 24px;
+}
+.loadText {
+  color: #afb1b6;
+  font-size: 14px;
+  padding: 10px 0;
+}
+.date{
+  font-size: 16px;
+}
+.modal{
+  display: flex;
+  flex-direction: column;
+}
+.row,
+.textRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.textRow{
+  margin-bottom: 1em;
+}
+.link{
+  color: #0057FF;
+  font-size: 16px;
+  cursor: pointer;
+}
+.invisible{
+  display: none;
 }
