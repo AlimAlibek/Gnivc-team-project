@@ -8,6 +8,8 @@ import documentStore from '../../../../stores/documentStore';
 
 const DocumentForm: React.FC = () => {
   // isBlocked метод, который вызывает  isDisabled из стора. Сама функция пока в юнитах лежит НЕ МЕНЯЙТЕ ЕЕ не предупредив меня, я буду ее изменять.
+  // Хорошо таинственный незнакомец )))
+  //Это капитан, и я сильно подумаю принимать ли коммит, который изменяет функцию, которую утвердили преподаватели и ее уже меняли по неизвестной науке причине. 
   const { version, isBlocked } = documentStore;
 
   // Меняйте место вызова и способ вызова как угодно, но не саму isDisabled.  Мне кажется логично вызывать ее из стора непосредственно в самом компоненте.
@@ -25,6 +27,30 @@ const DocumentForm: React.FC = () => {
         value={document?.title}
         fullWidth
       />
+      <div className={classes.flex}>
+        <Select
+          label="Контур"
+          disabled={disabled}
+          options={[
+            {key: 1, value: 'Стенд разработки', label: 'Стенд разработки'}
+          ]}
+          floatingLabel
+          showSearch
+          fullWidth
+        />
+      </div>
+      <div className={classes.flex}>
+        <Select
+          label="Приоритет"
+          disabled={disabled}
+          options={[
+            {key: 1, value: 'Высокий', label: 'Высокий'}
+          ]}
+          floatingLabel
+          showSearch
+          fullWidth
+        />
+      </div>
 
       <Select
         label="Контур"
