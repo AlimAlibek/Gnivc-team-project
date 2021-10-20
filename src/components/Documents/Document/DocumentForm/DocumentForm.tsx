@@ -9,6 +9,7 @@ import userStore from '../../../../stores/userStore';
 
 const DocumentForm: React.FC = () => {
   // isBlocked метод, который вызывает  isDisabled из стора. Сама функция пока в юнитах лежит НЕ МЕНЯЙТЕ ЕЕ не предупредив меня, я буду ее изменять.
+  // Хорошо таинственный незнакомец )))
   const { version, isBlocked } = documentStore;
   const { role } = userStore;
 
@@ -27,6 +28,30 @@ const DocumentForm: React.FC = () => {
         value={document?.title}
         fullWidth
       />
+      <div className={classes.flex}>
+        <Select
+          label="Контур"
+          disabled={disabled}
+          options={[
+            {key: 1, value: 'Стенд разработки', label: 'Стенд разработки'}
+          ]}
+          floatingLabel
+          showSearch
+          fullWidth
+        />
+      </div>
+      <div className={classes.flex}>
+        <Select
+          label="Приоритет"
+          disabled={disabled}
+          options={[
+            {key: 1, value: 'Высокий', label: 'Высокий'}
+          ]}
+          floatingLabel
+          showSearch
+          fullWidth
+        />
+      </div>
 
       <div className={classes.flex}>
         <Select

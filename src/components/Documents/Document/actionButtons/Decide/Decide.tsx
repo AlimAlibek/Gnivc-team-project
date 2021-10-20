@@ -14,7 +14,7 @@ const Decide: React.FC = () => {
     addComent(name, 'Отправил на согласование');
   };
   return (
-    <div className={classes.buttons_row}>
+    <div className={classes.buttonsRow}>
       <Button variant="fill" type="primary" onClick={sendToApproval}>
         {status === Status.REFACTORING
           ? 'Повторно отправить на согласование'

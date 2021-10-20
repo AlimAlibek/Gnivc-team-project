@@ -20,6 +20,7 @@ import AddFile from './actionButtons/AddFile';
 import Comments from './Comments';
 import userStore from '../../../stores/userStore';
 import documentStore from '../../../stores/documentStore';
+import ApprovalStages from './ApprovalStages';
 
 const DocumentItem: React.FC<DocumentPackage> = observer(() => {
   const { id } = useParams<{ id: string }>();
@@ -60,7 +61,8 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
             {role === Access.EDITOR && <AddFile />}
           </div>
         </div>
-        <Comments comments={version?.comments} />
+        <Comments comments={version?.comments} /> 
+        {/* <ApprovalStages /> */}
       </div>
 
       {isLoading && <Typography.Title>Loading...</Typography.Title>}

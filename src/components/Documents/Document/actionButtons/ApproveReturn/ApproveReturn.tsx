@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '@ff/ui-kit/lib/Button';
+import classes from '../../DocumentItem.module.scss';
 
 import Status from '../../../../../models/Status';
 import documentStore from '../../../../../stores/documentStore';
@@ -17,7 +18,7 @@ const ApproveReturn: React.FC = () => {
     addComent(name, 'Отправил на доработку');
   };
   return (
-    <div className="buttons-row">
+    <div className={classes.buttonsRow}>
       <Button onClick={approve} variant="fill" type="primary">
         Согласовать
       </Button>
