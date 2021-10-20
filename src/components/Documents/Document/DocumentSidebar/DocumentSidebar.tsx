@@ -5,6 +5,7 @@ import Tab from '@ff/ui-kit/lib/Tab';
 import Comments from './Comments';
 import ApprovalStages from './ApprovalStages';
 import classes from './DocumentSidebar.module.scss';
+
 const DocumentSidebar: React.FC = () => {
   const [view, setView] = useState<string | number>('comment');
 

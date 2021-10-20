@@ -3,8 +3,6 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import Sidebar from '@ff/ui-kit/lib/Sidebar';
 import SystemName from '@ff/ui-kit/lib/SystemName';
 import '@ff/ui-kit/lib/styles/fns.theme.css';
-import Tabs from '@ff/ui-kit/lib/Tabs';
-import Tab from '@ff/ui-kit/lib/Tabs';
 
 import classes from './App.module.scss';
 import '../../styles/fonts.scss';

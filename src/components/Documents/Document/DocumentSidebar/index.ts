@@ -1,1 +1,1 @@
-export { default } from './DocumentSidebar'
+export { default } from './DocumentSidebar';

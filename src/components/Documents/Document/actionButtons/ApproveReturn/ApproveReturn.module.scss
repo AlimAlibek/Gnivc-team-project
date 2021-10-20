@@ -1,0 +1,22 @@
+.modal{
+ width: auto;
+ display: flex;
+ flex-direction: column;
+}
+
+.buttons{
+ display: flex;
+ flex-direction: row;
+ justify-content: flex-end;
+ margin-top: 3em;
+ button{
+  width: 100px;
+  height: 40px;
+  margin: 0 0.5em;
+ }
+}
+.redirect {
+  width: 400px !important;
+  display: flex;
+  flex-direction: column;
+}

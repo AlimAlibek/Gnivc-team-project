@@ -60,7 +60,7 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
             {role === Access.EDITOR && <AddFile />}
           </div>
         </div>
-        <DocumentSidebar  />
+        <DocumentSidebar />
       </div>
 
       {isLoading && <Typography.Title>Loading...</Typography.Title>}

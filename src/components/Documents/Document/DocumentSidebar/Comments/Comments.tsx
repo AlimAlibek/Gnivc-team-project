@@ -6,15 +6,14 @@ import { v4 as uuidv4 } from 'uuid';
 
 import RenderComment from './RenderComment';
 import documentStore from '../../../../../stores/documentStore';
-import classes from './Comment.module.scss'
+import classes from './Comment.module.scss';
 import userStore from '../../../../../stores/userStore';
 import Comment from '../../../../../models/Comment';
 
-const Comments: React.FC = () =>{
- 
-   const {version, addComent } = documentStore;
-  const comments=version?.comments
-   const [comment, setComment] = useState('');
+const Comments: React.FC = () => {
+  const { version, addComent } = documentStore;
+  const comments = version?.comments;
+  const [comment, setComment] = useState('');
   const sendComent = () => {
     if (!comment) {
       return;
@@ -22,9 +21,9 @@ const Comments: React.FC = () =>{
     addComent(comment);
     setComment('');
   };
-return(
- <>
-  <TextAreaField
+  return (
+    <>
+      <TextAreaField
         onChange={(e) => setComment(e.target.value)}
         value={comment}
         placeholder="Комментарий"
@@ -45,7 +44,7 @@ return(
         <p>Комментариев нет</p>
       )}
 
- </>
-)
-}
-export default Comments
+    </>
+  );
+};
+export default Comments;

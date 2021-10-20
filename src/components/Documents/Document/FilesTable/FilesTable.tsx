@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite';
 import Typography from '@ff/ui-kit/lib/esm/components/Typography';
 import Table, { ColDef } from '@ff/ui-kit/lib/esm/components/Table';
 
+
 import classes from './FilesTable.module.scss';
 import mapFilesIntoFormattedFiles from '../../../../utils/mapFilesIntoFormattedFiles';
 import documentStore from '../../../../stores/documentStore';
