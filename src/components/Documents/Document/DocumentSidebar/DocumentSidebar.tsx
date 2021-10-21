@@ -11,7 +11,7 @@ const DocumentSidebar: React.FC = () => {
 
   return (
     <div className={classes.component}>
-      <Tabs fullWidth value={view} onChange={setView}>
+      <Tabs className={classes.tabs} fullWidth value={view} onChange={setView}>
         <Tab value="comment">Комментарии</Tab>
         <Tab value="approval">Этапы согласования</Tab>
       </Tabs>

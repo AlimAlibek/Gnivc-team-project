@@ -18,7 +18,7 @@ interface ModalWindowFile extends ModalWindow{
 }
 
 const ModalFile: React.FC<ModalWindowFile> = (props) => {
-  const { status, close } = props;
+  const { status, close, title="Добавление файла" } = props;
 
   const fileContent = (
     <div className={classes.modal}>
@@ -64,7 +64,7 @@ const ModalFile: React.FC<ModalWindowFile> = (props) => {
       width="470px"
       visible={status}
       onClose={close}
-      title="Добавление файла"
+      title={title}
     >
       {fileContent}
     </Modal>
