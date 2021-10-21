@@ -52,26 +52,6 @@ const DocumentForm: React.FC = () => {
         />
       </div>
 
-      <Select
-        label="Контур"
-        disabled={disabled}
-        options={[
-          { key: 1, value: 'Стенд разработки', label: 'Стенд разработки' },
-        ]}
-        floatingLabel
-        showSearch
-        fullWidth
-      />
-
-      <Select
-        label="Приоритет"
-        disabled={disabled}
-        options={[{ key: 1, value: 'Высокий', label: 'Высокий' }]}
-        floatingLabel
-        showSearch
-        fullWidth
-      />
-
       <div className={classes.flex}>
         <Select
           label="Тип пакета"
