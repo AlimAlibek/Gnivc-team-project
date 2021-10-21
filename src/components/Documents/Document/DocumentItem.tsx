@@ -10,13 +10,13 @@ import Access from '../../../models/Access';
 import StatusEnum from '../../../models/Status';
 import DocumentPackage from '../../../models/DocumentPackage';
 import VersionList from './VersionList';
-import SaveCancel from './actionButtons/SaveCancel';
-import CreateNewVersion from './actionButtons/CrateNewVersion';
+import SaveCancel from './HeaderButtons/SaveCancel';
+import CreateNewVersion from './HeaderButtons/CrateNewVersion';
 import Status from './Status';
 import ActionButtons from './actionButtons/ActionButtons';
 import DocumentForm from './DocumentForm/DocumentForm';
 import FilesTable from './FilesTable';
-import AddFile from './actionButtons/AddFile';
+import AddFile from './FilesTable/AddFile';
 import DocumentSidebar from './DocumentSidebar';
 import userStore from '../../../stores/userStore';
 import documentStore from '../../../stores/documentStore';
@@ -31,8 +31,7 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
   useEffect(() => {
     fetchDocument(id);
   }, [fetchDocument, id]);
-const blocked=isBlocked()
-//Не трогай.
+
  
 
   // const allowCreateVersions=(role === Access.EDITOR && isTheLastVersionFinished); будет в деле когда наладим сейвы
@@ -54,13 +53,13 @@ const blocked=isBlocked()
 
             <Status />
 
-            {!blocked && <ActionButtons />}
+            {!isBlocked() && <ActionButtons />}
 
             <DocumentForm />
 
             <FilesTable />
 
-            {!blocked && <AddFile />}
+            {!isBlocked() && <AddFile />}
           </div>
         </div>
         <DocumentSidebar />

@@ -47,7 +47,7 @@ const FilesTable: React.FC = observer(() => {
 
   return (
     <div className={classes.component}>
-      <ModalFile status={openModal} close={toggleModal} title="Изменить файл" />
+      <ModalFile status={openModal} close={toggleModal} />
       <Typography className={classes.title}>Файлы</Typography>
       <Table columns={columns} rows={rows} />
     </div>

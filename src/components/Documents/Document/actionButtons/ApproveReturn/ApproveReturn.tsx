@@ -16,30 +16,26 @@ const ApproveReturn: React.FC = () => {
     setStatus(Status.APPROVED);
     addComent('Принял документ');
   };
-  const closeDeny = () => {
-    setDenyOpen(false);
+  const toggleDeny = () => {
+    setDenyOpen(!denyOpen);
   };
-  const openDeny = () => {
-    setDenyOpen(true);
+
+  const toggleRedirect = () => {
+    setRedirectOpen(!redirectOpen);
   };
-  const closeRedirect = () => {
-    setRedirectOpen(false);
-  };
-  const openRedirect = () => {
-    setRedirectOpen(true);
-  };
+
 
   return (
     <div className={classes.buttonsRow}>
-      <ModalDeny status={denyOpen} close={closeDeny} />
-      <ModalRedirect status={redirectOpen} close={closeRedirect} />
+      <ModalDeny status={denyOpen} close={toggleDeny} />
+      <ModalRedirect status={redirectOpen} close={toggleRedirect} />
       <Button onClick={approve} variant="fill" type="primary">
         Согласовать
       </Button>
-      <Button type="primary" onClick={openRedirect}>
+      <Button type="primary" onClick={toggleRedirect}>
         Перенаправить
       </Button>
-      <Button variant="outline" type="primary" onClick={openDeny}>
+      <Button variant="outline" type="primary" onClick={toggleDeny}>
         Вернуть на доработку
       </Button>
     </div>

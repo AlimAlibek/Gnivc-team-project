@@ -8,9 +8,10 @@
   font-size: 16px;
 }
 
-.textField{
+.textField {
   width: 400px;
 }
+
 .modal {
   display: flex;
   flex-direction: column;
@@ -25,11 +26,12 @@
 
 .textRow {
   margin-bottom: 1em;
- 
+
 }
 
 .link {
   color: #0057ff;
   font-size: 16px;
   cursor: pointer;
+  text-decoration: none;
 }
