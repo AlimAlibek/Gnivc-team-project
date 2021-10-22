@@ -31,6 +31,9 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
   useEffect(() => {
     fetchDocument(id);
   }, [fetchDocument, id]);
+const blocked=isBlocked()
+//Не трогай.
+ 
 
   // const allowCreateVersions=(role === Access.EDITOR && isTheLastVersionFinished); будет в деле когда наладим сейвы
   return (
@@ -51,13 +54,13 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
 
             <Status />
 
-            {!isBlocked && <ActionButtons />}
+            {!blocked && <ActionButtons />}
 
             <DocumentForm />
 
             <FilesTable />
 
-            {role === Access.EDITOR && <AddFile />}
+            {!blocked && <AddFile />}
           </div>
         </div>
         <DocumentSidebar />
