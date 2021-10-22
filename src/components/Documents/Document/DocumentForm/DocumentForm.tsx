@@ -22,7 +22,7 @@ const DocumentForm: React.FC = () => {
       <TextField
         name="floating-label"
         label="Наименование"
-        disabled={disabled}
+        disabled={isBlocked()}
         labelStyle="floating"
         value={document?.title}
         fullWidth
@@ -30,7 +30,7 @@ const DocumentForm: React.FC = () => {
       <div className={classes.flex}>
         <Select
           label="Контур"
-          disabled={disabled}
+          disabled={isBlocked()}
           options={[
             { key: 1, value: 'Стенд разработки', label: 'Стенд разработки' },
           ]}
@@ -42,7 +42,7 @@ const DocumentForm: React.FC = () => {
       <div className={classes.flex}>
         <Select
           label="Приоритет"
-          disabled={disabled}
+          disabled={isBlocked()}
           options={[
             { key: 1, value: 'Высокий', label: 'Высокий' },
           ]}
@@ -55,7 +55,7 @@ const DocumentForm: React.FC = () => {
       <div className={classes.flex}>
         <Select
           label="Тип пакета"
-          disabled={disabled}
+          disabled={isBlocked()}
           options={[
             { key: 1, value: 'Для согласования', label: 'Для согласования' },
           ]}
@@ -66,7 +66,7 @@ const DocumentForm: React.FC = () => {
 
         <Select
           label="Пункт ГК"
-          disabled={disabled}
+          disabled={isBlocked()}
           options={[{ key: 1, value: '3.1.2', label: '3.1.2' }]}
           floatingLabel
           showSearch
@@ -75,7 +75,7 @@ const DocumentForm: React.FC = () => {
 
         <TextField
           label="Код версии"
-          disabled={disabled}
+          disabled={isBlocked()}
           name="floating-label"
           labelStyle="floating"
           value={version?.version}
@@ -92,7 +92,7 @@ const DocumentForm: React.FC = () => {
         ]}
         fullWidth
         floatingLabel
-        disabled={disabled}
+        disabled={isBlocked()}
         showSearch
       />
 
