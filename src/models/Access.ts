@@ -1,7 +1,10 @@
 enum Access {
   VIEWER = 'viewer',
   EDITOR = 'editor',
-  REVIEWER = 'reviewer',
+  DPP = 'dpp',
+  UIB = 'uib',
+  UIT = 'uit',
+  FKU = 'fku',
 }
 
 export default Access;

@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx';
+import { toJS } from 'mobx';
 
 import service from './documentStore.service';
 import isDisabled from '../../utils/isDisabled';
@@ -30,6 +31,7 @@ class DocumentStore {
 
   setDocument(document: DocumentPackage) {
     this.documentPackage = document;
+    console.log(toJS(this.documentPackage))
   }
 
   setVersion(version: Version) {

@@ -18,6 +18,7 @@ const columns = getColumns();
 const Documents: React.FC = observer(() => {
   const { documents: rows, error, isLoading } = tableStore;
   const { role } = userStore;
+ 
 
   return (
     <Container>

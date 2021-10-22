@@ -1,24 +1,26 @@
 import Access from '../models/Access';
+import Status from '../models/Status';
+import ApprovalStage from '../models/ApprovalStage';
 
-const editor = ['scatch', 'refactoring'];
-const reviewer = ['approving'];
+
 
 const isDisabled = (
   selectedRole: Access = Access.VIEWER,
-  selecedStatus: string,
+  selecedStatus: Status, 
 ): boolean => {
+  let res = true
   if (!selecedStatus) {
-    return false;
+    return res;
   }
-  switch (selectedRole) {
-    case Access.EDITOR:
-      if (editor.includes(selecedStatus)) {
-        return false;
+  switch (selecedStatus) {
+    case Status.SCATCH:
+    case Status.REFACTORING:
+      if (selectedRole===Access.EDITOR) {
+       return false;
       }
       return true;
-    // Не рефакторить, будет меняться и затру изменения.
-    case Access.REVIEWER:
-      if (reviewer.includes(selecedStatus)) {
+    case Status.APPROVING:
+      if (selectedRole===Access.DPP) {
         return false;
       }
       return true;

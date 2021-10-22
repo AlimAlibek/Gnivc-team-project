@@ -12,7 +12,7 @@ const ActionButtons: React.FC = () => {
   return (
     <div className={clsx(classes.row, classes.underline, classes.mrb)}>
       {role === Access.EDITOR && <Decide />}
-      {role === Access.REVIEWER && <ApproveReturn />}
+      {role === Access.DPP && <ApproveReturn />}
     </div>
   );
 };

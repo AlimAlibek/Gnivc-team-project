@@ -213,26 +213,11 @@
               "time": "09:30"
             }
           ],
-          "approvalStages": {
-            "isSent": "true",
-            "sentAt": "19.06.2021",
-            "sentTime": "09:43",
-            "isApprovedDpp": "true",
-            "approvedDppAt": "19.06.2021",
-            "approvedDppTime": "20:43",
-            "isApprovedUib": "true",
-            "approvedUibAt": "28.06.2021",
-            "approvedUibTime": "20:43",
-            "isApprovedFku": "true",
-            "approvedFkuAt": "06.08.2021",
-            "approvedFkuTime": "09:32",
-            "isApprovedUitFns": "true",
-            "approvedUitFnsAt": "10.08.2021",
-            "approvedUitFnsTime": "13:11",
-            "isApprovedUibFns": "true",
-            "approvedUibFnsAt": "11.08.2021",
-            "approvedUibFnsTime": "14:56",
-            "isApprovedAll": "true"
+           "approvalStages": {
+            "dpp":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ДПП", "reviwer":"" },
+            "uib":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"УИБ", "reviwer":"" },
+            "uit":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"УИТ", "reviwer":"" },
+            "fku":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ФКУ", "reviwer":"","reviwerRole":"" }
           }
         },
         {
@@ -285,25 +270,10 @@
             }
           ],
           "approvalStages": {
-            "isSent": "true",
-            "sentAt": "19.06.2021",
-            "sentTime": "09:43",
-            "isApprovedDpp": "true",
-            "approvedDppAt": "19.06.2021",
-            "approvedDppTime": "20:43",
-            "isApprovedUib": "true",
-            "approvedUibAt": "28.06.2021",
-            "approvedUibTime": "20:43",
-            "isApprovedFku": "false",
-            "approvedFkuAt": "",
-            "approvedFkuTime": "",
-            "isApprovedUitFns": "false",
-            "approvedUitFnsAt": "",
-            "approvedUitFnsTime": "",
-            "isApprovedUibFns": "false",
-            "approvedUibFnsAt": "",
-            "approvedUibFnsTime": "",
-            "isApprovedAll": "false"
+            "dpp":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ДПП", "reviwer":"" },
+            "uib":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"УИБ", "reviwer":"" },
+            "uit":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"УИТ", "reviwer":"" },
+            "fku":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ФКУ", "reviwer":"","reviwerRole":"" }
           }
         }
       ]
@@ -353,7 +323,13 @@
             "createdAt": "20.09.2021",
             "time": "09:30"
           }
-        ]
+        ],
+         "approvalStages": {
+            "dpp":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ДПП", "reviwer":"" },
+            "uib":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"УИБ", "reviwer":"" },
+            "uit":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"УИТ", "reviwer":"" },
+            "fku":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ФКУ", "reviwer":"","reviwerRole":"" }
+          }
       }]
     },
     {
@@ -401,7 +377,13 @@
             "createdAt": "20.09.2021",
             "time": "09:30"
           }
-        ]
+        ],
+         "approvalStages": {
+            "dpp":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ДПП", "reviwer":"" },
+            "uib":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"УИБ", "reviwer":"" },
+            "uit":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"УИТ", "reviwer":"" },
+            "fku":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ФКУ", "reviwer":"","reviwerRole":"" }
+          }
       }]
     },
     {
@@ -449,7 +431,13 @@
             "createdAt": "20.09.2021",
             "time": "09:30"
           }
-        ]
+        ],
+         "approvalStages": {
+            "dpp":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ДПП", "reviwer":"" },
+            "uib":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"УИБ", "reviwer":"" },
+            "uit":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"УИТ", "reviwer":"" },
+            "fku":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ФКУ", "reviwer":"","reviwerRole":"" }
+          }
       }]
     }
   ]
