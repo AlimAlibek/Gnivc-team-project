@@ -1,13 +1,13 @@
 enum Access {
   VIEWER = 'viewer',
   EDITOR = 'editor',
-  DPP = 'dpp',
-  UIB = 'uib',
-  UIT = 'uit',
-  DISPATCH = 'fku-dispatch',
-  EXPERT='fku-expert',
-  TEH='teh-expert',
-  SUPERVISOR='fku-supervisor'
+  DPP = 'gnivcDpp',
+  UIB = 'gnivcUib',
+  UIT = 'gnivcUit',
+  DISPATCH = 'gnivcFkuDispatch',
+  EXPERT='gnivcFkuExpert',
+  TEH='gnivcFkuTech',
+  SUPERVISOR='gnivcFkuSupervisor'
 }
 
 export default Access;

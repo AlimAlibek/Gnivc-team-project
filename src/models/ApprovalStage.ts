@@ -6,6 +6,6 @@ approvedDate:string;
 approvedTime:string;
 label:string;
 reviwer: string;
-reviwerRole?:Access|''
+reviwerRole?:Access
 }
 export default ApprovalStage

@@ -1,19 +1,48 @@
 import React from 'react';
 import Button from '@ff/ui-kit/lib/Button';
+import { observer } from 'mobx-react';
 
+import userStore from '../../../../../stores/userStore';
 import Status from '../../../../../models/Status';
 import ModalDeny from './Modals/DenyModal';
 import ModalRedirect from './Modals/RedirectModal';
 import classes from './ApproveReturn.module.scss';
 import documentStore from '../../../../../stores/documentStore';
+import Access from '../../../../../models/Access';
 
-const ApproveReturn: React.FC = () => {
+const ApproveReturn: React.FC = observer(() => {
   const [denyOpen, setDenyOpen] = React.useState(false);
   const [redirectOpen, setRedirectOpen] = React.useState(false);
-  const { setStatus, addComent } = documentStore;
+  const {
+    version,
+    setStatus,
+    addComent,
+    approveDPP,
+    approveUIB,
+    approveUIT,
+    approveFKU,
+    setActiveRewier
+  } = documentStore;
+  const { userName, role } = userStore;
+  const activeReviewer=version?.activeReviewer
+
+  const dispathApprove = () => {
+    if (!role) return;
+    switch (role) {
+      case Access.DPP:
+      return approveDPP(userName);
+            case Access.UIB:
+        return approveUIB(userName);
+      case Access.UIT:
+        return approveUIT(userName);
+  
+        default:
+      return approveFKU(userName)
+    }
+  };
 
   const approve = () => {
-    setStatus(Status.APPROVED);
+    dispathApprove()
     addComent('Принял документ');
   };
   const toggleDeny = () => {
@@ -24,6 +53,10 @@ const ApproveReturn: React.FC = () => {
     setRedirectOpen(!redirectOpen);
   };
 
+  
+  if(userName!==activeReviewer){
+    return <Button onClick={()=>setActiveRewier(userName)}>Жмякни меня </Button>
+  }
 
   return (
     <div className={classes.buttonsRow}>
@@ -40,5 +73,5 @@ const ApproveReturn: React.FC = () => {
       </Button>
     </div>
   );
-};
+});
 export default ApproveReturn;

@@ -40,6 +40,9 @@ class UserStore {
   get name() {
     return this.selectedUser?.name ?? 'Гость';
   }
+  get userName(){
+    return this.selectedUser?.userName ?? 'Unknown';
+  }
 
   fetchUsers() {
     this.setIsLoading(true);

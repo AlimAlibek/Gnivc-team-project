@@ -28,7 +28,8 @@
       "name": "Коршунов Василий",
       "userName": "userKorshunov4",
       "projectRole": "сотрудник ДПП",
-      "role": "dpp",
+      "role": "gnivcDpp",
+      "canEdit": "dpp",
       "department": "IT-архитектуры"
     },
     {
@@ -36,7 +37,8 @@
       "name": "Иван Кошкин",
       "userName": "userKoshkin5",
       "projectRole": "сотрудник ДПП",
-      "role": "dpp",
+      "role": "gnivcDpp",
+      "canEdit": "dpp",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -44,7 +46,8 @@
       "name": "Егор Сорокин",
       "userName": "userSorokoin6",
       "projectRole": "сотрудник ДПП",
-      "role": "dpp",
+      "role": "gnivcDpp",
+      "canEdit": "dpp",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -52,7 +55,8 @@
       "name": "Василиса Казакова",
       "userName": "userKazakova7",
       "projectRole": "сотрудник ДПП",
-      "role": "dpp",
+      "role": "gnivcDpp",
+      "canEdit": "dpp",
       "department": "IT-архитектуры"
     },
     {
@@ -60,7 +64,8 @@
       "name": "Елизавета Фомина",
       "userName": "userFomina8",
       "projectRole": "Сотрудник УИБ",
-      "role": "uib",
+      "role": "gnivcUib",
+      "canEdit": "uib",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -68,7 +73,8 @@
       "name": "Аделина Михайлова",
       "userName": "userMihailova9",
       "projectRole": "Сотрудник УИБ",
-      "role": "uib",
+      "role": "gnivcUib",
+      "canEdit": "uib",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -76,7 +82,8 @@
       "name": "Мирон Кошелев",
       "userName": "userKoshelev10",
       "projectRole": "Сотрудник УИТ",
-      "role": "uit",
+      "role": "gnivcUit",
+      "canEdit": "uit",
       "department": "IT-архитектуры"
     },
     {
@@ -84,7 +91,8 @@
       "name": "Марк Майоров",
       "userName": "userMayorov11",
       "projectRole": "Сотрудник УИТ",
-      "role": "uit",
+      "role": "gnivcUit",
+      "canEdit": "uit",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -92,7 +100,8 @@
       "name": "Матвей Шапошников",
       "userName": "userShaposhnikov12",
       "projectRole": "Сотрудник УИТ",
-      "role": "uit",
+      "role": "gnivcUit",
+      "canEdit": "uit",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -100,8 +109,8 @@
       "name": "Валерий Стариков",
       "userName": "userStarikov13",
       "projectRole": "Диспетчер ФКУ",
-      "role": "fku-dispatch",
-      "subrole": "fku",
+      "role": "gnivcFkuDispatch",
+      "canEdit": "fku",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -109,8 +118,8 @@
       "name": "Милана Егорова",
       "userName": "userEgotova14",
       "projectRole": "Диспетчер ФКУ",
-      "role": "fku-dispatch",
-      "subrole": "fku",
+      "role": "gnivcFkuDispatch",
+      "canEdit": "fku",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -118,8 +127,8 @@
       "name": "Игорь Емельянов",
       "userName": "userYemelyanov15",
       "projectRole": "Старший Эксперт",
-      "role": "fku-expert",
-      "subrole": "fku",
+      "role": "gnivcFkuExpert",
+      "canEdit": "fku",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -127,8 +136,8 @@
       "name": "Алибек Тамбиев",
       "userName": "userTambiev16",
       "projectRole": "Старший Эксперт",
-      "role": "fku-expert",
-      "subrole": "fku",
+      "role": "gnivcFkuExpert",
+      "canEdit": "fku",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -136,8 +145,8 @@
       "name": "Марат Галеев",
       "userName": "userGaleev17",
       "projectRole": "Технический эксперт",
-      "role": "fku-teh",
-      "subrole": "fku",
+      "role": "gnivcFkuTech",
+      "canEdit": "fku",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -145,8 +154,8 @@
       "name": "Евгений Маккавеев",
       "userName": "userMakkaveev18",
       "projectRole": "Технический эксперт",
-      "role": "fku-teh",
-      "subrole": "fku",
+      "role": "gnivcFkuTech",
+      "canEdit": "fku",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -154,8 +163,8 @@
       "name": "Гендир Гендиров",
       "userName": "userGendir19",
       "projectRole": "Руководитель",
-      "role": "fku-supervisor",
-      "subrole": "fku",
+      "role": "gnivcFkuSupervisor",
+      "canEdit": "fku",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -180,7 +189,7 @@
           "createdAt": "02.07.2021",
           "approvedStartAt": "20.09.2021",
           "approvedEndAt": "21.09.2021",
-          "approvingPerson": "Коршунов В.М.",
+          "activeReviewer": "Коршунов В.М.",
           "files": [{
               "name": "nvs-scheme.vsd",
               "fileType": "Схема",
@@ -230,7 +239,7 @@
           "createdAt": "02.07.2021",
           "approvedStartAt": "16.09.2021",
           "approvedEndAt": "18.09.2021",
-          "approvingPerson": "Коршунов В.М.",
+          "activeReviewer": "Коршунов В.М.",
           "files": [{
               "name": "nvs-scheme.vsd",
               "fileType": "Схема",
@@ -291,7 +300,7 @@
         "createdAt": "01.04.2021",
         "approvedStartAt": "20.09.2021",
         "approvedEndAt": "21.09.2021",
-        "approvingPerson": "Коршунов В.М.",
+        "activeReviewer": "Коршунов В.М.",
         "files": [{
             "name": "nvs-scheme.vsd",
             "fileType": "Схема",
@@ -345,7 +354,7 @@
         "createdAt": "25.09.2021",
         "approvedStartAt": "27.09.2021",
         "approvedEndAt": "05.10.2021",
-        "approvingPerson": "Коршунов В.М.",
+        "activeReviewer": "Коршунов В.М.",
         "files": [{
             "name": "nvs-scheme.vsd",
             "fileType": "Схема",
@@ -380,7 +389,7 @@
         ],
          "approvalStages": {
             "dpp":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"dpp", "reviwer":"" },
-            "uib":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"uib", "reviwer":"" },
+            "uib":{"acepted": true, "approvedDate":"","approvedTime":"","matchedRole":"uib", "reviwer":"" },
             "uit":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"uit", "reviwer":"" },
             "fku":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"fku", "reviwer":"","reviwerRole":"" }
           }
@@ -399,7 +408,7 @@
         "createdAt": "04.05.2021",
         "approvedStartAt": "06.05.2021",
         "approvedEndAt": "01.06.2021",
-        "approvingPerson": "Коршунов В.М.",
+        "activeReviewer": "Коршунов В.М.",
         "files": [{
             "name": "nvs-scheme.vsd",
             "fileType": "Схема",
@@ -434,9 +443,9 @@
         ],
          "approvalStages": {
             "dpp":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"dpp", "reviwer":"" },
-            "uib":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"uib", "reviwer":"" },
+            "uib":{"acepted": true, "approvedDate":"","approvedTime":"","matchedRole":"uib", "reviwer":"" },
             "uit":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"uit", "reviwer":"" },
-            "fku":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"fku", "reviwer":"","reviwerRole":"" }
+            "fku":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"fku", "reviwer":"","reviwerRole":"gnivcFkuTech" }
           }
       }]
     }

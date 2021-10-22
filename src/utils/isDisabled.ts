@@ -1,7 +1,10 @@
 import { toJS } from 'mobx';
+
 import Access from '../models/Access';
+import ApprovalStages from '../models/ApprovalStages';
 import Status from '../models/Status';
 import Version from '../models/Version';
+import userStore from '../stores/userStore';
 
 const isDisabled = (
   selectedRole: Access = Access.VIEWER,
@@ -29,7 +32,7 @@ const isDisabled = (
       return !(
         status === Status.APPROVING &&
         approvalStages.fku.acepted === false &&
-        approvalStages.dpp.acepted === true &&
+        approvalStages.uib.acepted === true &&
         !approvalStages.fku.reviwerRole
       );
     case Access.UIT:

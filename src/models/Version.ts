@@ -13,7 +13,7 @@ interface Version {
   createdAt: string;
   approvedStartAt: string;
   approvedEndAt: string;
-  approvingPerson: string;
+  activeReviewer: string;
   files: DocumentFile[];
   comments: Comment[];
   approvalStages:ApprovalStages;

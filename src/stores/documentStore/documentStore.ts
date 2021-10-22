@@ -2,6 +2,7 @@ import { makeAutoObservable } from 'mobx';
 import { toJS } from 'mobx';
 
 import service from './documentStore.service';
+import ApprovalStage from '../../models/ApprovalStage';
 import isDisabled from '../../utils/isDisabled';
 import userStore from '../userStore';
 import Version from '../../models/Version';
@@ -31,7 +32,7 @@ class DocumentStore {
 
   setDocument(document: DocumentPackage) {
     this.documentPackage = document;
-    console.log(toJS(this.documentPackage))
+    console.log(toJS(this.documentPackage));
   }
 
   setVersion(version: Version) {
@@ -44,6 +45,21 @@ class DocumentStore {
 
   setError(error: string) {
     this.error = error;
+  }
+
+  setActiveRewier(name:string){
+    if(this.version)
+    this.version.activeReviewer=name;
+  }
+
+  createStage(userName: string, label: string): ApprovalStage {
+    return {
+      acepted: true,
+      approvedDate: new Date().toLocaleDateString('ru'),
+      approvedTime: new Date().toLocaleTimeString('ru'),
+      label: label,
+      reviwer: userName,
+    };
   }
 
   setLastVersion(versions: Version[] | undefined) {
@@ -59,15 +75,31 @@ class DocumentStore {
   }
 
   isBlocked(): boolean {
-    // Этот элемент нам потребуется в полях, куда мы все равно будем пробрасывать данные отсюда, поэтому лучше вызывать его тут все равно в эти поля стор надо подключать.
     const { role } = userStore;
-    if(this.version) return isDisabled(role, this.version) 
+    if (this.version) return isDisabled(role, this.version);
     else return true;
+  }
+
+
+  approveDPP(userName: string) {
+    if (this.version)
+      this.version.approvalStages.dpp = this.createStage(userName, 'dpp');
+  }
+  approveUIB(userName: string) {
+    if (this.version)
+      this.version.approvalStages.uib = this.createStage(userName, 'uib');
+  }
+  approveUIT(userName: string) {
+    if (this.version)
+      this.version.approvalStages.uit = this.createStage(userName, 'uit');
+  }
+  approveFKU(userName: string) {
+    if (this.version)
+      this.version.approvalStages.fku = this.createStage(userName, 'fku');
   }
 
   addComent(text: string) {
     const { name } = userStore;
-    // Не удалять, все равно вернется назад.
     this.version?.comments.push({
       text,
       person: name,
