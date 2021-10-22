@@ -1,9 +1,8 @@
 {
-  "responsiblePersons": [
-    {
+  "responsiblePersons": [{
       "id": "u1",
       "name": "Владимир Горбунов",
-      "userName": "userGorbunov",
+      "userName": "userGorbunov1",
       "projectRole": "Архитектор",
       "role": "editor",
       "department": "IT-архитектуры"
@@ -11,42 +10,167 @@
     {
       "id": "u2",
       "name": "Борис Хмельников",
-      "userName": "userHmelnikov",
+      "userName": "userHmelnikov2",
+      "projectRole": "Разработчик",
+      "role": "editor",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+        {
+      "id": "u3",
+      "name": "Даниил Черкасов ",
+      "userName": "userCherkasov3",
       "projectRole": "Разработчик",
       "role": "editor",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
-      "id": "u3",
+      "id": "u4",
       "name": "Коршунов Василий",
-      "userName": "userKorshunov",
-      "projectRole": "Старший разработчик",
-      "role": "reviewer",
+      "userName": "userKorshunov4",
+      "projectRole": "сотрудник ДПП",
+      "role": "dpp",
       "department": "IT-архитектуры"
     },
     {
-      "id": "u4",
+      "id": "u5",
       "name": "Иван Кошкин",
-      "userName": "userKoshkin",
-      "projectRole": "Старший разработчик",
-      "role": "reviewer",
+      "userName": "userKoshkin5",
+      "projectRole": "сотрудник ДПП",
+      "role": "dpp",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
-      "id": "u5",
+      "id": "u6",
+      "name": "Егор Сорокин",
+      "userName": "userSorokoin6",
+      "projectRole": "сотрудник ДПП",
+      "role": "dpp",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u7",
+      "name": "Василиса Казакова",
+      "userName": "userKazakova7",
+      "projectRole": "сотрудник ДПП",
+      "role": "dpp",
+      "department": "IT-архитектуры"
+    },
+    {
+      "id": "u8",
+      "name": "Елизавета Фомина",
+      "userName": "userFomina8",
+      "projectRole": "Сотрудник УИБ",
+      "role": "uib",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u9",
+      "name": "Аделина Михайлова",
+      "userName": "userMihailova9",
+      "projectRole": "Сотрудник УИБ",
+      "role": "uib",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u10",
+      "name": "Мирон Кошелев",
+      "userName": "userKoshelev10",
+      "projectRole": "Сотрудник УИТ",
+      "role": "uit",
+      "department": "IT-архитектуры"
+    },
+    {
+      "id": "u11",
+      "name": "Марк Майоров",
+      "userName": "userMayorov11",
+      "projectRole": "Сотрудник УИТ",
+      "role": "uit",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u12",
+      "name": "Матвей Шапошников",
+      "userName": "userShaposhnikov12",
+      "projectRole": "Сотрудник УИТ",
+      "role": "uit",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u13",
+      "name": "Валерий Стариков",
+      "userName": "userStarikov13",
+      "projectRole": "Диспетчер ФКУ",
+      "role": "fku",
+      "subrole": "dispatch",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u14",
+      "name": "Милана Егорова",
+      "userName": "userEgotova14",
+      "projectRole": "Диспетчер ФКУ",
+      "role": "fku",
+      "subrole": "dispatch",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u15",
+      "name": "Игорь Емельянов",
+      "userName": "userYemelyanov15",
+      "projectRole": "Старший Эксперт",
+      "role": "fku",
+      "subrole": "senior-expert",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u16",
+      "name": "Алибек Тамбиев",
+      "userName": "userTambiev16",
+      "projectRole": "Старший Эксперт",
+      "role": "fku",
+      "subrole": "senior-expert",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u17",
+      "name": "Марат Галеев",
+      "userName": "userGaleev17",
+      "projectRole": "Технический эксперт",
+      "role": "fku",
+      "subrole": "teh-expert",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u18",
+      "name": "Евгений Маккавеев",
+      "userName": "userMakkaveev18",
+      "projectRole": "Технический эксперт",
+      "role": "fku",
+      "subrole": "teh-expert",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u19",
+      "name": "Гендир Гендиров",
+      "userName": "userGendir19",
+      "projectRole": "Руководитель",
+      "role": "fku",
+      "subrole": "supervisor",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u20",
       "name": "Петр Симонов",
-      "userName": "userSimonov",
+      "userName": "userSimonov20",
       "projectRole": "Стажер",
       "role": "viewer",
       "department": "Сопровождения инфраструктуры IT"
     }
   ],
-  "documents": [
-    {
+  "documents": [{
       "id": "1",
       "title": "Схема передачи данных",
-      "versions": [
-        {
+      "versions": [{
           "version": "1",
           "status": "approving",
           "contour": "developmentStand",
@@ -57,8 +181,7 @@
           "approvedStartAt": "20.09.2021",
           "approvedEndAt": "21.09.2021",
           "approvingPerson": "Коршунов В.М.",
-          "files": [
-            {
+          "files": [{
               "name": "nvs-scheme.vsd",
               "fileType": "Схема",
               "packageVersion": "1",
@@ -71,8 +194,7 @@
               "uploadedAt": "20.03.2020"
             }
           ],
-          "comments": [
-            {
+          "comments": [{
               "text": "Создал пакет документов.",
               "person": "Владимир Горбунов",
               "createdAt": "19.09.2021",
@@ -124,8 +246,7 @@
           "approvedStartAt": "16.09.2021",
           "approvedEndAt": "18.09.2021",
           "approvingPerson": "Коршунов В.М.",
-          "files": [
-            {
+          "files": [{
               "name": "nvs-scheme.vsd",
               "fileType": "Схема",
               "packageVersion": "2",
@@ -144,8 +265,7 @@
               "uploadedAt": "20.03.2020"
             }
           ],
-          "comments": [
-            {
+          "comments": [{
               "text": "Создал пакет документов.",
               "person": "Владимир Горбунов",
               "createdAt": "19.09.2021",
@@ -191,158 +311,146 @@
     {
       "id": "2",
       "title": "Схема размещения серверов",
-      "versions": [
-        {
-          "version": "1",
-          "status": "approved",
-          "contour": "developmentStand",
-          "priority": "high",
-          "responsiblePerson": "Борис Хмельников",
-          "type": "Для согласования",
-          "createdAt": "01.04.2021",
-          "approvedStartAt": "20.09.2021",
-          "approvedEndAt": "21.09.2021",
-          "approvingPerson": "Коршунов В.М.",
-          "files": [
-            {
-              "name": "nvs-scheme.vsd",
-              "fileType": "Схема",
-              "packageVersion": "1",
-              "uploadedAt": "20.03.2020"
-            },
-            {
-              "name": "document_2.docx",
-              "fileType": "Проектная документация",
-              "packageVersion": "1",
-              "uploadedAt": "20.03.2020"
-            }
-          ],
-          "comments": [
-            {
-              "text": "Создал пакет документов.",
-              "person": "Владимир Горбунов",
-              "createdAt": "19.09.2021",
-              "time": "20:43"
-            },
-            {
-              "text": "Отправил на согласование.",
-              "person": "Владимир Горбунов",
-              "createdAt": "20.09.2021",
-              "time": "09:30"
-            },
-            {
-              "text": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
-              "person": "Коршунов В.М.",
-              "createdAt": "20.09.2021",
-              "time": "09:30"
-            }
-          ]
-        }
-      ]
+      "versions": [{
+        "version": "1",
+        "status": "approved",
+        "contour": "developmentStand",
+        "priority": "high",
+        "responsiblePerson": "Борис Хмельников",
+        "type": "Для согласования",
+        "createdAt": "01.04.2021",
+        "approvedStartAt": "20.09.2021",
+        "approvedEndAt": "21.09.2021",
+        "approvingPerson": "Коршунов В.М.",
+        "files": [{
+            "name": "nvs-scheme.vsd",
+            "fileType": "Схема",
+            "packageVersion": "1",
+            "uploadedAt": "20.03.2020"
+          },
+          {
+            "name": "document_2.docx",
+            "fileType": "Проектная документация",
+            "packageVersion": "1",
+            "uploadedAt": "20.03.2020"
+          }
+        ],
+        "comments": [{
+            "text": "Создал пакет документов.",
+            "person": "Владимир Горбунов",
+            "createdAt": "19.09.2021",
+            "time": "20:43"
+          },
+          {
+            "text": "Отправил на согласование.",
+            "person": "Владимир Горбунов",
+            "createdAt": "20.09.2021",
+            "time": "09:30"
+          },
+          {
+            "text": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
+            "person": "Коршунов В.М.",
+            "createdAt": "20.09.2021",
+            "time": "09:30"
+          }
+        ]
+      }]
     },
     {
       "id": "3",
       "title": "Интеграционные схемы",
-      "versions": [
-        {
-          "version": "1",
-          "status": "refactoring",
-          "contour": "developmentStand",
-          "priority": "high",
-          "responsiblePerson": "Борис Хмельников",
-          "type": "Для согласования",
-          "createdAt": "25.09.2021",
-          "approvedStartAt": "27.09.2021",
-          "approvedEndAt": "05.10.2021",
-          "approvingPerson": "Коршунов В.М.",
-          "files": [
-            {
-              "name": "nvs-scheme.vsd",
-              "fileType": "Схема",
-              "packageVersion": "1",
-              "uploadedAt": "20.03.2020"
-            },
-            {
-              "name": "document_2.docx",
-              "fileType": "Проектная документация",
-              "packageVersion": "1",
-              "uploadedAt": "20.03.2020"
-            }
-          ],
-          "comments": [
-            {
-              "text": "Создал пакет документов.",
-              "person": "Владимир Горбунов",
-              "createdAt": "19.09.2021",
-              "time": "20:43"
-            },
-            {
-              "text": "Отправил на согласование.",
-              "person": "Владимир Горбунов",
-              "createdAt": "20.09.2021",
-              "time": "09:30"
-            },
-            {
-              "text": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
-              "person": "Коршунов В.М.",
-              "createdAt": "20.09.2021",
-              "time": "09:30"
-            }
-          ]
-        }
-      ]
+      "versions": [{
+        "version": "1",
+        "status": "refactoring",
+        "contour": "developmentStand",
+        "priority": "high",
+        "responsiblePerson": "Борис Хмельников",
+        "type": "Для согласования",
+        "createdAt": "25.09.2021",
+        "approvedStartAt": "27.09.2021",
+        "approvedEndAt": "05.10.2021",
+        "approvingPerson": "Коршунов В.М.",
+        "files": [{
+            "name": "nvs-scheme.vsd",
+            "fileType": "Схема",
+            "packageVersion": "1",
+            "uploadedAt": "20.03.2020"
+          },
+          {
+            "name": "document_2.docx",
+            "fileType": "Проектная документация",
+            "packageVersion": "1",
+            "uploadedAt": "20.03.2020"
+          }
+        ],
+        "comments": [{
+            "text": "Создал пакет документов.",
+            "person": "Владимир Горбунов",
+            "createdAt": "19.09.2021",
+            "time": "20:43"
+          },
+          {
+            "text": "Отправил на согласование.",
+            "person": "Владимир Горбунов",
+            "createdAt": "20.09.2021",
+            "time": "09:30"
+          },
+          {
+            "text": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
+            "person": "Коршунов В.М.",
+            "createdAt": "20.09.2021",
+            "time": "09:30"
+          }
+        ]
+      }]
     },
     {
       "id": "4",
       "title": "Обновление серверов",
-      "versions": [
-        {
-          "version": "1",
-          "status": "approving",
-          "contour": "developmentStand",
-          "priority": "high",
-          "responsiblePerson": "Борис Хмельников",
-          "type": "Для согласования",
-          "createdAt": "04.05.2021",
-          "approvedStartAt": "06.05.2021",
-          "approvedEndAt": "01.06.2021",
-          "approvingPerson": "Коршунов В.М.",
-          "files": [
-            {
-              "name": "nvs-scheme.vsd",
-              "fileType": "Схема",
-              "packageVersion": "1",
-              "uploadedAt": "20.03.2020"
-            },
-            {
-              "name": "document_2.docx",
-              "fileType": "Проектная документация",
-              "packageVersion": "1",
-              "uploadedAt": "20.03.2020"
-            }
-          ],
-          "comments": [
-            {
-              "text": "Создал пакет документов.",
-              "person": "Владимир Горбунов",
-              "createdAt": "19.09.2021",
-              "time": "20:43"
-            },
-            {
-              "text": "Отправил на согласование.",
-              "person": "Владимир Горбунов",
-              "createdAt": "20.09.2021",
-              "time": "09:30"
-            },
-            {
-              "text": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
-              "person": "Коршунов В.М.",
-              "createdAt": "20.09.2021",
-              "time": "09:30"
-            }
-          ]
-        }
-      ]
+      "versions": [{
+        "version": "1",
+        "status": "approving",
+        "contour": "developmentStand",
+        "priority": "high",
+        "responsiblePerson": "Борис Хмельников",
+        "type": "Для согласования",
+        "createdAt": "04.05.2021",
+        "approvedStartAt": "06.05.2021",
+        "approvedEndAt": "01.06.2021",
+        "approvingPerson": "Коршунов В.М.",
+        "files": [{
+            "name": "nvs-scheme.vsd",
+            "fileType": "Схема",
+            "packageVersion": "1",
+            "uploadedAt": "20.03.2020"
+          },
+          {
+            "name": "document_2.docx",
+            "fileType": "Проектная документация",
+            "packageVersion": "1",
+            "uploadedAt": "20.03.2020"
+          }
+        ],
+        "comments": [{
+            "text": "Создал пакет документов.",
+            "person": "Владимир Горбунов",
+            "createdAt": "19.09.2021",
+            "time": "20:43"
+          },
+          {
+            "text": "Отправил на согласование.",
+            "person": "Владимир Горбунов",
+            "createdAt": "20.09.2021",
+            "time": "09:30"
+          },
+          {
+            "text": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
+            "person": "Коршунов В.М.",
+            "createdAt": "20.09.2021",
+            "time": "09:30"
+          }
+        ]
+      }]
     }
   ]
 }
