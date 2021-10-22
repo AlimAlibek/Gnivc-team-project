@@ -100,8 +100,8 @@
       "name": "Валерий Стариков",
       "userName": "userStarikov13",
       "projectRole": "Диспетчер ФКУ",
-      "role": "fku",
-      "subrole": "dispatch",
+      "role": "fku-dispatch",
+      "subrole": "fku",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -109,8 +109,8 @@
       "name": "Милана Егорова",
       "userName": "userEgotova14",
       "projectRole": "Диспетчер ФКУ",
-      "role": "fku",
-      "subrole": "dispatch",
+      "role": "fku-dispatch",
+      "subrole": "fku",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -118,8 +118,8 @@
       "name": "Игорь Емельянов",
       "userName": "userYemelyanov15",
       "projectRole": "Старший Эксперт",
-      "role": "fku",
-      "subrole": "senior-expert",
+      "role": "fku-expert",
+      "subrole": "fku",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -127,8 +127,8 @@
       "name": "Алибек Тамбиев",
       "userName": "userTambiev16",
       "projectRole": "Старший Эксперт",
-      "role": "fku",
-      "subrole": "senior-expert",
+      "role": "fku-expert",
+      "subrole": "fku",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -136,8 +136,8 @@
       "name": "Марат Галеев",
       "userName": "userGaleev17",
       "projectRole": "Технический эксперт",
-      "role": "fku",
-      "subrole": "teh-expert",
+      "role": "fku-teh",
+      "subrole": "fku",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -145,8 +145,8 @@
       "name": "Евгений Маккавеев",
       "userName": "userMakkaveev18",
       "projectRole": "Технический эксперт",
-      "role": "fku",
-      "subrole": "teh-expert",
+      "role": "fku-teh",
+      "subrole": "fku",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -154,8 +154,8 @@
       "name": "Гендир Гендиров",
       "userName": "userGendir19",
       "projectRole": "Руководитель",
-      "role": "fku",
-      "subrole": "supervisor",
+      "role": "fku-supervisor",
+      "subrole": "fku",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -214,10 +214,10 @@
             }
           ],
            "approvalStages": {
-            "dpp":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ДПП", "reviwer":"" },
-            "uib":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"УИБ", "reviwer":"" },
-            "uit":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"УИТ", "reviwer":"" },
-            "fku":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ФКУ", "reviwer":"","reviwerRole":"" }
+            "dpp":{"acepted": false, "approvedDate":"","approvedTime":"","label":"dpp", "reviwer":"" },
+            "uib":{"acepted": false, "approvedDate":"","approvedTime":"","label":"uib", "reviwer":"" },
+            "uit":{"acepted": false, "approvedDate":"","approvedTime":"","label":"uit", "reviwer":"" },
+            "fku":{"acepted": false, "approvedDate":"","approvedTime":"","label":"fku", "reviwer":"","reviwerRole":"" }
           }
         },
         {
@@ -270,10 +270,10 @@
             }
           ],
           "approvalStages": {
-            "dpp":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ДПП", "reviwer":"" },
-            "uib":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"УИБ", "reviwer":"" },
-            "uit":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"УИТ", "reviwer":"" },
-            "fku":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ФКУ", "reviwer":"","reviwerRole":"" }
+            "dpp":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"dpp", "reviwer":"" },
+            "uib":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"uib", "reviwer":"" },
+            "uit":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"uit", "reviwer":"" },
+            "fku":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"fku", "reviwer":"","reviwerRole":"" }
           }
         }
       ]
@@ -325,10 +325,10 @@
           }
         ],
          "approvalStages": {
-            "dpp":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ДПП", "reviwer":"" },
-            "uib":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"УИБ", "reviwer":"" },
-            "uit":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"УИТ", "reviwer":"" },
-            "fku":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ФКУ", "reviwer":"","reviwerRole":"" }
+            "dpp":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"dpp", "reviwer":"" },
+            "uib":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"uib", "reviwer":"" },
+            "uit":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"uit", "reviwer":"" },
+            "fku":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"fku", "reviwer":"","reviwerRole":"" }
           }
       }]
     },
@@ -379,10 +379,10 @@
           }
         ],
          "approvalStages": {
-            "dpp":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ДПП", "reviwer":"" },
-            "uib":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"УИБ", "reviwer":"" },
-            "uit":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"УИТ", "reviwer":"" },
-            "fku":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ФКУ", "reviwer":"","reviwerRole":"" }
+            "dpp":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"dpp", "reviwer":"" },
+            "uib":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"uib", "reviwer":"" },
+            "uit":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"uit", "reviwer":"" },
+            "fku":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"fku", "reviwer":"","reviwerRole":"" }
           }
       }]
     },
@@ -433,10 +433,10 @@
           }
         ],
          "approvalStages": {
-            "dpp":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ДПП", "reviwer":"" },
-            "uib":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"УИБ", "reviwer":"" },
-            "uit":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"УИТ", "reviwer":"" },
-            "fku":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ФКУ", "reviwer":"","reviwerRole":"" }
+            "dpp":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"dpp", "reviwer":"" },
+            "uib":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"uib", "reviwer":"" },
+            "uit":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"uit", "reviwer":"" },
+            "fku":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"fku", "reviwer":"","reviwerRole":"" }
           }
       }]
     }

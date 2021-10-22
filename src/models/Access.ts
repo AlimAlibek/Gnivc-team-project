@@ -4,7 +4,10 @@ enum Access {
   DPP = 'dpp',
   UIB = 'uib',
   UIT = 'uit',
-  FKU = 'fku',
+  DISPATCH = 'fku-dispatch',
+  EXPERT='fku-expert',
+  TEH='teh-expert',
+  SUPERVISOR='fku-supervisor'
 }
 
 export default Access;

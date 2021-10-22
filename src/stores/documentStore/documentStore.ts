@@ -61,7 +61,8 @@ class DocumentStore {
   isBlocked(): boolean {
     // Этот элемент нам потребуется в полях, куда мы все равно будем пробрасывать данные отсюда, поэтому лучше вызывать его тут все равно в эти поля стор надо подключать.
     const { role } = userStore;
-    return isDisabled(role, this.status);
+    if(this.version) return isDisabled(role, this.version) 
+    else return true;
   }
 
   addComent(text: string) {

@@ -1,10 +1,11 @@
-//"dpp":{"acepted": "false", "approvedDate":"","approvedTime":"","label":"ДПП", "reviwer":"" }
+import Access from './Access'
+
 interface ApprovalStage{
 acepted:boolean;
 approvedDate:string;
 approvedTime:string;
 label:string;
 reviwer: string;
-reviwerRole?:string
+reviwerRole?:Access|''
 }
 export default ApprovalStage
