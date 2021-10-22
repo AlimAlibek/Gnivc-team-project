@@ -7,7 +7,7 @@ import ApprovalStages from './ApprovalStages';
 import classes from './DocumentSidebar.module.scss';
 
 const DocumentSidebar: React.FC = () => {
-  const [view, setView] = useState<string | undefined>('comment');
+  const [view, setView] = useState<string | number>('comment');
 
   return (
     <div className={classes.component}>

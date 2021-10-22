@@ -6,6 +6,7 @@ import userStore from '../userStore';
 import Version from '../../models/Version';
 import Status from '../../models/Status';
 import DocumentPackage from '../../models/DocumentPackage';
+import DocumentFile from '../../models/DocumentFile';
 
 class DocumentStore {
   documentPackage: DocumentPackage | undefined = undefined;
@@ -72,6 +73,13 @@ class DocumentStore {
       time: new Date().toLocaleTimeString('ru'),
     });
   }
+
+  // ==================================================================================
+  // добавление файла
+  addFile(file: DocumentFile) {
+    this.version?.files.push(file);
+  }
+  // ==================================================================================
 
   fetchDocument(id: string) {
     this.setIsLoading(true);

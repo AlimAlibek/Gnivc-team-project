@@ -142,6 +142,15 @@
               "fileType": "Проектная документация",
               "packageVersion": "2",
               "uploadedAt": "20.03.2020"
+            },
+            {
+              "mime": "text/plain",
+              "name": "empty.txt",
+              "size": 5,
+              "content": {"0":104,"1":101,"2":108,"3":108,"4":111},
+              "fileType": "Проектная документация",
+              "uploadedAt": "22.10.2021",
+              "packageVersion": "2"
             }
           ],
           "comments": [

@@ -31,9 +31,8 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
   useEffect(() => {
     fetchDocument(id);
   }, [fetchDocument, id]);
-const blocked=isBlocked()
-//Не трогай.
- 
+  const blocked = isBlocked();
+  // Не трогай.
 
   // const allowCreateVersions=(role === Access.EDITOR && isTheLastVersionFinished); будет в деле когда наладим сейвы
   return (
