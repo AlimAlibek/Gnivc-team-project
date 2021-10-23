@@ -126,31 +126,54 @@
           "approvingPerson": "Коршунов В.М.",
           "files": [
             {
-              "name": "nvs-scheme.vsd",
-              "fileType": "Схема",
-              "packageVersion": "2",
-              "uploadedAt": "20.03.2020"
+              "mime":"text/plain",
+              "name":"empty.txt",
+              "size":5,
+              "content":{"0":104,"1":101,"2":108,"3":108,"4":111},
+              "fileType":"Схема",
+              "uploadedAt":"23.10.2021",
+              "packageVersion":"2",
+              "id":"1634967185007"
             },
             {
-              "name": "document_2.docx",
-              "fileType": "Проектная документация",
-              "packageVersion": "2",
-              "uploadedAt": "20.03.2020"
+              "mime":"text/plain",
+              "name":"example.txt",
+              "size":5,
+              "content":{"0":104,"1":101,"2":108,"3":108,"4":111},
+              "fileType":"Проектная документация",
+              "uploadedAt":"23.10.2021",
+              "packageVersion":"2",
+              "id":"1634967321918"
             },
             {
-              "name": "document_2.docx",
-              "fileType": "Проектная документация",
-              "packageVersion": "2",
-              "uploadedAt": "20.03.2020"
-            },
-            {
+              "id": "007",
               "mime": "text/plain",
-              "name": "empty.txt",
+              "name": "masenge.txt",
               "size": 5,
               "content": {"0":104,"1":101,"2":108,"3":108,"4":111},
               "fileType": "Проектная документация",
               "uploadedAt": "22.10.2021",
               "packageVersion": "2"
+            },
+            {
+              "id": "008",
+              "mime": "text/plain",
+              "name": "haha.txt",
+              "size": 5,
+              "content": {"0":104,"1":101,"2":108,"3":108,"4":111},
+              "fileType": "Проектная документация",
+              "uploadedAt": "22.10.2021",
+              "packageVersion": "2"
+            },
+            {
+                "content": [104, 101, 108, 108, 111],
+                "fileType": "Проектная документация",
+                "id": "1634967663886",
+                "mime": "text/plain",
+                "name": "canLoad.txt",
+                "packageVersion": "2",
+                "size": 5,
+                "uploadedAt": "23.10.2021"
             }
           ],
           "comments": [

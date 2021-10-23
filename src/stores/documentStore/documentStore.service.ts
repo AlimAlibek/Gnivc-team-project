@@ -8,7 +8,12 @@ const service = {
     const response = await httpClient.get<DocumentPackage>(`/documents/${id}`);
     return response.data;
   },
-
+// ========================================================================================
+  // async postDocument(id: string): Promise<DocumentPackage> {
+  //   const response = await httpClient.put<DocumentPackage>(`/documents/${id}`);
+  //   return response.data;
+  // },
+// ============================================================================================
   isTheLastVersionFinished(versions: Version[] | undefined): boolean {
     if (!versions) return false;
     return versions[versions.length - 1].status === Status.APPROVED;

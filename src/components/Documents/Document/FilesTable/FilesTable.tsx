@@ -9,6 +9,8 @@ import classes from './FilesTable.module.scss';
 import mapFilesIntoFormattedFiles from '../../../../utils/mapFilesIntoFormattedFiles';
 import documentStore from '../../../../stores/documentStore';
 
+import downloadFile from '../../../../utils/downloadFile';
+
 const FilesTable: React.FC = observer(() => {
   const [openModal, setOpenModal] = useState(false);
 
@@ -20,11 +22,25 @@ const FilesTable: React.FC = observer(() => {
     setOpenModal(!openModal);
   };
   const hidden = disabled ? classes.invisible : '';
-
   const rows = mapFilesIntoFormattedFiles(version?.files);
 
+  const download = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) => {
+    e.preventDefault();
+    const file = version?.files.find(f => f.id === id);
+    if (file) {
+      console.log(file?.content);
+      downloadFile(file);
+    }
+  }
+
   const columns: ColDef[] = [
-    { title: 'Файл', key: '1', dataKey: 'name' },
+    { title: 'Файл', key: '1', dataKey: 'name',
+      render: (name: {name: string, id: string}): JSX.Element => (
+        <a href="#" onClick={(e) => download(e, name.id)} >
+          {name.name}
+        </a>
+      ) 
+    },
     { title: 'Тип', key: '2', dataKey: 'fileType' },
     { title: 'Версия пакета', key: '3', dataKey: 'packageVersion' },
     { title: 'Загружен', key: '4', dataKey: 'uploadedAt' },
@@ -49,7 +65,11 @@ const FilesTable: React.FC = observer(() => {
     <div className={classes.component}>
       <ModalFile status={openModal} close={toggleModal} />
       <Typography className={classes.title}>Файлы</Typography>
-      <Table columns={columns} rows={rows} />
+      <Table 
+        columns={columns} 
+        rows={rows} 
+          
+      />
     </div>
   );
 });

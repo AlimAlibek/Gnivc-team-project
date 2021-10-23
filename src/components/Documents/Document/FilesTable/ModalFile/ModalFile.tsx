@@ -11,7 +11,7 @@ import classes from './ModalFile.module.scss';
 import documentStore from '../../../../../stores/documentStore';
 
 const options2 = [
-  { key: 1, value: 'Пхема', label: 'Схема' },
+  { key: 1, value: 'Схема', label: 'Схема' },
   { key: 2, value: 'Проектная документация', label: 'Проектная документация' },
   { key: 3, value: 'График', label: 'График' },
 ];
@@ -22,7 +22,7 @@ const ModalFile: React.FC<ModalWindow> = (props) => {
 
   const [inputFileData, setInputFileData] = useState<ResultFilesObjectType>();
   const [fileName, setFileName] = useState('');
-  const [fileType, setFileType] = useState('');
+  const [fileType, setFileType] = useState('Не указан');
 
   const onUpload = (file: ResultFilesObjectType) => {
     setInputFileData(file);
@@ -40,10 +40,13 @@ const ModalFile: React.FC<ModalWindow> = (props) => {
     if (!fileData) return;
     const newFile: DocumentFile = {
       ...fileData,
-      fileType: fileType || 'не указан',
+      fileType: fileType,
       uploadedAt: new Date().toLocaleDateString(),
       packageVersion: version?.version || '',
+      id: Date.now().toString()
     };
+
+    localStorage.setItem("file", JSON.stringify(newFile));
     console.log(JSON.stringify(newFile));
     console.log(newFile);
     addFile(newFile);
@@ -62,7 +65,7 @@ const ModalFile: React.FC<ModalWindow> = (props) => {
       
     >
       <FileUploader
-        accept=".txt, .docx, .xlsx, .vsd, .pdf"
+        accept=".txt, .docx, .xlsx, .vsd, .pdf, .rtf"
         onChange={onUpload}
         maxFileSizeInBytes={10000000}
         withPreview
