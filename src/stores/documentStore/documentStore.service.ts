@@ -9,10 +9,11 @@ const service = {
     return response.data;
   },
 // ========================================================================================
-  // async postDocument(id: string): Promise<DocumentPackage> {
-  //   const response = await httpClient.put<DocumentPackage>(`/documents/${id}`);
-  //   return response.data;
-  // },
+  async putDocument(documentPackage: DocumentPackage): Promise<DocumentPackage> {
+    const id = documentPackage.id
+    const response = await httpClient.put<DocumentPackage>(`/documents/${id}`, documentPackage);
+    return response.data;
+  },
 // ============================================================================================
   isTheLastVersionFinished(versions: Version[] | undefined): boolean {
     if (!versions) return false;

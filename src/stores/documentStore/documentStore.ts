@@ -78,23 +78,23 @@ class DocumentStore {
   // добавление файла
   addFile(file: DocumentFile) {
     this.version?.files.push(file);
-    // this.postDocument();
+    this.putDocument();
   }
 
-  // postDocument() {
-  //   if (!this.documentPackage?.id) return;
-  //   service.postDocument(this.documentPackage?.id)
-  //     .then((data) => this.setDocument(data))
-  //     .catch((error) => {
-  //       if (error.response) {
-  //         this.setError('Bad Request. This data does not exist');
-  //       } else if (error.request) {
-  //         this.setError('Something went wrong. Try again later');
-  //       } else {
-  //         this.setError('Unexpected error. Try again later');
-  //       }
-  //     })
-  // }
+  putDocument() {
+    if (!this.documentPackage?.id) return;
+    service.putDocument(this.documentPackage)
+      .then((data) => this.setDocument(data))
+      .catch((error) => {
+        if (error.response) {
+          this.setError('Bad Request. This data does not exist');
+        } else if (error.request) {
+          this.setError('Something went wrong. Try again later');
+        } else {
+          this.setError('Unexpected error. Try again later');
+        }
+      })
+  }
   // ==================================================================================
 
   fetchDocument(id: string) {
