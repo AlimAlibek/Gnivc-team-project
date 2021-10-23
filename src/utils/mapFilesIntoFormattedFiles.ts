@@ -1,4 +1,3 @@
-
 import DocumentFile from '../models/DocumentFile';
 
 interface FormattedFile {
@@ -14,16 +13,16 @@ const mapFilesIntoFormattedFiles = (
   files: DocumentFile[] | undefined,
 ): FormattedFile[] => (files
   ? files?.map(({
-    name, fileType, packageVersion, uploadedAt, content, id
+    name, fileType, packageVersion, uploadedAt, content, id,
   }, index) => ({
     id: index,
     name: {
-      name, id
+      name, id,
     },
     fileType,
     packageVersion,
     uploadedAt,
-    content
+    content,
   }))
   : []);
 export default mapFilesIntoFormattedFiles;

@@ -40,15 +40,12 @@ const ModalFile: React.FC<ModalWindow> = (props) => {
     if (!fileData) return;
     const newFile: DocumentFile = {
       ...fileData,
-      fileType: fileType,
+      fileType,
       uploadedAt: new Date().toLocaleDateString(),
       packageVersion: version?.version || '',
-      id: Date.now().toString()
+      id: Date.now().toString(),
     };
 
-    localStorage.setItem("file", JSON.stringify(newFile));
-    console.log(JSON.stringify(newFile));
-    console.log(newFile);
     addFile(newFile);
     setInputFileData({});
     close();
@@ -62,7 +59,7 @@ const ModalFile: React.FC<ModalWindow> = (props) => {
   return (
     <Modal
       visible={status}
-      
+
     >
       <FileUploader
         accept=".txt, .docx, .xlsx, .vsd, .pdf, .rtf"

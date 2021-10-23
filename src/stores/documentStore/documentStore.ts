@@ -74,26 +74,18 @@ class DocumentStore {
     });
   }
 
-// ==================================================================================
+  // ==================================================================================
   // добавление файла
   addFile(file: DocumentFile) {
     this.version?.files.push(file);
-    this.putDocument();
+
+  //  this.putDocument(); // если откаментировать эту строку, новый файл будет добавлятся в json
   }
 
   putDocument() {
     if (!this.documentPackage?.id) return;
     service.putDocument(this.documentPackage)
-      .then((data) => this.setDocument(data))
-      .catch((error) => {
-        if (error.response) {
-          this.setError('Bad Request. This data does not exist');
-        } else if (error.request) {
-          this.setError('Something went wrong. Try again later');
-        } else {
-          this.setError('Unexpected error. Try again later');
-        }
-      })
+      .then((data) => this.setDocument(data));
   }
   // ==================================================================================
 

@@ -4,11 +4,10 @@ import Typography from '@ff/ui-kit/lib/esm/components/Typography';
 import Table, { ColDef } from '@ff/ui-kit/lib/esm/components/Table';
 import Button from '@ff/ui-kit/lib/Button';
 
-import ModalFile from './ModalFile';
 import classes from './FilesTable.module.scss';
+import ModalFile from './ModalFile';
 import mapFilesIntoFormattedFiles from '../../../../utils/mapFilesIntoFormattedFiles';
 import documentStore from '../../../../stores/documentStore';
-
 import downloadFile from '../../../../utils/downloadFile';
 
 const FilesTable: React.FC = observer(() => {
@@ -26,20 +25,22 @@ const FilesTable: React.FC = observer(() => {
 
   const download = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) => {
     e.preventDefault();
-    const file = version?.files.find(f => f.id === id);
+    const file = version?.files.find((f) => f.id === id);
     if (file) {
-      console.log(file?.content);
       downloadFile(file);
     }
-  }
+  };
 
   const columns: ColDef[] = [
-    { title: 'Файл', key: '1', dataKey: 'name',
-      render: (name: {name: string, id: string}): JSX.Element => (
-        <a href="#" onClick={(e) => download(e, name.id)} >
+    {
+      title: 'Файл',
+      key: '1',
+      dataKey: 'name',
+      render: (name: { name: string, id: string }): JSX.Element => (
+        <a href="#" onClick={(e) => download(e, name.id)}>
           {name.name}
         </a>
-      ) 
+      ),
     },
     { title: 'Тип', key: '2', dataKey: 'fileType' },
     { title: 'Версия пакета', key: '3', dataKey: 'packageVersion' },
@@ -65,11 +66,7 @@ const FilesTable: React.FC = observer(() => {
     <div className={classes.component}>
       <ModalFile status={openModal} close={toggleModal} />
       <Typography className={classes.title}>Файлы</Typography>
-      <Table 
-        columns={columns} 
-        rows={rows} 
-          
-      />
+      <Table columns={columns} rows={rows} />
     </div>
   );
 });
