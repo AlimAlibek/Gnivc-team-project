@@ -5,9 +5,9 @@ enum Access {
   UIB = 'gnivcUib',
   UIT = 'gnivcUit',
   DISPATCH = 'gnivcFkuDispatch',
-  EXPERT='gnivcFkuExpert',
-  TEH='gnivcFkuTech',
-  SUPERVISOR='gnivcFkuSupervisor'
+  EXPERT = 'gnivcFkuExpert',
+  TEH = 'gnivcFkuTech',
+  SUPERVISOR = 'gnivcFkuSupervisor',
 }
 
 export default Access;

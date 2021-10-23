@@ -4,7 +4,6 @@ import { useParams } from 'react-router';
 import Typography from '@ff/ui-kit/lib/Typography';
 import clsx from 'clsx';
 
-
 import classes from './DocumentItem.module.scss';
 import Container from '../../layouts/Container';
 import Access from '../../../models/Access';
@@ -32,8 +31,6 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
   useEffect(() => {
     fetchDocument(id);
   }, [fetchDocument, id]);
-
- 
 
   // const allowCreateVersions=(role === Access.EDITOR && isTheLastVersionFinished); будет в деле когда наладим сейвы
   return (

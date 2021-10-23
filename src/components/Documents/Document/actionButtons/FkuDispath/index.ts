@@ -1,1 +1,1 @@
-export {default} from './FkuDispath'
+export { default } from './FkuDispath';

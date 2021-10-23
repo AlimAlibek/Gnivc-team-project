@@ -12,12 +12,12 @@ import FkuDispath from '../FkuDispath';
 
 const ActionButtons: React.FC = () => {
   const { role } = userStore;
-  const {status}= documentStore
+  const { status } = documentStore;
   return (
     <div className={clsx(classes.row, classes.underline, classes.mrb)}>
       {role === Access.EDITOR && <Decide />}
-      {status ===Status.APPROVING&&role!==Access.DISPATCH && <ApproveReturn />}
-      {role===Access.DISPATCH&& <FkuDispath/> }
+      {status === Status.APPROVING && role !== Access.DISPATCH && <ApproveReturn />}
+      {role === Access.DISPATCH && <FkuDispath /> }
     </div>
   );
 };

@@ -4,7 +4,6 @@ import React from 'react';
 import classes from './Decide.module.scss';
 import Status from '../../../../../models/Status';
 import documentStore from '../../../../../stores/documentStore';
-import userStore from '../../../../../stores/userStore';
 
 const Decide: React.FC = () => {
   const { status, setStatus, addComent } = documentStore;

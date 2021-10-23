@@ -8,8 +8,6 @@ import mapUsersIntoOptions from '../../utils/mapUsersIntoOptions';
 import userStore from '../../stores/userStore';
 
 const Login: React.FC = observer(() => {
-  
-
   // Пару раз сервер входил в странный цикл вечно получая список юзеров, если что ставьте любую константу в юз эффект оно починится.
   const { users, selectedUser, setUser } = userStore;
   const options = mapUsersIntoOptions(users);

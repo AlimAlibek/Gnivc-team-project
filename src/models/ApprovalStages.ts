@@ -1,8 +1,10 @@
-import ApprovalStage from "./ApprovalStage"
+import ApprovalStage from './ApprovalStage';
+
 interface ApprovalStages{
-dpp:ApprovalStage;
-uib:ApprovalStage;
-uit:ApprovalStage;
-fku:ApprovalStage;
+  dpp: ApprovalStage;
+  uib: ApprovalStage;
+  fku: ApprovalStage;
+  uit: ApprovalStage;
+
 }
-export default ApprovalStages
+export default ApprovalStages;

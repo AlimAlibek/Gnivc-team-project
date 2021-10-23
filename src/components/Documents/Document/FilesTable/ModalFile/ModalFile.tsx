@@ -18,9 +18,9 @@ interface ModalWindowFile extends ModalWindow{
 }
 
 const ModalFile: React.FC<ModalWindowFile> = (props) => {
-  const { status, close,  exist = true } = props;
+  const { status, close, exist = true } = props;
 
-  const title= exist?"Изменение файла": "Добавление файла"
+  const title = exist ? 'Изменение файла' : 'Добавление файла';
 
   const fileContent = (
     <div className={classes.modal}>
@@ -36,13 +36,15 @@ const ModalFile: React.FC<ModalWindowFile> = (props) => {
         floatingLabel
         style={{ width: '400px', margin: '1.5em 0' }}
       />
-      {exist&&<div className={classes.textRow}>
+      {exist && (
+      <div className={classes.textRow}>
         <div>
           <Typography className={classes.loadText}>Загружен </Typography>
           <Typography className={classes.date}>10.20.1987</Typography>
         </div>
         <Typography.Link className={classes.link}>Скачать файл</Typography.Link>
-      </div>}
+      </div>
+      )}
       <div className={classes.row}>
         <Button
           variant="outline"

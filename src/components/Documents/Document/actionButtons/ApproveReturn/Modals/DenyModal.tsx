@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '@ff/ui-kit/lib/Button';
 import Modal from '@ff/ui-kit/lib/Modal';
 import TextAreaField from '@ff/ui-kit/lib/TextAreaField';
 
 import classes from '../ApproveReturn.module.scss';
-
 import ModalWindow from '../../../../../../models/ModalWindow';
 
-
-interface Deny extends ModalWindow{
-action:  (reason: string) => void
+interface Deny extends ModalWindow {
+  action: (reason: string) => void;
 }
 
 const ModalDeny: React.FC<Deny> = (props) => {
@@ -19,7 +17,7 @@ const ModalDeny: React.FC<Deny> = (props) => {
   const deny = () => {
     action(text);
     setText('');
-    close()
+    close();
   };
   const denyContent = (
     <div className={classes.modal}>

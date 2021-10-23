@@ -12,9 +12,6 @@ const DocumentForm: React.FC = () => {
   // Лан можно менять
   const { version, isBlocked } = documentStore;
 
-
-  const disabled = isBlocked();
-
   return (
     <div className={classes.component}>
       <Typography className={classes.subtitle}>Аттрибуты пакета</Typography>

@@ -1,5 +1,4 @@
-import { makeAutoObservable } from 'mobx';
-import { toJS } from 'mobx';
+import { makeAutoObservable, toJS } from 'mobx';
 
 import service from './documentStore.service';
 import ApprovalStage from '../../models/ApprovalStage';
@@ -40,9 +39,8 @@ class DocumentStore {
     this.version = version;
   }
 
-  setFkuRole(role:Access){
-     if(this.version)
-    this.version.approvalStages.fku.reviwerRole=role
+  setFkuRole(role: Access) {
+    if (this.version) { this.version.approvalStages.fku.reviwerRole = role; }
   }
 
   setIsLoading(boolean: boolean) {
@@ -53,9 +51,8 @@ class DocumentStore {
     this.error = error;
   }
 
-  setActiveRewier(name:string){
-    if(this.version)
-    this.version.activeReviewer=name;
+  setActiveRewier(name: string) {
+    if (this.version) { this.version.activeReviewer = name; }
   }
 
   createStage(userName: string, label: string): ApprovalStage {
@@ -63,7 +60,7 @@ class DocumentStore {
       acepted: true,
       approvedDate: new Date().toLocaleDateString('ru'),
       approvedTime: new Date().toLocaleTimeString('ru'),
-      label: label,
+      matchedRole: label,
       reviwer: userName,
     };
   }
@@ -83,26 +80,26 @@ class DocumentStore {
   isBlocked(): boolean {
     const { role } = userStore;
     if (this.version) return isDisabled(role, this.version);
-    else return true;
+    return true;
   }
-
 
   approveDPP(userName: string) {
-    if (this.version)
-      this.version.approvalStages.dpp = this.createStage(userName, 'dpp');
+    if (this.version) { this.version.approvalStages.dpp = this.createStage(userName, 'dpp'); }
   }
+
   approveUIB(userName: string) {
-    if (this.version)
-      this.version.approvalStages.uib = this.createStage(userName, 'uib');
+    if (this.version) { this.version.approvalStages.uib = this.createStage(userName, 'uib'); }
   }
+
   approveUIT(userName: string) {
-    if (this.version){
+    if (this.version) {
       this.version.approvalStages.uit = this.createStage(userName, 'uit');
-      this.version.status=Status.APPROVED}
+      this.version.status = Status.APPROVED;
+    }
   }
+
   approveFKU(userName: string) {
-    if (this.version)
-      this.version.approvalStages.fku = this.createStage(userName, 'fku');
+    if (this.version) { this.version.approvalStages.fku = this.createStage(userName, 'fku'); }
   }
 
   addComent(text: string) {

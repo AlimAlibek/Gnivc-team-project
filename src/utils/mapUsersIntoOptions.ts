@@ -1,5 +1,5 @@
 import { Option } from '@ff/ui-kit/lib/Select';
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid';
 
 import User from '../models/User';
 
