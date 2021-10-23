@@ -445,7 +445,7 @@
             "dpp":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"dpp", "reviwer":"" },
             "uib":{"acepted": true, "approvedDate":"","approvedTime":"","matchedRole":"uib", "reviwer":"" },
             "uit":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"uit", "reviwer":"" },
-            "fku":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"fku", "reviwer":"","reviwerRole":"gnivcFkuTech" }
+            "fku":{"acepted": false, "approvedDate":"","approvedTime":"","matchedRole":"fku", "reviwer":"","reviwerRole":null }
           }
       }]
     }

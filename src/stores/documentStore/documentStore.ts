@@ -8,6 +8,7 @@ import userStore from '../userStore';
 import Version from '../../models/Version';
 import Status from '../../models/Status';
 import DocumentPackage from '../../models/DocumentPackage';
+import Access from '../../models/Access';
 
 class DocumentStore {
   documentPackage: DocumentPackage | undefined = undefined;
@@ -37,6 +38,11 @@ class DocumentStore {
 
   setVersion(version: Version) {
     this.version = version;
+  }
+
+  setFkuRole(role:Access){
+     if(this.version)
+    this.version.approvalStages.fku.reviwerRole=role
   }
 
   setIsLoading(boolean: boolean) {
@@ -90,8 +96,9 @@ class DocumentStore {
       this.version.approvalStages.uib = this.createStage(userName, 'uib');
   }
   approveUIT(userName: string) {
-    if (this.version)
+    if (this.version){
       this.version.approvalStages.uit = this.createStage(userName, 'uit');
+      this.version.status=Status.APPROVED}
   }
   approveFKU(userName: string) {
     if (this.version)

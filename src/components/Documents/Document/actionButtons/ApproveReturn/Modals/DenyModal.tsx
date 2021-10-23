@@ -4,19 +4,22 @@ import Modal from '@ff/ui-kit/lib/Modal';
 import TextAreaField from '@ff/ui-kit/lib/TextAreaField';
 
 import classes from '../ApproveReturn.module.scss';
-import Status from '../../../../../../models/Status';
-import ModalWindow from '../../../../../../models/ModalWindow';
-import documentStore from '../../../../../../stores/documentStore';
 
-const ModalDeny: React.FC<ModalWindow> = (props) => {
+import ModalWindow from '../../../../../../models/ModalWindow';
+
+
+interface Deny extends ModalWindow{
+action:  (reason: string) => void
+}
+
+const ModalDeny: React.FC<Deny> = (props) => {
   const [text, setText] = React.useState('');
-  const { setStatus, addComent } = documentStore;
-  const { status, close } = props;
+  const { status, close, action } = props;
 
   const deny = () => {
-    setStatus(Status.REFACTORING);
-    addComent(`Отправил на доработку причина: ${text}`);
+    action(text);
     setText('');
+    close()
   };
   const denyContent = (
     <div className={classes.modal}>

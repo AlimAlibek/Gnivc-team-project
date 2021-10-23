@@ -8,6 +8,7 @@ import Decide from '../Decide';
 import ApproveReturn from '../ApproveReturn';
 import Status from '../../../../../models/Status';
 import userStore from '../../../../../stores/userStore';
+import FkuDispath from '../FkuDispath';
 
 const ActionButtons: React.FC = () => {
   const { role } = userStore;
@@ -15,7 +16,8 @@ const ActionButtons: React.FC = () => {
   return (
     <div className={clsx(classes.row, classes.underline, classes.mrb)}>
       {role === Access.EDITOR && <Decide />}
-      {status ===Status.APPROVING  && <ApproveReturn />}
+      {status ===Status.APPROVING&&role!==Access.DISPATCH && <ApproveReturn />}
+      {role===Access.DISPATCH&& <FkuDispath/> }
     </div>
   );
 };

@@ -1,18 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from '@ff/ui-kit/lib/Button';
 import Modal from '@ff/ui-kit/lib/Modal';
 import Select from '@ff/ui-kit/lib/Select';
+import User from '../../../../../../models/User';
 
+import mapUsersIntoOptions from '../../../../../../utils/mapUsersIntoOptions';
 import classes from '../ApproveReturn.module.scss';
 import ModalWindow from '../../../../../../models/ModalWindow';
+import { isArray } from 'lodash';
 
-const ModalRedirect: React.FC<ModalWindow> = (props) => {
-  const { status, close } = props;
-  const options = [
-    { key: 1, value: 'first', label: 'Значение первое' },
-    { key: 2, value: 'second', label: 'Значение второе' },
-    { key: 3, value: 'third', label: 'Значение третье' },
-  ];
+interface RedirectWindow extends ModalWindow{
+  users: User[];
+  choose: (name: string) => void;
+
+}
+
+const ModalRedirect: React.FC<RedirectWindow> = (props) => {
+  const { status, close, users,choose } = props;
+  const [redirectUser, setRedirectUser]=useState<string|string[]>('')
+  const options =  mapUsersIntoOptions(users);
+  const chooseRedirect=()=>{
+    if(!isArray(redirectUser)) {
+    choose(redirectUser)
+    setRedirectUser('')
+    close()
+    }
+  }
   const redirectContent = (
     <div className={classes.modal}>
       <Select
@@ -20,12 +33,14 @@ const ModalRedirect: React.FC<ModalWindow> = (props) => {
         options={options}
         floatingLabel
         style={{ width: '400px', marginBottom: '1em' }}
+        value={redirectUser}
+        onChange={(e)=>setRedirectUser(e)}
       />
       <div className={classes.buttons}>
         <Button variant="outline" type="primary" onClick={close}>
           Отмена
         </Button>
-        <Button type="primary" onClick={() => {}}>
+        <Button type="primary" onClick={chooseRedirect}>
           Отправить
         </Button>
       </div>
