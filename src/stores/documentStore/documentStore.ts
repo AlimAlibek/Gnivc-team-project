@@ -1,9 +1,11 @@
 import { makeAutoObservable, toJS } from 'mobx';
 
 import service from './documentStore.service';
+import createDocument from '../../utils/createDocument';
 import ApprovalStage from '../../models/ApprovalStage';
 import isDisabled from '../../utils/isDisabled';
 import userStore from '../userStore';
+import createVersion from '../../utils/createVersion';
 import Version from '../../models/Version';
 import Status from '../../models/Status';
 import DocumentPackage from '../../models/DocumentPackage';
@@ -32,7 +34,6 @@ class DocumentStore {
 
   setDocument(document: DocumentPackage) {
     this.documentPackage = document;
-    console.log(toJS(this.documentPackage));
   }
 
   setVersion(version: Version) {
@@ -40,7 +41,9 @@ class DocumentStore {
   }
 
   setFkuRole(role: Access) {
-    if (this.version) { this.version.approvalStages.fku.reviwerRole = role; }
+    if (this.version) {
+      this.version.approvalStages.fku.reviwerRole = role;
+    }
   }
 
   setIsLoading(boolean: boolean) {
@@ -52,7 +55,9 @@ class DocumentStore {
   }
 
   setActiveRewier(name: string) {
-    if (this.version) { this.version.activeReviewer = name; }
+    if (this.version) {
+      this.version.activeReviewer = name;
+    }
   }
 
   createStage(userName: string, label: string): ApprovalStage {
@@ -71,9 +76,39 @@ class DocumentStore {
     }
   }
 
+  createNewVersion() {
+    const { name } = userStore;
+    let newVersion;
+    if (this.documentPackage && name) {
+      newVersion = createVersion(
+        `${this.documentPackage.versions.length + 1}`,
+        name
+      );
+      this.documentPackage.versions.push(newVersion);
+      this.version = newVersion;
+    }
+  }
+
+  createNewDocument(id: string, title: string) {
+    const { name } = userStore;
+    const res = createDocument(id, name, title);
+    service.postDoc(res);
+  }
+
+  deleteVersion() {
+    const { documentPackage, version } = this;
+    if (!documentPackage) return;
+    documentPackage.versions = documentPackage.versions.filter(
+      (oldVersion) => oldVersion.version !== version?.version
+    );
+    service.patchDoc(documentPackage);
+    this.setLastVersion(documentPackage.versions);
+  }
+
   setStatus(status: Status) {
     if (this.version) {
       this.version.status = status;
+      this.saveAndSend();
     }
   }
 
@@ -83,12 +118,26 @@ class DocumentStore {
     return true;
   }
 
+  saveAndSend() {
+    if (this.documentPackage && this.version) {
+      this.documentPackage.versions.map((oldVersion) => {
+        if (oldVersion.version !== this.version?.version) return oldVersion;
+        return (oldVersion = this.version);
+      });
+      service.patchDoc(this.documentPackage);
+    }
+  }
+
   approveDPP(userName: string) {
-    if (this.version) { this.version.approvalStages.dpp = this.createStage(userName, 'dpp'); }
+    if (this.version) {
+      this.version.approvalStages.dpp = this.createStage(userName, 'dpp');
+    }
   }
 
   approveUIB(userName: string) {
-    if (this.version) { this.version.approvalStages.uib = this.createStage(userName, 'uib'); }
+    if (this.version) {
+      this.version.approvalStages.uib = this.createStage(userName, 'uib');
+    }
   }
 
   approveUIT(userName: string) {
@@ -99,7 +148,9 @@ class DocumentStore {
   }
 
   approveFKU(userName: string) {
-    if (this.version) { this.version.approvalStages.fku = this.createStage(userName, 'fku'); }
+    if (this.version) {
+      this.version.approvalStages.fku = this.createStage(userName, 'fku');
+    }
   }
 
   addComent(text: string) {

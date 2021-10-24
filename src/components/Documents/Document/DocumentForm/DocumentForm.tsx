@@ -3,6 +3,10 @@ import Typography from '@ff/ui-kit/lib/esm/components/Typography';
 import Select from '@ff/ui-kit/lib/esm/components/Select';
 import TextField from '@ff/ui-kit/lib/esm/components/TextField';
 
+import contur from '../../../../content/contur';
+import gk from '../../../../content/gk';
+import pack from '../../../../content/package';
+import priority from '../../../../content/gk';
 import classes from './DocumentForm.module.scss';
 import documentStore from '../../../../stores/documentStore';
 

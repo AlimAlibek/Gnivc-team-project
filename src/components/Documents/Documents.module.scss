@@ -27,3 +27,13 @@
     align-items: center;
   }
 }
+.modal {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+}
+.buttonsRow {
+  button {
+    margin: 0 0.3em;
+  }
+}

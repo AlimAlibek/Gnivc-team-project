@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from '@ff/ui-kit/lib/Button';
 import Modal from '@ff/ui-kit/lib/Modal';
 
+import documentStore from '../../../../../stores/documentStore';
 import classes from './SaveCancel.module.scss';
 
 const SaveCancel: React.FC = () => {
@@ -9,10 +10,15 @@ const SaveCancel: React.FC = () => {
   const toggleModal = () => {
     setOpen(!open);
   };
+  const { saveAndSend } = documentStore;
+  const saveIt = () => {
+     saveAndSend();
+    toggleModal();
+  };
   const saveContent = (
     <div className={classes.modal}>
       <div className={classes.buttonsRow}>
-        <Button type="primary" onClick={() => {}}>
+        <Button type="primary" onClick={saveIt}>
           Да
         </Button>
         <Button variant="outline" type="primary" onClick={toggleModal}>
@@ -34,8 +40,8 @@ const SaveCancel: React.FC = () => {
       <Button variant="fill" type="primary" onClick={toggleModal}>
         Сохранить
       </Button>
-      <Button variant="outline" type="primary">
-        Отмена
+      <Button variant="outline" type="primary" onClick={()=>documentStore.deleteVersion()} >
+        Удалить
       </Button>
     </div>
   );

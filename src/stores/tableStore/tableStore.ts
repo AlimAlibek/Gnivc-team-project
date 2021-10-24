@@ -1,5 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 
+import getColumns from '../../utils/getColumns';
 import FormattedDocument from '../../models/FormattedDocument';
 import service from './tableStore.service';
 
@@ -17,6 +18,9 @@ class TableStore {
 
   setDocuments(documents: FormattedDocument[]) {
     this.documents = documents;
+  }
+  createTable(){
+    getColumns()
   }
 
   setIsLoading(boolean: boolean) {

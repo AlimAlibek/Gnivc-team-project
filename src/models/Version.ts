@@ -14,7 +14,7 @@ interface Version {
   approvedStartAt: string;
   approvedEndAt: string;
   activeReviewer: string;
-  files: DocumentFile[];
+  files?: DocumentFile[];
   comments: Comment[];
   approvalStages: ApprovalStages;
 }
