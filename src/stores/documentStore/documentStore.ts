@@ -87,7 +87,16 @@ class DocumentStore {
     service.putDocument(this.documentPackage)
       .then((data) => this.setDocument(data));
   }
+
   // ==================================================================================
+  // изменение файла
+  changeFile(file: DocumentFile, index: number) {
+    this.version?.files.splice(index, 1, file);
+  }
+
+  deleteFile(index: number) {
+    this.version?.files.splice(index, 1);
+  }
 
   fetchDocument(id: string) {
     this.setIsLoading(true);

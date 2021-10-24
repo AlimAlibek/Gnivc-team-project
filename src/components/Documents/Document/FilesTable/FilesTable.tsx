@@ -3,26 +3,53 @@ import { observer } from 'mobx-react-lite';
 import Typography from '@ff/ui-kit/lib/esm/components/Typography';
 import Table, { ColDef } from '@ff/ui-kit/lib/esm/components/Table';
 import Button from '@ff/ui-kit/lib/Button';
+import { ResultFilesObjectType } from '@ff/ui-kit';
 
 import classes from './FilesTable.module.scss';
 import ModalFile from './ModalFile';
 import mapFilesIntoFormattedFiles from '../../../../utils/mapFilesIntoFormattedFiles';
-import documentStore from '../../../../stores/documentStore';
+import getInputFile from '../../../../utils/getInputFile';
 import downloadFile from '../../../../utils/downloadFile';
+import documentStore from '../../../../stores/documentStore';
+import AddFile from './AddFile';
 
 const FilesTable: React.FC = observer(() => {
-  const [openModal, setOpenModal] = useState(false);
-
-  const { version, isBlocked } = documentStore;
+  const { version, isBlocked, deleteFile } = documentStore;
   const disabled = isBlocked();
 
-  const toggleModal = () => {
-    if (disabled) return;
-    setOpenModal(!openModal);
-  };
-  const hidden = disabled ? classes.invisible : '';
-  const rows = mapFilesIntoFormattedFiles(version?.files);
+  const [openModal, setOpenModal] = useState(false);
+  const [modifiableFile, setModifiableFile] = useState<ResultFilesObjectType | undefined>(undefined);
+  const [fileType, setFileType] = useState('');
+  const [isFileChanging, setFileChanging] = useState<number | undefined>();
 
+  const handleAddFile = () => {
+    if (disabled) return;
+    setOpenModal(true);
+  };
+
+  const handleModifyFile = (index: number) => {
+    const file = version?.files[index];
+    if (file) {
+      setModifiableFile(getInputFile(file));
+      setFileType(file.fileType);
+      setFileChanging(index);
+      setOpenModal(true);
+    }
+  };
+
+  const handleUpload = (file: ResultFilesObjectType | undefined) => {
+    setModifiableFile(file);
+  };
+  const handleFileTypeChange = (type: string) => {
+    setFileType(type);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    setModifiableFile(undefined);
+    setFileType('');
+    setFileChanging(undefined);
+  };
   const download = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) => {
     e.preventDefault();
     const file = version?.files.find((f) => f.id === id);
@@ -31,14 +58,15 @@ const FilesTable: React.FC = observer(() => {
     }
   };
 
+  const rows = mapFilesIntoFormattedFiles(version?.files);
   const columns: ColDef[] = [
     {
       title: 'Файл',
       key: '1',
-      dataKey: 'name',
-      render: (name: { name: string, id: string }): JSX.Element => (
-        <a href="#" onClick={(e) => download(e, name.id)}>
-          {name.name}
+      dataKey: 'nameWithId',
+      render: (nameWithId: { name: string, id: string }): JSX.Element => (
+        <a href="#" onClick={(e) => download(e, nameWithId.id)}>
+          {nameWithId.name}
         </a>
       ),
     },
@@ -48,15 +76,19 @@ const FilesTable: React.FC = observer(() => {
     {
       title: '',
       key: '5',
-      dataKey: '',
-      render: (): JSX.Element => (
-        <div className={hidden}>
+      dataKey: 'index',
+      render: (index: number): JSX.Element => (
+        <div className={disabled ? classes.invisible : ''}>
           <Button
             variant="text"
             startIcon="PencilSquare"
-            onClick={toggleModal}
+            onClick={() => handleModifyFile(index)}
           />
-          <Button variant="text" startIcon="delete" />
+          <Button
+            variant="text"
+            startIcon="delete"
+            onClick={() => deleteFile(index)}
+          />
         </div>
       ),
     },
@@ -64,9 +96,18 @@ const FilesTable: React.FC = observer(() => {
 
   return (
     <div className={classes.component}>
-      <ModalFile status={openModal} close={toggleModal} />
+      <ModalFile
+        status={openModal}
+        close={handleCloseModal}
+        modifiableFile={modifiableFile}
+        fileType={fileType}
+        handleUpload={handleUpload}
+        handleFileTypeChange={handleFileTypeChange}
+        isFileChanging={isFileChanging}
+      />
       <Typography className={classes.title}>Файлы</Typography>
       <Table columns={columns} rows={rows} />
+      {!disabled && <AddFile onClick={handleAddFile} />}
     </div>
   );
 });
