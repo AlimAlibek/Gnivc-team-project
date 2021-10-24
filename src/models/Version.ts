@@ -8,6 +8,10 @@ interface Version {
   status: Status;
   contour: string;
   priority: string;
+  label:string;
+  packageType:string;
+  gk: string;
+  versionCode:string
   responsiblePerson: string;
   type: string;
   createdAt: string;

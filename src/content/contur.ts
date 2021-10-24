@@ -1,4 +1,5 @@
 import { Option } from '@ff/ui-kit/lib/Select';
+import { v4 as uuidv4 } from 'uuid';
 
 const contur:Option[] = [
   { key: `contur1`, value: 'development', label: 'Cтенд разработки' },

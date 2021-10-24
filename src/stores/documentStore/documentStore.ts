@@ -112,6 +112,7 @@ class DocumentStore {
     }
   }
 
+
   isBlocked(): boolean {
     const { role } = userStore;
     if (this.version) return isDisabled(role, this.version);

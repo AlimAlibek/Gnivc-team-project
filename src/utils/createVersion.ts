@@ -1,10 +1,16 @@
+import { v4 as uuidv4 } from 'uuid';
+
 import Status from '../models/Status';
 import Version from '../models/Version';
 const createVersion = (version: string, name: string): Version => ({
   version: version,
   status: Status.SCATCH,
-  contour: '',
-  priority: 'Высокая',
+  contour: 'development',
+  priority: 'high',
+    label: '',
+  packageType:'familiarization',
+gk: '3.1.1',
+versionCode: uuidv4(),
   responsiblePerson: name,
   type: 'Для согласования',
   createdAt: new Date().toLocaleDateString('ru'),

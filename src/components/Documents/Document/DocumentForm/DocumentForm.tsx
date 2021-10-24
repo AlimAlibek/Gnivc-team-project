@@ -2,19 +2,43 @@ import React from 'react';
 import Typography from '@ff/ui-kit/lib/esm/components/Typography';
 import Select from '@ff/ui-kit/lib/esm/components/Select';
 import TextField from '@ff/ui-kit/lib/esm/components/TextField';
+import { observer } from 'mobx-react';
 
-import contur from '../../../../content/contur';
-import gk from '../../../../content/gk';
-import pack from '../../../../content/package';
-import priority from '../../../../content/gk';
+import conturSelect from '../../../../content/contur';
+import gkSelect from '../../../../content/gk';
+import packSelect from '../../../../content/package';
+import prioritySelect from '../../../../content/priority';
 import classes from './DocumentForm.module.scss';
 import documentStore from '../../../../stores/documentStore';
+import { isArray } from 'lodash';
 
-const DocumentForm: React.FC = () => {
-  // isBlocked метод, который вызывает  isDisabled из стора. Сама функция пока в юнитах лежит НЕ МЕНЯЙТЕ ЕЕ не предупредив меня, я буду ее изменять.
-  // Хорошо таинственный незнакомец )))
-  // Лан можно менять
+const DocumentForm: React.FC =observer( () => {
   const { version, isBlocked } = documentStore;
+  if(!documentStore.version) return <div></div>
+  const {contour, priority,label,packageType,gk,versionCode }=documentStore.version
+
+  const changeLabel=(newName:string)=>{
+    if(documentStore.version) documentStore.version.label=newName
+  }
+    const changeVersionCode=(newCode:string)=>{
+    if(documentStore.version) documentStore.version.versionCode=newCode
+  }
+  const changePriority=(newPriority:string|string[])=>{
+    if(!isArray(newPriority)&&documentStore.version) documentStore.version.priority=newPriority
+  }
+  const changeContur=(newContur:string|string[])=>{
+if(!isArray(newContur)&&documentStore.version)
+documentStore.version.contour=newContur
+  }
+  const changePackageType=(newPackage:string|string[])=>{
+    if(!isArray(newPackage)&&documentStore.version)
+    documentStore.version.packageType=newPackage
+  }
+    const changeGk=(newGk:string|string[])=>{
+    if(!isArray(newGk)&&documentStore.version)
+    documentStore.version.gk=newGk
+  }
+
 
   return (
     <div className={classes.component}>
@@ -25,16 +49,17 @@ const DocumentForm: React.FC = () => {
         label="Наименование"
         disabled={isBlocked()}
         labelStyle="floating"
-        value={document?.title}
+        value={documentStore.version.label}
+        onChange={(e)=>changeLabel(e.target.value)}
         fullWidth
       />
       <div className={classes.flex}>
         <Select
           label="Контур"
           disabled={isBlocked()}
-          options={[
-            { key: 1, value: 'Стенд разработки', label: 'Стенд разработки' },
-          ]}
+          options={conturSelect}
+          value={contour}
+          onChange={e=>changeContur(e)}
           floatingLabel
           showSearch
           fullWidth
@@ -44,9 +69,9 @@ const DocumentForm: React.FC = () => {
         <Select
           label="Приоритет"
           disabled={isBlocked()}
-          options={[
-            { key: 1, value: 'Высокий', label: 'Высокий' },
-          ]}
+          options={prioritySelect}
+          value={priority}
+          onChange={(e)=>changePriority(e)}
           floatingLabel
           showSearch
           fullWidth
@@ -57,9 +82,9 @@ const DocumentForm: React.FC = () => {
         <Select
           label="Тип пакета"
           disabled={isBlocked()}
-          options={[
-            { key: 1, value: 'Для согласования', label: 'Для согласования' },
-          ]}
+          value={packageType}
+          options={packSelect}
+          onChange={(e)=>changePackageType(e)}
           floatingLabel
           showSearch
           style={{ width: '46%' }}
@@ -68,7 +93,9 @@ const DocumentForm: React.FC = () => {
         <Select
           label="Пункт ГК"
           disabled={isBlocked()}
-          options={[{ key: 1, value: '3.1.2', label: '3.1.2' }]}
+          options={gkSelect}
+          value={gk}
+          onChange={(e)=>changeGk(e)}
           floatingLabel
           showSearch
           style={{ width: '27%' }}
@@ -79,7 +106,8 @@ const DocumentForm: React.FC = () => {
           disabled={isBlocked()}
           name="floating-label"
           labelStyle="floating"
-          value={version?.version}
+          value={documentStore.version.versionCode}
+          onChange={e=>changeVersionCode(e.target.value)}
           size="large"
           className={classes.version}
         />
@@ -117,6 +145,6 @@ const DocumentForm: React.FC = () => {
       </div>
     </div>
   );
-};
+});
 
 export default DocumentForm;
