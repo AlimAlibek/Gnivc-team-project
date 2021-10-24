@@ -13,9 +13,9 @@ import documentStore from '../../../../stores/documentStore';
 import { isArray } from 'lodash';
 
 const DocumentForm: React.FC =observer( () => {
-  const { version, isBlocked } = documentStore;
+  const {  isBlocked } = documentStore;
   if(!documentStore.version) return <div></div>
-  const {contour, priority,label,packageType,gk,versionCode }=documentStore.version
+  const {contour, priority,packageType,gk }=documentStore.version
 
   const changeLabel=(newName:string)=>{
     if(documentStore.version) documentStore.version.label=newName
