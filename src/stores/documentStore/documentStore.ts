@@ -125,10 +125,10 @@ class DocumentStore {
   saveAndSend() {
     const { documentPackage: doc, version } = this;
     if (doc && version) {
-      doc.versions.map((oldVersion) => {
-        if (oldVersion.version !== version.version) return oldVersion;
-        return (oldVersion = version);
-      });
+      const index = doc.versions.findIndex(
+        (el) => el.version === version.version
+      );
+      doc.versions[index] = version;
       service.updateDocument(doc);
     }
   }
@@ -156,24 +156,34 @@ class DocumentStore {
     return service.createNewDocument(document);
   }
 
+  findIndex() {
+    const index = this.documentPackage?.versions.findIndex(
+      (el) => el.version === this.version?.version
+    );
+    return index;
+  }
+
   addComent(comment: Comment) {
     const { documentPackage: doc } = this;
-    if (doc) {
-      service.addComment(doc, comment);
+    const index = this.findIndex();
+    if (doc && index !== undefined) {
+      service.addComment(doc, comment, index);
     }
   }
 
   addFile(file: DocumentFile) {
     const { documentPackage: doc } = this;
-    if (doc) {
-      service.addFile(doc, file);
+    const index = this.findIndex();
+    if (doc && index !== undefined) {
+      service.addFile(doc, file, index);
     }
   }
 
-  updateFile(file: DocumentFile, index: number) {
+  updateFile(file: DocumentFile, position: number) {
     const { documentPackage: doc } = this;
-    if (doc) {
-      service.updateFile(doc, file, index);
+    const index = this.findIndex();
+    if (doc && index !== undefined) {
+      service.updateFile(doc, file, position, index);
     }
   }
 
@@ -195,10 +205,20 @@ class DocumentStore {
     }
   }
 
-  removeFile(index: number) {
+  deleteDocument(){
+     const { documentPackage: doc } = this;
+    if(doc){
+      service.deleteData(`/documents/${doc.id}`)
+      this.documentPackage=undefined
+      this.version=undefined
+    }
+  }
+
+  removeFile(position: number) {
     const { documentPackage: doc } = this;
-    if (doc) {
-      service.removeFile(doc, index);
+    const index = this.findIndex();
+    if (doc && index !== undefined) {
+      service.removeFile(doc, position, index);
     }
   }
 }

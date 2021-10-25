@@ -21,30 +21,34 @@ const service = {
     return response.data;
   },
 
+  async deleteData(patch:string){
+    httpClient.delete(patch);
+  },
+
   // prettier-ignore
-  async addComment(document: DocumentPackage, comment: Comment): Promise<DocumentPackage> {
+  async addComment(document: DocumentPackage, comment: Comment, index: number): Promise<DocumentPackage> {
     const { id, versions } = document;
-    const { comments } = versions[versions.length - 1];
+    const { comments } = versions[index];
     comments?.push(comment);
+    console.log(comments);
+    const response = await httpClient.patch(`/documents/${id}`, document);
+    return response.data;
+  },
+
+  // prettier-ignore
+  async addFile(document: DocumentPackage, file: DocumentFile, index: number): Promise<DocumentPackage> {
+    const { id, versions } = document;
+    const { files } = versions[index];
+    versions[index].files = [...files, file];
 
     const response = await httpClient.patch(`/documents/${id}`, document);
     return response.data;
   },
 
   // prettier-ignore
-  async addFile(document: DocumentPackage, file: DocumentFile): Promise<DocumentPackage> {
+  async updateFile(document: DocumentPackage, file: DocumentFile, position: number, index: number): Promise<DocumentPackage> {
     const { id, versions } = document;
-    const { files } = versions[versions.length - 1];
-    versions[versions.length - 1].files = [...files, file];
-
-    const response = await httpClient.patch(`/documents/${id}`, document);
-    return response.data;
-  },
-
-  // prettier-ignore
-  async updateFile(document: DocumentPackage, file: DocumentFile, index: number): Promise<DocumentPackage> {
-    const { id, versions } = document;
-    versions[versions.length - 1].files.splice(index, 1, file);
+    versions[index].files.splice(position, 1, file);
 
     const response = await httpClient.patch(`/documents/${id}`, document);
     return response.data;
@@ -61,10 +65,10 @@ const service = {
   },
 
   // prettier-ignore
-  async removeFile(document: DocumentPackage, index: number): Promise<DocumentPackage> {
+  async removeFile(document: DocumentPackage, position: number, index: number): Promise<DocumentPackage> {
     const { id, versions } = document;
-    const { files } = versions[versions.length - 1];
-    versions[versions.length - 1].files = files.filter((_, ind) => ind !== index);
+    const { files } = versions[index];
+    versions[index].files = files.filter((_, ind) => ind !== position);
 
     const response = await httpClient.patch(`/documents/${id}`, document);
     return response.data;

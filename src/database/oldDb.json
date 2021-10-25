@@ -184,6 +184,7 @@
       "versions": [
         {
           "version": "1",
+          "status": "approving",
           "type": "approving",
           "contour": "development",
           "priority": "high",
@@ -198,16 +199,14 @@
           "activeReviewer": "Коршунов В.М.",
           "files": [
             {
-              "name": "nvs-scheme.vsd",
-              "fileType": "Схема",
-              "packageVersion": "1",
-              "uploadedAt": "20.03.2020"
-            },
-            {
-              "name": "document_2.docx",
+              "mime": "text/plain",
+              "name": "empty.txt",
+              "size": 0,
+              "content": {},
               "fileType": "Проектная документация",
-              "packageVersion": "1",
-              "uploadedAt": "20.03.2020"
+              "uploadedAt": "23.10.2021",
+              "packageVersion": "2",
+              "id": "1634975682476"
             }
           ],
           "comments": [
@@ -342,16 +341,6 @@
               "uploadedAt": "23.10.2021",
               "packageVersion": "2",
               "id": "1634975682476"
-            },
-            {
-              "mime": "text/plain",
-              "name": "aaaa.txt",
-              "size": 0,
-              "content": {},
-              "fileType": "",
-              "uploadedAt": "25.10.2021",
-              "packageVersion": "2",
-              "id": "1635151158399"
             }
           ],
           "comments": [
@@ -372,6 +361,12 @@
               "person": "Коршунов В.М.",
               "createdAt": "20.09.2021",
               "time": "09:30"
+            },
+            {
+              "text": "TestComment",
+              "person": "Борис Хмельников",
+              "createdAt": "25.10.2021",
+              "time": "21:36:02"
             }
           ],
           "approvalStages": {
@@ -512,6 +507,12 @@
               "person": "Коршунов В.М.",
               "createdAt": "20.09.2021",
               "time": "09:30"
+            },
+            {
+              "text": "test",
+              "person": "Борис Хмельников",
+              "createdAt": "25.10.2021",
+              "time": "19:43:48"
             }
           ],
           "approvalStages": {

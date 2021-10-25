@@ -10,6 +10,7 @@ import ModalRedirect from './Modals/RedirectModal';
 import createComment from '../../../../../utils/createComment';
 import documentStore from '../../../../../stores/documentStore';
 import userStore from '../../../../../stores/userStore';
+import ModalApprove from './Modals/ApproveModal';
 
 const ApproveReturn: React.FC = observer(() => {
   const {
@@ -21,6 +22,7 @@ const ApproveReturn: React.FC = observer(() => {
 
   const [denyOpen, setDenyOpen] = useState(false);
   const [redirectOpen, setRedirectOpen] = useState(false);
+  const [approveOpen, setApproveOpen]=useState(false)
 
   const activeReviewer = version?.activeReviewer;
 
@@ -28,6 +30,7 @@ const ApproveReturn: React.FC = observer(() => {
     approveSwicher(role, userName);
     const comment = createComment('Принял документ', name);
     addComent(comment);
+    toggleApprove()
   };
   const toggleDeny = () => setDenyOpen(!denyOpen);
 
@@ -37,6 +40,10 @@ const ApproveReturn: React.FC = observer(() => {
     const comment = createComment(`Отправил на доработку причина: ${reason}`, name);
     addComent(comment);
   };
+
+  const toggleApprove=()=> setApproveOpen(!approveOpen)
+
+
 
   const setReviewer = (namee: string) => setActiveRewier(namee);
   const toggleRedirect = () => setRedirectOpen(!redirectOpen);
@@ -61,8 +68,9 @@ const ApproveReturn: React.FC = observer(() => {
           choose={setReviewer}
         />
       )}
+      <ModalApprove status={approveOpen} close={toggleApprove} action={approve} />
       {/* prettier-ignore */}
-      <Button onClick={approve} variant="fill" type="primary">Согласовать</Button>
+      <Button onClick={toggleApprove} variant="fill" type="primary">Согласовать</Button>
       {/* prettier-ignore */}
       <Button type="primary" onClick={toggleRedirect}>Перенаправить</Button>
       {/* prettier-ignore */}

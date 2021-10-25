@@ -8,8 +8,8 @@ const getColumns = (): ColDef[] => [
     title: 'Название',
     key: '1',
     dataKey: 'name',
-    render: ({ id, title }: { id: string; title: string }): JSX.Element => (
-      <Link to={`/documents/${id}`}>{title}</Link>
+    render: ({ id, label }: { id: string; label: string }): JSX.Element => (
+      <Link to={`/documents/${id}`}>{label}</Link>
     ),
   },
   {

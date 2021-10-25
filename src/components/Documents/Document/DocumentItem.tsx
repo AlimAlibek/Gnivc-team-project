@@ -47,7 +47,7 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
                 setLastVersion={setLastVersion}
               />
 
-              {role === Access.EDITOR && status === StatusEnum.SCATCH && (
+              {role === Access.EDITOR && !blocked && (
                 <SaveCancel />
               )}
 
