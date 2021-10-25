@@ -37,7 +37,8 @@ const Documents: React.FC = observer(() => {
 
   return (
     <Container>
-      <Modal visible={modal} title="Введите название пакета документов">
+      <Modal visible={modal} title="Введите название пакета документов"
+      width="500px">
         <div className={classes.modal}>
           <TextField
             onChange={(e) => setDocTitle(e.target.value)}
@@ -45,6 +46,7 @@ const Documents: React.FC = observer(() => {
             name="floating-label"
             label="Плавающий лейбл"
             labelStyle="floating"
+            className={classes.fields}
           />
           <div className={classes.buttons}>
             <Button variant="outline" type="primary" onClick={toggleModal}>

@@ -31,8 +31,13 @@
   width: auto;
   display: flex;
   flex-direction: column;
+  width: 450px;
+}
+.fields{
+margin-bottom: 2em;
 }
 .buttonsRow {
+  
   button {
     margin: 0 0.3em;
   }

@@ -128,6 +128,7 @@ class DocumentStore {
   approveDPP(userName: string) {
     if (this.version) {
       this.version.approvalStages.dpp = this.createStage(userName, 'dpp');
+      this.version.approvedStartAt=new Date().toLocaleDateString('ru')
       this.saveAndSend();
     }
   }
@@ -142,6 +143,7 @@ class DocumentStore {
   approveUIT(userName: string) {
     if (this.version) {
       this.version.approvalStages.uit = this.createStage(userName, 'uit');
+      this.version.approvedEndAt=new Date().toLocaleDateString('ru')
       this.version.status = Status.APPROVED;
     }
   }
