@@ -2,13 +2,10 @@ import Access from '../models/Access';
 import documentStore from '../stores/documentStore';
 
 const {
-  approveDPP,
-  approveUIB,
-  approveUIT,
-  approveFKU,
+  approveDPP, approveUIB, approveUIT, approveFKU,
 } = documentStore;
 
-const approveSwicher = (role: Access|undefined, userName: string): void => {
+const approveSwicher = (role: Access | undefined, userName: string): void => {
   if (!role) return;
   switch (role) {
     case Access.DPP:
@@ -20,7 +17,6 @@ const approveSwicher = (role: Access|undefined, userName: string): void => {
     case Access.UIT:
       approveUIT(userName);
       break;
-
     default:
       approveFKU(userName);
       break;

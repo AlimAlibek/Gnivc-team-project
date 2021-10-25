@@ -8,31 +8,36 @@ import Modal from '@ff/ui-kit/lib/Modal';
 import TextField from '@ff/ui-kit/lib/TextField';
 
 import '../../styles/icons/tabler-icons-ext.css';
-import documentStore from '../../stores/documentStore';
 import classes from './Documents.module.scss';
 import Container from '../layouts/Container';
 import getColumns from '../../utils/getColumns';
 import Access from '../../models/Access';
-import userStore from '../../stores/userStore';
+import createDocument from '../../utils/createDocument';
 import tableStore from '../../stores/tableStore';
+import documentStore from '../../stores/documentStore';
+import userStore from '../../stores/userStore';
 
+const columns = getColumns();
 const Documents: React.FC = observer(() => {
+  const {
+    documents: rows, error, isLoading, fetchDocuments,
+  } = tableStore;
+  const { createNewDocument } = documentStore;
+  const { role, name, userName } = userStore;
+
   const [modal, openModal] = useState(false);
   const [docTitle, setDocTitle] = useState('');
 
-  const toggleModal = () => {
-    openModal(!modal);
-  };
-  const { documents: rows, error, isLoading } = tableStore;
-  const { createNewDocument } = documentStore;
-  const { role } = userStore;
-  const columns = getColumns();
+  const toggleModal = () => openModal(!modal);
 
-  const createDocument = () => {
-    if (!docTitle) return;
-    createNewDocument(`${rows.length + 1}`, docTitle);
-    setDocTitle('');
-    toggleModal();
+  const formDocument = () => {
+    if (docTitle) {
+      // prettier-ignore
+      const document = createDocument(String(rows.length + 1), name, docTitle, userName);
+      createNewDocument(document).then(fetchDocuments);
+      setDocTitle('');
+      toggleModal();
+    }
   };
 
   return (
@@ -52,12 +57,10 @@ const Documents: React.FC = observer(() => {
             className={classes.fields}
           />
           <div className={classes.buttons}>
-            <Button variant="outline" type="primary" onClick={toggleModal}>
-              Отмена
-            </Button>
-            <Button type="primary" onClick={createDocument}>
-              Отправить
-            </Button>
+            {/* prettier-ignore */}
+            <Button variant="outline" type="primary" onClick={toggleModal}>Отмена</Button>
+            {/* prettier-ignore */}
+            <Button type="primary" onClick={formDocument}>Отправить</Button>
           </div>
         </div>
       </Modal>

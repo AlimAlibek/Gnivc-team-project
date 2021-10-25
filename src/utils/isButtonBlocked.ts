@@ -4,10 +4,8 @@ import Version from '../models/Version';
 
 const isButtonBlocked = (
   selectedRole: Access = Access.VIEWER,
-  version: Version,
+  { status, approvalStages }: Version,
 ): boolean => {
-  const { status, approvalStages } = version;
-
   if (!status) {
     return true;
   }

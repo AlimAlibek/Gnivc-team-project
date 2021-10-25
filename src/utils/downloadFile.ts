@@ -1,6 +1,6 @@
 import DocumentFile from '../models/DocumentFile';
 
-const downloadFile = (file: DocumentFile) => {
+const downloadFile = (file: DocumentFile): void => {
   const array = Object.values(file.content).map((n) => n);
   const arrayBuffer = new Uint8Array(array);
 

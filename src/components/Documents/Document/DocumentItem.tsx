@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { useParams } from 'react-router';
 import Typography from '@ff/ui-kit/lib/Typography';
-import clsx from 'clsx';
 
 import classes from './DocumentItem.module.scss';
 import Container from '../../layouts/Container';
@@ -17,16 +16,17 @@ import ActionButtons from './actionButtons/ActionButtons';
 import DocumentForm from './DocumentForm/DocumentForm';
 import FilesTable from './FilesTable';
 import DocumentSidebar from './DocumentSidebar';
+import isButtonBlocked from '../../../utils/isButtonBlocked';
 import userStore from '../../../stores/userStore';
 import documentStore from '../../../stores/documentStore';
-import isButtonBlocked from '../../../utils/isButtonBlocked';
 
 const DocumentItem: React.FC<DocumentPackage> = observer(() => {
   const { id } = useParams<{ id: string }>();
   const { role } = userStore;
   const {
-    isLoading, error, status, fetchDocument, version,
+    documentPackage, isLoading, error, status, version,
   } = documentStore;
+  const { setLastVersion, fetchDocument } = documentStore;
 
   useEffect(() => {
     fetchDocument(id);
@@ -38,10 +38,15 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
   return (
     <Container>
       <div className={classes.component}>
-        <div className={clsx(classes.block, classes.main)}>
-          <div className={classes.container}>
-            <div className={clsx(classes.row, classes.edge, classes.head)}>
-              <VersionList />
+        <div className={classes.data}>
+          <div>
+            <div className={classes.top}>
+              <VersionList
+                documentPackage={documentPackage}
+                version={version}
+                setLastVersion={setLastVersion}
+              />
+
               {role === Access.EDITOR && status === StatusEnum.SCATCH && (
                 <SaveCancel />
               )}
@@ -51,9 +56,9 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
               )}
             </div>
 
-            <Status />
+            <Status version={version} />
 
-            {!blocked && <ActionButtons />}
+            {!blocked && <ActionButtons role={role} status={status} />}
 
             <DocumentForm />
 

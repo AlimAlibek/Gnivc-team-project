@@ -10,21 +10,25 @@ import ModalFile from './ModalFile';
 import AddFile from './AddFile';
 import mapFilesIntoFormattedFiles from '../../../../utils/mapFilesIntoFormattedFiles';
 import downloadFile from '../../../../utils/downloadFile';
+import isFieldsBlocked from '../../../../utils/isFieldsBlocked';
+import Version from '../../../../models/Version';
 import documentStore from '../../../../stores/documentStore';
 import userStore from '../../../../stores/userStore';
-import isFieldsBlocked from '../../../../utils/isFieldsBlocked';
 
 const FilesTable: React.FC = observer(() => {
-  const { version, deleteFile, status } = documentStore;
+  const { version, status, removeFile } = documentStore;
+  const { selectedUser, userName } = userStore;
 
   const [openModal, setOpenModal] = useState(false);
   const [isFileChanging, setFileChanging] = useState<number | undefined>();
-  const { selectedUser } = userStore;
-  const disabled = (selectedUser && version) ? isFieldsBlocked(selectedUser, status, version.activeReviewer) : true;
+  const disabled = selectedUser && version
+    ? isFieldsBlocked(selectedUser, status, version.activeReviewer, userName)
+    : true;
 
   const handleAddFile = () => {
-    if (disabled) return;
-    setOpenModal(true);
+    if (!disabled) {
+      setOpenModal(true);
+    }
   };
 
   const handleModifyFile = (index: number) => {
@@ -36,9 +40,11 @@ const FilesTable: React.FC = observer(() => {
     setFileChanging(undefined);
     setOpenModal(false);
   };
-  const download = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) => {
+
+  // prettier-ignore
+  const download = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string, thisversion?: Version) => {
     e.preventDefault();
-    const file = version?.files.find((f) => f.id === id);
+    const file = thisversion?.files.find((f) => f.id === id);
     if (file) {
       downloadFile(file);
     }
@@ -50,7 +56,7 @@ const FilesTable: React.FC = observer(() => {
       title: 'Файл',
       key: '1',
       dataKey: 'nameWithId',
-      render: (nameWithId: { name: string, id: string }): JSX.Element => (
+      render: (nameWithId: { name: string; id: string }): JSX.Element => (
         <a href="#" onClick={(e) => download(e, nameWithId.id)}>
           {nameWithId.name}
         </a>
@@ -73,7 +79,7 @@ const FilesTable: React.FC = observer(() => {
           <Button
             variant="text"
             startIcon="delete"
-            onClick={() => deleteFile(index)}
+            onClick={() => removeFile(index)}
           />
         </div>
       ),
@@ -86,10 +92,7 @@ const FilesTable: React.FC = observer(() => {
       <Table columns={columns} rows={rows} className={classes.filesTable} />
       {!disabled && <AddFile onClick={handleAddFile} />}
       <Modal visible={openModal} onBackdropClick={handleCloseModal}>
-        <ModalFile
-          close={handleCloseModal}
-          isFileChanging={isFileChanging}
-        />
+        <ModalFile close={handleCloseModal} isFileChanging={isFileChanging} />
       </Modal>
     </div>
   );

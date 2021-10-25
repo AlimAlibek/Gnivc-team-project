@@ -1,13 +1,13 @@
 import React from 'react';
-import clsx from 'clsx';
 
-import ApprovalStage from '../../../../../models/ApprovalStage';
 import classes from './ApprovalStages.module.scss';
+import ApprovalStage from '../../../../../models/ApprovalStage';
 
-interface StagesRender {
-  stage: ApprovalStage
-}
-const RenderStage: React.FC<StagesRender> = ({ stage }) => {
+type SingleStageProps = {
+  stage: ApprovalStage;
+};
+
+const SingleStage: React.FC<SingleStageProps> = ({ stage }) => {
   const {
     acepted, approvedDate, approvedTime, matchedRole,
   } = stage;
@@ -20,13 +20,13 @@ const RenderStage: React.FC<StagesRender> = ({ stage }) => {
   return (
     <div className={classes.row}>
       <div
-        className={clsx(
+        className={
           acepted
             ? `${classes.iconCheck} sr-0008-circle-check`
-            : `${classes.iconClock} sr-0012-clock`,
-        )}
+            : `${classes.iconClock} sr-0012-clock`
+        }
       />
-      <div className={clsx(acepted ? classes.lineCheck : classes.lineClock)} />
+      <div className={acepted ? classes.lineCheck : classes.lineClock} />
       <div>
         {acepted ? (
           <div className={classes.grayText}>
@@ -41,4 +41,4 @@ const RenderStage: React.FC<StagesRender> = ({ stage }) => {
     </div>
   );
 };
-export default RenderStage;
+export default SingleStage;

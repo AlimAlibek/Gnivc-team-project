@@ -1,24 +1,30 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import TextAreaField from '@ff/ui-kit/lib/esm/components/TextAreaField';
 import Button from '@ff/ui-kit/lib/Button';
 import List from '@ff/ui-kit/lib/esm/components/List';
-import { v4 as uuidv4 } from 'uuid';
 
-import RenderComment from './RenderComment';
-import documentStore from '../../../../../stores/documentStore';
 import classes from './Comment.module.scss';
+import RenderComment from './RenderComment';
+import createComment from '../../../../../utils/createComment';
+import userStore from '../../../../../stores/userStore';
+import documentStore from '../../../../../stores/documentStore';
 
 const Comments: React.FC = () => {
+  const { name } = userStore;
   const { version, addComent } = documentStore;
-  const comments = version?.comments;
   const [comment, setComment] = useState('');
+
+  const comments = version?.comments;
+
   const sendComent = () => {
-    if (!comment) {
-      return;
+    if (comment) {
+      const formedComment = createComment(comment, name);
+      addComent(formedComment);
+      setComment('');
     }
-    addComent(comment);
-    setComment('');
   };
+
   return (
     <>
       <TextAreaField
@@ -41,7 +47,6 @@ const Comments: React.FC = () => {
       ) : (
         <p>Комментариев нет</p>
       )}
-
     </>
   );
 };

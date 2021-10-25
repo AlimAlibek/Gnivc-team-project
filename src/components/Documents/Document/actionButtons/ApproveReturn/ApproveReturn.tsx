@@ -1,43 +1,45 @@
-import React from 'react';
-import Button from '@ff/ui-kit/lib/Button';
+import React, { useState } from 'react';
 import { observer } from 'mobx-react';
+import Button from '@ff/ui-kit/lib/Button';
 
-import userStore from '../../../../../stores/userStore';
+import classes from './ApproveReturn.module.scss';
 import Status from '../../../../../models/Status';
 import approveSwicher from '../../../../../utils/approveSwicher';
 import ModalDeny from './Modals/DenyModal';
 import ModalRedirect from './Modals/RedirectModal';
-import classes from './ApproveReturn.module.scss';
+import createComment from '../../../../../utils/createComment';
 import documentStore from '../../../../../stores/documentStore';
+import userStore from '../../../../../stores/userStore';
 
 const ApproveReturn: React.FC = observer(() => {
-  const [denyOpen, setDenyOpen] = React.useState(false);
-  const [redirectOpen, setRedirectOpen] = React.useState(false);
   const {
     version, addComent, setActiveRewier, setStatus,
   } = documentStore;
-  const { userName, role, filterByMyRole } = userStore;
+  const {
+    userName, role, name, filterByMyRole,
+  } = userStore;
+
+  const [denyOpen, setDenyOpen] = useState(false);
+  const [redirectOpen, setRedirectOpen] = useState(false);
+
   const activeReviewer = version?.activeReviewer;
 
   const approve = () => {
     approveSwicher(role, userName);
-    addComent('Принял документ');
+    const comment = createComment('Принял документ', name);
+    addComent(comment);
   };
-  const toggleDeny = () => {
-    setDenyOpen(!denyOpen);
-  };
+  const toggleDeny = () => setDenyOpen(!denyOpen);
 
   const deny = (reason: string) => {
     setStatus(Status.REFACTORING);
-    addComent(`Отправил на доработку причина: ${reason}`);
+    // prettier-ignore
+    const comment = createComment(`Отправил на доработку причина: ${reason}`, name);
+    addComent(comment);
   };
 
-  const setReviewer = (name: string) => {
-    setActiveRewier(name);
-  };
-  const toggleRedirect = () => {
-    setRedirectOpen(!redirectOpen);
-  };
+  const setReviewer = (namee: string) => setActiveRewier(namee);
+  const toggleRedirect = () => setRedirectOpen(!redirectOpen);
   const redirectUsers = filterByMyRole();
 
   if (userName !== activeReviewer) {
@@ -51,7 +53,6 @@ const ApproveReturn: React.FC = observer(() => {
   return (
     <div className={classes.buttonsRow}>
       <ModalDeny status={denyOpen} close={toggleDeny} action={deny} />
-
       {redirectUsers && (
         <ModalRedirect
           status={redirectOpen}
@@ -60,15 +61,12 @@ const ApproveReturn: React.FC = observer(() => {
           choose={setReviewer}
         />
       )}
-      <Button onClick={approve} variant="fill" type="primary">
-        Согласовать
-      </Button>
-      <Button type="primary" onClick={toggleRedirect}>
-        Перенаправить
-      </Button>
-      <Button variant="outline" type="primary" onClick={toggleDeny}>
-        Вернуть на доработку
-      </Button>
+      {/* prettier-ignore */}
+      <Button onClick={approve} variant="fill" type="primary">Согласовать</Button>
+      {/* prettier-ignore */}
+      <Button type="primary" onClick={toggleRedirect}>Перенаправить</Button>
+      {/* prettier-ignore */}
+      <Button variant="outline" type="primary" onClick={toggleDeny}>Вернуть на доработку</Button>
     </div>
   );
 });

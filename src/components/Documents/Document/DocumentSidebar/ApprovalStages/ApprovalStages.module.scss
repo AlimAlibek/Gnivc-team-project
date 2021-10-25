@@ -20,6 +20,14 @@
   left: 11px;
 }
 
+.component {
+  font-family: Roboto, tabler-icons-ext;
+  background: #fff;
+  border-radius: 7px;
+  position: relative;
+  flex: 0 0 30%;
+}
+
 .block {
   font-family: Roboto, tabler-icons-ext;
   background: #fff;
@@ -31,40 +39,40 @@
   flex: 0 0 30%;
 }
 
-.container {
-  width: 100%;
-}
-
 .row {
   position: relative;
   display: flex;
   align-items: center;
-  padding: 12px 0
+  padding: 12px 0;
 }
 
 .subtitle {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
   font-size: 20px;
   line-height: 24px;
   font-weight: 700;
 }
 
-
 .grayText {
   @extend %text-property;
   line-height: 24px;
-  color: #94979E;
+  color: #94979e;
 }
 
 .blackText {
   @extend %text-property;
   line-height: 18px;
-  color: #18191B;
+  color: #18191b;
 }
 
 .orangeText {
   @extend %text-property;
   line-height: 18px;
-  color: #D49700;
+  color: #d49700;
 }
 
 .iconPlus {
@@ -82,26 +90,26 @@
 .iconClock {
   @extend %icon-property;
   margin-top: -18px;
-  color: #D49700;
+  color: #d49700;
 }
 
 .linePlus {
   @extend %line-property;
   height: 34px;
   top: 40px;
-  background: #D9F2DD;
+  background: #d9f2dd;
 }
 
 .lineCheck {
   @extend %line-property;
   height: 52px;
   top: 41px;
-  background: #D9F2DD;
+  background: #d9f2dd;
 }
 
 .lineClock {
   @extend %line-property;
   height: 34px;
   top: 37px;
-  background: #FFF3CC;
+  background: #fff3cc;
 }

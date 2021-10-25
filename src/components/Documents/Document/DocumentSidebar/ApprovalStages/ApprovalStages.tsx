@@ -1,24 +1,22 @@
 import React from 'react';
-import clsx from 'clsx';
 
-import documentStore from '../../../../../stores/documentStore';
-import Status from '../../../../../models/Status';
-import RenderStage from './SingleStage';
 import classes from './ApprovalStages.module.scss';
+import SingleStage from './SingleStage';
+import Status from '../../../../../models/Status';
+import documentStore from '../../../../../stores/documentStore';
 
 const ApprovalStages: React.FC = () => {
   const { version, status } = documentStore;
   const stages = version?.approvalStages;
 
-  if (!stages || status === Status.SCATCH) return <></>;
   // Они теряют порядок при мапе, если использовать лодаш value, так что пока руками
+  if (!stages || status === Status.SCATCH) return <></>;
+  const {
+    dpp, uib, fku, uit,
+  } = stages;
   return (
-    <div className={clsx(classes.block, classes.side)}>
-      <div className={classes.container}>
-        <div className={clsx(classes.row, classes.head)}>
-          <div className={classes.subtitle}> Этапы согласования </div>
-        </div>
-      </div>
+    <div className={classes.component}>
+      <div className={classes.subtitle}> Этапы согласования </div>
       <div className={classes.row}>
         <div className={`${classes.iconPlus} sr-0010-circle-plus`} />
         <div className={classes.linePlus} />
@@ -27,15 +25,17 @@ const ApprovalStages: React.FC = () => {
           <div className={classes.blackText}>Отправлен на согласование</div>
         </div>
       </div>
-      <RenderStage stage={stages.dpp} />
-      <RenderStage stage={stages.uib} />
-      <RenderStage stage={stages.fku} />
-      <RenderStage stage={stages.uit} />
+      <SingleStage stage={dpp} />
+      <SingleStage stage={uib} />
+      <SingleStage stage={fku} />
+      <SingleStage stage={uit} />
       {status === Status.APPROVED && (
         <div className={classes.row}>
           <div className={`${classes.iconPlus} sr-0019-golf`} />
           <div>
-            <div className={classes.grayText}>{stages.uit.approvedDate} в {stages.uit.approvedTime}</div>
+            <div className={classes.grayText}>
+              {uit.approvedDate} в {uit.approvedTime}
+            </div>
             <div className={classes.blackText}>Пакет документов согласован</div>
           </div>
         </div>

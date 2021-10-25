@@ -1,15 +1,14 @@
 import { makeAutoObservable } from 'mobx';
 
 import service from './documentStore.service';
-import createDocument from '../../utils/createDocument';
 import ApprovalStage from '../../models/ApprovalStage';
-import userStore from '../userStore';
 import createVersion from '../../utils/createVersion';
 import Version from '../../models/Version';
 import Status from '../../models/Status';
 import DocumentPackage from '../../models/DocumentPackage';
 import Access from '../../models/Access';
 import DocumentFile from '../../models/DocumentFile';
+import Comment from '../../models/Comment';
 
 class DocumentStore {
   documentPackage: DocumentPackage | undefined = undefined;
@@ -28,8 +27,12 @@ class DocumentStore {
     return this.version?.status ?? Status.SCATCH;
   }
 
-  get isTheLastVersionFinished() {
-    return service.isTheLastVersionFinished(this.documentPackage?.versions);
+  get isTheLastVersionFinished(): boolean | undefined {
+    if (!this.documentPackage) {
+      return false;
+    }
+    const { versions } = this.documentPackage;
+    return versions[versions.length - 1].status === Status.APPROVED;
   }
 
   setDocument(document: DocumentPackage) {
@@ -60,6 +63,12 @@ class DocumentStore {
     }
   }
 
+  setLastVersion(versions: Version[] | undefined) {
+    if (versions) {
+      this.setVersion(versions[versions.length - 1]);
+    }
+  }
+
   createStage(userName: string, label: string): ApprovalStage {
     return {
       acepted: true,
@@ -70,61 +79,12 @@ class DocumentStore {
     };
   }
 
-  setLastVersion(versions: Version[] | undefined) {
-    if (versions) {
-      this.version = versions[versions.length - 1];
-    }
-  }
-
-  createNewVersion() {
-    const { name, userName } = userStore;
-    let newVersion;
-    if (this.documentPackage && name) {
-      newVersion = createVersion(
-        `${this.documentPackage.versions.length + 1}`,
-        name, userName,
-      );
-      this.documentPackage.versions.push(newVersion);
-      this.version = newVersion;
-    }
-  }
-
-  createNewDocument(id: string, title: string) {
-    const { name, userName } = userStore;
-    const res = createDocument(id, name, title, userName);
-    service.postDoc(res);
-  }
-
-  deleteVersion() {
-    const { documentPackage, version } = this;
-    if (!documentPackage) return;
-    documentPackage.versions = documentPackage.versions.filter(
-      (oldVersion) => oldVersion.version !== version?.version,
-    );
-    service.patchDoc(documentPackage);
-    this.setLastVersion(documentPackage.versions);
-  }
-
   setStatus(status: Status) {
     if (this.version) {
       this.version.status = status;
       this.saveAndSend();
     }
   }
-
-  /*eslint-disable */
-
-  saveAndSend() {
-    if (this.documentPackage && this.version) {
-      this.documentPackage.versions.map((oldVersion) => {
-        if (oldVersion.version !== this.version?.version) return oldVersion;
-        return (oldVersion = this.version);
-      });
-      service.patchDoc(this.documentPackage);
-    }
-  }
-
-    /* eslint-enable */
 
   approveDPP(userName: string) {
     if (this.version) {
@@ -160,38 +120,20 @@ class DocumentStore {
     }
   }
 
-  addComent(text: string) {
-    const { name } = userStore;
-    this.version?.comments.push({
-      text,
-      person: name,
-      createdAt: new Date().toLocaleDateString('ru'),
-      time: new Date().toLocaleTimeString('ru'),
-    });
-     this.saveAndSend();
+  /*eslint-disable */
+
+  saveAndSend() {
+    const { documentPackage: doc, version } = this;
+    if (doc && version) {
+      doc.versions.map((oldVersion) => {
+        if (oldVersion.version !== version.version) return oldVersion;
+        return (oldVersion = version);
+      });
+      service.updateDocument(doc);
+    }
   }
 
-  // ==================================================================================
-  // добавление файла
-  addFile(file: DocumentFile) {
-    if (this.version) { this.version.files = [...this.version.files, file]; }
-  }
-
-  putDocument() {
-    if (!this.documentPackage?.id) return;
-    service.putDocument(this.documentPackage)
-      .then((data) => this.setDocument(data));
-  }
-
-  // ==================================================================================
-  // изменение файла
-  changeFile(file: DocumentFile, index: number) {
-    this.version?.files.splice(index, 1, file);
-  }
-
-  deleteFile(index: number) {
-    this.version?.files.splice(index, 1);
-  }
+  /* eslint-enable */
 
   fetchDocument(id: string) {
     this.setIsLoading(true);
@@ -208,6 +150,56 @@ class DocumentStore {
         }
       })
       .finally(() => this.setIsLoading(false));
+  }
+
+  createNewDocument(document: DocumentPackage) {
+    return service.createNewDocument(document);
+  }
+
+  addComent(comment: Comment) {
+    const { documentPackage: doc } = this;
+    if (doc) {
+      service.addComment(doc, comment);
+    }
+  }
+
+  addFile(file: DocumentFile) {
+    const { documentPackage: doc } = this;
+    if (doc) {
+      service.addFile(doc, file);
+    }
+  }
+
+  updateFile(file: DocumentFile, index: number) {
+    const { documentPackage: doc } = this;
+    if (doc) {
+      service.updateFile(doc, file, index);
+    }
+  }
+
+  createNewVersion(name: string, userName: string) {
+    const { documentPackage: doc } = this;
+    if (doc) {
+      // prettier-ignore
+      const newVersion = createVersion(`${doc.versions.length + 1}`, name, userName);
+      doc.versions.push(newVersion);
+      this.setVersion(newVersion);
+    }
+  }
+
+  removeVersion() {
+    const { documentPackage: doc, version, setLastVersion } = this;
+    if (doc && version) {
+      service.removeVersion(doc, version);
+      setLastVersion(doc.versions);
+    }
+  }
+
+  removeFile(index: number) {
+    const { documentPackage: doc } = this;
+    if (doc) {
+      service.removeFile(doc, index);
+    }
   }
 }
 

@@ -8,6 +8,7 @@
   align-items: center;
   padding: 24px 24px 16px;
 }
+
 .title {
   font-family: Roboto;
   font-weight: 700;
@@ -15,6 +16,7 @@
   color: #18191b;
   line-height: 32px;
 }
+
 .button {
   display: flex;
   span {
@@ -27,17 +29,19 @@
     align-items: center;
   }
 }
+
 .modal {
   width: auto;
   display: flex;
   flex-direction: column;
   width: 450px;
 }
-.fields{
-margin-bottom: 2em;
+
+.fields {
+  margin-bottom: 2em;
 }
+
 .buttonsRow {
-  
   button {
     margin: 0 0.3em;
   }

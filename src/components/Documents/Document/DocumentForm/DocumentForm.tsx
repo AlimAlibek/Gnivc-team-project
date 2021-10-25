@@ -11,15 +11,23 @@ import gkSelect from '../../../../content/gk';
 import packSelect from '../../../../content/package';
 import prioritySelect from '../../../../content/priority';
 import classes from './DocumentForm.module.scss';
-import documentStore from '../../../../stores/documentStore';
-import userStore from '../../../../stores/userStore';
 import mapUsersIntoOptions from '../../../../utils/mapUsersIntoOptions';
 import Access from '../../../../models/Access';
+import documentStore from '../../../../stores/documentStore';
+import userStore from '../../../../stores/userStore';
 
 const DocumentForm: React.FC = observer(() => {
-  const { filterByRole, users, selectedUser } = userStore;
-  const editors = filterByRole(Access.EDITOR);
+  if (!documentStore.version) return <div />;
+  const { version } = documentStore;
+  let {
+    contour, priority, packageType, gk, versionCode,
+  } = version;
+  const { activeReviewer, status } = version;
+  const {
+    selectedUser, users, userName, filterByRole,
+  } = userStore;
 
+  const editors = filterByRole(Access.EDITOR);
   const editorOptions = editors
     ? mapUsersIntoOptions(editors)
     : [
@@ -27,39 +35,44 @@ const DocumentForm: React.FC = observer(() => {
       { key: 2, value: 'userHmelnikov2', label: 'Борис Хмельников' },
     ];
 
-  if (!documentStore.version) return <div />;
-  const {
-    contour, priority, packageType, gk, activeReviewer, status,
-  } = documentStore.version;
   const blocked = selectedUser
-    ? isFieldsBlocked(selectedUser, status, activeReviewer)
+    ? isFieldsBlocked(selectedUser, status, activeReviewer, userName)
     : true;
 
   const changeLabel = (newName: string) => {
-    if (documentStore.version) documentStore.version.label = newName;
+    if (version) version.label = newName;
   };
 
   const setResponsible = (newUserName: string | string[]) => {
     const findName = users.find((el) => el.userName === newUserName);
-    if (documentStore.version && findName?.name && !isArray(newUserName)) {
-      documentStore.version.responsibleUserName = newUserName;
-      documentStore.version.responsiblePerson = findName.name;
+    if (version && findName?.name && !isArray(newUserName)) {
+      version.responsibleUserName = newUserName;
+      version.responsiblePerson = findName.name;
     }
   };
   const changeVersionCode = (newCode: string) => {
-    if (documentStore.version) documentStore.version.versionCode = newCode;
+    versionCode = newCode;
   };
+
   const changePriority = (newPriority: string | string[]) => {
-    if (!isArray(newPriority) && documentStore.version) documentStore.version.priority = newPriority;
+    if (!isArray(newPriority)) {
+      priority = newPriority;
+    }
   };
   const changeContur = (newContur: string | string[]) => {
-    if (!isArray(newContur) && documentStore.version) documentStore.version.contour = newContur;
+    if (!isArray(newContur)) {
+      contour = newContur;
+    }
   };
   const changePackageType = (newPackage: string | string[]) => {
-    if (!isArray(newPackage) && documentStore.version) documentStore.version.packageType = newPackage;
+    if (!isArray(newPackage)) {
+      packageType = newPackage;
+    }
   };
   const changeGk = (newGk: string | string[]) => {
-    if (!isArray(newGk) && documentStore.version) documentStore.version.gk = newGk;
+    if (!isArray(newGk)) {
+      gk = newGk;
+    }
   };
 
   return (

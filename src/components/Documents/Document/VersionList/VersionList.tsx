@@ -1,12 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { observer } from 'mobx-react-lite';
+import List from '@ff/ui-kit/lib/esm/components/List';
+import { useHistory } from 'react-router';
 
 import classes from './VersionList.module.scss';
-import VersionSelect from './VersionSelect';
-import documentStore from '../../../../stores/documentStore';
+import RenderVersion from './RenderVersion';
+import DocumentPackage from '../../../../models/DocumentPackage';
+import Version from '../../../../models/Version';
 
-const VersionList: React.FC = observer(() => {
-  const { documentPackage, version, setLastVersion } = documentStore;
+type VersionListProps = {
+  documentPackage?: DocumentPackage;
+  version?: Version;
+  setLastVersion: (versions: Version[] | undefined) => void;
+};
+
+const VersionList: React.FC<VersionListProps> = ({
+  documentPackage,
+  version,
+  setLastVersion,
+}) => {
+  const history = useHistory();
+
   const [isSelectOpen, setIsSelectOpen] = useState(false);
 
   useEffect(() => {
@@ -19,7 +32,12 @@ const VersionList: React.FC = observer(() => {
   return (
     <div className={classes.component}>
       <div className={classes.title}>
-        <i className="sr-0117-arrow-left" />
+        <i
+          onClick={() => history.push('/home')}
+          className="sr-0117-arrow-left"
+          style={{ cursor: 'pointer' }}
+          aria-hidden="true"
+        />
         Версия пакета
         <span className={classes.version}>№{version?.version}</span>
         {isSelectOpen ? (
@@ -30,10 +48,14 @@ const VersionList: React.FC = observer(() => {
               style={{ cursor: 'pointer' }}
               role="presentation"
             />
-            <VersionSelect
-              closeSelect={closeSelect}
-              versions={documentPackage?.versions || []}
-            />
+            <List className={classes.select}>
+              {documentPackage?.versions.map((versionItem) => (
+                <RenderVersion
+                  closeSelect={closeSelect}
+                  version={versionItem}
+                />
+              ))}
+            </List>
             <div
               className={classes.closeArea}
               onClick={closeSelect}
@@ -51,5 +73,5 @@ const VersionList: React.FC = observer(() => {
       </div>
     </div>
   );
-});
+};
 export default VersionList;

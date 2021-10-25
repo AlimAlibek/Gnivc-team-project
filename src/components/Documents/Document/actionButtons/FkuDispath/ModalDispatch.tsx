@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import Modal from '@ff/ui-kit/lib/Modal';
 import Select from '@ff/ui-kit/lib/Select';
 import Button from '@ff/ui-kit/lib/Button';
-import { v4 as uuidv4 } from 'uuid';
 
 import classes from './FkuDispath.module.scss';
 import ModalWindow from '../../../../../models/ModalWindow';
@@ -22,27 +22,23 @@ interface DispathWindow extends ModalWindow {
   choose: (name: Access) => void;
 }
 
-const ModalDispath: React.FC<DispathWindow> = (props) => {
-  const { status, close, choose } = props;
+const ModalDispath: React.FC<DispathWindow> = ({ status, close, choose }) => {
   const [role, chooseRole] = useState<string | string[]>('');
 
   const convertToEnum = (str: string | string[]) => {
-    if (!role) return;
-    let res;
-    switch (str) {
-      case 'gnivcFkuExpert':
-        res = Access.EXPERT;
-        break;
-      case 'gnivcFkuTech':
-        res = Access.TEH;
-        break;
-      case 'gnivcFkuSupervisor':
-        res = Access.SUPERVISOR;
-        break;
-      default:
-        break;
+    if (role) {
+      switch (str) {
+        case 'gnivcFkuExpert':
+          return Access.EXPERT;
+        case 'gnivcFkuTech':
+          return Access.TEH;
+        case 'gnivcFkuSupervisor':
+          return Access.SUPERVISOR;
+        default:
+          return undefined;
+      }
     }
-    return res;
+    return undefined;
   };
 
   const selectRole = () => {
@@ -63,12 +59,10 @@ const ModalDispath: React.FC<DispathWindow> = (props) => {
           onChange={(e) => chooseRole(e)}
         />
         <div className={classes.buttonsRow}>
-          <Button variant="outline" type="primary" onClick={close}>
-            Отмена
-          </Button>
-          <Button type="primary" onClick={selectRole}>
-            Назначить
-          </Button>
+          {/* prettier-ignore */}
+          <Button variant="outline" type="primary" onClick={close}>Отмена</Button>
+          {/* prettier-ignore */}
+          <Button type="primary" onClick={selectRole}>Назначить</Button>
         </div>
       </div>
     </Modal>

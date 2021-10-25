@@ -3,14 +3,20 @@ import React from 'react';
 
 import classes from './Decide.module.scss';
 import Status from '../../../../../models/Status';
+import createComment from '../../../../../utils/createComment';
 import documentStore from '../../../../../stores/documentStore';
+import userStore from '../../../../../stores/userStore';
 
 const Decide: React.FC = () => {
   const { status, setStatus, addComent } = documentStore;
+  const { name } = userStore;
+
   const sendToApproval = () => {
     setStatus(Status.APPROVING);
-    addComent('Отправил на согласование');
+    const comment = createComment('Отправил на согласование', name);
+    addComent(comment);
   };
+
   return (
     <div className={classes.buttonsRow}>
       <Button variant="fill" type="primary" onClick={sendToApproval}>

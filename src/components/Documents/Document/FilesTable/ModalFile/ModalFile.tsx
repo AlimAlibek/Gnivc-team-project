@@ -4,10 +4,10 @@ import Button from '@ff/ui-kit/lib/Button';
 import Select from '@ff/ui-kit/lib/Select';
 import { ResultFilesObjectType, ResultFileType } from '@ff/ui-kit';
 
-import DocumentFile from '../../../../../models/DocumentFile';
 import classes from './ModalFile.module.scss';
-import documentStore from '../../../../../stores/documentStore';
+import DocumentFile from '../../../../../models/DocumentFile';
 import getInputFile from '../../../../../utils/getInputFile';
+import documentStore from '../../../../../stores/documentStore';
 
 const options2 = [
   { key: 1, value: 'Схема', label: 'Схема' },
@@ -20,7 +20,9 @@ interface FileModalWindow {
   isFileChanging: number | undefined;
 }
 const ModalFile: React.FC<FileModalWindow> = ({ close, isFileChanging }) => {
-  const { version, addFile, changeFile } = documentStore;
+  const { version, addFile, updateFile } = documentStore;
+
+  // prettier-ignore
   const [modifiableFile, setModifiableFile] = useState<ResultFilesObjectType | undefined>(undefined);
   const [fileType, setFileType] = useState('');
 
@@ -31,7 +33,7 @@ const ModalFile: React.FC<FileModalWindow> = ({ close, isFileChanging }) => {
       setModifiableFile(getInputFile(file));
       setFileType(file.fileType);
     }
-  }, [isFileChanging]);
+  }, [isFileChanging, version?.files]);
 
   const onUpload = (file: ResultFilesObjectType): void => {
     const entries = Object.entries(file);
@@ -47,9 +49,7 @@ const ModalFile: React.FC<FileModalWindow> = ({ close, isFileChanging }) => {
   };
 
   const onTypeChange = (value: string | string[]) => {
-    setFileType(
-      typeof value === 'string' ? value : value.join(', '),
-    );
+    setFileType(typeof value === 'string' ? value : value.join(', '));
   };
 
   const save = () => {
@@ -64,8 +64,8 @@ const ModalFile: React.FC<FileModalWindow> = ({ close, isFileChanging }) => {
       id: Date.now().toString(),
     };
 
-    (isFileChanging !== undefined)
-      ? changeFile(newFile, isFileChanging)
+    isFileChanging !== undefined
+      ? updateFile(newFile, isFileChanging)
       : addFile(newFile);
 
     setModifiableFile(undefined);
