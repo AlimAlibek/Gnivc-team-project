@@ -4,23 +4,19 @@ import Typography from '@ff/ui-kit/lib/esm/components/Typography';
 import Table, { ColDef } from '@ff/ui-kit/lib/esm/components/Table';
 import Button from '@ff/ui-kit/lib/Button';
 import Modal from '@ff/ui-kit/lib/Modal';
-import { ResultFilesObjectType } from '@ff/ui-kit';
 
 import classes from './FilesTable.module.scss';
 import ModalFile from './ModalFile';
+import AddFile from './AddFile';
 import mapFilesIntoFormattedFiles from '../../../../utils/mapFilesIntoFormattedFiles';
-import getInputFile from '../../../../utils/getInputFile';
 import downloadFile from '../../../../utils/downloadFile';
 import documentStore from '../../../../stores/documentStore';
-import AddFile from './AddFile';
 
 const FilesTable: React.FC = observer(() => {
   const { version, isBlocked, deleteFile } = documentStore;
   const disabled = isBlocked();
 
   const [openModal, setOpenModal] = useState(false);
-  const [modifiableFile, setModifiableFile] = useState<ResultFilesObjectType | undefined>(undefined);
-  const [fileType, setFileType] = useState('');
   const [isFileChanging, setFileChanging] = useState<number | undefined>();
 
   const handleAddFile = () => {
@@ -29,26 +25,11 @@ const FilesTable: React.FC = observer(() => {
   };
 
   const handleModifyFile = (index: number) => {
-    const file = version?.files[index];
-    if (file) {
-      setOpenModal(true);
-      setModifiableFile(getInputFile(file));
-      setFileType(file.fileType);
-      setFileChanging(index);
-     
-    }
-  };
-
-  const handleUpload = (file: ResultFilesObjectType | undefined) => {
-    setModifiableFile(file);
-  };
-  const handleFileTypeChange = (type: string) => {
-    setFileType(type);
+    setFileChanging(index);
+    setOpenModal(true);
   };
 
   const handleCloseModal = () => {
-    setModifiableFile(undefined);
-    setFileType('');
     setFileChanging(undefined);
     setOpenModal(false);
   };
@@ -76,7 +57,7 @@ const FilesTable: React.FC = observer(() => {
     { title: 'Версия пакета', key: '3', dataKey: 'packageVersion' },
     { title: 'Загружен', key: '4', dataKey: 'uploadedAt' },
     {
-      title: '',
+      title: 'Действия',
       key: '5',
       dataKey: 'index',
       render: (index: number): JSX.Element => (
@@ -97,18 +78,13 @@ const FilesTable: React.FC = observer(() => {
   ];
 
   return (
-     <div className={classes.component}>
-
-      <Typography className={classes.title}>Файлы</Typography>
-      <Table columns={columns} rows={rows} />
-      {!disabled && <AddFile onClick={handleAddFile} />} 
+    <div className={classes.component}>
+      <Typography className={classes.subtitle}>Файлы</Typography>
+      <Table columns={columns} rows={rows} className={classes.filesTable} />
+      {!disabled && <AddFile onClick={handleAddFile} />}
       <Modal visible={openModal} onBackdropClick={handleCloseModal}>
-        <ModalFile 
+        <ModalFile
           close={handleCloseModal}
-          modifiableFile={modifiableFile}
-          fileType={fileType}
-          handleUpload={handleUpload}
-          handleFileTypeChange={handleFileTypeChange}
           isFileChanging={isFileChanging}
         />
       </Modal>

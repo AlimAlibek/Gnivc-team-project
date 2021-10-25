@@ -5,11 +5,7 @@ import classes from './ApprovalStages.module.scss';
 
 const ApprovalStages: React.FC = () => (
   <div className={clsx(classes.block, classes.side)}>
-    <div className={classes.container}>
-      <div className={clsx(classes.row, classes.head)}>
-        <div className={classes.subtitle}> Этапы согласования </div>
-      </div>
-    </div>
+
     <div className={classes.row}>
       <div className={`${classes.iconPlus} sr-0010-circle-plus`} />
       <div className={classes.linePlus} />

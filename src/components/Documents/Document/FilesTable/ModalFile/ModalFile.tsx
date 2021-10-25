@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FileUploader from '@ff/ui-kit/lib/FileUploader';
-import Modal from '@ff/ui-kit/lib/Modal';
 import Button from '@ff/ui-kit/lib/Button';
 import Select from '@ff/ui-kit/lib/Select';
 import { ResultFilesObjectType, ResultFileType } from '@ff/ui-kit';
 
-import ModalWindow from '../../../../../models/ModalWindow';
 import DocumentFile from '../../../../../models/DocumentFile';
 import classes from './ModalFile.module.scss';
 import documentStore from '../../../../../stores/documentStore';
+import getInputFile from '../../../../../utils/getInputFile';
 
 const options2 = [
   { key: 1, value: 'Схема', label: 'Схема' },
@@ -18,31 +17,37 @@ const options2 = [
 
 interface FileModalWindow {
   close: () => void;
-  modifiableFile: ResultFilesObjectType | undefined;
-  fileType: string;
-  handleUpload: (file: ResultFilesObjectType | undefined) => void;
-  handleFileTypeChange: (type: string) => void;
   isFileChanging: number | undefined;
 }
-const ModalFile: React.FC<FileModalWindow> = (props) => {
+const ModalFile: React.FC<FileModalWindow> = ({ close, isFileChanging }) => {
   const { version, addFile, changeFile } = documentStore;
-  const {
-     close, modifiableFile, fileType, handleFileTypeChange, handleUpload, isFileChanging,
-  } = props;
+  const [modifiableFile, setModifiableFile] = useState<ResultFilesObjectType | undefined>(undefined);
+  const [fileType, setFileType] = useState('');
 
-  const onUpload = (file: ResultFilesObjectType) => {
+  useEffect(() => {
+    if (isFileChanging === undefined) return;
+    const file = version?.files[isFileChanging];
+    if (file) {
+      setModifiableFile(getInputFile(file));
+      setFileType(file.fileType);
+    }
+  }, [isFileChanging]);
+
+  const onUpload = (file: ResultFilesObjectType): void => {
     const entries = Object.entries(file);
-    if (entries.length === 0) return handleUpload(undefined);
-
-    const lastPare = entries[entries.length - 1];
-    const lastFile = {
-      [lastPare[0]]: lastPare[1],
-    };
-    handleUpload(lastFile);
+    if (entries.length === 0) {
+      setModifiableFile(undefined);
+    } else {
+      const lastPare = entries[entries.length - 1];
+      const lastFile = {
+        [lastPare[0]]: lastPare[1],
+      };
+      setModifiableFile(lastFile);
+    }
   };
 
   const onTypeChange = (value: string | string[]) => {
-    handleFileTypeChange(
+    setFileType(
       typeof value === 'string' ? value : value.join(', '),
     );
   };
@@ -62,11 +67,13 @@ const ModalFile: React.FC<FileModalWindow> = (props) => {
     (isFileChanging !== undefined)
       ? changeFile(newFile, isFileChanging)
       : addFile(newFile);
+
+    setModifiableFile(undefined);
+    setFileType('');
     close();
   };
 
   return (
-    // <Modal visible={status}>
     <>
       <FileUploader
         accept=".txt, .docx, .xlsx, .vsd, .pdf, .rtf"
@@ -94,7 +101,6 @@ const ModalFile: React.FC<FileModalWindow> = (props) => {
         </Button>
       </div>
     </>
-    // </Modal> 
   );
 };
 export default ModalFile;
