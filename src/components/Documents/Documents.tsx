@@ -37,8 +37,11 @@ const Documents: React.FC = observer(() => {
 
   return (
     <Container>
-      <Modal visible={modal} title="Введите название пакета документов"
-      width="500px">
+      <Modal
+        visible={modal}
+        title="Введите название пакета документов"
+        width="500px"
+      >
         <div className={classes.modal}>
           <TextField
             onChange={(e) => setDocTitle(e.target.value)}

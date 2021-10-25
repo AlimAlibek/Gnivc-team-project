@@ -19,6 +19,7 @@ const createVersion = (version: string, name: string, userName: string): Version
   approvedStartAt: '',
   approvedEndAt: '',
   activeReviewer: '',
+  files: [],
   comments: [
     {
       text: 'Создал новую версию',

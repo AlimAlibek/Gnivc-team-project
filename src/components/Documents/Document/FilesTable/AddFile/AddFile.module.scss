@@ -1,0 +1,14 @@
+.addFile {
+    padding: 20px 0;
+
+    & .button {
+        display: flex;
+        align-items: center;
+        &>i {
+            font-size: 24px;
+            margin-right: 6px;
+        } 
+    }
+    
+}    
+

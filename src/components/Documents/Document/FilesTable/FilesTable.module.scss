@@ -2,43 +2,25 @@
   display: flex;
   flex-direction: column;
 }
-.textField{
-  width: 400px;
-  margin-bottom: 1em;
-}
-.title {
-  color: #18191b;
+.subtitle {
   font-size: 20px;
   line-height: 24px;
   font-weight: 700;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
-.loadText {
-  color: #afb1b6;
+
+.filesTable {
   font-size: 14px;
-  padding: 10px 0;
+  & th {
+    background-color: #F4F5F5;
+    padding: 30px 24px;
+    border: 1px solid #CACBCF;
+  }
+ & td {
+   border: 1px solid #CACBCF;
+ }
 }
-.date{
-  font-size: 16px;
-}
-.modal{
-  display: flex;
-  flex-direction: column;
-}
-.row,
-.textRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.textRow{
-  margin-bottom: 1em;
-}
-.link{
-  color: #0057FF;
-  font-size: 16px;
-  cursor: pointer;
-}
+
 .invisible{
  visibility: hidden;
 }

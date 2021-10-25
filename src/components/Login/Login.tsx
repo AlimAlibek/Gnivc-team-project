@@ -9,7 +9,9 @@ import userStore from '../../stores/userStore';
 import translateRole from '../../utils/translateRole';
 
 const Login: React.FC = observer(() => {
-  const { users, role, setUser,name } = userStore;
+  const {
+    users, role, setUser, name,
+  } = userStore;
   const options = mapUsersIntoOptions(users);
   return (
     <div className={classes.component}>

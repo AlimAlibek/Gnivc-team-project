@@ -27,6 +27,13 @@ const service = {
     }
   },
 
+  // ========================================================================================Метод Али, вроде не используется
+  async putDocument(documentPackage: DocumentPackage): Promise<DocumentPackage> {
+    const { id } = documentPackage;
+    const response = await httpClient.put<DocumentPackage>(`/documents/${id}`, documentPackage);
+    return response.data;
+  },
+  // ============================================================================================
   isTheLastVersionFinished(versions: Version[] | undefined): boolean {
     if (!versions) return false;
     return versions[versions.length - 1].status === Status.APPROVED;

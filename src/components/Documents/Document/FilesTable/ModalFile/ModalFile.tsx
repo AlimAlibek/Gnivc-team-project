@@ -1,77 +1,106 @@
-import React from 'react';
-import Typography from '@ff/ui-kit/lib/esm/components/Typography';
-import Modal from '@ff/ui-kit/lib/Modal';
+import React, { useEffect, useState } from 'react';
+import FileUploader from '@ff/ui-kit/lib/FileUploader';
 import Button from '@ff/ui-kit/lib/Button';
 import Select from '@ff/ui-kit/lib/Select';
-import TextField from '@ff/ui-kit/lib/TextField';
+import { ResultFilesObjectType, ResultFileType } from '@ff/ui-kit';
 
-import ModalWindow from '../../../../../models/ModalWindow';
+import DocumentFile from '../../../../../models/DocumentFile';
 import classes from './ModalFile.module.scss';
+import documentStore from '../../../../../stores/documentStore';
+import getInputFile from '../../../../../utils/getInputFile';
 
 const options2 = [
-  { key: 1, value: 'first', label: 'Значение первое' },
-  { key: 2, value: 'second', label: 'Значение второе' },
-  { key: 3, value: 'third', label: 'Значение третье' },
+  { key: 1, value: 'Схема', label: 'Схема' },
+  { key: 2, value: 'Проектная документация', label: 'Проектная документация' },
+  { key: 3, value: 'График', label: 'График' },
 ];
-interface ModalWindowFile extends ModalWindow{
-  exist?: boolean;
+
+interface FileModalWindow {
+  close: () => void;
+  isFileChanging: number | undefined;
 }
+const ModalFile: React.FC<FileModalWindow> = ({ close, isFileChanging }) => {
+  const { version, addFile, changeFile } = documentStore;
+  const [modifiableFile, setModifiableFile] = useState<ResultFilesObjectType | undefined>(undefined);
+  const [fileType, setFileType] = useState('');
 
-const ModalFile: React.FC<ModalWindowFile> = (props) => {
-  const { status, close, exist = true } = props;
+  useEffect(() => {
+    if (isFileChanging === undefined) return;
+    const file = version?.files[isFileChanging];
+    if (file) {
+      setModifiableFile(getInputFile(file));
+      setFileType(file.fileType);
+    }
+  }, [isFileChanging]);
 
-  const title = exist ? 'Изменение файла' : 'Добавление файла';
+  const onUpload = (file: ResultFilesObjectType): void => {
+    const entries = Object.entries(file);
+    if (entries.length === 0) {
+      setModifiableFile(undefined);
+    } else {
+      const lastPare = entries[entries.length - 1];
+      const lastFile = {
+        [lastPare[0]]: lastPare[1],
+      };
+      setModifiableFile(lastFile);
+    }
+  };
 
-  const fileContent = (
-    <div className={classes.modal}>
-      <TextField
-        name="floating-label"
-        label="Наименование"
-        labelStyle="floating"
-        className={classes.textField}
+  const onTypeChange = (value: string | string[]) => {
+    setFileType(
+      typeof value === 'string' ? value : value.join(', '),
+    );
+  };
+
+  const save = () => {
+    if (!modifiableFile) return;
+    const fileData: ResultFileType = Object.values(modifiableFile)[0];
+
+    const newFile: DocumentFile = {
+      ...fileData,
+      fileType,
+      uploadedAt: new Date().toLocaleDateString(),
+      packageVersion: version?.version || '',
+      id: Date.now().toString(),
+    };
+
+    (isFileChanging !== undefined)
+      ? changeFile(newFile, isFileChanging)
+      : addFile(newFile);
+
+    setModifiableFile(undefined);
+    setFileType('');
+    close();
+  };
+
+  return (
+    <>
+      <FileUploader
+        accept=".txt, .docx, .xlsx, .vsd, .pdf, .rtf"
+        onChange={onUpload}
+        maxFileSizeInBytes={10000000}
+        value={modifiableFile}
+        withPreview
       />
       <Select
         label="Тип"
         options={options2}
         floatingLabel
-        style={{ width: '400px', margin: '1.5em 0' }}
+        style={{ margin: '1.5em 0' }}
+        fullWidth
+        onChange={onTypeChange}
+        value={fileType}
       />
-      {exist && (
-      <div className={classes.textRow}>
-        <div>
-          <Typography className={classes.loadText}>Загружен </Typography>
-          <Typography className={classes.date}>10.20.1987</Typography>
-        </div>
-        <Typography.Link className={classes.link}>Скачать файл</Typography.Link>
-      </div>
-      )}
-      <div className={classes.row}>
-        <Button
-          variant="outline"
-          type="primary"
-          startIcon="file_earmark_arrow-up"
-        >
-          Загрузить
+
+      <div className={classes.buttons}>
+        <Button type="primary" onClick={save}>
+          Сохранить
         </Button>
-        <div>
-          <Button type="primary">Сохранить</Button>
-          <Button variant="outline" type="primary" onClick={close}>
-            Отмена
-          </Button>
-        </div>
+        <Button variant="outline" type="primary" onClick={close}>
+          Отмена
+        </Button>
       </div>
-    </div>
-  );
-  // Тут будет что то
-  return (
-    <Modal
-      width="470px"
-      visible={status}
-      onClose={close}
-      title={title}
-    >
-      {fileContent}
-    </Modal>
+    </>
   );
 };
 export default ModalFile;

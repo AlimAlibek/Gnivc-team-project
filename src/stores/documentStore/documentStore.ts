@@ -9,6 +9,7 @@ import Version from '../../models/Version';
 import Status from '../../models/Status';
 import DocumentPackage from '../../models/DocumentPackage';
 import Access from '../../models/Access';
+import DocumentFile from '../../models/DocumentFile';
 
 class DocumentStore {
   documentPackage: DocumentPackage | undefined = undefined;
@@ -128,7 +129,8 @@ class DocumentStore {
   approveDPP(userName: string) {
     if (this.version) {
       this.version.approvalStages.dpp = this.createStage(userName, 'dpp');
-      this.version.approvedStartAt=new Date().toLocaleDateString('ru')
+      this.version.approvedStartAt = new Date().toLocaleDateString('ru');
+      this.version.activeReviewer = '';
       this.saveAndSend();
     }
   }
@@ -136,6 +138,7 @@ class DocumentStore {
   approveUIB(userName: string) {
     if (this.version) {
       this.version.approvalStages.uib = this.createStage(userName, 'uib');
+      this.version.activeReviewer = '';
       this.saveAndSend();
     }
   }
@@ -143,14 +146,16 @@ class DocumentStore {
   approveUIT(userName: string) {
     if (this.version) {
       this.version.approvalStages.uit = this.createStage(userName, 'uit');
-      this.version.approvedEndAt=new Date().toLocaleDateString('ru')
-      this.version.status = Status.APPROVED;
+      this.version.approvedEndAt = new Date().toLocaleDateString('ru');
+      this.version.activeReviewer = '';
+      this.setStatus(Status.APPROVED);
     }
   }
 
   approveFKU(userName: string) {
     if (this.version) {
       this.version.approvalStages.fku = this.createStage(userName, 'fku');
+      this.version.activeReviewer = '';
       this.saveAndSend();
     }
   }
@@ -163,6 +168,28 @@ class DocumentStore {
       createdAt: new Date().toLocaleDateString('ru'),
       time: new Date().toLocaleTimeString('ru'),
     });
+  }
+
+  // ==================================================================================
+  // добавление файла
+  addFile(file: DocumentFile) {
+    if (this.version) { this.version.files = [...this.version.files, file]; }
+  }
+
+  putDocument() {
+    if (!this.documentPackage?.id) return;
+    service.putDocument(this.documentPackage)
+      .then((data) => this.setDocument(data));
+  }
+
+  // ==================================================================================
+  // изменение файла
+  changeFile(file: DocumentFile, index: number) {
+    this.version?.files.splice(index, 1, file);
+  }
+
+  deleteFile(index: number) {
+    this.version?.files.splice(index, 1);
   }
 
   fetchDocument(id: string) {

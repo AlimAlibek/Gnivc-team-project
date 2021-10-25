@@ -3,46 +3,78 @@ import { observer } from 'mobx-react-lite';
 import Typography from '@ff/ui-kit/lib/esm/components/Typography';
 import Table, { ColDef } from '@ff/ui-kit/lib/esm/components/Table';
 import Button from '@ff/ui-kit/lib/Button';
+import Modal from '@ff/ui-kit/lib/Modal';
 
-import ModalFile from './ModalFile';
 import classes from './FilesTable.module.scss';
+import ModalFile from './ModalFile';
+import AddFile from './AddFile';
 import mapFilesIntoFormattedFiles from '../../../../utils/mapFilesIntoFormattedFiles';
+import downloadFile from '../../../../utils/downloadFile';
 import documentStore from '../../../../stores/documentStore';
 import userStore from '../../../../stores/userStore';
 import isFieldsBlocked from '../../../../utils/isFieldsBlocked';
 
 const FilesTable: React.FC = observer(() => {
-  const [openModal, setOpenModal] = useState(false);
+  const { version, deleteFile, status } = documentStore;
 
-  const { version, status } = documentStore;
+  const [openModal, setOpenModal] = useState(false);
+  const [isFileChanging, setFileChanging] = useState<number | undefined>();
   const { selectedUser } = userStore;
   const disabled = (selectedUser && version) ? isFieldsBlocked(selectedUser, status, version.activeReviewer) : true;
-  // С пропсами мб будет получше
-  const toggleModal = () => {
+
+  const handleAddFile = () => {
     if (disabled) return;
-    setOpenModal(!openModal);
+    setOpenModal(true);
   };
-  const hidden = disabled ? classes.invisible : '';
+
+  const handleModifyFile = (index: number) => {
+    setFileChanging(index);
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setFileChanging(undefined);
+    setOpenModal(false);
+  };
+  const download = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) => {
+    e.preventDefault();
+    const file = version?.files.find((f) => f.id === id);
+    if (file) {
+      downloadFile(file);
+    }
+  };
 
   const rows = mapFilesIntoFormattedFiles(version?.files);
-
   const columns: ColDef[] = [
-    { title: 'Файл', key: '1', dataKey: 'name' },
+    {
+      title: 'Файл',
+      key: '1',
+      dataKey: 'nameWithId',
+      render: (nameWithId: { name: string, id: string }): JSX.Element => (
+        <a href="#" onClick={(e) => download(e, nameWithId.id)}>
+          {nameWithId.name}
+        </a>
+      ),
+    },
     { title: 'Тип', key: '2', dataKey: 'fileType' },
     { title: 'Версия пакета', key: '3', dataKey: 'packageVersion' },
     { title: 'Загружен', key: '4', dataKey: 'uploadedAt' },
     {
-      title: '',
+      title: 'Действия',
       key: '5',
-      dataKey: '',
-      render: (): JSX.Element => (
-        <div className={hidden}>
+      dataKey: 'index',
+      render: (index: number): JSX.Element => (
+        <div className={disabled ? classes.invisible : ''}>
           <Button
             variant="text"
             startIcon="PencilSquare"
-            onClick={toggleModal}
+            onClick={() => handleModifyFile(index)}
           />
-          <Button variant="text" startIcon="delete" />
+          <Button
+            variant="text"
+            startIcon="delete"
+            onClick={() => deleteFile(index)}
+          />
         </div>
       ),
     },
@@ -50,9 +82,15 @@ const FilesTable: React.FC = observer(() => {
 
   return (
     <div className={classes.component}>
-      <ModalFile status={openModal} close={toggleModal} />
-      <Typography className={classes.title}>Файлы</Typography>
-      <Table columns={columns} rows={rows} />
+      <Typography className={classes.subtitle}>Файлы</Typography>
+      <Table columns={columns} rows={rows} className={classes.filesTable} />
+      {!disabled && <AddFile onClick={handleAddFile} />}
+      <Modal visible={openModal} onBackdropClick={handleCloseModal}>
+        <ModalFile
+          close={handleCloseModal}
+          isFileChanging={isFileChanging}
+        />
+      </Modal>
     </div>
   );
 });

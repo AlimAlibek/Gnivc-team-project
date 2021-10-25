@@ -1,4 +1,5 @@
 import Access from '../models/Access';
+
 const translateRole = new Map([
   [Access.VIEWER, 'Читатель'],
   [Access.EDITOR, 'Редактор'],
@@ -8,7 +9,7 @@ const translateRole = new Map([
   [Access.EXPERT, 'Эксперт ФКУ'],
   [Access.TEH, 'Тех. эксперт ФКУ'],
   [Access.SUPERVISOR, 'Руководитель ФКУ'],
-  [Access.DISPATCH,'Диспетчер ФКУ' ]
+  [Access.DISPATCH, 'Диспетчер ФКУ'],
 ]);
 
 export default translateRole;

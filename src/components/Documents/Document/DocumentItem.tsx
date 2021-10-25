@@ -16,7 +16,6 @@ import Status from './Status';
 import ActionButtons from './actionButtons/ActionButtons';
 import DocumentForm from './DocumentForm/DocumentForm';
 import FilesTable from './FilesTable';
-import AddFile from './FilesTable/AddFile';
 import DocumentSidebar from './DocumentSidebar';
 import userStore from '../../../stores/userStore';
 import documentStore from '../../../stores/documentStore';
@@ -59,8 +58,6 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
             <DocumentForm />
 
             <FilesTable />
-
-            {!blocked && <AddFile />}
           </div>
         </div>
         <DocumentSidebar />
