@@ -2,16 +2,18 @@ import { v4 as uuidv4 } from 'uuid';
 
 import Status from '../models/Status';
 import Version from '../models/Version';
-const createVersion = (version: string, name: string): Version => ({
-  version: version,
+
+const createVersion = (version: string, name: string, userName: string): Version => ({
+  version,
   status: Status.SCATCH,
   contour: 'development',
   priority: 'high',
-    label: '',
-  packageType:'familiarization',
-gk: '3.1.1',
-versionCode: uuidv4(),
+  label: '',
+  packageType: 'familiarization',
+  gk: '3.1.1',
+  versionCode: uuidv4(),
   responsiblePerson: name,
+  responsibleUserName: userName,
   type: 'Для согласования',
   createdAt: new Date().toLocaleDateString('ru'),
   approvedStartAt: '',
@@ -57,4 +59,4 @@ versionCode: uuidv4(),
     },
   },
 });
-export default createVersion
+export default createVersion;

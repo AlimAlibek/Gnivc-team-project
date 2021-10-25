@@ -9,22 +9,22 @@ const service = {
     return response.data;
   },
 
-  async patchDoc(doc:DocumentPackage){
-try {
-    const response = await httpClient.patch(`/documents/${doc.id}`, doc);
-    console.log(response);
-  } catch (error) {
-    console.error(error);
-  }
+  async patchDoc(doc: DocumentPackage): Promise<void> {
+    try {
+      const response = await httpClient.patch(`/documents/${doc.id}`, doc);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
   },
 
-    async postDoc(doc:DocumentPackage){
-try {
-    const response = await httpClient.post(`/documents/`, doc);
-    console.log(response);
-  } catch (error) {
-    console.error(error);
-  }
+  async postDoc(doc: DocumentPackage): Promise<void> {
+    try {
+      const response = await httpClient.post('/documents/', doc);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
   },
 
   isTheLastVersionFinished(versions: Version[] | undefined): boolean {

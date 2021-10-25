@@ -10,9 +10,10 @@ const SaveCancel: React.FC = () => {
   const toggleModal = () => {
     setOpen(!open);
   };
-  const { saveAndSend } = documentStore;
+  const { saveAndSend, documentPackage } = documentStore;
+  const allowDelete = documentPackage ? (documentPackage?.versions.length > 1) : false;
   const saveIt = () => {
-     saveAndSend();
+    saveAndSend();
     toggleModal();
   };
   const saveContent = (
@@ -40,9 +41,11 @@ const SaveCancel: React.FC = () => {
       <Button variant="fill" type="primary" onClick={toggleModal}>
         Сохранить
       </Button>
-      <Button variant="outline" type="primary" onClick={()=>documentStore.deleteVersion()} >
+      {allowDelete && (
+      <Button variant="outline" type="primary" onClick={() => documentStore.deleteVersion()}>
         Удалить
       </Button>
+      )}
     </div>
   );
 };

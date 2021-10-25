@@ -265,12 +265,12 @@
         {
           "version": "2",
           "status": "scatch",
-          "contour": "test",
-          "priority": "middle",
-          "label": "Схема передачи данных версиииия",
-          "packageType": "familiarization",
-          "gk": "3.1.2",
-          "versionCode": "08c001dc-34ff-11ec-8d3d-0242ac130",
+          "contour": "development",
+          "priority": "high",
+          "label": "Схема передачи данных версия 2",
+          "packageType": "approve",
+          "gk": "3.1.1",
+          "versionCode": "08c001dc-34ff-11ec-8d3d-0242ac130003",
           "responsiblePerson": "Владимир Горбунов",
           "type": "Для согласования",
           "createdAt": "02.07.2021",
@@ -602,7 +602,7 @@
               "reviwerRole": null
             },
             "uib": {
-              "acepted": true,
+              "acepted": false,
               "approvedDate": "",
               "approvedTime": "",
               "matchedRole": "uib",

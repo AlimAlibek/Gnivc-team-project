@@ -20,12 +20,13 @@ import AddFile from './FilesTable/AddFile';
 import DocumentSidebar from './DocumentSidebar';
 import userStore from '../../../stores/userStore';
 import documentStore from '../../../stores/documentStore';
+import isButtonBlocked from '../../../utils/isButtonBlocked';
 
 const DocumentItem: React.FC<DocumentPackage> = observer(() => {
   const { id } = useParams<{ id: string }>();
   const { role } = userStore;
   const {
-    isLoading, error, status, fetchDocument, isBlocked,
+    isLoading, error, status, fetchDocument, version,
   } = documentStore;
 
   useEffect(() => {
@@ -33,6 +34,8 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
   }, [fetchDocument, id]);
 
   // const allowCreateVersions=(role === Access.EDITOR && isTheLastVersionFinished); будет в деле когда наладим сейвы
+
+  const blocked = version ? isButtonBlocked(role, version) : false;
   return (
     <Container>
       <div className={classes.component}>
@@ -51,13 +54,13 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
 
             <Status />
 
-            {!isBlocked() && <ActionButtons />}
+            {!blocked && <ActionButtons />}
 
             <DocumentForm />
 
             <FilesTable />
 
-            {!isBlocked() && <AddFile />}
+            {!blocked && <AddFile />}
           </div>
         </div>
         <DocumentSidebar />

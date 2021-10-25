@@ -8,13 +8,16 @@ import ModalFile from './ModalFile';
 import classes from './FilesTable.module.scss';
 import mapFilesIntoFormattedFiles from '../../../../utils/mapFilesIntoFormattedFiles';
 import documentStore from '../../../../stores/documentStore';
+import userStore from '../../../../stores/userStore';
+import isFieldsBlocked from '../../../../utils/isFieldsBlocked';
 
 const FilesTable: React.FC = observer(() => {
   const [openModal, setOpenModal] = useState(false);
 
-  const { version, isBlocked } = documentStore;
-  const disabled = isBlocked();
-
+  const { version, status } = documentStore;
+  const { selectedUser } = userStore;
+  const disabled = (selectedUser && version) ? isFieldsBlocked(selectedUser, status, version.activeReviewer) : true;
+  // С пропсами мб будет получше
   const toggleModal = () => {
     if (disabled) return;
     setOpenModal(!openModal);

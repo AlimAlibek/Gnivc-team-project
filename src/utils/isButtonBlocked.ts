@@ -2,7 +2,7 @@ import Access from '../models/Access';
 import Status from '../models/Status';
 import Version from '../models/Version';
 
-const isDisabled = (
+const isButtonBlocked = (
   selectedRole: Access = Access.VIEWER,
   version: Version,
 ): boolean => {
@@ -45,4 +45,4 @@ const isDisabled = (
       );
   }
 };
-export default isDisabled;
+export default isButtonBlocked;

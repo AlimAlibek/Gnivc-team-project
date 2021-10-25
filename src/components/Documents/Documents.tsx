@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import { observer } from 'mobx-react';
 import Button from '@ff/ui-kit/lib/Button';
 import Icon from '@ff/ui-kit/lib/Icon';
@@ -17,8 +17,6 @@ import userStore from '../../stores/userStore';
 import tableStore from '../../stores/tableStore';
 
 const Documents: React.FC = observer(() => {
-
-  //Тут надо сунуть в юз эффект колонки. 
   const [modal, openModal] = useState(false);
   const [docTitle, setDocTitle] = useState('');
 
@@ -29,13 +27,12 @@ const Documents: React.FC = observer(() => {
   const { createNewDocument } = documentStore;
   const { role } = userStore;
   const columns = getColumns();
- 
 
   const createDocument = () => {
     if (!docTitle) return;
-    createNewDocument(`${rows.length+1}`, docTitle);
-    setDocTitle('')
-    toggleModal()
+    createNewDocument(`${rows.length + 1}`, docTitle);
+    setDocTitle('');
+    toggleModal();
   };
 
   return (
@@ -43,8 +40,8 @@ const Documents: React.FC = observer(() => {
       <Modal visible={modal} title="Введите название пакета документов">
         <div className={classes.modal}>
           <TextField
-          onChange={(e)=>setDocTitle(e.target.value)}
-          value={docTitle}
+            onChange={(e) => setDocTitle(e.target.value)}
+            value={docTitle}
             name="floating-label"
             label="Плавающий лейбл"
             labelStyle="floating"

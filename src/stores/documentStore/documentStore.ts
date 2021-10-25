@@ -1,9 +1,8 @@
-import { makeAutoObservable, toJS } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 
 import service from './documentStore.service';
 import createDocument from '../../utils/createDocument';
 import ApprovalStage from '../../models/ApprovalStage';
-import isDisabled from '../../utils/isDisabled';
 import userStore from '../userStore';
 import createVersion from '../../utils/createVersion';
 import Version from '../../models/Version';
@@ -77,12 +76,12 @@ class DocumentStore {
   }
 
   createNewVersion() {
-    const { name } = userStore;
+    const { name, userName } = userStore;
     let newVersion;
     if (this.documentPackage && name) {
       newVersion = createVersion(
         `${this.documentPackage.versions.length + 1}`,
-        name
+        name, userName,
       );
       this.documentPackage.versions.push(newVersion);
       this.version = newVersion;
@@ -90,8 +89,8 @@ class DocumentStore {
   }
 
   createNewDocument(id: string, title: string) {
-    const { name } = userStore;
-    const res = createDocument(id, name, title);
+    const { name, userName } = userStore;
+    const res = createDocument(id, name, title, userName);
     service.postDoc(res);
   }
 
@@ -99,7 +98,7 @@ class DocumentStore {
     const { documentPackage, version } = this;
     if (!documentPackage) return;
     documentPackage.versions = documentPackage.versions.filter(
-      (oldVersion) => oldVersion.version !== version?.version
+      (oldVersion) => oldVersion.version !== version?.version,
     );
     service.patchDoc(documentPackage);
     this.setLastVersion(documentPackage.versions);
@@ -112,12 +111,7 @@ class DocumentStore {
     }
   }
 
-
-  isBlocked(): boolean {
-    const { role } = userStore;
-    if (this.version) return isDisabled(role, this.version);
-    return true;
-  }
+  /*eslint-disable */
 
   saveAndSend() {
     if (this.documentPackage && this.version) {
@@ -129,15 +123,19 @@ class DocumentStore {
     }
   }
 
+    /* eslint-enable */
+
   approveDPP(userName: string) {
     if (this.version) {
       this.version.approvalStages.dpp = this.createStage(userName, 'dpp');
+      this.saveAndSend();
     }
   }
 
   approveUIB(userName: string) {
     if (this.version) {
       this.version.approvalStages.uib = this.createStage(userName, 'uib');
+      this.saveAndSend();
     }
   }
 
@@ -151,6 +149,7 @@ class DocumentStore {
   approveFKU(userName: string) {
     if (this.version) {
       this.version.approvalStages.fku = this.createStage(userName, 'fku');
+      this.saveAndSend();
     }
   }
 
