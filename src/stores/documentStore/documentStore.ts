@@ -168,6 +168,7 @@ class DocumentStore {
       createdAt: new Date().toLocaleDateString('ru'),
       time: new Date().toLocaleTimeString('ru'),
     });
+     this.saveAndSend();
   }
 
   // ==================================================================================

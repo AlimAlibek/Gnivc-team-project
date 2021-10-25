@@ -41,7 +41,6 @@ const DocumentForm: React.FC = observer(() => {
 
   const setResponsible = (newUserName: string | string[]) => {
     const findName = users.find((el) => el.userName === newUserName);
-    console.log(findName, newUserName);
     if (documentStore.version && findName?.name && !isArray(newUserName)) {
       documentStore.version.responsibleUserName = newUserName;
       documentStore.version.responsiblePerson = findName.name;
