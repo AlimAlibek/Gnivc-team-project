@@ -57,8 +57,6 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
             <DocumentForm />
 
             <FilesTable />
-
-            {/* {!blocked && <AddFile />} */}
           </div>
         </div>
         <DocumentSidebar />

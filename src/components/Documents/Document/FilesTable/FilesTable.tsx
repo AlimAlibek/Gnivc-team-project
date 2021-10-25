@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite';
 import Typography from '@ff/ui-kit/lib/esm/components/Typography';
 import Table, { ColDef } from '@ff/ui-kit/lib/esm/components/Table';
 import Button from '@ff/ui-kit/lib/Button';
+import Modal from '@ff/ui-kit/lib/Modal';
 import { ResultFilesObjectType } from '@ff/ui-kit';
 
 import classes from './FilesTable.module.scss';
@@ -30,10 +31,11 @@ const FilesTable: React.FC = observer(() => {
   const handleModifyFile = (index: number) => {
     const file = version?.files[index];
     if (file) {
+      setOpenModal(true);
       setModifiableFile(getInputFile(file));
       setFileType(file.fileType);
       setFileChanging(index);
-      setOpenModal(true);
+     
     }
   };
 
@@ -45,10 +47,10 @@ const FilesTable: React.FC = observer(() => {
   };
 
   const handleCloseModal = () => {
-    setOpenModal(false);
     setModifiableFile(undefined);
     setFileType('');
     setFileChanging(undefined);
+    setOpenModal(false);
   };
   const download = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) => {
     e.preventDefault();
@@ -95,19 +97,21 @@ const FilesTable: React.FC = observer(() => {
   ];
 
   return (
-    <div className={classes.component}>
-      <ModalFile
-        status={openModal}
-        close={handleCloseModal}
-        modifiableFile={modifiableFile}
-        fileType={fileType}
-        handleUpload={handleUpload}
-        handleFileTypeChange={handleFileTypeChange}
-        isFileChanging={isFileChanging}
-      />
+     <div className={classes.component}>
+
       <Typography className={classes.title}>Файлы</Typography>
       <Table columns={columns} rows={rows} />
-      {!disabled && <AddFile onClick={handleAddFile} />}
+      {!disabled && <AddFile onClick={handleAddFile} />} 
+      <Modal visible={openModal} onBackdropClick={handleCloseModal}>
+        <ModalFile 
+          close={handleCloseModal}
+          modifiableFile={modifiableFile}
+          fileType={fileType}
+          handleUpload={handleUpload}
+          handleFileTypeChange={handleFileTypeChange}
+          isFileChanging={isFileChanging}
+        />
+      </Modal>
     </div>
   );
 });

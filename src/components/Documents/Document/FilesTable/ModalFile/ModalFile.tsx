@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FileUploader from '@ff/ui-kit/lib/FileUploader';
 import Modal from '@ff/ui-kit/lib/Modal';
 import Button from '@ff/ui-kit/lib/Button';
@@ -16,7 +16,8 @@ const options2 = [
   { key: 3, value: 'График', label: 'График' },
 ];
 
-interface FileModalWindow extends ModalWindow {
+interface FileModalWindow {
+  close: () => void;
   modifiableFile: ResultFilesObjectType | undefined;
   fileType: string;
   handleUpload: (file: ResultFilesObjectType | undefined) => void;
@@ -26,7 +27,7 @@ interface FileModalWindow extends ModalWindow {
 const ModalFile: React.FC<FileModalWindow> = (props) => {
   const { version, addFile, changeFile } = documentStore;
   const {
-    status, close, modifiableFile, fileType, handleFileTypeChange, handleUpload, isFileChanging,
+     close, modifiableFile, fileType, handleFileTypeChange, handleUpload, isFileChanging,
   } = props;
 
   const onUpload = (file: ResultFilesObjectType) => {
@@ -65,9 +66,8 @@ const ModalFile: React.FC<FileModalWindow> = (props) => {
   };
 
   return (
-    <Modal
-      visible={status}
-    >
+    // <Modal visible={status}>
+    <>
       <FileUploader
         accept=".txt, .docx, .xlsx, .vsd, .pdf, .rtf"
         onChange={onUpload}
@@ -93,7 +93,8 @@ const ModalFile: React.FC<FileModalWindow> = (props) => {
           Отмена
         </Button>
       </div>
-    </Modal>
+    </>
+    // </Modal> 
   );
 };
 export default ModalFile;
