@@ -1,5 +1,6 @@
 .component {
   background-color: #fff;
+  border-radius: 7px;
   & .table {
     padding: 20px;
   
@@ -49,10 +50,3 @@
 .fields {
   margin-bottom: 2em;
 }
-
-// .buttonsRow {
-//   button {
-//     margin: 0 0.3em;
-//   }
-// }
-
