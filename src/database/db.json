@@ -725,7 +725,7 @@
               "reviwerRole": null
             },
             "uib": {
-              "acepted": true,
+              "acepted": false,
               "approvedDate": "",
               "approvedTime": "",
               "matchedRole": "uib",
@@ -741,11 +741,11 @@
         {
           "version": "1",
           "status": "scatch",
-          "contour": "",
-          "priority": "",
+          "contour": "test",
+          "priority": "low",
           "label": "Новый пакет документов",
-          "packageType": "",
-          "gk": "",
+          "packageType": "approve",
+          "gk": "3.1.2",
           "versionCode": "cebd0f61-ba55-4fbe-8f13-9ed459d81bad",
           "responsiblePerson": "Владимир Горбунов",
           "responsibleUserName": "userGorbunov1",

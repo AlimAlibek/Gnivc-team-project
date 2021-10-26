@@ -180,7 +180,6 @@
   "documents": [
     {
       "id": "1",
-      "title": "Схема передачи данных",
       "versions": [
         {
           "version": "1",
@@ -227,6 +226,12 @@
               "person": "Коршунов В.М.",
               "createdAt": "20.09.2021",
               "time": "09:30"
+            },
+            {
+              "text": "ФФФ",
+              "person": "Гость",
+              "createdAt": "26.10.2021",
+              "time": "03:06:22"
             }
           ],
           "approvalStages": {
@@ -341,6 +346,16 @@
               "uploadedAt": "23.10.2021",
               "packageVersion": "2",
               "id": "1634975682476"
+            },
+            {
+              "mime": "text/plain",
+              "name": "aaaa.txt",
+              "size": 0,
+              "content": {},
+              "fileType": "График",
+              "uploadedAt": "26.10.2021",
+              "packageVersion": "2",
+              "id": "1635233468484"
             }
           ],
           "comments": [
@@ -363,10 +378,10 @@
               "time": "09:30"
             },
             {
-              "text": "TestComment",
+              "text": "sss",
               "person": "Борис Хмельников",
               "createdAt": "25.10.2021",
-              "time": "21:36:02"
+              "time": "12:11:01"
             }
           ],
           "approvalStages": {
@@ -405,7 +420,6 @@
     },
     {
       "id": "2",
-      "title": "Схема размещения серверов",
       "versions": [
         {
           "version": "1",
@@ -507,12 +521,6 @@
               "person": "Коршунов В.М.",
               "createdAt": "20.09.2021",
               "time": "09:30"
-            },
-            {
-              "text": "test",
-              "person": "Борис Хмельников",
-              "createdAt": "25.10.2021",
-              "time": "19:43:48"
             }
           ],
           "approvalStages": {
@@ -551,7 +559,6 @@
     },
     {
       "id": "3",
-      "title": "Интеграционные схемы",
       "versions": [
         {
           "version": "1",
@@ -636,7 +643,6 @@
     },
     {
       "id": "4",
-      "title": "Обновление серверов",
       "versions": [
         {
           "version": "1",
@@ -719,7 +725,68 @@
               "reviwerRole": null
             },
             "uib": {
-              "acepted": true,
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "uib",
+              "reviwer": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "versions": [
+        {
+          "version": "1",
+          "status": "scatch",
+          "contour": "test",
+          "priority": "low",
+          "label": "Новый пакет документов",
+          "packageType": "approve",
+          "gk": "3.1.2",
+          "versionCode": "cebd0f61-ba55-4fbe-8f13-9ed459d81bad",
+          "responsiblePerson": "Владимир Горбунов",
+          "responsibleUserName": "userGorbunov1",
+          "type": "Для согласования",
+          "createdAt": "26.10.2021",
+          "approvedStartAt": "",
+          "approvedEndAt": "",
+          "activeReviewer": "",
+          "files": [],
+          "comments": [
+            {
+              "text": "Создал новую версию",
+              "person": "Владимир Горбунов",
+              "createdAt": "26.10.2021",
+              "time": "10:04:40"
+            }
+          ],
+          "approvalStages": {
+            "dpp": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "dpp",
+              "reviwer": ""
+            },
+            "uit": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "uit",
+              "reviwer": ""
+            },
+            "fku": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "fku",
+              "reviwer": ""
+            },
+            "uib": {
+              "acepted": false,
               "approvedDate": "",
               "approvedTime": "",
               "matchedRole": "uib",
