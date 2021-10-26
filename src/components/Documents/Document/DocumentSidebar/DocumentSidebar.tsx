@@ -11,12 +11,15 @@ const DocumentSidebar: React.FC = () => {
 
   return (
     <div className={classes.component}>
-      <Tabs className={classes.tabs} fullWidth value={view} onChange={setView}>
+      <Tabs className={classes.tabs} fullWidth value={view} onChange={setView} indicatorClass={classes.indicator}>
         <Tab value="comment">Комментарии</Tab>
         <Tab value="approval">Этапы согласования</Tab>
       </Tabs>
-      {view === 'comment' && <Comments />}
-      {view === 'approval' && <ApprovalStages />}
+      <div className={classes.sideBody}>
+          {view === 'comment' && <Comments />}
+          {view === 'approval' && <ApprovalStages />}
+      </div>
+
     </div>
   );
 };

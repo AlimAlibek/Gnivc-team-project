@@ -25,45 +25,6 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: rgb(126, 126, 126);
+    background: #C9CBCF ;
   }
-}
-
-.minorfont {
-  color: #797d86;
-  font-size: 14px;
-}
-
-.subtitle {
-  font-size: 20px;
-  line-height: 24px;
-  font-weight: 700;
-}
-
-.buttonsRow {
-  font-size: 14px;
-
-  & > * {
-    margin-right: 8px;
-  }
-  & :last-child {
-    margin: 0;
-  }
-}
-
-.buttonWithIcon {
-  display: flex;
-  align-items: center;
-  & > i {
-    font-size: 24px;
-    margin-right: 6px;
-  }
-}
-
-.actionButtons {
-  display: flex;
-  align-items: center;
-  padding: 15px 0;
-  border-bottom: 1px solid rgb(126, 126, 126);
-  margin-bottom: 35px;
 }

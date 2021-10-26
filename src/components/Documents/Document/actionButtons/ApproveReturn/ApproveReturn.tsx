@@ -49,7 +49,7 @@ const ApproveReturn: React.FC = observer(() => {
 
   if (userName !== activeReviewer) {
     return (
-      <Button type="primary" onClick={() => setReviewer(userName)}>
+      <Button type="primary" onClick={() => setReviewer(userName)} style={{fontSize: "14px"}}>
         Взять в работу
       </Button>
     );

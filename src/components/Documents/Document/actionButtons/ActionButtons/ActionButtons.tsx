@@ -1,6 +1,6 @@
 import React from 'react';
 
-import classes from '../../DocumentItem.module.scss';
+import classes from './ActionButtons.module.scss';
 import Access from '../../../../../models/Access';
 import Decide from '../Decide';
 import ApproveReturn from '../ApproveReturn';
