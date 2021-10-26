@@ -31,7 +31,7 @@ const DocumentForm: React.FC = observer(() => {
 
   if (!documentStore.version) return <div />;
   const {
-    contour, priority, packageType, gk, activeReviewer, status,
+    contour, priority, packageType, gk, activeReviewer, status, responsibleUserName
   } = documentStore.version;
   const blocked = selectedUser
     ? isFieldsBlocked(selectedUser, status, activeReviewer, userName)
@@ -40,6 +40,9 @@ const DocumentForm: React.FC = observer(() => {
   const changeLabel = (newName: string) => {
     if (documentStore.version) documentStore.version.label = newName;
   };
+  const shownResponsible=users.find((el) => el.userName === responsibleUserName);
+
+ 
 
   const setResponsible = (newUserName: string | string[]) => {
     const findName = users.find((el) => el.userName === newUserName);
@@ -139,6 +142,7 @@ const DocumentForm: React.FC = observer(() => {
 
       <Select
         label="Ответственный"
+        value={responsibleUserName}
         options={editorOptions}
         onChange={(e) => setResponsible(e)}
         fullWidth
@@ -153,15 +157,15 @@ const DocumentForm: React.FC = observer(() => {
           label="Роль в проекте"
           labelStyle="floating"
           className={`${classes.blocked}`}
-          value="Архитектор"
+          value={shownResponsible?.projectRole}
           disabled
         />
         <TextField
           name="floating-label"
+          value={shownResponsible?.department}
           label="Подразделение"
           labelStyle="floating"
           className={classes.blocked}
-          value="IT-архитектуры"
           disabled
         />
       </div>

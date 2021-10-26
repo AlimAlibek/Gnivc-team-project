@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, toJS } from 'mobx';
 
 import service from './documentStore.service';
 import ApprovalStage from '../../models/ApprovalStage';
@@ -36,11 +36,11 @@ class DocumentStore {
   }
 
   setDocument(document: DocumentPackage) {
-    this.documentPackage = document;
+    this.documentPackage = {...document};
   }
 
   setVersion(version: Version) {
-    this.version = version;
+    this.version = {...version};
   }
 
   setFkuRole(role: Access) {
@@ -195,6 +195,14 @@ class DocumentStore {
       doc.versions.push(newVersion);
       this.setVersion(newVersion);
     }
+  }
+
+cancelChanges() {
+const {documentPackage:doc}=this;
+const versions={...this.documentPackage?.versions}
+const index=this.findIndex();
+if(index!==undefined&&versions){
+  this.version={...versions[index]}}
   }
 
   removeVersion() {

@@ -20,7 +20,7 @@
       "id": "u3",
       "name": "Даниил Черкасов ",
       "userName": "userCherkasov3",
-      "projectRole": "Разработчик",
+      "projectRole": "Ст. Разработчик",
       "role": "editor",
       "department": "Сопровождения инфраструктуры IT"
     },
@@ -80,92 +80,92 @@
     },
     {
       "id": "u10",
+      "name": "Валерий Стариков",
+      "userName": "userStarikov10",
+      "projectRole": "Диспетчер ФКУ",
+      "role": "gnivcFkuDispatch",
+      "canEdit": "fku",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u11",
+      "name": "Милана Егорова",
+      "userName": "userEgotova11",
+      "projectRole": "Диспетчер ФКУ",
+      "role": "gnivcFkuDispatch",
+      "canEdit": "fku",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u12",
+      "name": "Игорь Емельянов",
+      "userName": "userYemelyanov12",
+      "projectRole": "Старший Эксперт",
+      "role": "gnivcFkuExpert",
+      "canEdit": "fku",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u13",
+      "name": "Алибек Тамбиев",
+      "userName": "userTambiev13",
+      "projectRole": "Старший Эксперт",
+      "role": "gnivcFkuExpert",
+      "canEdit": "fku",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u14",
+      "name": "Марат Галеев",
+      "userName": "userGaleev14",
+      "projectRole": "Технический эксперт",
+      "role": "gnivcFkuTech",
+      "canEdit": "fku",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u15",
+      "name": "Евгений Маккавеев",
+      "userName": "userMakkaveev15",
+      "projectRole": "Технический эксперт",
+      "role": "gnivcFkuTech",
+      "canEdit": "fku",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u16",
+      "name": "Гендир Гендиров",
+      "userName": "userGendir16",
+      "projectRole": "Руководитель",
+      "role": "gnivcFkuSupervisor",
+      "canEdit": "fku",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u17",
       "name": "Мирон Кошелев",
-      "userName": "userKoshelev10",
+      "userName": "userKoshelev17",
       "projectRole": "Сотрудник УИТ",
       "role": "gnivcUit",
       "canEdit": "uit",
       "department": "IT-архитектуры"
     },
     {
-      "id": "u11",
-      "name": "Марк Майоров",
-      "userName": "userMayorov11",
-      "projectRole": "Сотрудник УИТ",
-      "role": "gnivcUit",
-      "canEdit": "uit",
-      "department": "Сопровождения инфраструктуры IT"
-    },
-    {
-      "id": "u12",
-      "name": "Матвей Шапошников",
-      "userName": "userShaposhnikov12",
-      "projectRole": "Сотрудник УИТ",
-      "role": "gnivcUit",
-      "canEdit": "uit",
-      "department": "Сопровождения инфраструктуры IT"
-    },
-    {
-      "id": "u13",
-      "name": "Валерий Стариков",
-      "userName": "userStarikov13",
-      "projectRole": "Диспетчер ФКУ",
-      "role": "gnivcFkuDispatch",
-      "canEdit": "fku",
-      "department": "Сопровождения инфраструктуры IT"
-    },
-    {
-      "id": "u14",
-      "name": "Милана Егорова",
-      "userName": "userEgotova14",
-      "projectRole": "Диспетчер ФКУ",
-      "role": "gnivcFkuDispatch",
-      "canEdit": "fku",
-      "department": "Сопровождения инфраструктуры IT"
-    },
-    {
-      "id": "u15",
-      "name": "Игорь Емельянов",
-      "userName": "userYemelyanov15",
-      "projectRole": "Старший Эксперт",
-      "role": "gnivcFkuExpert",
-      "canEdit": "fku",
-      "department": "Сопровождения инфраструктуры IT"
-    },
-    {
-      "id": "u16",
-      "name": "Алибек Тамбиев",
-      "userName": "userTambiev16",
-      "projectRole": "Старший Эксперт",
-      "role": "gnivcFkuExpert",
-      "canEdit": "fku",
-      "department": "Сопровождения инфраструктуры IT"
-    },
-    {
-      "id": "u17",
-      "name": "Марат Галеев",
-      "userName": "userGaleev17",
-      "projectRole": "Технический эксперт",
-      "role": "gnivcFkuTech",
-      "canEdit": "fku",
-      "department": "Сопровождения инфраструктуры IT"
-    },
-    {
       "id": "u18",
-      "name": "Евгений Маккавеев",
-      "userName": "userMakkaveev18",
-      "projectRole": "Технический эксперт",
-      "role": "gnivcFkuTech",
-      "canEdit": "fku",
+      "name": "Марк Майоров",
+      "userName": "userMayorov18",
+      "projectRole": "Сотрудник УИТ",
+      "role": "gnivcUit",
+      "canEdit": "uit",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
       "id": "u19",
-      "name": "Гендир Гендиров",
-      "userName": "userGendir19",
-      "projectRole": "Руководитель",
-      "role": "gnivcFkuSupervisor",
-      "canEdit": "fku",
+      "name": "Матвей Шапошников",
+      "userName": "userShaposhnikov19",
+      "projectRole": "Сотрудник УИТ",
+      "role": "gnivcUit",
+      "canEdit": "uit",
       "department": "Сопровождения инфраструктуры IT"
     },
     {
@@ -192,6 +192,7 @@
           "gk": "3.1.1",
           "versionCode": "08bfff7a-34ff-11ec-8d3d-0242ac130003",
           "responsiblePerson": "Владимир Горбунов",
+          "responsibleUserName": "userGorbunov1",
           "createdAt": "02.07.2021",
           "approvedStartAt": "20.09.2021",
           "approvedEndAt": "21.09.2021",
@@ -269,13 +270,14 @@
         {
           "version": "2",
           "status": "scatch",
-          "contour": "test",
+          "contour": "development",
           "priority": "high",
-          "label": "Схема передачи данных ",
+          "label": "Схема передачи данных a",
           "packageType": "approve",
           "gk": "3.1.1",
           "versionCode": "08c001dc-34ff-11ec-8d3d-0242ac130003",
           "responsiblePerson": "Владимир Горбунов",
+          "responsibleUserName": "userGorbunov1",
           "type": "Для согласования",
           "createdAt": "02.07.2021",
           "approvedStartAt": "16.09.2021",
@@ -431,6 +433,7 @@
           "gk": "3.1.1",
           "versionCode": "08c002cc-34ff-11ec-8d3d-0242ac130003",
           "responsiblePerson": "Борис Хмельников",
+          "responsibleUserName": "userHmelnikov2",
           "type": "Для согласования",
           "createdAt": "01.04.2021",
           "approvedStartAt": "20.09.2021",
@@ -570,6 +573,7 @@
           "gk": "3.1.1",
           "versionCode": "08c0039e-34ff-11ec-8d3d-0242ac130003",
           "responsiblePerson": "Борис Хмельников",
+          "responsibleUserName": "userHmelnikov2",
           "type": "Для согласования",
           "createdAt": "25.09.2021",
           "approvedStartAt": "27.09.2021",
@@ -654,6 +658,7 @@
           "gk": "3.1.1",
           "versionCode": "08c0088a-34ff-11ec-8d3d-0242ac130003",
           "responsiblePerson": "Борис Хмельников",
+          "responsibleUserName": "userHmelnikov2",
           "type": "Для согласования",
           "createdAt": "04.05.2021",
           "approvedStartAt": "06.05.2021",
@@ -824,14 +829,14 @@
               "approvedDate": "26.10.2021",
               "approvedTime": "12:53:02",
               "matchedRole": "fku",
-              "reviwer": "userMakkaveev18"
+              "reviwer": "userMakkaveev15"
             },
             "uit": {
               "acepted": true,
               "approvedDate": "26.10.2021",
               "approvedTime": "12:53:25",
               "matchedRole": "uit",
-              "reviwer": "userMayorov11"
+              "reviwer": "userMayorov18"
             }
           }
         }
