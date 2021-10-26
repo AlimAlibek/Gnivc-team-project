@@ -16,8 +16,8 @@ const DocumentSidebar: React.FC = () => {
         <Tab value="approval">Этапы согласования</Tab>
       </Tabs>
       <div className={classes.sideBody}>
-          {view === 'comment' && <Comments />}
-          {view === 'approval' && <ApprovalStages />}
+        {view === 'comment' && <Comments />}
+        {view === 'approval' && <ApprovalStages />}
       </div>
 
     </div>

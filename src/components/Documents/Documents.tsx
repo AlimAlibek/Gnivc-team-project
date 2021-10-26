@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { observer } from 'mobx-react';
 import Button from '@ff/ui-kit/lib/Button';
-import Icon from '@ff/ui-kit/lib/Icon';
 import Table from '@ff/ui-kit/lib/Table';
 import Typography from '@ff/ui-kit/lib/Typography';
 import { useHistory } from 'react-router-dom';

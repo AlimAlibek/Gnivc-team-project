@@ -25,7 +25,7 @@ const ApproveReturn: React.FC = observer(() => {
   const [approveOpen, setApproveOpen] = useState(false);
 
   const activeReviewer = version?.activeReviewer;
-
+  const toggleApprove = () => setApproveOpen(!approveOpen);
   const approve = () => {
     approveSwicher(role, userName);
     const comment = createComment('Принял документ', name);
@@ -41,15 +41,13 @@ const ApproveReturn: React.FC = observer(() => {
     addComent(comment);
   };
 
-  const toggleApprove = () => setApproveOpen(!approveOpen);
-
   const setReviewer = (namee: string) => setActiveRewier(namee);
   const toggleRedirect = () => setRedirectOpen(!redirectOpen);
   const redirectUsers = filterByMyRole();
 
   if (userName !== activeReviewer) {
     return (
-      <Button type="primary" onClick={() => setReviewer(userName)} style={{fontSize: "14px"}}>
+      <Button type="primary" onClick={() => setReviewer(userName)} style={{ fontSize: '14px' }}>
         Взять в работу
       </Button>
     );

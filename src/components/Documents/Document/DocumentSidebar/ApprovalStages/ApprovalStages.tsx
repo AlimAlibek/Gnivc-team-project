@@ -43,4 +43,3 @@ const ApprovalStages: React.FC = () => {
   );
 };
 export default ApprovalStages;
-

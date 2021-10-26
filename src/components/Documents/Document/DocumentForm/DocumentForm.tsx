@@ -17,19 +17,22 @@ import mapUsersIntoOptions from '../../../../utils/mapUsersIntoOptions';
 import Access from '../../../../models/Access';
 
 const DocumentForm: React.FC = observer(() => {
-  const { filterByRole, users, selectedUser, userName } = userStore;
+  const {
+    filterByRole, users, selectedUser, userName,
+  } = userStore;
   const editors = filterByRole(Access.EDITOR);
 
   const editorOptions = editors
     ? mapUsersIntoOptions(editors)
     : [
-        { key: 1, value: 'userGorbunov1', label: 'Владимир Горбунов' },
-        { key: 2, value: 'userHmelnikov2', label: 'Борис Хмельников' },
-      ];
+      { key: 1, value: 'userGorbunov1', label: 'Владимир Горбунов' },
+      { key: 2, value: 'userHmelnikov2', label: 'Борис Хмельников' },
+    ];
 
   if (!documentStore.version) return <div />;
-  const { contour, priority, packageType, gk, activeReviewer, status } =
-    documentStore.version;
+  const {
+    contour, priority, packageType, gk, activeReviewer, status,
+  } = documentStore.version;
   const blocked = selectedUser
     ? isFieldsBlocked(selectedUser, status, activeReviewer, userName)
     : true;
@@ -49,20 +52,16 @@ const DocumentForm: React.FC = observer(() => {
     if (documentStore.version) documentStore.version.versionCode = newCode;
   };
   const changePriority = (newPriority: string | string[]) => {
-    if (!isArray(newPriority) && documentStore.version)
-      documentStore.version.priority = newPriority;
+    if (!isArray(newPriority) && documentStore.version) { documentStore.version.priority = newPriority; }
   };
   const changeContur = (newContur: string | string[]) => {
-    if (!isArray(newContur) && documentStore.version)
-      documentStore.version.contour = newContur;
+    if (!isArray(newContur) && documentStore.version) { documentStore.version.contour = newContur; }
   };
   const changePackageType = (newPackage: string | string[]) => {
-    if (!isArray(newPackage) && documentStore.version)
-      documentStore.version.packageType = newPackage;
+    if (!isArray(newPackage) && documentStore.version) { documentStore.version.packageType = newPackage; }
   };
   const changeGk = (newGk: string | string[]) => {
-    if (!isArray(newGk) && documentStore.version)
-      documentStore.version.gk = newGk;
+    if (!isArray(newGk) && documentStore.version) { documentStore.version.gk = newGk; }
   };
 
   return (

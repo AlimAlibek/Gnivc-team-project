@@ -1,3 +1,4 @@
+import React from 'react';
 import Button from '@ff/ui-kit/lib/Button';
 import Modal from '@ff/ui-kit/lib/Modal';
 

@@ -11,7 +11,6 @@ import AddFile from './AddFile';
 import mapFilesIntoFormattedFiles from '../../../../utils/mapFilesIntoFormattedFiles';
 import downloadFile from '../../../../utils/downloadFile';
 import isFieldsBlocked from '../../../../utils/isFieldsBlocked';
-import Version from '../../../../models/Version';
 import documentStore from '../../../../stores/documentStore';
 import userStore from '../../../../stores/userStore';
 
