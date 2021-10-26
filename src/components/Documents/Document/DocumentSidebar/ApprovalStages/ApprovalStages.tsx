@@ -11,7 +11,9 @@ const ApprovalStages: React.FC = () => {
 
   // Они теряют порядок при мапе, если использовать лодаш value, так что пока руками
   if (!stages || status === Status.SCATCH) return <></>;
-  const { uit } = stages;
+  const {
+    dpp, uib, fku, uit,
+  } = stages;
   return (
     <div className={classes.component}>
       <div className={classes.row}>
@@ -22,7 +24,10 @@ const ApprovalStages: React.FC = () => {
           <div className={classes.blackText}>Отправлен на согласование</div>
         </div>
       </div>
-      {Object.values(stages).map((el)=><SingleStage stage={el} />)}
+      <SingleStage stage={dpp} />
+      <SingleStage stage={uib} />
+      <SingleStage stage={fku} />
+      <SingleStage stage={uit} />
       {status === Status.APPROVED && (
         <div className={classes.row}>
           <div className={`${classes.iconPlus} sr-0019-golf`} />
