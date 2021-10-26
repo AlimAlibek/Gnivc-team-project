@@ -42,9 +42,9 @@ const FilesTable: React.FC = observer(() => {
   };
 
   // prettier-ignore
-  const download = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string, thisversion?: Version) => {
+  const download = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) => {
     e.preventDefault();
-    const file = thisversion?.files.find((f) => f.id === id);
+    const file = version?.files.find((f) => f.id === id);
     if (file) {
       downloadFile(file);
     }
