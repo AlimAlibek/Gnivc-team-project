@@ -55,7 +55,7 @@ const ModalDispath: React.FC<DispathWindow> = ({ status, close, choose }) => {
         <Select
           label="Название списка"
           options={options}
-          style={{ width: '450px', marginBottom: '1.5em' }}
+          style={{ marginBottom: '1.5em' }}
           onChange={(e) => chooseRole(e)}
         />
         <div className={classes.buttonsRow}>

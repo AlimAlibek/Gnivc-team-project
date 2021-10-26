@@ -13,6 +13,7 @@ const CreateNewVersion: React.FC = observer(() => {
       variant="fill"
       type="primary"
       onClick={() => createNewVersion(name, userName)}
+      style={{ fontSize: '14px' }}
     >
       Создать новую версию
     </Button>

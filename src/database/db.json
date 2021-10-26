@@ -352,10 +352,10 @@
               "name": "aaaa.txt",
               "size": 0,
               "content": {},
-              "fileType": "",
-              "uploadedAt": "25.10.2021",
+              "fileType": "График",
+              "uploadedAt": "26.10.2021",
               "packageVersion": "2",
-              "id": "1635151158399"
+              "id": "1635233468484"
             }
           ],
           "comments": [
@@ -726,6 +726,67 @@
             },
             "uib": {
               "acepted": true,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "uib",
+              "reviwer": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "versions": [
+        {
+          "version": "1",
+          "status": "scatch",
+          "contour": "",
+          "priority": "",
+          "label": "Новый пакет документов",
+          "packageType": "",
+          "gk": "",
+          "versionCode": "cebd0f61-ba55-4fbe-8f13-9ed459d81bad",
+          "responsiblePerson": "Владимир Горбунов",
+          "responsibleUserName": "userGorbunov1",
+          "type": "Для согласования",
+          "createdAt": "26.10.2021",
+          "approvedStartAt": "",
+          "approvedEndAt": "",
+          "activeReviewer": "",
+          "files": [],
+          "comments": [
+            {
+              "text": "Создал новую версию",
+              "person": "Владимир Горбунов",
+              "createdAt": "26.10.2021",
+              "time": "10:04:40"
+            }
+          ],
+          "approvalStages": {
+            "dpp": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "dpp",
+              "reviwer": ""
+            },
+            "uit": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "uit",
+              "reviwer": ""
+            },
+            "fku": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "fku",
+              "reviwer": ""
+            },
+            "uib": {
+              "acepted": false,
               "approvedDate": "",
               "approvedTime": "",
               "matchedRole": "uib",

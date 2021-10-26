@@ -16,7 +16,6 @@ const ApprovalStages: React.FC = () => {
   } = stages;
   return (
     <div className={classes.component}>
-      <div className={classes.subtitle}> Этапы согласования </div>
       <div className={classes.row}>
         <div className={`${classes.iconPlus} sr-0010-circle-plus`} />
         <div className={classes.linePlus} />

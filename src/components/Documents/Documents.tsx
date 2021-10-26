@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { observer } from 'mobx-react';
 import Button from '@ff/ui-kit/lib/Button';
 import Icon from '@ff/ui-kit/lib/Icon';
@@ -18,11 +18,10 @@ import userStore from '../../stores/userStore';
 
 const columns = getColumns();
 const Documents: React.FC = observer(() => {
-
   const {
     documents: rows, error, isLoading, fetchDocuments,
   } = tableStore;
-    useEffect(() => {
+  useEffect(() => {
     fetchDocuments();
   }, []);
   const { createNewDocument } = documentStore;
@@ -30,15 +29,14 @@ const Documents: React.FC = observer(() => {
 
   const [modal, openModal] = useState(false);
 
-
   const toggleModal = () => openModal(!modal);
   const history = useHistory();
 
   const formDocument = () => {
-      const document = createDocument(String(rows.length + 1), name, userName);
-      createNewDocument(document).then(fetchDocuments);
-      toggleModal();
-      history.push(`/documents/${rows.length + 1}`);
+    const document = createDocument(String(rows.length + 1), name, userName);
+    createNewDocument(document).then(fetchDocuments);
+    toggleModal();
+    history.push(`/documents/${rows.length + 1}`);
   };
 
   return (
@@ -47,14 +45,11 @@ const Documents: React.FC = observer(() => {
         <div className={classes.top}>
           <div className={classes.title}>Пакеты документов</div>
           {role === Access.EDITOR && (
-            <Button
-              className={classes.button}
-              variant="outline"
-              type="primary"
-              onClick={formDocument}
-            >
-              <Icon name="0010-circle-plus" />
-              <span>Создать пакет документов</span>
+            <Button onClick={formDocument} variant="outline" type="primary">
+              <div className={classes.button} role="application">
+                <i className="sr-0010-circle-plus" />
+                <span>Создать пакет документов</span>
+              </div>
             </Button>
           )}
         </div>
@@ -64,7 +59,10 @@ const Documents: React.FC = observer(() => {
 
         {error && <Typography.Title>{error}</Typography.Title>}
 
-        <Table columns={columns} rows={rows} />
+        <div className={classes.table}>
+          <Table columns={columns} rows={rows} />
+        </div>
+
       </div>
     </Container>
   );

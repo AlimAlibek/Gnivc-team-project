@@ -21,7 +21,7 @@ const service = {
     return response.data;
   },
 
-  async deleteData(patch:string){
+  async deleteData(patch: string) {
     httpClient.delete(patch);
   },
 

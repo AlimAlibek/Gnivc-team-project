@@ -158,7 +158,7 @@ class DocumentStore {
 
   findIndex() {
     const index = this.documentPackage?.versions.findIndex(
-      (el) => el.version === this.version?.version
+      (el) => el.version === this.version?.version,
     );
     return index;
   }
@@ -205,12 +205,12 @@ class DocumentStore {
     }
   }
 
-  deleteDocument(){
-     const { documentPackage: doc } = this;
-    if(doc){
-      service.deleteData(`/documents/${doc.id}`)
-      this.documentPackage=undefined
-      this.version=undefined
+  deleteDocument() {
+    const { documentPackage: doc } = this;
+    if (doc) {
+      service.deleteData(`/documents/${doc.id}`);
+      this.documentPackage = undefined;
+      this.version = undefined;
     }
   }
 

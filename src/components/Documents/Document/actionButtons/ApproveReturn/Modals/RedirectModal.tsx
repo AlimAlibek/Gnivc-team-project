@@ -33,7 +33,7 @@ const ModalRedirect: React.FC<RedirectWindow> = (props) => {
         label="Роль"
         options={options}
         floatingLabel
-        style={{ width: '400px', marginBottom: '1em' }}
+        style={{ marginBottom: '1em' }}
         value={redirectUser}
         onChange={(e) => setRedirectUser(e)}
       />

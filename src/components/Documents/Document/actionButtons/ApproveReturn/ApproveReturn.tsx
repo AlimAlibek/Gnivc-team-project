@@ -22,7 +22,7 @@ const ApproveReturn: React.FC = observer(() => {
 
   const [denyOpen, setDenyOpen] = useState(false);
   const [redirectOpen, setRedirectOpen] = useState(false);
-  const [approveOpen, setApproveOpen]=useState(false)
+  const [approveOpen, setApproveOpen] = useState(false);
 
   const activeReviewer = version?.activeReviewer;
 
@@ -30,7 +30,7 @@ const ApproveReturn: React.FC = observer(() => {
     approveSwicher(role, userName);
     const comment = createComment('Принял документ', name);
     addComent(comment);
-    toggleApprove()
+    toggleApprove();
   };
   const toggleDeny = () => setDenyOpen(!denyOpen);
 
@@ -41,9 +41,7 @@ const ApproveReturn: React.FC = observer(() => {
     addComent(comment);
   };
 
-  const toggleApprove=()=> setApproveOpen(!approveOpen)
-
-
+  const toggleApprove = () => setApproveOpen(!approveOpen);
 
   const setReviewer = (namee: string) => setActiveRewier(namee);
   const toggleRedirect = () => setRedirectOpen(!redirectOpen);

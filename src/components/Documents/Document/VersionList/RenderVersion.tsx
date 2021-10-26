@@ -33,7 +33,7 @@ const RenderVersion: React.FC<RenderVersionProps> = ({ version, closeSelect }) =
           <div>
             {/* prettier-ignore */}
             <Typography className={classes.package}>Версия пакета №{number}</Typography>
-            <Icon className={classes.icon} name="chat_left_text" /> 
+            <Icon className={classes.icon} name="chat_left_text" />
             <Typography className={classes.date}>{comments.length}</Typography>
           </div>
           <Typography className={classes.date}>{createdAt}</Typography>

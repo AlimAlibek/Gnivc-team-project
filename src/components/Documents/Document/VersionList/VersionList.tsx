@@ -53,6 +53,7 @@ const VersionList: React.FC<VersionListProps> = ({
                 <RenderVersion
                   closeSelect={closeSelect}
                   version={versionItem}
+                  key={versionItem.version}
                 />
               ))}
             </List>

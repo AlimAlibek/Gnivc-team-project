@@ -28,7 +28,7 @@ const SaveCancel: React.FC = observer(() => {
 
   const deletePackage = () => {
     deleteDocument();
-    history.push(`/home`);
+    history.push('/home');
   };
 
   const allowDeleteDocument = doc

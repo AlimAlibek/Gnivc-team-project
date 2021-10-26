@@ -1,15 +1,22 @@
-.buttonsRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-
-  button {
-    margin: 0 0.3em;
+.component {
+  & button {
+    margin-right: 8px;
+    font-size: 14px;
   }
 }
-
 .modal {
   width: auto;
   display: flex;
   flex-direction: column;
+}
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    
+  & button {
+    margin-left: 8px;
+    padding: 7px 40px;
+    font-size: 14px;
+  }
 }
