@@ -239,21 +239,21 @@
               "acepted": false,
               "approvedDate": "",
               "approvedTime": "",
-              "label": "dpp",
+              "matchedRole": "dpp",
               "reviwer": ""
             },
             "uit": {
               "acepted": false,
               "approvedDate": "",
               "approvedTime": "",
-              "label": "uit",
+              "matchedRole": "uit",
               "reviwer": ""
             },
             "fku": {
               "acepted": false,
               "approvedDate": "",
               "approvedTime": "",
-              "label": "fku",
+              "matchedRole": "fku",
               "reviwer": "",
               "reviwerRole": ""
             },
@@ -261,7 +261,7 @@
               "acepted": false,
               "approvedDate": "",
               "approvedTime": "",
-              "label": "uib",
+              "matchedRole": "uib",
               "reviwer": ""
             }
           }
@@ -434,7 +434,7 @@
           "type": "Для согласования",
           "createdAt": "01.04.2021",
           "approvedStartAt": "20.09.2021",
-          "approvedEndAt": "21.09.2021",
+          "approvedEndAt": "24.09.2021",
           "activeReviewer": "Коршунов В.М.",
           "files": [
             {
@@ -525,31 +525,31 @@
           ],
           "approvalStages": {
             "dpp": {
-              "acepted": false,
-              "approvedDate": "",
-              "approvedTime": "",
+              "acepted": true,
+              "approvedDate": "20.09.2021",
+              "approvedTime": "11:40",
               "matchedRole": "dpp",
               "reviwer": ""
             },
             "uit": {
-              "acepted": false,
-              "approvedDate": "",
-              "approvedTime": "",
+              "acepted": true,
+              "approvedDate": "21.09.2021",
+              "approvedTime": "11:40",
               "matchedRole": "uit",
               "reviwer": ""
             },
             "fku": {
-              "acepted": false,
-              "approvedDate": "",
-              "approvedTime": "",
+              "acepted": true,
+              "approvedDate": "22.09.2021",
+              "approvedTime": "11:40",
               "matchedRole": "fku",
               "reviwer": "",
               "reviwerRole": ""
             },
             "uib": {
-              "acepted": false,
-              "approvedDate": "",
-              "approvedTime": "",
+              "acepted": true,
+              "approvedDate": "23.09.2021",
+              "approvedTime": "11:40",
               "matchedRole": "uib",
               "reviwer": ""
             }
