@@ -19,22 +19,28 @@ import DocumentSidebar from './DocumentSidebar';
 import isButtonBlocked from '../../../utils/isButtonBlocked';
 import userStore from '../../../stores/userStore';
 import documentStore from '../../../stores/documentStore';
+import compareVersions from '../../../utils/compareVersions';
 
 const DocumentItem: React.FC<DocumentPackage> = observer(() => {
   const { id } = useParams<{ id: string }>();
   const { role } = userStore;
   const {
-    documentPackage, isLoading, error, status, version,
+    documentPackage, isLoading, error, status, version, setLastVersion, fetchDocument,findIndex
   } = documentStore;
-  const { setLastVersion, fetchDocument } = documentStore;
 
   useEffect(() => {
     fetchDocument(id);
-  }, [fetchDocument, id]);
+  }, [fetchDocument,id]);
+const blocked = version ? isButtonBlocked(role, version) : false;
 
-  // const allowCreateVersions=(role === Access.EDITOR && isTheLastVersionFinished); будет в деле когда наладим сейвы
+const indexOfActive=findIndex()
 
-  const blocked = version ? isButtonBlocked(role, version) : false;
+const isVersionsDifferent=compareVersions(documentPackage,version,indexOfActive)
+console.log(isVersionsDifferent)
+
+const allowSave=(role === Access.EDITOR&&isVersionsDifferent&&!blocked)
+
+  
   return (
     <Container>
       <div className={classes.component}>
@@ -47,7 +53,7 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
                 setLastVersion={setLastVersion}
               />
 
-              {role === Access.EDITOR && !blocked && (
+              {allowSave && (
                 <SaveCancel />
               )}
 

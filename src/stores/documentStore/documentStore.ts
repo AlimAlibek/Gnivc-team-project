@@ -36,7 +36,7 @@ class DocumentStore {
   }
 
   setDocument(document: DocumentPackage) {
-    this.documentPackage = {...document};
+    this.documentPackage = document;
   }
 
   setVersion(version: Version) {
@@ -128,7 +128,7 @@ class DocumentStore {
       const index = doc.versions.findIndex(
         (el) => el.version === version.version
       );
-      doc.versions[index] = version;
+      doc.versions[index] = {...version};
       service.updateDocument(doc);
     }
   }
@@ -212,7 +212,6 @@ if(index!==undefined&&versions){
       setLastVersion(doc.versions);
     }
   }
-
   deleteDocument() {
     const { documentPackage: doc } = this;
     if (doc) {
