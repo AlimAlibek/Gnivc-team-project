@@ -206,23 +206,13 @@ class DocumentStore {
   }
 
   addFile(file: DocumentFile) {
-    // const { documentPackage: doc } = this;
-    // const index = this.findIndex();
-    // if (doc && index !== undefined) {
-    //   const response = await service.addFile(doc, file, index);
-    //   this.setDocument(response);
-    // }
-    if (this.version) { this.version.files = [...this.version.files, file]; }
+    if (this.version) { this.version.files = [...this.version.files, file]; 
+      this.saveAndSend()}
   };
 
   updateFile = async (file: DocumentFile, position: number) => {
-    // const { documentPackage: doc } = this;
-    // const index = this.findIndex();
-    // if (doc && index !== undefined) {
-    //   const response = await service.updateFile(doc, file, position, index);
-    //   this.setDocument(response);
-    // }
     this.version?.files.splice(position, 1, file);
+    this.saveAndSend()
   };
 
   createNewVersion(name: string, userName: string) {
@@ -261,13 +251,8 @@ class DocumentStore {
   }
 
   removeFile = async (position: number) => {
-    // const { documentPackage: doc } = this;
-    // const index = this.findIndex();
-    // if (doc && index !== undefined) {
-    //   const response = await service.removeFile(doc, position, index);
-    //   this.setDocument(response);
-    // }
     this.version?.files.splice(position, 1);
+    this.saveAndSend()
   };
 }
 

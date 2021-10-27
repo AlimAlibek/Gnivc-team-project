@@ -31,7 +31,6 @@ const FilesTable: React.FC = observer(() => {
   };
 
   const handleModifyFile = (index: number) => {
-    console.log('modfile', index);
     setFileChanging(index);
     setOpenModal(true);
   };

@@ -267,7 +267,7 @@
           "contour": "development",
           "priority": "high",
           "label": "Схема передачи данныx",
-          "packageType": "approve",
+          "packageType": "sign",
           "gk": "3.1.1",
           "versionCode": "08c001dc-34ff-11ec-8d3d-0242ac130003",
           "responsiblePerson": "Владимир Горбунов",
