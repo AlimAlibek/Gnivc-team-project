@@ -20,11 +20,14 @@ const Decide: React.FC = () => {
     addComent,
     removeVersion,
     deleteDocument,
+    setAprrovalDate
   } = documentStore;
   const { name } = userStore;
   const blocked = version ? isActionBlocked(version) : true;
   const toggleModal = () => setOpen(!open);
   const sendToApproval = () => {
+    
+    setAprrovalDate()
     setStatus(Status.APPROVING);
     const comment = createComment('Отправил на согласование', name);
     addComent(comment);

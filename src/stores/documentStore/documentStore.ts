@@ -93,6 +93,10 @@ class DocumentStore {
     if (this.version) this.version.gk = newGk;
   }
 
+  setAprrovalDate(){
+    if(this.version)this.version.approvedStartAt=new Date().toLocaleDateString('ru')
+  }
+
   setLastVersion(versions: Version[] | undefined) {
     if (versions!==undefined) this.setVersion(versions[versions.length - 1]);
   }

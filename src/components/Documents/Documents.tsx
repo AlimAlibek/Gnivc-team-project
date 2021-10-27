@@ -28,15 +28,13 @@ const Documents: React.FC = observer(() => {
   const { createNewDocument } = documentStore;
   const { role, name, userName } = userStore;
 
-  const [modal, openModal] = useState(false);
-
-  const toggleModal = () => openModal(!modal);
+  
   const history = useHistory();
 
   const formDocument = () => {
-    const document = createDocument(String(rows.length + 1), name, userName);
+    const length=tableStore.documents.length+1
+    const document = createDocument(String(length), name, userName);
     createNewDocument(document).then(fetchDocuments);
-    toggleModal();
     history.push(`/documents/${rows.length + 1}`);
   };
 
