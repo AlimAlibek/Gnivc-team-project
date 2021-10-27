@@ -25,13 +25,7 @@ const service = {
   },
 
   // prettier-ignore
-  async addComment(document: DocumentPackage, comment: Comment, index: number): Promise<DocumentPackage> {
-    const { id, versions } = document;
-    const { comments } = versions[index];
-    comments?.push(comment);
-    const response = await httpClient.patch(`/documents/${id}`, document);
-    return response.data;
-  },
+
 
 
   async removeVersion(document: DocumentPackage, { versionCode }: Version): Promise<DocumentPackage> {

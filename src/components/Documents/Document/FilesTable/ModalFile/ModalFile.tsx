@@ -28,11 +28,11 @@ const ModalFile: React.FC<FileModalWindow> = ({ close, isFileChanging }) => {
   const [fileType, setFileType] = useState('');
 
   useEffect(() => {
-    if (isFileChanging === undefined) return;
+    if (isFileChanging !== undefined) {
     const file = version?.files[isFileChanging];
     if (file) {
       setModifiableFile(getInputFile(file));
-      setFileType(file.fileType);
+      setFileType(file.fileType);}
     }
   }, [isFileChanging, version?.files]);
 
@@ -62,7 +62,7 @@ const ModalFile: React.FC<FileModalWindow> = ({ close, isFileChanging }) => {
       fileType: fileType || 'Не указан',
       uploadedAt: new Date().toLocaleDateString(),
       packageVersion: version?.version || '',
-      id: Date.now().toString(),
+      id:` ${Date.now().toString()}+${fileData.name}`,
     };
 
     if (isFileChanging !== undefined) {

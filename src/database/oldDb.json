@@ -331,18 +331,6 @@
               "person": "Коршунов В.М.",
               "createdAt": "20.09.2021",
               "time": "09:30"
-            },
-            {
-              "text": "sss",
-              "person": "Борис Хмельников",
-              "createdAt": "25.10.2021",
-              "time": "12:11:01"
-            },
-            {
-              "text": "aadfdf",
-              "person": "Гость",
-              "createdAt": "27.10.2021",
-              "time": "09:17:50"
             }
           ],
           "approvalStages": {
@@ -620,9 +608,9 @@
           "responsibleUserName": "userHmelnikov2",
           "type": "Для согласования",
           "createdAt": "04.05.2021",
-          "approvedStartAt": "06.05.2021",
+          "approvedStartAt": "27.10.2021",
           "approvedEndAt": "",
-          "activeReviewer": "Коршунов В.М.",
+          "activeReviewer": "",
           "files": [
             {
               "mime": "text/plain",
@@ -632,7 +620,7 @@
               "fileType": "Проектная документация",
               "uploadedAt": "23.10.2021",
               "packageVersion": "2",
-              "id": "1634975682476"
+              "id": "16321312312312"
             },
             {
               "mime": "text/plain",
@@ -642,7 +630,17 @@
               "fileType": "Проектная документация",
               "uploadedAt": "23.10.2021",
               "packageVersion": "2",
-              "id": "1634975682476"
+              "id": "123123"
+            },
+            {
+              "mime": "text/plain",
+              "name": "aaaa.txt",
+              "size": 0,
+              "content": {},
+              "fileType": "Не указан",
+              "uploadedAt": "27.10.2021",
+              "packageVersion": "1",
+              "id": " 1635363078144+aaaa.txt"
             }
           ],
           "comments": [
@@ -667,11 +665,11 @@
           ],
           "approvalStages": {
             "dpp": {
-              "acepted": false,
-              "approvedDate": "",
-              "approvedTime": "",
+              "acepted": true,
+              "approvedDate": "27.10.2021",
+              "approvedTime": "22:31:21",
               "matchedRole": "dpp",
-              "reviwer": ""
+              "reviwer": "userKorshunov4"
             },
             "uib": {
               "acepted": false,
