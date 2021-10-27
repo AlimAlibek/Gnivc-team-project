@@ -40,7 +40,7 @@ class DocumentStore {
   }
 
   setVersion(version: Version) {
-    this.version = {...version};
+    this.version = { ...version };
   }
 
   setFkuRole(role: Access) {
@@ -171,21 +171,23 @@ class DocumentStore {
     }
   }
 
-  addFile(file: DocumentFile) {
+  addFile = async (file: DocumentFile) => {
     const { documentPackage: doc } = this;
     const index = this.findIndex();
     if (doc && index !== undefined) {
-      service.addFile(doc, file, index);
+      const response = await service.addFile(doc, file, index);
+      this.setDocument(response);
     }
-  }
+  };
 
-  updateFile(file: DocumentFile, position: number) {
+  updateFile = async (file: DocumentFile, position: number) => {
     const { documentPackage: doc } = this;
     const index = this.findIndex();
     if (doc && index !== undefined) {
-      service.updateFile(doc, file, position, index);
+      const response = await service.updateFile(doc, file, position, index);
+      this.setDocument(response);
     }
-  }
+  };
 
   createNewVersion(name: string, userName: string) {
     const { documentPackage: doc } = this;
@@ -197,12 +199,13 @@ class DocumentStore {
     }
   }
 
-cancelChanges() {
-const {documentPackage:doc}=this;
-const versions={...this.documentPackage?.versions}
-const index=this.findIndex();
-if(index!==undefined&&versions){
-  this.version={...versions[index]}}
+  cancelChanges() {
+    const { documentPackage: doc } = this;
+    const versions = { ...this.documentPackage?.versions };
+    const index = this.findIndex();
+    if (index !== undefined && versions) {
+      this.version = { ...versions[index] };
+    }
   }
 
   removeVersion() {
@@ -212,6 +215,7 @@ if(index!==undefined&&versions){
       setLastVersion(doc.versions);
     }
   }
+
   deleteDocument() {
     const { documentPackage: doc } = this;
     if (doc) {
@@ -221,13 +225,14 @@ if(index!==undefined&&versions){
     }
   }
 
-  removeFile(position: number) {
+  removeFile = async (position: number) => {
     const { documentPackage: doc } = this;
     const index = this.findIndex();
     if (doc && index !== undefined) {
-      service.removeFile(doc, position, index);
+      const response = await service.removeFile(doc, position, index);
+      this.setDocument(response);
     }
-  }
+  };
 }
 
 export default new DocumentStore();

@@ -6,14 +6,12 @@ import Modal from '@ff/ui-kit/lib/Modal';
 import documentStore from '../../../../../stores/documentStore';
 import classes from './SaveCancel.module.scss';
 
-
 const SaveCancel: React.FC = observer(() => {
   const {
-  cancelChanges,
+    cancelChanges,
     saveAndSend,
   } = documentStore;
   const [open, setOpen] = useState(false);
-
 
   const toggleModal = () => setOpen(!open);
   const saveIt = () => {
@@ -21,11 +19,10 @@ const SaveCancel: React.FC = observer(() => {
     toggleModal();
   };
 
-  const cancelButton=()=>{
-    cancelChanges()
-//  if(doc)fetchDocument(doc.id);
-}
-
+  const cancelButton = () => {
+    cancelChanges();
+    //  if(doc)fetchDocument(doc.id);
+  };
 
   const saveContent = (
     <div className={classes.modal}>
@@ -45,7 +42,7 @@ const SaveCancel: React.FC = observer(() => {
       </Modal>
       {/*  prettier-ignore */}
       <Button variant="fill" type="primary" onClick={toggleModal}>Сохранить</Button>
-     <Button variant="outline" type="primary" onClick={cancelButton}>Отменить</Button>
+      <Button variant="outline" type="primary" onClick={cancelButton}>Отменить</Button>
     </div>
   );
 });

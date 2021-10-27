@@ -25,22 +25,21 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
   const { id } = useParams<{ id: string }>();
   const { role } = userStore;
   const {
-    documentPackage, isLoading, error, status, version, setLastVersion, fetchDocument,findIndex
+    documentPackage, isLoading, error, status, version, setLastVersion, fetchDocument, findIndex,
   } = documentStore;
 
   useEffect(() => {
     fetchDocument(id);
-  }, [fetchDocument,id]);
-const blocked = version ? isButtonBlocked(role, version) : false;
+  }, [fetchDocument, id]);
+  const blocked = version ? isButtonBlocked(role, version) : false;
 
-const indexOfActive=findIndex()
+  const indexOfActive = findIndex();
 
-const isVersionsDifferent=compareVersions(documentPackage,version,indexOfActive)
-console.log(isVersionsDifferent)
+  const isVersionsDifferent = compareVersions(documentPackage, version, indexOfActive);
+  console.log(isVersionsDifferent);
 
-const allowSave=(role === Access.EDITOR&&isVersionsDifferent&&!blocked)
+  const allowSave = (role === Access.EDITOR && isVersionsDifferent && !blocked);
 
-  
   return (
     <Container>
       <div className={classes.component}>

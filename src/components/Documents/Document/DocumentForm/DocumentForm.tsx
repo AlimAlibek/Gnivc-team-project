@@ -31,7 +31,7 @@ const DocumentForm: React.FC = observer(() => {
 
   if (!documentStore.version) return <div />;
   const {
-    contour, priority, packageType, gk, activeReviewer, status, responsibleUserName
+    contour, priority, packageType, gk, activeReviewer, status, responsibleUserName,
   } = documentStore.version;
   const blocked = selectedUser
     ? isFieldsBlocked(selectedUser, status, activeReviewer, userName)
@@ -40,9 +40,7 @@ const DocumentForm: React.FC = observer(() => {
   const changeLabel = (newName: string) => {
     if (documentStore.version) documentStore.version.label = newName;
   };
-  const shownResponsible=users.find((el) => el.userName === responsibleUserName);
-
- 
+  const shownResponsible = users.find((el) => el.userName === responsibleUserName);
 
   const setResponsible = (newUserName: string | string[]) => {
     const findName = users.find((el) => el.userName === newUserName);

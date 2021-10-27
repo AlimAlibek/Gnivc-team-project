@@ -46,7 +46,12 @@ const service = {
   },
 
   // prettier-ignore
-  async updateFile(document: DocumentPackage, file: DocumentFile, position: number, index: number): Promise<DocumentPackage> {
+  async updateFile(
+    document: DocumentPackage,
+    file: DocumentFile,
+    position: number,
+    index: number,
+  ): Promise<DocumentPackage> {
     const { id, versions } = document;
     versions[index].files.splice(position, 1, file);
 
