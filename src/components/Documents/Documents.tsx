@@ -1,23 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { observer } from 'mobx-react';
 import Button from '@ff/ui-kit/lib/Button';
-import Icon from '@ff/ui-kit/lib/Icon';
 import Table from '@ff/ui-kit/lib/Table';
 import Typography from '@ff/ui-kit/lib/Typography';
+import { useHistory } from 'react-router-dom';
 
 import '../../styles/icons/tabler-icons-ext.css';
 import classes from './Documents.module.scss';
 import Container from '../layouts/Container';
 import getColumns from '../../utils/getColumns';
 import Access from '../../models/Access';
-import userStore from '../../stores/userStore';
+import createDocument from '../../utils/createDocument';
 import tableStore from '../../stores/tableStore';
+import documentStore from '../../stores/documentStore';
+import userStore from '../../stores/userStore';
 
 const columns = getColumns();
-
 const Documents: React.FC = observer(() => {
-  const { documents: rows, error, isLoading } = tableStore;
-  const { role } = userStore;
+  const {
+    documents: rows, error, isLoading, fetchDocuments,
+  } = tableStore;
+    /*eslint-disable */
+  useEffect(() => {
+    fetchDocuments();
+  }, []);
+    /* eslint-enable */
+  const { createNewDocument } = documentStore;
+  const { role, name, userName } = userStore;
+
+  
+  const history = useHistory();
+
+  const formDocument = () => {
+    const length=tableStore.documents.length+1
+    const document = createDocument(String(length), name, userName);
+    createNewDocument(document).then(fetchDocuments);
+    history.push(`/documents/${rows.length + 1}`);
+  };
 
   return (
     <Container>
@@ -25,9 +44,11 @@ const Documents: React.FC = observer(() => {
         <div className={classes.top}>
           <div className={classes.title}>Пакеты документов</div>
           {role === Access.EDITOR && (
-            <Button className={classes.button} variant="outline" type="primary">
-              <Icon name="0010-circle-plus" />
-              <span>Создать пакет документов</span>
+            <Button onClick={formDocument} variant="outline" type="primary">
+              <div className={classes.button} role="application">
+                <i className="sr-0010-circle-plus" />
+                <span>Создать пакет документов</span>
+              </div>
             </Button>
           )}
         </div>
@@ -37,7 +58,10 @@ const Documents: React.FC = observer(() => {
 
         {error && <Typography.Title>{error}</Typography.Title>}
 
-        <Table columns={columns} rows={rows} />
+        <div className={classes.table}>
+          <Table columns={columns} rows={rows} />
+        </div>
+
       </div>
     </Container>
   );

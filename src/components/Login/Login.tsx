@@ -6,10 +6,12 @@ import Typography from '@ff/ui-kit/lib/Typography';
 import classes from './Login.module.scss';
 import mapUsersIntoOptions from '../../utils/mapUsersIntoOptions';
 import userStore from '../../stores/userStore';
+import translateRole from '../../utils/translateRole';
 
 const Login: React.FC = observer(() => {
-  // Пару раз сервер входил в странный цикл вечно получая список юзеров, если что ставьте любую константу в юз эффект оно починится.
-  const { users, selectedUser, setUser } = userStore;
+  const {
+    users, role, setUser, name,
+  } = userStore;
   const options = mapUsersIntoOptions(users);
   return (
     <div className={classes.component}>
@@ -22,8 +24,8 @@ const Login: React.FC = observer(() => {
         showSearch
       />
       <Typography className={classes.hint}>
-        {selectedUser
-          && `Выбранный юзер - ${selectedUser.name} ${selectedUser.role}`}
+        {role
+          && `Выбранный пользователь - ${name} ${translateRole.get(role)}`}
       </Typography>
     </div>
   );

@@ -4,11 +4,12 @@ import getColorAndStatus from './getColorAndStatus';
 
 const mapDocumentsIntoFormattedDocuments = (
   documents: DocumentPackage[],
-): FormattedDocument[] => documents.map(({ id, title, versions }) => {
+): FormattedDocument[] => documents.map(({ id, versions }) => {
   const {
     status,
     responsiblePerson,
     version,
+    label,
     createdAt,
     approvedStartAt,
     approvedEndAt,
@@ -16,7 +17,7 @@ const mapDocumentsIntoFormattedDocuments = (
   const [color, translatedStatus] = getColorAndStatus(status);
   return {
     id,
-    name: { id, title },
+    name: { id, label },
     colorAndStatus: { color, translatedStatus },
     responsiblePerson,
     version,

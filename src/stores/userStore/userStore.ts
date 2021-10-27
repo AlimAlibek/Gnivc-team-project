@@ -1,5 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 
+import Access from '../../models/Access';
 import User from '../../models/User';
 import service from './userStore.service';
 
@@ -33,12 +34,31 @@ class UserStore {
     this.error = error;
   }
 
+/*eslint-disable */
+
+  filterByMyRole(): User[] | undefined {
+    const role = this.selectedUser?.role;
+    const myUserName = this.selectedUser?.userName;
+    if (role) { return this.users.filter((user) => user.role === role && user.userName !== myUserName); }
+  }
+
+    filterByRole(role:Access) {
+     const res =this.users.filter((user) => user.role === role ); 
+     if(res) return res
+  }
+  
+  /* eslint-enable */
+
   get role() {
     return this.selectedUser?.role;
   }
 
   get name() {
     return this.selectedUser?.name ?? 'Гость';
+  }
+
+  get userName() {
+    return this.selectedUser?.userName ?? 'Unknown';
   }
 
   fetchUsers() {

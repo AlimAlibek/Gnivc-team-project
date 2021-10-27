@@ -2,7 +2,7 @@ interface FormattedDocument {
   id: string;
   name: {
     id: string;
-    title: string;
+    label: string;
   };
   colorAndStatus: {
     color: string;

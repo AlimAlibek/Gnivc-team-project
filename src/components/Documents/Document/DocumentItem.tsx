@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { useParams } from 'react-router';
 import Typography from '@ff/ui-kit/lib/Typography';
-import clsx from 'clsx';
 
 import classes from './DocumentItem.module.scss';
 import Container from '../../layouts/Container';
@@ -10,37 +9,49 @@ import Access from '../../../models/Access';
 import StatusEnum from '../../../models/Status';
 import DocumentPackage from '../../../models/DocumentPackage';
 import VersionList from './VersionList';
-import SaveCancel from './actionButtons/SaveCancel';
-import CreateNewVersion from './actionButtons/CrateNewVersion';
+import SaveCancel from './HeaderButtons/SaveCancel';
+import CreateNewVersion from './HeaderButtons/CrateNewVersion';
 import Status from './Status';
 import ActionButtons from './actionButtons/ActionButtons';
 import DocumentForm from './DocumentForm/DocumentForm';
 import FilesTable from './FilesTable';
-import AddFile from './actionButtons/AddFile';
-import Comments from './Comments';
+import DocumentSidebar from './DocumentSidebar';
+import isButtonBlocked from '../../../utils/isButtonBlocked';
 import userStore from '../../../stores/userStore';
 import documentStore from '../../../stores/documentStore';
+import compareVersions from '../../../utils/compareVersions';
 
 const DocumentItem: React.FC<DocumentPackage> = observer(() => {
   const { id } = useParams<{ id: string }>();
   const { role } = userStore;
   const {
-    isLoading, error, status, version, fetchDocument, isBlocked,
+    documentPackage, isLoading, error, status, version, setLastVersion, fetchDocument, findIndex,
   } = documentStore;
 
   useEffect(() => {
     fetchDocument(id);
   }, [fetchDocument, id]);
+  const blocked = version ? isButtonBlocked(role, version) : false;
 
-  // const allowCreateVersions=(role === Access.EDITOR && isTheLastVersionFinished); будет в деле когда наладим сейвы
+  const indexOfActive = findIndex();
+
+  const isVersionsDifferent = compareVersions(documentPackage, version, indexOfActive);
+
+  const allowSave = (role === Access.EDITOR && isVersionsDifferent && !blocked);
+
   return (
     <Container>
       <div className={classes.component}>
-        <div className={clsx(classes.block, classes.main)}>
-          <div className={classes.container}>
-            <div className={clsx(classes.row, classes.edge, classes.head)}>
-              <VersionList />
-              {role === Access.EDITOR && status === StatusEnum.SCATCH && (
+        <div className={classes.data}>
+          <div>
+            <div className={classes.top}>
+              <VersionList
+                documentPackage={documentPackage}
+                version={version}
+                setLastVersion={setLastVersion}
+              />
+
+              {allowSave && (
                 <SaveCancel />
               )}
 
@@ -49,18 +60,16 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
               )}
             </div>
 
-            <Status />
+            <Status version={version} />
 
-            {!isBlocked(role) && <ActionButtons />}
+            {!blocked && <ActionButtons role={role} status={status} />}
 
             <DocumentForm />
 
             <FilesTable />
-
-            {role === Access.EDITOR && <AddFile />}
           </div>
         </div>
-        <Comments comments={version?.comments} />
+        <DocumentSidebar />
       </div>
 
       {isLoading && <Typography.Title>Loading...</Typography.Title>}

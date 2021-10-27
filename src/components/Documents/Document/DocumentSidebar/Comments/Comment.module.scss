@@ -20,6 +20,7 @@
 
 .button {
   margin-bottom: 30px;
+  font-size: 14px;
 }
 
 .row {
@@ -44,6 +45,7 @@
   width: 100%;
   margin-top: -8px;
   position: relative;
+
   &:after {
     content: '';
     position: absolute;

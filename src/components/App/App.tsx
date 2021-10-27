@@ -18,7 +18,7 @@ const App: React.FC = () => (
   <div className={classes.component}>
     <Header />
     <Main>
-      <Sidebar>
+      <Sidebar className={classes.sidebar}>
         <SystemName logo={logo} />
       </Sidebar>
       <Switch>

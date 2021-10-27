@@ -1,5 +1,7 @@
 .component {
+  position: relative;
   color: #18191b;
+  z-index: 9;
 }
 
 .title {
@@ -19,7 +21,6 @@
 }
 
 .select {
-  position: relative;
   z-index: 10;
   position: absolute;
   top: 40px;
@@ -29,19 +30,15 @@
   box-shadow: 0 0 3px;
   border-radius: 4px;
   padding: 6px 0;
-}
-
-.list {
   margin: 0;
-  padding: 0;
 }
 
 .li {
+  display: block;
   list-style-type: none;
   background: #ffffff;
   width: 425px;
   cursor: pointer;
-  padding: 6px 0;
   &:hover {
     background-color: #f4f5f5;
   }

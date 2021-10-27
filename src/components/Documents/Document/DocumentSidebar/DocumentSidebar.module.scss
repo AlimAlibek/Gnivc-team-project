@@ -1,0 +1,29 @@
+.component {
+  position: relative;
+  background: #fff;
+  border-radius: 7px;
+  flex: 0 0 30%;
+  .sideBody {
+    padding: 0 30px;
+  }
+  .tabs{
+    position: relative;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 24px;
+    font-weight: 400;
+    font-size: 16px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #EDEDED ;
+    }
+  }
+}

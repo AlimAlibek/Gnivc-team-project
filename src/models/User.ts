@@ -5,6 +5,7 @@ interface User {
   name: string;
   userName: string;
   role: Access;
+  canEdit?: string;
   projectRole: string;
   department: string;
 }

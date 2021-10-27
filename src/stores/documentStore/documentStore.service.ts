@@ -1,7 +1,7 @@
 import httpClient from '../_api';
-import Status from '../../models/Status';
-import Version from '../../models/Version';
+import Comment from '../../models/Comment';
 import DocumentPackage from '../../models/DocumentPackage';
+import Version from '../../models/Version';
 
 const service = {
   async fetchDocument(id: string): Promise<DocumentPackage> {
@@ -9,10 +9,41 @@ const service = {
     return response.data;
   },
 
-  isTheLastVersionFinished(versions: Version[] | undefined): boolean {
-    if (!versions) return false;
-    return versions[versions.length - 1].status === Status.APPROVED;
+  async createNewDocument(document: DocumentPackage): Promise<DocumentPackage> {
+    const response = await httpClient.post('/documents/', document);
+    return response.data;
   },
+
+  // prettier-ignore
+  async updateDocument(document: DocumentPackage): Promise<DocumentPackage> {
+    const response = await httpClient.patch(`/documents/${document.id}`, document);
+    return response.data;
+  },
+
+  async deleteData(patch: string): Promise<void> {
+    httpClient.delete(patch);
+  },
+
+  // prettier-ignore
+  async addComment(document: DocumentPackage, comment: Comment, index: number): Promise<DocumentPackage> {
+    const { id, versions } = document;
+    const { comments } = versions[index];
+    comments?.push(comment);
+    console.log(comments);
+    const response = await httpClient.patch(`/documents/${id}`, document);
+    return response.data;
+  },
+
+
+  async removeVersion(document: DocumentPackage, { versionCode }: Version): Promise<DocumentPackage> {
+    const { id, versions } = document;
+    // eslint-disable-next-line
+    document.versions = versions.filter(({ versionCode: code }) => code !== versionCode);
+
+    const response = await httpClient.patch(`/documents/${id}`, document);
+    return response.data;
+  },
+
 };
 
 export default service;

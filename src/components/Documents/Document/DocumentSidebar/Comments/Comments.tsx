@@ -6,31 +6,27 @@ import List from '@ff/ui-kit/lib/esm/components/List';
 
 import classes from './Comment.module.scss';
 import RenderComment from './RenderComment';
-import Comment from '../../../../models/Comment';
-import documentStore from '../../../../stores/documentStore';
-import userStore from '../../../../stores/userStore';
+import createComment from '../../../../../utils/createComment';
+import userStore from '../../../../../stores/userStore';
+import documentStore from '../../../../../stores/documentStore';
 
-type CommentsProps = {
-  comments: Comment[] | undefined;
-};
-
-const Comments: React.FC<CommentsProps> = ({ comments }) => {
-  const { addComent } = documentStore;
+const Comments: React.FC = () => {
   const { name } = userStore;
-
+  const { version, addComent } = documentStore;
   const [comment, setComment] = useState('');
 
+  const comments = version?.comments;
+
   const sendComent = () => {
-    if (!comment) {
-      return;
+    if (comment) {
+      const formedComment = createComment(comment, name);
+      addComent(formedComment);
+      setComment('');
     }
-    addComent(name, comment);
-    setComment('');
   };
 
   return (
-    <div className={classes.component}>
-      <h3 className={classes.subtitle}> Комментарии </h3>
+    <>
       <TextAreaField
         onChange={(e) => setComment(e.target.value)}
         value={comment}
@@ -51,7 +47,7 @@ const Comments: React.FC<CommentsProps> = ({ comments }) => {
       ) : (
         <p>Комментариев нет</p>
       )}
-    </div>
+    </>
   );
 };
 export default Comments;
