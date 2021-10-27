@@ -6,21 +6,17 @@ import List from '@ff/ui-kit/lib/esm/components/List';
 
 import classes from './Comment.module.scss';
 import RenderComment from './RenderComment';
-import createComment from '../../../../../utils/createComment';
-import userStore from '../../../../../stores/userStore';
 import documentStore from '../../../../../stores/documentStore';
 
 const Comments: React.FC = () => {
-  const { name } = userStore;
-  const { version, addComent } = documentStore;
+  const { version, addCommentAndSave } = documentStore;
   const [comment, setComment] = useState('');
 
   const comments = version?.comments;
 
   const sendComent = () => {
     if (comment) {
-      const formedComment = createComment(comment, name);
-      addComent(formedComment);
+      addCommentAndSave(comment);
       setComment('');
     }
   };

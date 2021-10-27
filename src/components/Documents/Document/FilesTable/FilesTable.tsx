@@ -31,13 +31,13 @@ const FilesTable: React.FC = observer(() => {
   };
 
   const handleModifyFile = (index: number) => {
-    setFileChanging(index);
     setOpenModal(true);
+    setFileChanging(index);
   };
 
   const handleCloseModal = () => {
-    setFileChanging(undefined);
     setOpenModal(false);
+    setFileChanging(undefined);
   };
 
   // prettier-ignore

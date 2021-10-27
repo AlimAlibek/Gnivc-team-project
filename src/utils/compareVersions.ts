@@ -6,7 +6,7 @@ const compareVersions = (
   version: Version | undefined,
   index: number | undefined,
 ): boolean => {
-  if (doc && version && index!==undefined) return !(JSON.stringify(doc.versions[index]) === JSON.stringify(version));
+  if (doc && version && index !== undefined) return !(JSON.stringify(doc.versions[index]) === JSON.stringify(version));
   return false;
 };
 export default compareVersions;

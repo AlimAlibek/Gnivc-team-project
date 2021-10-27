@@ -272,7 +272,6 @@
           "versionCode": "08c001dc-34ff-11ec-8d3d-0242ac130003",
           "responsiblePerson": "Владимир Горбунов",
           "responsibleUserName": "userGorbunov1",
-          "type": "Для согласования",
           "createdAt": "02.07.2021",
           "approvedStartAt": "",
           "approvedEndAt": "",
@@ -331,18 +330,6 @@
               "person": "Коршунов В.М.",
               "createdAt": "20.09.2021",
               "time": "09:30"
-            },
-            {
-              "text": "sss",
-              "person": "Борис Хмельников",
-              "createdAt": "25.10.2021",
-              "time": "12:11:01"
-            },
-            {
-              "text": "aadfdf",
-              "person": "Гость",
-              "createdAt": "27.10.2021",
-              "time": "09:17:50"
             }
           ],
           "approvalStages": {
@@ -393,7 +380,6 @@
           "versionCode": "08c002cc-34ff-11ec-8d3d-0242ac130003",
           "responsiblePerson": "Борис Хмельников",
           "responsibleUserName": "userHmelnikov2",
-          "type": "Для согласования",
           "createdAt": "01.04.2021",
           "approvedStartAt": "20.09.2021",
           "approvedEndAt": "11.11.2021",
@@ -533,7 +519,6 @@
           "versionCode": "08c0039e-34ff-11ec-8d3d-0242ac130003",
           "responsiblePerson": "Борис Хмельников",
           "responsibleUserName": "userHmelnikov2",
-          "type": "Для согласования",
           "createdAt": "25.09.2021",
           "approvedStartAt": "27.09.2021",
           "approvedEndAt": "",
@@ -618,11 +603,10 @@
           "versionCode": "08c0088a-34ff-11ec-8d3d-0242ac130003",
           "responsiblePerson": "Борис Хмельников",
           "responsibleUserName": "userHmelnikov2",
-          "type": "Для согласования",
           "createdAt": "04.05.2021",
-          "approvedStartAt": "06.05.2021",
+          "approvedStartAt": "27.10.2021",
           "approvedEndAt": "",
-          "activeReviewer": "Коршунов В.М.",
+          "activeReviewer": "",
           "files": [
             {
               "mime": "text/plain",
@@ -632,7 +616,7 @@
               "fileType": "Проектная документация",
               "uploadedAt": "23.10.2021",
               "packageVersion": "2",
-              "id": "1634975682476"
+              "id": "16321312312312"
             },
             {
               "mime": "text/plain",
@@ -642,7 +626,7 @@
               "fileType": "Проектная документация",
               "uploadedAt": "23.10.2021",
               "packageVersion": "2",
-              "id": "1634975682476"
+              "id": "123123"
             }
           ],
           "comments": [
@@ -667,11 +651,11 @@
           ],
           "approvalStages": {
             "dpp": {
-              "acepted": false,
-              "approvedDate": "",
-              "approvedTime": "",
+              "acepted": true,
+              "approvedDate": "27.10.2021",
+              "approvedTime": "22:31:21",
               "matchedRole": "dpp",
-              "reviwer": ""
+              "reviwer": "userKorshunov4"
             },
             "uib": {
               "acepted": false,

@@ -10,10 +10,10 @@ import getInputFile from '../../../../../utils/getInputFile';
 import documentStore from '../../../../../stores/documentStore';
 
 const options2 = [
-  { key: 1, value: 'Схема', label: 'Схема' },
-  { key: 2, value: 'Проектная документация', label: 'Проектная документация' },
-  { key: 3, value: 'График', label: 'График' },
-  { key: 3, value: 'Не указан', label: 'Не указан' },
+  { key: 'op1', value: 'Схема', label: 'Схема' },
+  { key: 'op2', value: 'Проектная документация', label: 'Проектная документация' },
+  { key: 'op3', value: 'График', label: 'График' },
+  { key: 'op4', value: 'Не указан', label: 'Не указан' },
 ];
 
 interface FileModalWindow {
@@ -28,11 +28,12 @@ const ModalFile: React.FC<FileModalWindow> = ({ close, isFileChanging }) => {
   const [fileType, setFileType] = useState('');
 
   useEffect(() => {
-    if (isFileChanging === undefined) return;
-    const file = version?.files[isFileChanging];
-    if (file) {
-      setModifiableFile(getInputFile(file));
-      setFileType(file.fileType);
+    if (isFileChanging !== undefined) {
+      const file = version?.files[isFileChanging];
+      if (file) {
+        setModifiableFile(getInputFile(file));
+        setFileType(file.fileType);
+      }
     }
   }, [isFileChanging, version?.files]);
 
@@ -62,7 +63,7 @@ const ModalFile: React.FC<FileModalWindow> = ({ close, isFileChanging }) => {
       fileType: fileType || 'Не указан',
       uploadedAt: new Date().toLocaleDateString(),
       packageVersion: version?.version || '',
-      id: Date.now().toString(),
+      id: ` ${Date.now().toString()}+${fileData.name}`,
     };
 
     if (isFileChanging !== undefined) {

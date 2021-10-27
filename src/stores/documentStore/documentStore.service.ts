@@ -1,5 +1,4 @@
 import httpClient from '../_api';
-import Comment from '../../models/Comment';
 import DocumentPackage from '../../models/DocumentPackage';
 import Version from '../../models/Version';
 
@@ -25,15 +24,6 @@ const service = {
   },
 
   // prettier-ignore
-  async addComment(document: DocumentPackage, comment: Comment, index: number): Promise<DocumentPackage> {
-    const { id, versions } = document;
-    const { comments } = versions[index];
-    comments?.push(comment);
-    console.log(comments);
-    const response = await httpClient.patch(`/documents/${id}`, document);
-    return response.data;
-  },
-
 
   async removeVersion(document: DocumentPackage, { versionCode }: Version): Promise<DocumentPackage> {
     const { id, versions } = document;
