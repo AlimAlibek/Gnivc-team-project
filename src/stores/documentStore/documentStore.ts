@@ -1,4 +1,4 @@
-import { makeAutoObservable,toJS } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 
 import service from './documentStore.service';
 import ApprovalStage from '../../models/ApprovalStage';
@@ -66,7 +66,6 @@ class DocumentStore {
     if (this.version) {
       this.version.responsiblePerson = userName;
       this.version.responsiblePerson = name;
-      console.log(toJS(this.version))
     }
   }
 
