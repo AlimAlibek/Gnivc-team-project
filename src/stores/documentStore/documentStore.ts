@@ -1,4 +1,4 @@
-import { makeAutoObservable, toJS } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 
 import service from './documentStore.service';
 import ApprovalStage from '../../models/ApprovalStage';
@@ -58,15 +58,42 @@ class DocumentStore {
   }
 
   setActiveRewier(name: string) {
+    if (this.version) this.version.activeReviewer = name;
+  }
+
+  setResponsiblePerson(userName: string, name: string) {
     if (this.version) {
-      this.version.activeReviewer = name;
+      this.version.responsiblePerson = userName;
+      this.version.responsiblePerson = name;
     }
   }
 
+  setVersionCode(code: string) {
+    if (this.version) this.version.versionCode = code;
+  }
+
+  setLabel(newLabel: string) {
+    if (this.version) this.version.label = newLabel;
+  }
+
+  setPriority(newPriority: string) {
+    if (this.version) this.version.priority = newPriority;
+  }
+
+  setContur(newContur: string) {
+    if (this.version) this.version.contour = newContur;
+  }
+
+  setPackageType(newPackage: string) {
+    if (this.version) this.version.packageType = newPackage;
+  }
+
+  setGk(newGk: string) {
+    if (this.version) this.version.gk = newGk;
+  }
+
   setLastVersion(versions: Version[] | undefined) {
-    if (versions) {
-      this.setVersion(versions[versions.length - 1]);
-    }
+    if (versions) this.setVersion(versions[versions.length - 1]);
   }
 
   createStage(userName: string, label: string): ApprovalStage {
@@ -200,7 +227,6 @@ class DocumentStore {
   }
 
   cancelChanges() {
-    const { documentPackage: doc } = this;
     const versions = { ...this.documentPackage?.versions };
     const index = this.findIndex();
     if (index !== undefined && versions) {

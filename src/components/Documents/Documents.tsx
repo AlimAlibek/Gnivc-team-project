@@ -20,9 +20,11 @@ const Documents: React.FC = observer(() => {
   const {
     documents: rows, error, isLoading, fetchDocuments,
   } = tableStore;
+    /*eslint-disable */
   useEffect(() => {
     fetchDocuments();
   }, []);
+    /* eslint-enable */
   const { createNewDocument } = documentStore;
   const { role, name, userName } = userStore;
 

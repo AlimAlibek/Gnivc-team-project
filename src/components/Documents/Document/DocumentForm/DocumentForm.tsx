@@ -5,6 +5,7 @@ import TextField from '@ff/ui-kit/lib/esm/components/TextField';
 import { observer } from 'mobx-react';
 import { isArray } from 'lodash';
 
+import DocumentSelector from './Selector';
 import conturSelect from '../../../../content/contur';
 import isFieldsBlocked from '../../../../utils/isFieldsBlocked';
 import gkSelect from '../../../../content/gk';
@@ -31,38 +32,58 @@ const DocumentForm: React.FC = observer(() => {
 
   if (!documentStore.version) return <div />;
   const {
-    contour, priority, packageType, gk, activeReviewer, status, responsibleUserName,
+    setResponsiblePerson,
+    setVersionCode,
+    setLabel,
+    setPriority,
+    setContur,
+    setPackageType,
+    setGk,
+  } = documentStore;
+  const {
+    contour,
+    label,
+    priority,
+    packageType,
+    gk,
+    activeReviewer,
+    status,
+    versionCode,
+    responsibleUserName,
   } = documentStore.version;
+
   const blocked = selectedUser
     ? isFieldsBlocked(selectedUser, status, activeReviewer, userName)
     : true;
 
-  const changeLabel = (newName: string) => {
-    if (documentStore.version) documentStore.version.label = newName;
-  };
-  const shownResponsible = users.find((el) => el.userName === responsibleUserName);
+  const changeLabel = (newName: string) => setLabel(newName);
+
+  const shownResponsible = users.find(
+    (el) => el.userName === responsibleUserName,
+  );
 
   const setResponsible = (newUserName: string | string[]) => {
     const findName = users.find((el) => el.userName === newUserName);
-    if (documentStore.version && findName?.name && !isArray(newUserName)) {
-      documentStore.version.responsibleUserName = newUserName;
-      documentStore.version.responsiblePerson = findName.name;
+    if (findName?.name && !isArray(newUserName)) {
+      setResponsiblePerson(newUserName, findName.name);
     }
   };
-  const changeVersionCode = (newCode: string) => {
-    if (documentStore.version) documentStore.version.versionCode = newCode;
-  };
+  const changeVersionCode = (newCode: string) => setVersionCode(newCode);
+
   const changePriority = (newPriority: string | string[]) => {
-    if (!isArray(newPriority) && documentStore.version) { documentStore.version.priority = newPriority; }
+    if (!isArray(newPriority)) setPriority(newPriority);
   };
+
   const changeContur = (newContur: string | string[]) => {
-    if (!isArray(newContur) && documentStore.version) { documentStore.version.contour = newContur; }
+    if (!isArray(newContur)) setContur(newContur);
   };
+
   const changePackageType = (newPackage: string | string[]) => {
-    if (!isArray(newPackage) && documentStore.version) { documentStore.version.packageType = newPackage; }
+    if (!isArray(newPackage)) setPackageType(newPackage);
   };
+
   const changeGk = (newGk: string | string[]) => {
-    if (!isArray(newGk) && documentStore.version) { documentStore.version.gk = newGk; }
+    if (!isArray(newGk)) setGk(newGk);
   };
 
   return (
@@ -74,55 +95,40 @@ const DocumentForm: React.FC = observer(() => {
         label="Наименование"
         disabled={blocked}
         labelStyle="floating"
-        value={documentStore.version.label}
+        value={label}
         onChange={(e) => changeLabel(e.target.value)}
         fullWidth
       />
       <div className={classes.flex}>
-        <Select
-          label="Контур"
-          disabled={blocked}
+        <DocumentSelector
           options={conturSelect}
+          disabled={blocked}
+          action={changeContur}
           value={contour}
-          onChange={(e) => changeContur(e)}
-          floatingLabel
-          showSearch
-          fullWidth
         />
       </div>
       <div className={classes.flex}>
-        <Select
-          label="Приоритет"
-          disabled={blocked}
+        <DocumentSelector
           options={prioritySelect}
+          disabled={blocked}
+          action={changePriority}
           value={priority}
-          onChange={(e) => changePriority(e)}
-          floatingLabel
-          showSearch
-          fullWidth
         />
       </div>
 
       <div className={classes.flex}>
-        <Select
-          label="Тип пакета"
-          disabled={blocked}
-          value={packageType}
+        <DocumentSelector
           options={packSelect}
-          onChange={(e) => changePackageType(e)}
-          floatingLabel
-          showSearch
+          disabled={blocked}
+          action={changePackageType}
+          value={packageType}
           style={{ width: '46%' }}
         />
-
-        <Select
-          label="Пункт ГК"
-          disabled={blocked}
+        <DocumentSelector
           options={gkSelect}
+          disabled={blocked}
+          action={changeGk}
           value={gk}
-          onChange={(e) => changeGk(e)}
-          floatingLabel
-          showSearch
           style={{ width: '27%' }}
         />
 
@@ -131,7 +137,7 @@ const DocumentForm: React.FC = observer(() => {
           disabled={blocked}
           name="floating-label"
           labelStyle="floating"
-          value={documentStore.version.versionCode}
+          value={versionCode}
           onChange={(e) => changeVersionCode(e.target.value)}
           size="large"
           className={classes.version}

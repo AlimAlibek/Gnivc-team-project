@@ -65,9 +65,9 @@ const ModalFile: React.FC<FileModalWindow> = ({ close, isFileChanging }) => {
       id: Date.now().toString(),
     };
 
-    (isFileChanging !== undefined)
-      ? updateFile(newFile, isFileChanging)
-      : addFile(newFile);
+    if (isFileChanging !== undefined) {
+      updateFile(newFile, isFileChanging);
+    } else addFile(newFile);
 
     setModifiableFile(undefined);
     setFileType('');

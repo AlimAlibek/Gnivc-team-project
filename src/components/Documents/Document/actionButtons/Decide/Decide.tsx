@@ -8,11 +8,13 @@ import Status from '../../../../../models/Status';
 import createComment from '../../../../../utils/createComment';
 import documentStore from '../../../../../stores/documentStore';
 import userStore from '../../../../../stores/userStore';
+import isActionBlocked from '../../../../../utils/isActionBlocked';
 
 const Decide: React.FC = () => {
   const [open, setOpen] = useState(false);
   const {
     documentPackage: doc,
+    version,
     status,
     setStatus,
     addComent,
@@ -20,6 +22,7 @@ const Decide: React.FC = () => {
     deleteDocument,
   } = documentStore;
   const { name } = userStore;
+  const blocked = version ? isActionBlocked(version) : true;
   const toggleModal = () => setOpen(!open);
   const sendToApproval = () => {
     setStatus(Status.APPROVING);
@@ -50,7 +53,7 @@ const Decide: React.FC = () => {
           </Button>
         </div>
       </Modal>
-      <Button variant="fill" type="primary" onClick={toggleModal}>
+      <Button variant="fill" type="primary" onClick={toggleModal} disabled={blocked}>
         {status === Status.REFACTORING
           ? 'Повторно отправить на согласование'
           : 'Отправить на согласование'}

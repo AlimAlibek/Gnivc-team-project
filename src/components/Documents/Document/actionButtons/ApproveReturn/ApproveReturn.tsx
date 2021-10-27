@@ -11,6 +11,7 @@ import createComment from '../../../../../utils/createComment';
 import documentStore from '../../../../../stores/documentStore';
 import userStore from '../../../../../stores/userStore';
 import ModalApprove from './Modals/ApproveModal';
+import isActionBlocked from '../../../../../utils/isActionBlocked';
 
 const ApproveReturn: React.FC = observer(() => {
   const {
@@ -24,6 +25,7 @@ const ApproveReturn: React.FC = observer(() => {
   const [redirectOpen, setRedirectOpen] = useState(false);
   const [approveOpen, setApproveOpen] = useState(false);
 
+  const blocked = version ? isActionBlocked(version) : true;
   const activeReviewer = version?.activeReviewer;
   const toggleApprove = () => setApproveOpen(!approveOpen);
   const approve = () => {
@@ -47,7 +49,11 @@ const ApproveReturn: React.FC = observer(() => {
 
   if (userName !== activeReviewer) {
     return (
-      <Button type="primary" onClick={() => setReviewer(userName)} style={{ fontSize: '14px' }}>
+      <Button
+        type="primary"
+        onClick={() => setReviewer(userName)}
+        style={{ fontSize: '14px' }}
+      >
         Взять в работу
       </Button>
     );
@@ -64,13 +70,17 @@ const ApproveReturn: React.FC = observer(() => {
           choose={setReviewer}
         />
       )}
-      <ModalApprove status={approveOpen} close={toggleApprove} action={approve} />
+      <ModalApprove
+        status={approveOpen}
+        close={toggleApprove}
+        action={approve}
+      />
       {/* prettier-ignore */}
-      <Button onClick={toggleApprove} variant="fill" type="primary">Согласовать</Button>
+      <Button onClick={toggleApprove} variant="fill" disabled={blocked} type="primary">Согласовать</Button>
       {/* prettier-ignore */}
-      <Button type="primary" onClick={toggleRedirect}>Перенаправить</Button>
+      <Button type="primary" disabled={blocked} onClick={toggleRedirect}>Перенаправить</Button>
       {/* prettier-ignore */}
-      <Button variant="outline" type="primary" onClick={toggleDeny}>Вернуть на доработку</Button>
+      <Button variant="outline" type="primary" disabled={blocked} onClick={toggleDeny}>Вернуть на доработку</Button>
     </div>
   );
 });
