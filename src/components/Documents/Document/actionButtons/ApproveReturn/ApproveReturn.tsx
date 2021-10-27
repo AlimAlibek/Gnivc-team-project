@@ -7,7 +7,6 @@ import Status from '../../../../../models/Status';
 import approveSwicher from '../../../../../utils/approveSwicher';
 import ModalDeny from './Modals/DenyModal';
 import ModalRedirect from './Modals/RedirectModal';
-import createComment from '../../../../../utils/createComment';
 import documentStore from '../../../../../stores/documentStore';
 import userStore from '../../../../../stores/userStore';
 import ModalApprove from './Modals/ApproveModal';
@@ -18,7 +17,7 @@ const ApproveReturn: React.FC = observer(() => {
     version, addComent, setActiveRewier, setStatus,
   } = documentStore;
   const {
-    userName, role, name, filterByMyRole,
+    userName, role, filterByMyRole,
   } = userStore;
 
   const [denyOpen, setDenyOpen] = useState(false);

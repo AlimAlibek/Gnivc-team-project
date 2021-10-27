@@ -8,7 +8,6 @@ import Status from '../../models/Status';
 import DocumentPackage from '../../models/DocumentPackage';
 import Access from '../../models/Access';
 import DocumentFile from '../../models/DocumentFile';
-import Comment from '../../models/Comment';
 import userStore from '../userStore';
 
 class DocumentStore {
@@ -59,8 +58,10 @@ class DocumentStore {
   }
 
   setActiveRewier(name: string) {
-    if (this.version) {this.version.activeReviewer = name;
-    this.saveAndSend();}
+    if (this.version) {
+      this.version.activeReviewer = name;
+      this.saveAndSend();
+    }
   }
 
   setResponsiblePerson(userName: string, name: string) {
@@ -94,12 +95,12 @@ class DocumentStore {
     if (this.version) this.version.gk = newGk;
   }
 
-  setAprrovalDate(){
-    if(this.version)this.version.approvedStartAt=new Date().toLocaleDateString('ru')
+  setAprrovalDate() {
+    if (this.version) this.version.approvedStartAt = new Date().toLocaleDateString('ru');
   }
 
   setLastVersion(versions: Version[] | undefined) {
-    if (versions!==undefined) this.setVersion(versions[versions.length - 1]);
+    if (versions !== undefined) this.setVersion(versions[versions.length - 1]);
   }
 
   createStage(userName: string, label: string): ApprovalStage {
@@ -122,7 +123,6 @@ class DocumentStore {
   approveDPP(userName: string) {
     if (this.version) {
       this.version.approvalStages.dpp = this.createStage(userName, 'dpp');
-      this.version.approvedStartAt = new Date().toLocaleDateString('ru');
       this.version.activeReviewer = '';
       this.saveAndSend();
     }
@@ -185,11 +185,11 @@ class DocumentStore {
       .finally(() => this.setIsLoading(false));
   }
 
-  createNewDocument =async (document: DocumentPackage)=> {
+  createNewDocument = async (document: DocumentPackage) => {
     const response = await service.createNewDocument(document);
-    this.setDocument({...response})
-    this.setLastVersion({...response.versions})
-  }
+    this.setDocument({ ...response });
+    this.setLastVersion({ ...response.versions });
+  };
 
   findIndex() {
     const index = this.documentPackage?.versions.findIndex(
@@ -198,36 +198,37 @@ class DocumentStore {
     return index;
   }
 
-  addComent(comment: string ) {
-const { name } = userStore;
+  addComent(comment: string) {
+    const { name } = userStore;
     this.version?.comments.push({
       text: comment,
       person: name,
       createdAt: new Date().toLocaleDateString('ru'),
       time: new Date().toLocaleTimeString('ru'),
     });
-    }
+  }
 
-    addCommentAndSave(comment:string){
-      const { name } = userStore;
-     this.version?.comments.push({
+  addCommentAndSave(comment: string) {
+    const { name } = userStore;
+    this.version?.comments.push({
       text: comment,
       person: name,
       createdAt: new Date().toLocaleDateString('ru'),
       time: new Date().toLocaleTimeString('ru'),
-    }); 
-    this.saveAndSend()
-    }
-  
+    });
+    this.saveAndSend();
+  }
 
   addFile(file: DocumentFile) {
-    if (this.version) { this.version.files = [...this.version.files, file]; 
-      this.saveAndSend()}
-  };
+    if (this.version) {
+      this.version.files = [...this.version.files, file];
+      this.saveAndSend();
+    }
+  }
 
   updateFile = async (file: DocumentFile, position: number) => {
     this.version?.files.splice(position, 1, file);
-    this.saveAndSend()
+    this.saveAndSend();
   };
 
   createNewVersion(name: string, userName: string) {
@@ -267,7 +268,7 @@ const { name } = userStore;
 
   removeFile = async (position: number) => {
     this.version?.files.splice(position, 1);
-    this.saveAndSend()
+    this.saveAndSend();
   };
 }
 

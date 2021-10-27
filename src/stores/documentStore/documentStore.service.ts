@@ -1,5 +1,4 @@
 import httpClient from '../_api';
-import Comment from '../../models/Comment';
 import DocumentPackage from '../../models/DocumentPackage';
 import Version from '../../models/Version';
 
@@ -25,8 +24,6 @@ const service = {
   },
 
   // prettier-ignore
-
-
 
   async removeVersion(document: DocumentPackage, { versionCode }: Version): Promise<DocumentPackage> {
     const { id, versions } = document;

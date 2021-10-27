@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import Button from '@ff/ui-kit/lib/Button';
 import Table from '@ff/ui-kit/lib/Table';
@@ -28,13 +28,12 @@ const Documents: React.FC = observer(() => {
   const { createNewDocument } = documentStore;
   const { role, name, userName } = userStore;
 
-  
   const history = useHistory();
 
   const formDocument = () => {
-    const length=tableStore.documents.length+1
+    const length = tableStore.documents.length + 1;
     const document = createDocument(String(length), name, userName);
-    createNewDocument(document)
+    createNewDocument(document);
     history.push(`/documents/${rows.length + 1}`);
   };
 

@@ -9,7 +9,6 @@ const ApprovalStages: React.FC = () => {
   const { version, status } = documentStore;
   const stages = version?.approvalStages;
 
- 
   if (!stages || status === Status.SCATCH) return <></>;
   const {
     dpp, uib, fku, uit,

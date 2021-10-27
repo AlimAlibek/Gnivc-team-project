@@ -18,15 +18,17 @@ import mapUsersIntoOptions from '../../../../utils/mapUsersIntoOptions';
 import Access from '../../../../models/Access';
 
 const DocumentForm: React.FC = observer(() => {
-  const { filterByRole, users, selectedUser, userName } = userStore;
+  const {
+    filterByRole, users, selectedUser, userName,
+  } = userStore;
   const editors = filterByRole(Access.EDITOR);
 
   const editorOptions = editors
     ? mapUsersIntoOptions(editors)
     : [
-        { key: 1, value: 'userGorbunov1', label: 'Владимир Горбунов' },
-        { key: 2, value: 'userHmelnikov2', label: 'Борис Хмельников' },
-      ];
+      { key: 1, value: 'userGorbunov1', label: 'Владимир Горбунов' },
+      { key: 2, value: 'userHmelnikov2', label: 'Борис Хмельников' },
+    ];
 
   if (!documentStore.version) return <div />;
   const {
@@ -57,7 +59,7 @@ const DocumentForm: React.FC = observer(() => {
   const changeLabel = (newName: string) => setLabel(newName);
 
   const shownResponsible = users.find(
-    (el) => el.userName === responsibleUserName
+    (el) => el.userName === responsibleUserName,
   );
 
   const setResponsible = (newUserName: string | string[]) => {
@@ -99,7 +101,7 @@ const DocumentForm: React.FC = observer(() => {
       />
       <div className={classes.flex}>
         <DocumentSelector
-          label={'Контур'}
+          label="Контур"
           options={conturSelect}
           disabled={blocked}
           action={changeContur}
@@ -108,7 +110,7 @@ const DocumentForm: React.FC = observer(() => {
       </div>
       <div className={classes.flex}>
         <DocumentSelector
-          label={'Приоритет'}
+          label="Приоритет"
           options={prioritySelect}
           disabled={blocked}
           action={changePriority}
@@ -118,7 +120,7 @@ const DocumentForm: React.FC = observer(() => {
 
       <div className={classes.flex}>
         <DocumentSelector
-          label={'Тип пакета'}
+          label="Тип пакета"
           options={packSelect}
           disabled={blocked}
           action={changePackageType}
@@ -126,7 +128,7 @@ const DocumentForm: React.FC = observer(() => {
           style={{ width: '46%' }}
         />
         <DocumentSelector
-          label={'Пункт Г.К.'}
+          label="Пункт Г.К."
           options={gkSelect}
           disabled={blocked}
           action={changeGk}

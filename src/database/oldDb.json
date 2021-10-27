@@ -272,7 +272,6 @@
           "versionCode": "08c001dc-34ff-11ec-8d3d-0242ac130003",
           "responsiblePerson": "Владимир Горбунов",
           "responsibleUserName": "userGorbunov1",
-          "type": "Для согласования",
           "createdAt": "02.07.2021",
           "approvedStartAt": "",
           "approvedEndAt": "",
@@ -381,7 +380,6 @@
           "versionCode": "08c002cc-34ff-11ec-8d3d-0242ac130003",
           "responsiblePerson": "Борис Хмельников",
           "responsibleUserName": "userHmelnikov2",
-          "type": "Для согласования",
           "createdAt": "01.04.2021",
           "approvedStartAt": "20.09.2021",
           "approvedEndAt": "11.11.2021",
@@ -521,7 +519,6 @@
           "versionCode": "08c0039e-34ff-11ec-8d3d-0242ac130003",
           "responsiblePerson": "Борис Хмельников",
           "responsibleUserName": "userHmelnikov2",
-          "type": "Для согласования",
           "createdAt": "25.09.2021",
           "approvedStartAt": "27.09.2021",
           "approvedEndAt": "",
@@ -606,7 +603,6 @@
           "versionCode": "08c0088a-34ff-11ec-8d3d-0242ac130003",
           "responsiblePerson": "Борис Хмельников",
           "responsibleUserName": "userHmelnikov2",
-          "type": "Для согласования",
           "createdAt": "04.05.2021",
           "approvedStartAt": "27.10.2021",
           "approvedEndAt": "",
@@ -631,16 +627,6 @@
               "uploadedAt": "23.10.2021",
               "packageVersion": "2",
               "id": "123123"
-            },
-            {
-              "mime": "text/plain",
-              "name": "aaaa.txt",
-              "size": 0,
-              "content": {},
-              "fileType": "Не указан",
-              "uploadedAt": "27.10.2021",
-              "packageVersion": "1",
-              "id": " 1635363078144+aaaa.txt"
             }
           ],
           "comments": [

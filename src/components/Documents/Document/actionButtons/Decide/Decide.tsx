@@ -5,9 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import classes from './Decide.module.scss';
 import Status from '../../../../../models/Status';
-import createComment from '../../../../../utils/createComment';
 import documentStore from '../../../../../stores/documentStore';
-import userStore from '../../../../../stores/userStore';
 import isActionBlocked from '../../../../../utils/isActionBlocked';
 
 const Decide: React.FC = () => {
@@ -20,20 +18,19 @@ const Decide: React.FC = () => {
     addComent,
     removeVersion,
     deleteDocument,
-    setAprrovalDate
+    setAprrovalDate,
   } = documentStore;
-  const { name } = userStore;
   const blocked = version ? isActionBlocked(version) : true;
   const toggleModal = () => setOpen(!open);
   const sendToApproval = () => {
-    
-    setAprrovalDate()
+    setAprrovalDate();
     setStatus(Status.APPROVING);
+    if (!version?.approvedStartAt) setAprrovalDate();
     addComent('Отправил на согласование');
   };
   const history = useHistory();
 
-  const allowDeleteVersion = doc ? doc.versions.length > 1 : false;
+  const allowDeleteVersion = doc ? (doc.versions.length > 1 && status === Status.SCATCH) : false;
   const allowDeleteDocument = doc
     ? doc.versions.length === 1 && status === Status.SCATCH
     : false;

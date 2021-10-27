@@ -3,7 +3,7 @@ import Select, { Option } from '@ff/ui-kit/lib/esm/components/Select';
 
 interface Selector {
   options: Option[];
-  label:string,
+  label: string,
   action: (newValue: string | string[]) => void;
   disabled: boolean;
   value: string;
@@ -11,7 +11,7 @@ interface Selector {
 }
 const DocumentSelector: React.FC<Selector> = (props) => {
   const {
-    options, action, disabled, value, style, label
+    options, action, disabled, value, style, label,
   } = props;
   return (
     <Select
