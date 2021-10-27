@@ -36,7 +36,6 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
   const indexOfActive = findIndex();
 
   const isVersionsDifferent = compareVersions(documentPackage, version, indexOfActive);
-  console.log(isVersionsDifferent);
 
   const allowSave = (role === Access.EDITOR && isVersionsDifferent && !blocked);
 
