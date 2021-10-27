@@ -183,7 +183,7 @@
       "versions": [
         {
           "version": "1",
-          "status": "approving",
+          "status": "refactoring",
           "type": "approving",
           "contour": "development",
           "priority": "high",
@@ -195,7 +195,7 @@
           "responsibleUserName": "userGorbunov1",
           "createdAt": "02.07.2021",
           "approvedStartAt": "20.09.2021",
-          "approvedEndAt": "21.09.2021",
+          "approvedEndAt": "",
           "activeReviewer": "Коршунов В.М.",
           "files": [
             {
@@ -227,12 +227,6 @@
               "person": "Коршунов В.М.",
               "createdAt": "20.09.2021",
               "time": "09:30"
-            },
-            {
-              "text": "ФФФ",
-              "person": "Гость",
-              "createdAt": "26.10.2021",
-              "time": "03:06:22"
             }
           ],
           "approvalStages": {
@@ -280,8 +274,8 @@
           "responsibleUserName": "userGorbunov1",
           "type": "Для согласования",
           "createdAt": "02.07.2021",
-          "approvedStartAt": "16.09.2021",
-          "approvedEndAt": "18.09.2021",
+          "approvedStartAt": "",
+          "approvedEndAt": "",
           "activeReviewer": "Коршунов В.М.",
           "files": [
             {
@@ -402,7 +396,7 @@
           "type": "Для согласования",
           "createdAt": "01.04.2021",
           "approvedStartAt": "20.09.2021",
-          "approvedEndAt": "24.09.2021",
+          "approvedEndAt": "11.11.2021",
           "activeReviewer": "Коршунов В.М.",
           "files": [
             {
@@ -542,7 +536,7 @@
           "type": "Для согласования",
           "createdAt": "25.09.2021",
           "approvedStartAt": "27.09.2021",
-          "approvedEndAt": "05.10.2021",
+          "approvedEndAt": "",
           "activeReviewer": "Коршунов В.М.",
           "files": [
             {
@@ -627,7 +621,7 @@
           "type": "Для согласования",
           "createdAt": "04.05.2021",
           "approvedStartAt": "06.05.2021",
-          "approvedEndAt": "01.06.2021",
+          "approvedEndAt": "",
           "activeReviewer": "Коршунов В.М.",
           "files": [
             {
@@ -700,108 +694,6 @@
               "approvedTime": "",
               "matchedRole": "uit",
               "reviwer": ""
-            }
-          }
-        }
-      ]
-    },
-    {
-      "id": "5",
-      "versions": [
-        {
-          "version": "1",
-          "status": "approved",
-          "contour": "development",
-          "priority": "middle",
-          "label": "Новый пакет 1",
-          "packageType": "familiarization",
-          "gk": "3.1.2",
-          "versionCode": "cebd0f61-ba55-4fbe-8f13-9ed459d81bad",
-          "responsiblePerson": "Владимир Горбунов",
-          "responsibleUserName": "userGorbunov1",
-          "type": "Для согласования",
-          "createdAt": "26.10.2021",
-          "approvedStartAt": "26.10.2021",
-          "approvedEndAt": "26.10.2021",
-          "activeReviewer": "",
-          "files": [
-            {
-              "mime": "text/plain",
-              "name": "aaaa.txt",
-              "size": 0,
-              "content": {},
-              "fileType": "Не указан",
-              "uploadedAt": "26.10.2021",
-              "packageVersion": "1",
-              "id": "1635241969593"
-            }
-          ],
-          "comments": [
-            {
-              "text": "Создал новую версию",
-              "person": "Владимир Горбунов",
-              "createdAt": "26.10.2021",
-              "time": "10:04:40"
-            },
-            {
-              "text": "Отправил на согласование",
-              "person": "Владимир Горбунов",
-              "createdAt": "26.10.2021",
-              "time": "12:49:39"
-            },
-            {
-              "text": "Принял документ",
-              "person": "Коршунов Василий",
-              "createdAt": "26.10.2021",
-              "time": "12:52:13"
-            },
-            {
-              "text": "Принял документ",
-              "person": "Елизавета Фомина",
-              "createdAt": "26.10.2021",
-              "time": "12:52:30"
-            },
-            {
-              "text": "Принял документ",
-              "person": "Евгений Маккавеев",
-              "createdAt": "26.10.2021",
-              "time": "12:53:02"
-            },
-            {
-              "text": "Принял документ",
-              "person": "Марк Майоров",
-              "createdAt": "26.10.2021",
-              "time": "12:53:25"
-            }
-          ],
-          "approvalStages": {
-            "dpp": {
-              "acepted": true,
-              "approvedDate": "26.10.2021",
-              "approvedTime": "12:52:13",
-              "matchedRole": "dpp",
-              "reviwer": "userKorshunov4"
-            },
-            "uib": {
-              "acepted": true,
-              "approvedDate": "26.10.2021",
-              "approvedTime": "12:52:30",
-              "matchedRole": "uib",
-              "reviwer": "userFomina8"
-            },
-            "fku": {
-              "acepted": true,
-              "approvedDate": "26.10.2021",
-              "approvedTime": "12:53:02",
-              "matchedRole": "fku",
-              "reviwer": "userMakkaveev15"
-            },
-            "uit": {
-              "acepted": true,
-              "approvedDate": "26.10.2021",
-              "approvedTime": "12:53:25",
-              "matchedRole": "uit",
-              "reviwer": "userMayorov18"
             }
           }
         }

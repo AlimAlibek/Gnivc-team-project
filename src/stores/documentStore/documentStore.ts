@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable,toJS } from 'mobx';
 
 import service from './documentStore.service';
 import ApprovalStage from '../../models/ApprovalStage';
@@ -58,13 +58,15 @@ class DocumentStore {
   }
 
   setActiveRewier(name: string) {
-    if (this.version) this.version.activeReviewer = name;
+    if (this.version) {this.version.activeReviewer = name;
+    this.saveAndSend();}
   }
 
   setResponsiblePerson(userName: string, name: string) {
     if (this.version) {
       this.version.responsiblePerson = userName;
       this.version.responsiblePerson = name;
+      console.log(toJS(this.version))
     }
   }
 
@@ -93,7 +95,7 @@ class DocumentStore {
   }
 
   setLastVersion(versions: Version[] | undefined) {
-    if (versions) this.setVersion(versions[versions.length - 1]);
+    if (versions!==undefined) this.setVersion(versions[versions.length - 1]);
   }
 
   createStage(userName: string, label: string): ApprovalStage {
@@ -179,8 +181,10 @@ class DocumentStore {
       .finally(() => this.setIsLoading(false));
   }
 
-  createNewDocument(document: DocumentPackage) {
-    return service.createNewDocument(document);
+  createNewDocument =async (document: DocumentPackage)=> {
+    const response = await service.createNewDocument(document);
+    this.setDocument({...response})
+    this.setLastVersion({...response.versions})
   }
 
   findIndex() {
