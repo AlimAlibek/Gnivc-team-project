@@ -29,7 +29,6 @@ const service = {
     const { id, versions } = document;
     const { comments } = versions[index];
     comments?.push(comment);
-    console.log(comments);
     const response = await httpClient.patch(`/documents/${id}`, document);
     return response.data;
   },

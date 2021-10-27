@@ -29,8 +29,7 @@ const Decide: React.FC = () => {
     
     setAprrovalDate()
     setStatus(Status.APPROVING);
-    const comment = createComment('Отправил на согласование', name);
-    addComent(comment);
+    addComent('Отправил на согласование');
   };
   const history = useHistory();
 

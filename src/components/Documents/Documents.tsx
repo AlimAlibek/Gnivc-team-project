@@ -34,7 +34,7 @@ const Documents: React.FC = observer(() => {
   const formDocument = () => {
     const length=tableStore.documents.length+1
     const document = createDocument(String(length), name, userName);
-    createNewDocument(document).then(fetchDocuments);
+    createNewDocument(document)
     history.push(`/documents/${rows.length + 1}`);
   };
 

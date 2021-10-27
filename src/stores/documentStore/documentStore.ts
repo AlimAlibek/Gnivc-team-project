@@ -9,6 +9,7 @@ import DocumentPackage from '../../models/DocumentPackage';
 import Access from '../../models/Access';
 import DocumentFile from '../../models/DocumentFile';
 import Comment from '../../models/Comment';
+import userStore from '../userStore';
 
 class DocumentStore {
   documentPackage: DocumentPackage | undefined = undefined;
@@ -197,13 +198,27 @@ class DocumentStore {
     return index;
   }
 
-  addComent(comment: Comment) {
-    const { documentPackage: doc } = this;
-    const index = this.findIndex();
-    if (doc && index !== undefined) {
-      service.addComment(doc, comment, index);
+  addComent(comment: string ) {
+const { name } = userStore;
+    this.version?.comments.push({
+      text: comment,
+      person: name,
+      createdAt: new Date().toLocaleDateString('ru'),
+      time: new Date().toLocaleTimeString('ru'),
+    });
     }
-  }
+
+    addCommentAndSave(comment:string){
+      const { name } = userStore;
+     this.version?.comments.push({
+      text: comment,
+      person: name,
+      createdAt: new Date().toLocaleDateString('ru'),
+      time: new Date().toLocaleTimeString('ru'),
+    }); 
+    this.saveAndSend()
+    }
+  
 
   addFile(file: DocumentFile) {
     if (this.version) { this.version.files = [...this.version.files, file]; 

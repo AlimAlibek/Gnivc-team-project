@@ -609,7 +609,7 @@
       "versions": [
         {
           "version": "1",
-          "status": "approving",
+          "status": "approved",
           "contour": "development",
           "priority": "high",
           "label": "Обновление серверов версия 1",
@@ -620,9 +620,9 @@
           "responsibleUserName": "userHmelnikov2",
           "type": "Для согласования",
           "createdAt": "04.05.2021",
-          "approvedStartAt": "06.05.2021",
-          "approvedEndAt": "",
-          "activeReviewer": "Коршунов В.М.",
+          "approvedStartAt": "27.10.2021",
+          "approvedEndAt": "27.10.2021",
+          "activeReviewer": "",
           "files": [
             {
               "mime": "text/plain",
@@ -643,6 +643,26 @@
               "uploadedAt": "23.10.2021",
               "packageVersion": "2",
               "id": "1634975682476"
+            },
+            {
+              "mime": "text/plain",
+              "name": "Полный документ.txt",
+              "size": 0,
+              "content": {},
+              "fileType": "Не указан",
+              "uploadedAt": "27.10.2021",
+              "packageVersion": "1",
+              "id": "1635360741136"
+            },
+            {
+              "mime": "text/plain",
+              "name": "aaaa.txt",
+              "size": 0,
+              "content": {},
+              "fileType": "Не указан",
+              "uploadedAt": "27.10.2021",
+              "packageVersion": "1",
+              "id": "1635360793393"
             }
           ],
           "comments": [
@@ -663,21 +683,140 @@
               "person": "Коршунов В.М.",
               "createdAt": "20.09.2021",
               "time": "09:30"
+            },
+            {
+              "text": "Принял документ",
+              "person": "Коршунов Василий",
+              "createdAt": "27.10.2021",
+              "time": "21:53:00"
+            },
+            {
+              "text": "Принял документ",
+              "person": "Елизавета Фомина",
+              "createdAt": "27.10.2021",
+              "time": "21:57:51"
+            },
+            {
+              "text": "Принял документ",
+              "person": "Алибек Тамбиев",
+              "createdAt": "27.10.2021",
+              "time": "21:58:05"
+            },
+            {
+              "text": "Принял документ",
+              "person": "Мирон Кошелев",
+              "createdAt": "27.10.2021",
+              "time": "21:58:12"
             }
           ],
           "approvalStages": {
             "dpp": {
-              "acepted": false,
-              "approvedDate": "",
-              "approvedTime": "",
+              "acepted": true,
+              "approvedDate": "27.10.2021",
+              "approvedTime": "21:53:00",
               "matchedRole": "dpp",
-              "reviwer": ""
+              "reviwer": "userKorshunov4"
             },
             "uib": {
+              "acepted": true,
+              "approvedDate": "27.10.2021",
+              "approvedTime": "21:57:51",
+              "matchedRole": "uib",
+              "reviwer": "userFomina8"
+            },
+            "fku": {
+              "acepted": true,
+              "approvedDate": "27.10.2021",
+              "approvedTime": "21:58:05",
+              "matchedRole": "fku",
+              "reviwer": "userTambiev13"
+            },
+            "uit": {
+              "acepted": true,
+              "approvedDate": "27.10.2021",
+              "approvedTime": "21:58:12",
+              "matchedRole": "uit",
+              "reviwer": "userKoshelev17"
+            }
+          }
+        },
+        {
+          "version": "2",
+          "status": "approving",
+          "contour": "test",
+          "priority": "middle",
+          "label": "Новый пакет документов",
+          "packageType": "familiarization",
+          "gk": "3.1.2",
+          "versionCode": "f53d3169-8501-4420-844f-f6238394b3f6",
+          "responsiblePerson": "Владимир Горбунов",
+          "responsibleUserName": "userGorbunov1",
+          "type": "Для согласования",
+          "createdAt": "27.10.2021",
+          "approvedStartAt": "27.10.2021",
+          "approvedEndAt": "",
+          "activeReviewer": "userTambiev13",
+          "files": [
+            {
+              "mime": "text/plain",
+              "name": "aaaa.txt",
+              "size": 0,
+              "content": {},
+              "fileType": "Не указан",
+              "uploadedAt": "27.10.2021",
+              "packageVersion": "2",
+              "id": "1635361109621"
+            },
+            {
+              "mime": "text/plain",
+              "name": "Полный документ.txt",
+              "size": 0,
+              "content": {},
+              "fileType": "Схема",
+              "uploadedAt": "27.10.2021",
+              "packageVersion": "2",
+              "id": "1635361504041"
+            }
+          ],
+          "comments": [
+            {
+              "text": "Создал новую версию",
+              "person": "Владимир Горбунов",
+              "createdAt": "27.10.2021",
+              "time": "21:58:17"
+            },
+            {
+              "text": "тест",
+              "person": "Владимир Горбунов",
+              "createdAt": "27.10.2021",
+              "time": "21:58:46"
+            },
+            {
+              "text": "Отправил на согласование",
+              "person": "Владимир Горбунов",
+              "createdAt": "27.10.2021",
+              "time": "21:58:52"
+            },
+            {
+              "text": "Принял документ",
+              "person": "Коршунов Василий",
+              "createdAt": "27.10.2021",
+              "time": "21:59:00"
+            }
+          ],
+          "approvalStages": {
+            "dpp": {
+              "acepted": true,
+              "approvedDate": "27.10.2021",
+              "approvedTime": "21:59:00",
+              "matchedRole": "dpp",
+              "reviwer": "userKorshunov4"
+            },
+            "uit": {
               "acepted": false,
               "approvedDate": "",
               "approvedTime": "",
-              "matchedRole": "uib",
+              "matchedRole": "uit",
               "reviwer": ""
             },
             "fku": {
@@ -686,14 +825,14 @@
               "approvedTime": "",
               "matchedRole": "fku",
               "reviwer": "",
-              "reviwerRole": null
+              "reviwerRole": "gnivcFkuExpert"
             },
-            "uit": {
-              "acepted": false,
-              "approvedDate": "",
-              "approvedTime": "",
-              "matchedRole": "uit",
-              "reviwer": ""
+            "uib": {
+              "acepted": true,
+              "approvedDate": "27.10.2021",
+              "approvedTime": "21:59:11",
+              "matchedRole": "uib",
+              "reviwer": "userFomina8"
             }
           }
         }

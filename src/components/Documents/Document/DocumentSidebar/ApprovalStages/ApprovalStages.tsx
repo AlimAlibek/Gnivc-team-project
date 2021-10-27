@@ -9,7 +9,7 @@ const ApprovalStages: React.FC = () => {
   const { version, status } = documentStore;
   const stages = version?.approvalStages;
 
-  // Они теряют порядок при мапе, если использовать лодаш value, так что пока руками
+ 
   if (!stages || status === Status.SCATCH) return <></>;
   const {
     dpp, uib, fku, uit,

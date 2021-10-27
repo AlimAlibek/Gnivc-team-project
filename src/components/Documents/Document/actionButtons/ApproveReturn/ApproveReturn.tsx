@@ -30,17 +30,14 @@ const ApproveReturn: React.FC = observer(() => {
   const toggleApprove = () => setApproveOpen(!approveOpen);
   const approve = () => {
     approveSwicher(role, userName);
-    const comment = createComment('Принял документ', name);
-    addComent(comment);
+    addComent('Принял документ');
     toggleApprove();
   };
   const toggleDeny = () => setDenyOpen(!denyOpen);
 
   const deny = (reason: string) => {
+    addComent(`Отправил на доработку причина: ${reason}`);
     setStatus(Status.REFACTORING);
-    // prettier-ignore
-    const comment = createComment(`Отправил на доработку причина: ${reason}`, name);
-    addComent(comment);
   };
 
   const setReviewer = (namee: string) => setActiveRewier(namee);
