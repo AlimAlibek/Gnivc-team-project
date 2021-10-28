@@ -196,7 +196,7 @@
           "createdAt": "02.07.2021",
           "approvedStartAt": "20.09.2021",
           "approvedEndAt": "",
-          "activeReviewer": "Коршунов В.М.",
+          "activeReviewer": "",
           "files": [
             {
               "mime": "text/plain",
@@ -465,10 +465,10 @@
               "time": "09:30"
             },
             {
-              "text": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
-              "person": "Коршунов В.М.",
-              "createdAt": "20.09.2021",
-              "time": "09:30"
+              "text": "Проверка",
+              "person": "Владимир Горбунов",
+              "createdAt": "28.10.2021",
+              "time": "08:09:46"
             }
           ],
           "approvalStages": {
