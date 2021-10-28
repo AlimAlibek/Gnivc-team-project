@@ -17,7 +17,7 @@ const ApproveReturn: React.FC = observer(() => {
     version, addComment, setActiveRewier, setStatus,
   } = documentStore;
   const {
-    userName, role, filterByMyRole, name
+    userName, role, filterByMyRole, name,
   } = userStore;
 
   const [denyOpen, setDenyOpen] = useState(false);

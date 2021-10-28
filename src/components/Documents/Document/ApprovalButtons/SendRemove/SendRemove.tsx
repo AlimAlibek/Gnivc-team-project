@@ -11,7 +11,7 @@ import isActionBlocked from '../../../../../utils/isActionBlocked';
 
 const SendRemove: React.FC = () => {
   const [open, setOpen] = useState(false);
-  const {name} = userStore
+  const { name } = userStore;
   const {
     documentPackage: doc,
     version,

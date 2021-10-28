@@ -11,7 +11,7 @@ import documentStore from '../../../../../stores/documentStore';
 
 const Comments: React.FC = () => {
   const { version, addCommentAndSave } = documentStore;
-  const {name}=userStore
+  const { name } = userStore;
   const [comment, setComment] = useState('');
 
   const comments = version?.comments;
