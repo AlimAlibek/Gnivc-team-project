@@ -1,0 +1,28 @@
+.modal{
+ width: auto;
+ display: flex;
+ flex-direction: column;
+}
+
+.buttons{
+ display: flex;
+ flex-direction: row;
+ justify-content: flex-end;
+ margin-top: 2em;
+ button{
+  margin-left: 8px;
+  padding: 7px 20px;
+  font-size: 14px;
+ }
+}
+.redirect {
+  width: 400px !important;
+  display: flex;
+  flex-direction: column;
+}
+.buttonsRow{
+  button{
+    margin-right: 8px;
+    font-size: 14px;
+  }
+}

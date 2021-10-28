@@ -1,0 +1,38 @@
+.component {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  margin-bottom: 20px;
+  right: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background-color: darken(#c9cbcf, 20%);
+  }
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-left: 8px;
+}
+
+.title {
+  color: #303236;
+  font-size: 36px;
+  line-height: 48px;
+  font-weight: 700;
+}
+
+.name {
+  color: #303236;
+  font-size: 36px;
+  line-height: 48px;
+}

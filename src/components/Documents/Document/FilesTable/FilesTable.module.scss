@@ -1,0 +1,26 @@
+.component {
+  display: flex;
+  flex-direction: column;
+}
+.subtitle {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.filesTable {
+  font-size: 14px;
+  & th {
+    background-color: #F4F5F5;
+    padding: 30px 24px;
+    border: 1px solid #CACBCF;
+  }
+ & td {
+   border: 1px solid #CACBCF;
+ }
+}
+
+.invisible{
+ visibility: hidden;
+}

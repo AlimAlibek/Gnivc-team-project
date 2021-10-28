@@ -1,0 +1,687 @@
+{
+  "responsiblePersons": [
+    {
+      "id": "u1",
+      "name": "Владимир Горбунов",
+      "userName": "userGorbunov1",
+      "projectRole": "Архитектор",
+      "role": "editor",
+      "department": "IT-архитектуры"
+    },
+    {
+      "id": "u2",
+      "name": "Борис Хмельников",
+      "userName": "userHmelnikov2",
+      "projectRole": "Разработчик",
+      "role": "editor",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u3",
+      "name": "Даниил Черкасов ",
+      "userName": "userCherkasov3",
+      "projectRole": "Ст. Разработчик",
+      "role": "editor",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u4",
+      "name": "Коршунов Василий",
+      "userName": "userKorshunov4",
+      "projectRole": "сотрудник ДПП",
+      "role": "gnivcDpp",
+      "canEdit": "dpp",
+      "department": "IT-архитектуры"
+    },
+    {
+      "id": "u5",
+      "name": "Иван Кошкин",
+      "userName": "userKoshkin5",
+      "projectRole": "сотрудник ДПП",
+      "role": "gnivcDpp",
+      "canEdit": "dpp",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u6",
+      "name": "Егор Сорокин",
+      "userName": "userSorokoin6",
+      "projectRole": "сотрудник ДПП",
+      "role": "gnivcDpp",
+      "canEdit": "dpp",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u7",
+      "name": "Василиса Казакова",
+      "userName": "userKazakova7",
+      "projectRole": "сотрудник ДПП",
+      "role": "gnivcDpp",
+      "canEdit": "dpp",
+      "department": "IT-архитектуры"
+    },
+    {
+      "id": "u8",
+      "name": "Елизавета Фомина",
+      "userName": "userFomina8",
+      "projectRole": "Сотрудник УИБ",
+      "role": "gnivcUib",
+      "canEdit": "uib",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u9",
+      "name": "Аделина Михайлова",
+      "userName": "userMihailova9",
+      "projectRole": "Сотрудник УИБ",
+      "role": "gnivcUib",
+      "canEdit": "uib",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u10",
+      "name": "Валерий Стариков",
+      "userName": "userStarikov10",
+      "projectRole": "Диспетчер ФКУ",
+      "role": "gnivcFkuDispatch",
+      "canEdit": "fku",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u11",
+      "name": "Милана Егорова",
+      "userName": "userEgotova11",
+      "projectRole": "Диспетчер ФКУ",
+      "role": "gnivcFkuDispatch",
+      "canEdit": "fku",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u12",
+      "name": "Игорь Емельянов",
+      "userName": "userYemelyanov12",
+      "projectRole": "Старший Эксперт",
+      "role": "gnivcFkuExpert",
+      "canEdit": "fku",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u13",
+      "name": "Алибек Тамбиев",
+      "userName": "userTambiev13",
+      "projectRole": "Старший Эксперт",
+      "role": "gnivcFkuExpert",
+      "canEdit": "fku",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u14",
+      "name": "Марат Галеев",
+      "userName": "userGaleev14",
+      "projectRole": "Технический эксперт",
+      "role": "gnivcFkuTech",
+      "canEdit": "fku",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u15",
+      "name": "Евгений Маккавеев",
+      "userName": "userMakkaveev15",
+      "projectRole": "Технический эксперт",
+      "role": "gnivcFkuTech",
+      "canEdit": "fku",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u16",
+      "name": "Гендир Гендиров",
+      "userName": "userGendir16",
+      "projectRole": "Руководитель",
+      "role": "gnivcFkuSupervisor",
+      "canEdit": "fku",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u17",
+      "name": "Мирон Кошелев",
+      "userName": "userKoshelev17",
+      "projectRole": "Сотрудник УИТ",
+      "role": "gnivcUit",
+      "canEdit": "uit",
+      "department": "IT-архитектуры"
+    },
+    {
+      "id": "u18",
+      "name": "Марк Майоров",
+      "userName": "userMayorov18",
+      "projectRole": "Сотрудник УИТ",
+      "role": "gnivcUit",
+      "canEdit": "uit",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u19",
+      "name": "Матвей Шапошников",
+      "userName": "userShaposhnikov19",
+      "projectRole": "Сотрудник УИТ",
+      "role": "gnivcUit",
+      "canEdit": "uit",
+      "department": "Сопровождения инфраструктуры IT"
+    },
+    {
+      "id": "u20",
+      "name": "Петр Симонов",
+      "userName": "userSimonov20",
+      "projectRole": "Стажер",
+      "role": "viewer",
+      "department": "Сопровождения инфраструктуры IT"
+    }
+  ],
+  "documents": [
+    {
+      "id": "1",
+      "versions": [
+        {
+          "version": "1",
+          "status": "refactoring",
+          "type": "approving",
+          "contour": "development",
+          "priority": "high",
+          "label": "Схема передачи данных версия 1",
+          "packageType": "approve",
+          "gk": "3.1.1",
+          "versionCode": "08bfff7a-34ff-11ec-8d3d-0242ac130003",
+          "responsiblePerson": "Владимир Горбунов",
+          "responsibleUserName": "userGorbunov1",
+          "createdAt": "02.07.2021",
+          "approvedStartAt": "20.09.2021",
+          "approvedEndAt": "",
+          "activeReviewer": "",
+          "files": [
+            {
+              "mime": "text/plain",
+              "name": "empty.txt",
+              "size": 0,
+              "content": {},
+              "fileType": "Проектная документация",
+              "uploadedAt": "23.10.2021",
+              "packageVersion": "2",
+              "id": "1634975682476"
+            }
+          ],
+          "comments": [
+            {
+              "text": "Создал пакет документов.",
+              "person": "Владимир Горбунов",
+              "createdAt": "19.09.2021",
+              "time": "20:43"
+            },
+            {
+              "text": "Отправил на согласование.",
+              "person": "Владимир Горбунов",
+              "createdAt": "20.09.2021",
+              "time": "09:30"
+            },
+            {
+              "text": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
+              "person": "Коршунов В.М.",
+              "createdAt": "20.09.2021",
+              "time": "09:30"
+            }
+          ],
+          "approvalStages": {
+            "dpp": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "dpp",
+              "reviwer": ""
+            },
+            "uib": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "uib",
+              "reviwer": ""
+            },
+            "fku": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "fku",
+              "reviwer": "",
+              "reviwerRole": ""
+            },
+            "uit": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "uit",
+              "reviwer": ""
+            }
+          }
+        },
+        {
+          "version": "2",
+          "status": "scatch",
+          "contour": "development",
+          "priority": "high",
+          "label": "Схема передачи данныx",
+          "packageType": "sign",
+          "gk": "3.1.1",
+          "versionCode": "08c001dc-34ff-11ec-8d3d-0242ac130003",
+          "responsiblePerson": "Владимир Горбунов",
+          "responsibleUserName": "userGorbunov1",
+          "createdAt": "02.07.2021",
+          "approvedStartAt": "",
+          "approvedEndAt": "",
+          "activeReviewer": "Коршунов В.М.",
+          "files": [
+            {
+              "mime": "text/plain",
+              "name": "empty.txt",
+              "size": 5,
+              "content": {
+                "0": 104,
+                "1": 101,
+                "2": 108,
+                "3": 108,
+                "4": 111
+              },
+              "fileType": "Проектная документация",
+              "uploadedAt": "27.10.2021",
+              "packageVersion": "2",
+              "id": "1635316332032"
+            },
+            {
+              "mime": "",
+              "name": "template.rtf",
+              "size": 7,
+              "content": {
+                "0": 123,
+                "1": 92,
+                "2": 114,
+                "3": 116,
+                "4": 102,
+                "5": 49,
+                "6": 125
+              },
+              "fileType": "Схема",
+              "uploadedAt": "23.10.2021",
+              "packageVersion": "2",
+              "id": "1634975500971"
+            }
+          ],
+          "comments": [
+            {
+              "text": "Создал пакет документов.",
+              "person": "Владимир Горбунов",
+              "createdAt": "19.09.2021",
+              "time": "20:43"
+            },
+            {
+              "text": "Отправил на согласование.",
+              "person": "Владимир Горбунов",
+              "createdAt": "20.09.2021",
+              "time": "09:30"
+            },
+            {
+              "text": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
+              "person": "Коршунов В.М.",
+              "createdAt": "20.09.2021",
+              "time": "09:30"
+            }
+          ],
+          "approvalStages": {
+            "dpp": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "dpp",
+              "reviwer": ""
+            },
+            "uib": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "uib",
+              "reviwer": ""
+            },
+            "fku": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "fku",
+              "reviwer": "",
+              "reviwerRole": ""
+            },
+            "uit": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "uit",
+              "reviwer": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "versions": [
+        {
+          "version": "1",
+          "status": "approved",
+          "contour": "development",
+          "priority": "high",
+          "label": "Схема размещения серверов 1",
+          "packageType": "approve",
+          "gk": "3.1.1",
+          "versionCode": "08c002cc-34ff-11ec-8d3d-0242ac130003",
+          "responsiblePerson": "Борис Хмельников",
+          "responsibleUserName": "userHmelnikov2",
+          "createdAt": "01.04.2021",
+          "approvedStartAt": "20.09.2021",
+          "approvedEndAt": "11.11.2021",
+          "activeReviewer": "Коршунов В.М.",
+          "files": [
+            {
+              "mime": "text/plain",
+              "name": "example.txt",
+              "size": 26,
+              "content": {
+                "0": 32,
+                "1": 73,
+                "2": 39,
+                "3": 109,
+                "4": 32,
+                "5": 112,
+                "6": 114,
+                "7": 111,
+                "8": 106,
+                "9": 101,
+                "10": 99,
+                "11": 116,
+                "12": 32,
+                "13": 100,
+                "14": 111,
+                "15": 99,
+                "16": 117,
+                "17": 109,
+                "18": 101,
+                "19": 110,
+                "20": 116,
+                "21": 97,
+                "22": 116,
+                "23": 105,
+                "24": 111,
+                "25": 110
+              },
+              "fileType": "Проектная документация",
+              "uploadedAt": "23.10.2021",
+              "packageVersion": "2",
+              "id": "1634975313873"
+            },
+            {
+              "mime": "",
+              "name": "template.rtf",
+              "size": 7,
+              "content": {
+                "0": 123,
+                "1": 92,
+                "2": 114,
+                "3": 116,
+                "4": 102,
+                "5": 49,
+                "6": 125
+              },
+              "fileType": "Схема",
+              "uploadedAt": "23.10.2021",
+              "packageVersion": "2",
+              "id": "1634975500971"
+            },
+            {
+              "mime": "text/plain",
+              "name": "empty.txt",
+              "size": 0,
+              "content": {},
+              "fileType": "Проектная документация",
+              "uploadedAt": "23.10.2021",
+              "packageVersion": "2",
+              "id": "1634975682476"
+            }
+          ],
+          "comments": [
+            {
+              "text": "Создал пакет документов.",
+              "person": "Владимир Горбунов",
+              "createdAt": "19.09.2021",
+              "time": "20:43"
+            },
+            {
+              "text": "Отправил на согласование.",
+              "person": "Владимир Горбунов",
+              "createdAt": "20.09.2021",
+              "time": "09:30"
+            },
+            {
+              "text": "Проверка",
+              "person": "Владимир Горбунов",
+              "createdAt": "28.10.2021",
+              "time": "08:09:46"
+            }
+          ],
+          "approvalStages": {
+            "dpp": {
+              "acepted": true,
+              "approvedDate": "20.09.2021",
+              "approvedTime": "11:40",
+              "matchedRole": "dpp",
+              "reviwer": ""
+            },
+            "uib": {
+              "acepted": true,
+              "approvedDate": "23.09.2021",
+              "approvedTime": "11:40",
+              "matchedRole": "uib",
+              "reviwer": ""
+            },
+            "fku": {
+              "acepted": true,
+              "approvedDate": "22.09.2021",
+              "approvedTime": "11:40",
+              "matchedRole": "fku",
+              "reviwer": "",
+              "reviwerRole": ""
+            },
+            "uit": {
+              "acepted": true,
+              "approvedDate": "21.09.2021",
+              "approvedTime": "11:40",
+              "matchedRole": "uit",
+              "reviwer": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "versions": [
+        {
+          "version": "1",
+          "status": "refactoring",
+          "contour": "development",
+          "priority": "high",
+          "label": "Интеграционные схемы 1",
+          "packageType": "approve",
+          "gk": "3.1.1",
+          "versionCode": "08c0039e-34ff-11ec-8d3d-0242ac130003",
+          "responsiblePerson": "Борис Хмельников",
+          "responsibleUserName": "userHmelnikov2",
+          "createdAt": "25.09.2021",
+          "approvedStartAt": "27.09.2021",
+          "approvedEndAt": "",
+          "activeReviewer": "Коршунов В.М.",
+          "files": [
+            {
+              "mime": "text/plain",
+              "name": "empty.txt",
+              "size": 0,
+              "content": {},
+              "fileType": "Проектная документация",
+              "uploadedAt": "23.10.2021",
+              "packageVersion": "2",
+              "id": "1634975682476"
+            }
+          ],
+          "comments": [
+            {
+              "text": "Создал пакет документов.",
+              "person": "Владимир Горбунов",
+              "createdAt": "19.09.2021",
+              "time": "20:43"
+            },
+            {
+              "text": "Отправил на согласование.",
+              "person": "Владимир Горбунов",
+              "createdAt": "20.09.2021",
+              "time": "09:30"
+            },
+            {
+              "text": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
+              "person": "Коршунов В.М.",
+              "createdAt": "20.09.2021",
+              "time": "09:30"
+            }
+          ],
+          "approvalStages": {
+            "dpp": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "dpp",
+              "reviwer": ""
+            },
+            "uib": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "uib",
+              "reviwer": ""
+            },
+            "fku": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "fku",
+              "reviwer": "",
+              "reviwerRole": ""
+            },
+            "uit": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "uit",
+              "reviwer": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "versions": [
+        {
+          "version": "1",
+          "status": "approving",
+          "contour": "development",
+          "priority": "high",
+          "label": "Обновление серверов версия 1",
+          "packageType": "approve",
+          "gk": "3.1.1",
+          "versionCode": "08c0088a-34ff-11ec-8d3d-0242ac130003",
+          "responsiblePerson": "Борис Хмельников",
+          "responsibleUserName": "userHmelnikov2",
+          "createdAt": "04.05.2021",
+          "approvedStartAt": "27.10.2021",
+          "approvedEndAt": "",
+          "activeReviewer": "",
+          "files": [
+            {
+              "mime": "text/plain",
+              "name": "empty.txt",
+              "size": 0,
+              "content": {},
+              "fileType": "Проектная документация",
+              "uploadedAt": "23.10.2021",
+              "packageVersion": "2",
+              "id": "16321312312312"
+            },
+            {
+              "mime": "text/plain",
+              "name": "doc.txt",
+              "size": 0,
+              "content": {},
+              "fileType": "Проектная документация",
+              "uploadedAt": "23.10.2021",
+              "packageVersion": "2",
+              "id": "123123"
+            }
+          ],
+          "comments": [
+            {
+              "text": "Создал пакет документов.",
+              "person": "Владимир Горбунов",
+              "createdAt": "19.09.2021",
+              "time": "20:43"
+            },
+            {
+              "text": "Отправил на согласование.",
+              "person": "Владимир Горбунов",
+              "createdAt": "20.09.2021",
+              "time": "09:30"
+            },
+            {
+              "text": "Отправил на доработку. Необходимо выбрать другой пункт ГК.",
+              "person": "Коршунов В.М.",
+              "createdAt": "20.09.2021",
+              "time": "09:30"
+            }
+          ],
+          "approvalStages": {
+            "dpp": {
+              "acepted": true,
+              "approvedDate": "27.10.2021",
+              "approvedTime": "22:31:21",
+              "matchedRole": "dpp",
+              "reviwer": "userKorshunov4"
+            },
+            "uib": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "uib",
+              "reviwer": ""
+            },
+            "fku": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "fku",
+              "reviwer": "",
+              "reviwerRole": null
+            },
+            "uit": {
+              "acepted": false,
+              "approvedDate": "",
+              "approvedTime": "",
+              "matchedRole": "uit",
+              "reviwer": ""
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

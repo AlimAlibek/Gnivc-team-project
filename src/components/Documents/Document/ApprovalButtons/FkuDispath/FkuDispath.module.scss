@@ -1,0 +1,16 @@
+.modal {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonsRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  button {
+    margin: 0 0.3em;
+    width: 100px;
+  }
+}

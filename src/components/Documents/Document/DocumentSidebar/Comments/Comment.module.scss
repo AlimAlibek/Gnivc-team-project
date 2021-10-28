@@ -1,0 +1,58 @@
+.component {
+  background: #fff;
+  border-radius: 7px;
+  padding: 0 30px;
+  margin-left: 24px;
+  flex: 0 0 30%;
+}
+
+.subtitle {
+  color: #18191b;
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.textarea {
+  margin-bottom: 16px;
+}
+
+.button {
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.listitem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.person {
+  color: #afb1b6;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 10px 0;
+}
+
+.content {
+  width: 100%;
+  margin-top: -8px;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #c9cbcf;
+  }
+}

@@ -1,0 +1,52 @@
+.component {
+  background-color: #fff;
+  border-radius: 7px;
+  & .table {
+    padding: 20px;
+  
+    & th {
+      background-color: #F4F5F5;
+      padding: 30px 24px;
+      border: 1px solid #CACBCF;
+    }
+    & td {
+    border: 1px solid #CACBCF;
+    }
+  }
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 24px 16px;
+}
+
+.title {
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 24px;
+  color: #18191b;
+  line-height: 32px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  & i {
+      font-size: 24px;
+      margin-right: 6px;
+  } 
+}
+
+.modal {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+}
+
+.fields {
+  margin-bottom: 2em;
+}
