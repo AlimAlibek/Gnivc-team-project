@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 import Modal from '@ff/ui-kit/lib/Modal';
 import { useHistory } from 'react-router-dom';
 
-import classes from './Decide.module.scss';
+import classes from './SendRemove.module.scss';
 import Status from '../../../../../models/Status';
 import documentStore from '../../../../../stores/documentStore';
 import userStore from '../../../../../stores/userStore';
 import isActionBlocked from '../../../../../utils/isActionBlocked';
 
-const Decide: React.FC = () => {
+const SendRemove: React.FC = () => {
   const [open, setOpen] = useState(false);
   const {name} = userStore
   const {
@@ -76,4 +76,4 @@ const Decide: React.FC = () => {
     </div>
   );
 };
-export default Decide;
+export default SendRemove;

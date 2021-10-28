@@ -12,7 +12,7 @@ import VersionList from './VersionList';
 import SaveCancel from './HeaderButtons/SaveCancel';
 import CreateNewVersion from './HeaderButtons/CrateNewVersion';
 import Status from './Status';
-import ActionButtons from './actionButtons/ActionButtons';
+import ApprovalButtons from './ApprovalButtons';
 import DocumentForm from './DocumentForm/DocumentForm';
 import FilesTable from './FilesTable';
 import DocumentSidebar from './DocumentSidebar';
@@ -62,7 +62,7 @@ const DocumentItem: React.FC<DocumentPackage> = observer(() => {
 
             <Status version={version} />
 
-            {!blocked && <ActionButtons role={role} status={status} />}
+            {!blocked && <ApprovalButtons role={role} status={status} />}
 
             <DocumentForm />
 
