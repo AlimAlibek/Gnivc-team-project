@@ -14,10 +14,10 @@ import isActionBlocked from '../../../../../utils/isActionBlocked';
 
 const ApproveReturn: React.FC = observer(() => {
   const {
-    version, addComent, setActiveRewier, setStatus,
+    version, addComment, setActiveRewier, setStatus,
   } = documentStore;
   const {
-    userName, role, filterByMyRole,
+    userName, role, filterByMyRole, name
   } = userStore;
 
   const [denyOpen, setDenyOpen] = useState(false);
@@ -29,13 +29,13 @@ const ApproveReturn: React.FC = observer(() => {
   const toggleApprove = () => setApproveOpen(!approveOpen);
   const approve = () => {
     approveSwicher(role, userName);
-    addComent('Принял документ');
+    addComment('Принял(а) документ', name);
     toggleApprove();
   };
   const toggleDeny = () => setDenyOpen(!denyOpen);
 
   const deny = (reason: string) => {
-    addComent(`Отправил на доработку причина: ${reason}`);
+    addComment(`Отправил(а) на доработку причина: ${reason}`, name);
     setStatus(Status.REFACTORING);
   };
 

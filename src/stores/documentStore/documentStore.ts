@@ -8,7 +8,6 @@ import Status from '../../models/Status';
 import DocumentPackage from '../../models/DocumentPackage';
 import Access from '../../models/Access';
 import DocumentFile from '../../models/DocumentFile';
-import userStore from '../userStore';
 
 class DocumentStore {
   documentPackage: DocumentPackage | undefined = undefined;
@@ -198,8 +197,7 @@ class DocumentStore {
     return index;
   }
 
-  addComent(comment: string) {
-    const { name } = userStore;
+  addComment(comment: string, name: string) {
     this.version?.comments.push({
       text: comment,
       person: name,
@@ -208,8 +206,7 @@ class DocumentStore {
     });
   }
 
-  addCommentAndSave(comment: string) {
-    const { name } = userStore;
+  addCommentAndSave(comment: string, name: string) {
     this.version?.comments.push({
       text: comment,
       person: name,

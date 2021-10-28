@@ -6,16 +6,18 @@ import { useHistory } from 'react-router-dom';
 import classes from './Decide.module.scss';
 import Status from '../../../../../models/Status';
 import documentStore from '../../../../../stores/documentStore';
+import userStore from '../../../../../stores/userStore';
 import isActionBlocked from '../../../../../utils/isActionBlocked';
 
 const Decide: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const {name} = userStore
   const {
     documentPackage: doc,
     version,
     status,
     setStatus,
-    addComent,
+    addComment,
     removeVersion,
     deleteDocument,
     setAprrovalDate,
@@ -26,7 +28,7 @@ const Decide: React.FC = () => {
     setAprrovalDate();
     setStatus(Status.APPROVING);
     if (!version?.approvedStartAt) setAprrovalDate();
-    addComent('Отправил на согласование');
+    addComment('Отправил на согласование', name);
   };
   const history = useHistory();
 
